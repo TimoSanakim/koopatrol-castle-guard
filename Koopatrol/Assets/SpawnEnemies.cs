@@ -5,17 +5,22 @@ using UnityEngine;
 public class SpawnEnemies : MonoBehaviour
 {
     public GameObject enemyOriginal;
+    public bool stopSpawning = false;
+    public float spawnTime;
+    public float spawnDelay;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SpawnObject()
     {
-        //GameObject enemyClone = Instantiate(enemyOriginal);
+        Instantiate(enemyOriginal, transform.position, transform.rotation);
+        if (stopSpawning)
+        {
+            CancelInvoke("SpawnObject");
+        }
     }
 }

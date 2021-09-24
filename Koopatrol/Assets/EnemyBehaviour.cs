@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public GameObject enemyToadOriginal;
+
+    int EndWaypoint = 10;
 
     // Array of waypoints to walk from one to the next one
     [SerializeField]
@@ -31,6 +34,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         // Move Enemy
         Move();
+        EndOfPath();
     }
 
     // Method that actually make Enemy walk
@@ -43,7 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             // Move Enemy from current waypoint to the next one
             // using MoveTowards method
-            transform.position = Vector2.MoveTowards(transform.position,
+               transform.position = Vector2.MoveTowards(transform.position,
                waypoints[waypointIndex].transform.position,
                moveSpeed * Time.deltaTime);
 
@@ -55,5 +59,27 @@ public class EnemyBehaviour : MonoBehaviour
                 waypointIndex += 1;
             }
         }
+    }
+
+    void EndOfPath()
+    {
+        if (transform.position == waypoints[EndWaypoint].transform.position)
+        {
+            enemyToadOriginal =  GameObject.Find("enemy(toad)");
+            if (enemyToadOriginal.transform.position == waypoints[EndWaypoint].transform.position)
+            {
+                enemyToadOriginal.transform.position = waypoints[0].transform.position;
+               
+
+            }
+            else
+            {
+                CastleHealth.HealthCastle -= EnemyHealth.HealthEnemy;
+                Destroy(gameObject);
+                
+            }
+
+        }
+
     }
 }
