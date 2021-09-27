@@ -5,19 +5,40 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
     GameObject draggingTower;
     public int towerCost;
     public int towerSellCost;
     GameObject coinCounter;
+    GameObject towerInfo;
     public string towerType;
     public Assets.ValidPosition validPosition;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            Debug.Log("Left click");
+        }
+        else if (eventData.button == PointerEventData.InputButton.Middle)
+        {
+            Debug.Log("Middle click");
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            towerInfo.GetComponent<TowerInfo>().slide = 1;
+            towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
         coinCounter = GameObject.FindGameObjectWithTag("CoinCounter");
+        towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
+        Debug.Log(towerInfo);
     }
 
     // Update is called once per frame
@@ -25,11 +46,11 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     {
         if (Convert.ToInt32(coinCounter.GetComponent<Text>().text) >= towerCost)
         {
-            this.gameObject.SetActive(true);
+            gameObject.GetComponent<CanvasGroup>().alpha = 1f;
         }
         else
         {
-            this.gameObject.SetActive(false);
+            gameObject.GetComponent<CanvasGroup>().alpha = 0.6f;
         }
 
     }
@@ -37,12 +58,12 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public void OnBeginDrag(PointerEventData eventData)
     {
         draggingTower.SetActive(true);
-        draggingTower.GetComponent<Image>().sprite = this.gameObject.GetComponent<Image>().sprite;
-        draggingTower.GetComponent<Image>().color = this.gameObject.GetComponent<Image>().color;
-        draggingTower.GetComponent<draggingTower>().towerCost = this.towerCost;
-        draggingTower.GetComponent<draggingTower>().towerSellCost = this.towerSellCost;
-        draggingTower.GetComponent<draggingTower>().towerType = this.towerType;
-        draggingTower.GetComponent<draggingTower>().validPosition = this.validPosition;
+        draggingTower.GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
+        draggingTower.GetComponent<Image>().color = gameObject.GetComponent<Image>().color;
+        draggingTower.GetComponent<draggingTower>().towerCost = towerCost;
+        draggingTower.GetComponent<draggingTower>().towerSellCost = towerSellCost;
+        draggingTower.GetComponent<draggingTower>().towerType = towerType;
+        draggingTower.GetComponent<draggingTower>().validPosition = validPosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)

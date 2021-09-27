@@ -13,9 +13,9 @@ namespace Assets
         {
             int coinCounter = Convert.ToInt32(GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text);
             coinCounter += increaseAmount;
-            if (coinCounter < 0 )
+            if (coinCounter < 0)
             {
-                Debug.Log("Action resulted in negative coin counter; action cancled.");
+                Debug.Log("Action resulted in negative coin counter; action should be cancled.");
                 return false;
             }
             else
@@ -23,6 +23,11 @@ namespace Assets
                 GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text = Convert.ToString(coinCounter);
                 return true;
             }
+        }
+        //Returns coint counter value
+        public static int GetCoinCount()
+        {
+            return Convert.ToInt32(GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text);
         }
     }
 }
