@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Path
+  - Tower
+  - TowerOption
+  - DraggingTower
+  - CoinCounter
+  - CastleHealth
+  - TowerInfo
   layers:
   - Default
   - TransparentFX
