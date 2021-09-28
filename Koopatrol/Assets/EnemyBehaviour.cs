@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public Transform enemydubes;
     public GameObject enemyToadOriginal;
 
-    int EndWaypoint = 10;
+    int EndWaypoint = 13;
 
     // Array of waypoints to walk from one to the next one
     [SerializeField]
@@ -23,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-
+        transform.SetParent(enemydubes, false);
         // Set position of Enemy as position of the first waypoint
         transform.position = waypoints[waypointIndex].transform.position;
     }
@@ -65,6 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (transform.position == waypoints[EndWaypoint].transform.position)
         {
+            CastleHealth.HealthCastle -= 1;
             enemyToadOriginal =  GameObject.Find("enemy(toad)");
             if (enemyToadOriginal.transform.position == waypoints[EndWaypoint].transform.position)
             {
@@ -74,7 +76,7 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else
             {
-                CastleHealth.HealthCastle -= EnemyHealth.HealthEnemy;
+                
                 Destroy(gameObject);
                 
             }

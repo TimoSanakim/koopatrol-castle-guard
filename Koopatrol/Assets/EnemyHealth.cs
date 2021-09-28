@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public static float HealthEnemy = 1;
+    public int enemyCoin = 1;
+    public int HealthEnemy = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
     void death()
     {
+        Assets.CoinCounter.ChangeCoinCounter(enemyCoin);
         Destroy(gameObject);
     }
 
