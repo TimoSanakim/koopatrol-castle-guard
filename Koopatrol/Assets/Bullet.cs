@@ -16,31 +16,33 @@ namespace Assets
         // Use this for initialization
         void Start()
         {
-
+            if (homingTarget == null && isClone) LookAt(targetPosition);
         }
-
+        void LookAt(Vector3 targetPosition)
+        {
+            Vector3 difference = targetPosition - gameObject.transform.position;
+            float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+        }
         // Update is called once per frame
         void Update()
         {
-            timeFlying += 1;
-            if (homingTarget != null)
+            if (isClone)
             {
-                gameObject.transform.position = Vector2.MoveTowards(transform.position, homingTarget.transform.position, speed * Time.deltaTime);
-            }
-            else
-            {
-                gameObject.transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            }
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in enemies)
-            {
-                if (((gameObject.transform.position.y - enemy.transform.position.y >= 30 && gameObject.transform.position.y - enemy.transform.position.y <= 70) || (gameObject.transform.position.y - enemy.transform.position.y >= -70 && gameObject.transform.position.y - enemy.transform.position.y <= -30)) && ((gameObject.transform.position.x - enemy.transform.position.x >= 30 && gameObject.transform.position.x - enemy.transform.position.x <= 70) || (gameObject.transform.position.x - enemy.transform.position.x >= -70 && gameObject.transform.position.x - enemy.transform.position.x <= -30)))
+                timeFlying += 1;
+                if (homingTarget != null) LookAt(targetPosition);
+                gameObject.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject enemy in enemies)
                 {
-                    enemy.GetComponent<EnemyHealth>().Hurt(power);
-                    Destroy(gameObject);
+                    if ((gameObject.transform.position.y - enemy.transform.position.y >= -10 && gameObject.transform.position.y - enemy.transform.position.y <= 10) && (gameObject.transform.position.x - enemy.transform.position.x >= -10 && gameObject.transform.position.x - enemy.transform.position.x <= 10))
+                    {
+                        enemy.GetComponent<EnemyHealth>().Hurt(power);
+                        Destroy(gameObject);
+                    }
                 }
+                if (timeFlying == 3600) Destroy(gameObject);
             }
-            if (timeFlying == 3600 && isClone) Destroy(gameObject);
         }
     }
 }

@@ -162,7 +162,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
     //Get based on isNextToPath
     GameObject GetEnemy()
     {
-        List<GameObject> atAxisEnemies = new List<GameObject>();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
         float x = gameObject.transform.position.x;
@@ -176,7 +175,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         {
             foreach (GameObject path in paths)
             {
-                if (((y - path.transform.position.y >= 30 && y - path.transform.position.y <= 70) || (y - path.transform.position.y >= -70 && y - path.transform.position.y <= -30)) && ((x - path.transform.position.x >= 30 && x - path.transform.position.x <= 70) || (x - path.transform.position.x >= -70 && x - path.transform.position.x <= -30)))
+                if (y - path.transform.position.y >= -50 && y - path.transform.position.y <= 50 && x - path.transform.position.x >= -50 && x - path.transform.position.x <= 50)
                 {
                     hasPath = true;
                 }
@@ -185,7 +184,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
             {
                 foreach (GameObject enemy in enemies)
                 {
-                    if (((y - enemy.transform.position.y >= 30 && y - enemy.transform.position.y <= 70) || (y - enemy.transform.position.y >= -70 && y - enemy.transform.position.y <= -30)) && ((x - enemy.transform.position.x >= 30 && x - enemy.transform.position.x <= 70) || (x - enemy.transform.position.x >= -70 && x - enemy.transform.position.x <= -30)))
+                    if (y - enemy.transform.position.y >= -50 && y - enemy.transform.position.y <= 50 && x - enemy.transform.position.x >= -50 && x - enemy.transform.position.x <= 50)
                     {
                         if (whileLoop == 0 && target == null) target = enemy;
                         else if (whileLoop == 1 && target == null) target = enemy;
@@ -216,7 +215,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
             else second += 1;
             hasPath = false;
         }
-        
         return target;
     }
     //Circular range
@@ -225,7 +223,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         GameObject target = null;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float lowestDistance = range;
-        float distance = 0;
+        float distance;
         foreach (GameObject enemy in enemies)
         {
             distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
@@ -247,7 +245,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         bullet.GetComponent<Assets.Bullet>().power = power;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
-        bullet.transform.parent = bulletList.transform;
+        bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(Sprite image, int power, float speed, Vector3 targetPosition)
     {
@@ -259,7 +257,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         bullet.GetComponent<Assets.Bullet>().power = power;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
-        bullet.transform.parent = bulletList.transform;
+        bullet.transform.SetParent(bulletList.transform, true);
     }
     void GoombaTower()
     {
@@ -281,7 +279,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
             if (enemy != null)
             {
                 cooldown = Assets.KoopaTower.cooldown;
-                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.damage, Assets.KoopaTower.speed, null);
+                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.damage, Assets.KoopaTower.speed, enemy.transform.position);
             }
         }
     }
@@ -292,11 +290,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
             if (cooldown == 0)
             {
                 GameObject enemy = GetEnemy();
-                Debug.Log(enemy); //tofix
                 if (enemy != null)
                 {
                     cooldown = Assets.BulletBlaster.cooldown;
-                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, null);
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, enemy.transform.position);
                 }
             }
         }
