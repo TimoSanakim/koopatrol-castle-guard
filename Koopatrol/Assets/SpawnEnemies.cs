@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
+    public Transform LevelEnemies;
     public GameObject enemyOriginal;
     public bool stopSpawning = false;
     public float spawnTime;
@@ -13,8 +14,11 @@ public class SpawnEnemies : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        
     }
+    
     public void SpawnObject()
     {
         Instantiate(enemyOriginal, transform.position, transform.rotation);
@@ -22,5 +26,7 @@ public class SpawnEnemies : MonoBehaviour
         {
             CancelInvoke("SpawnObject");
         }
+
+        
     }
 }
