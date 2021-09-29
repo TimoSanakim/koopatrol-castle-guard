@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
+    static GameObject bulletOriginal;
+    static GameObject bulletList;
     public int towerSellCost = 0;
     GameObject draggingTower;
     GameObject towerInfo;
@@ -98,6 +100,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
     {
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
+        bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
+        bulletList = GameObject.FindGameObjectWithTag("BulletList");
         if (gameObject.tag == "Ground")
         {
             GameObject[] field = GameObject.FindGameObjectsWithTag("Path");
@@ -155,23 +159,143 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
                 break;
         }
     }
+    //Get based on isNextToPath
+    GameObject GetEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+        float x = gameObject.transform.position.x;
+        float y = gameObject.transform.position.y;
+        int first = 0;
+        int second = 0;
+        int whileLoop = 0;
+        bool hasPath = true;
+        GameObject target = null;
+        while (whileLoop != 2)
+        {
+            foreach (GameObject path in paths)
+            {
+                if (y - path.transform.position.y >= -50 && y - path.transform.position.y <= 50 && x - path.transform.position.x >= -50 && x - path.transform.position.x <= 50)
+                {
+                    hasPath = true;
+                }
+            }
+            if (hasPath)
+            {
+                foreach (GameObject enemy in enemies)
+                {
+                    if (y - enemy.transform.position.y >= -50 && y - enemy.transform.position.y <= 50 && x - enemy.transform.position.x >= -50 && x - enemy.transform.position.x <= 50)
+                    {
+                        if (whileLoop == 0 && target == null) target = enemy;
+                        else if (whileLoop == 1 && target == null) target = enemy;
+                        else if (whileLoop == 1 && first < second) target = enemy;
+                        x = gameObject.transform.position.x;
+                        y = gameObject.transform.position.y;
+                        whileLoop += 1;
+                    }
+                }
+            }
+            else
+            {
+                x = gameObject.transform.position.x;
+                y = gameObject.transform.position.y;
+                whileLoop += 1;
+            }
+            if (isNextToPath == 1)
+            {
+                if (whileLoop == 0) x -= 100;
+                else x += 100;
+            }
+            else if (isNextToPath == 2)
+            {
+                if (whileLoop == 0) y += 100;
+                else y -= 100;
+            }
+            if (whileLoop == 0) first += 1;
+            else second += 1;
+            hasPath = false;
+        }
+        return target;
+    }
+    //Circular range
+    GameObject GetEnemy(float range)
+    {
+        GameObject target = null;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float lowestDistance = range;
+        float distance;
+        foreach (GameObject enemy in enemies)
+        {
+            distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
+            if (distance < lowestDistance)
+            {
+                target = enemy;
+                lowestDistance = distance;
+            }
+        }
+        return target;
+    }
+    void CreateBullet(Sprite image, int power, float speed, GameObject homingTarget)
+    {
+        GameObject bullet = Instantiate(bulletOriginal);
+        bullet.transform.position = gameObject.transform.position;
+        bullet.GetComponent<Image>().sprite = image;
+        bullet.GetComponent<Image>().color = Color.white;
+        bullet.GetComponent<Assets.Bullet>().homingTarget = homingTarget;
+        bullet.GetComponent<Assets.Bullet>().power = power;
+        bullet.GetComponent<Assets.Bullet>().speed = speed;
+        bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.transform.SetParent(bulletList.transform, true);
+    }
+    void CreateBullet(Sprite image, int power, float speed, Vector3 targetPosition)
+    {
+        GameObject bullet = Instantiate(bulletOriginal);
+        bullet.transform.position = gameObject.transform.position;
+        bullet.GetComponent<Image>().sprite = image;
+        bullet.GetComponent<Image>().color = Color.white;
+        bullet.GetComponent<Assets.Bullet>().targetPosition = targetPosition;
+        bullet.GetComponent<Assets.Bullet>().power = power;
+        bullet.GetComponent<Assets.Bullet>().speed = speed;
+        bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.transform.SetParent(bulletList.transform, true);
+    }
     void GoombaTower()
     {
-
+        if (cooldown == 0)
+        {
+            GameObject enemy = GetEnemy(Assets.GoomaTower.range);
+            if (enemy != null)
+            {
+                cooldown = Assets.GoomaTower.cooldown;
+                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.damage, Assets.GoomaTower.speed, enemy.transform.position);
+            }
+        }
     }
     void KoopaTower()
     {
-
+        if (cooldown == 0)
+        {
+            GameObject enemy = GetEnemy(Assets.KoopaTower.range);
+            if (enemy != null)
+            {
+                cooldown = Assets.KoopaTower.cooldown;
+                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.damage, Assets.KoopaTower.speed, enemy.transform.position);
+            }
+        }
     }
     void BulletBlaster()
     {
-        if (isNextToPath == 1)
+        if (isNextToPath != 0)
         {
-            //leftright
-        }
-        else if (isNextToPath == 2)
-        {
-            //updown
+            if (cooldown == 0)
+            {
+                GameObject enemy = GetEnemy();
+                if (enemy != null)
+                {
+                    cooldown = Assets.BulletBlaster.cooldown;
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, enemy.transform.position);
+                }
+            }
         }
         else
         {
