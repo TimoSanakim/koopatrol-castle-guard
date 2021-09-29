@@ -14,6 +14,9 @@ TagManager:
   - TowerInfo
   - SellButton
   - TowerDescription
+  - Bullet
+  - Enemy
+  - BulletList
   layers:
   - Default
   - TransparentFX

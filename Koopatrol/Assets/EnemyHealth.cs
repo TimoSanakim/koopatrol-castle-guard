@@ -15,13 +15,17 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HealthEnemy == 0)
+        //test death
+        if (Input.GetKey(KeyCode.Space))
         {
             death();
         }
+    }
 
-        //test death
-        if (Input.GetKey(KeyCode.Space))
+    public void Hurt(int damage)
+    {
+        HealthEnemy -= damage;
+        if (HealthEnemy <= 0)
         {
             death();
         }
