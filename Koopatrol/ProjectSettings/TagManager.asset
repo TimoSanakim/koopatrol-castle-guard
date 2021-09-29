@@ -12,6 +12,8 @@ TagManager:
   - CoinCounter
   - CastleHealth
   - TowerInfo
+  - SellButton
+  - TowerDescription
   layers:
   - Default
   - TransparentFX

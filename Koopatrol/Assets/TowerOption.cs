@@ -10,16 +10,19 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     GameObject draggingTower;
     public int towerCost;
     public int towerSellCost;
+    public string description;
     GameObject coinCounter;
     GameObject towerInfo;
     public string towerType;
+    public Sprite yTowerImage;
     public Assets.ValidPosition validPosition;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.Log("Left click");
+            towerInfo.GetComponent<TowerInfo>().slide = 1;
+            towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
         {
@@ -27,8 +30,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            towerInfo.GetComponent<TowerInfo>().slide = 1;
-            towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
+            Debug.Log("Right click");
         }
     }
 
@@ -38,7 +40,6 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
         coinCounter = GameObject.FindGameObjectWithTag("CoinCounter");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
-        Debug.Log(towerInfo);
     }
 
     // Update is called once per frame
@@ -63,6 +64,8 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         draggingTower.GetComponent<draggingTower>().towerCost = towerCost;
         draggingTower.GetComponent<draggingTower>().towerSellCost = towerSellCost;
         draggingTower.GetComponent<draggingTower>().towerType = towerType;
+        draggingTower.GetComponent<draggingTower>().description = description;
+        draggingTower.GetComponent<draggingTower>().yTowerImage = yTowerImage;
         draggingTower.GetComponent<draggingTower>().validPosition = validPosition;
     }
 

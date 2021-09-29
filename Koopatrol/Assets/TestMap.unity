@@ -173,7 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &12878057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &42310754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &48160864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &54011405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +487,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54011402}
   m_CullTransparentMesh: 1
+--- !u!1 &63705984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63705985}
+  - component: {fileID: 63705987}
+  - component: {fileID: 63705986}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &63705985
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63705984}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1486946386}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &63705986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63705984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Sell
+--- !u!222 &63705987
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63705984}
+  m_CullTransparentMesh: 1
 --- !u!1 &80350917
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +598,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2137302707}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -583,6 +670,8 @@ MonoBehaviour:
   towerCost: 0
   towerSellCost: 0
   towerType: none
+  description: 
+  yTowerImage: {fileID: 0}
   validPosition: 0
 --- !u!1 &96346670
 GameObject:
@@ -634,7 +723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &96346673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +814,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &111075342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,7 +905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &112296308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,7 +996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &125054035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,7 +1087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &144302337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,7 +1178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &160164600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,7 +1269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &171728309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,7 +1360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &205186323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,7 +1451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &212292486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,7 +1542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &215142010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1524,7 +1633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &215450204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1613,7 +1724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &218217714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1702,7 +1815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &221269242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1791,7 +1906,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &225367298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,7 +1997,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &242865661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1969,7 +2088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &251208828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &268165250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2147,7 +2270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &273294225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2236,7 +2361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &273362294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,7 +2452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &281829212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2414,7 +2543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &281882663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2503,7 +2634,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &325149511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &359607034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,6 +2766,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359607031}
   m_CullTransparentMesh: 1
+--- !u!1 &360349369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 360349370}
+  m_Layer: 5
+  m_Name: Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &360349370
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360349369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 697671821}
+  - {fileID: 1075819813}
+  m_Father: {fileID: 2137302707}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: 0}
+  m_SizeDelta: {x: 100, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &365236814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,7 +2853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &365236817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2770,7 +2944,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &374873946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2859,7 +3035,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &396963146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2948,7 +3126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &415584874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3037,7 +3217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &433220018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3157,7 +3339,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &521454343
 GameObject:
@@ -3209,7 +3391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &521454346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,7 +3482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &536309244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3387,7 +3573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &551094178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3425,6 +3613,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551094175}
+  m_CullTransparentMesh: 1
+--- !u!1 &558568338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558568339}
+  - component: {fileID: 558568341}
+  - component: {fileID: 558568340}
+  m_Layer: 5
+  m_Name: TowerDescription
+  m_TagString: TowerDescription
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &558568339
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558568338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1240084862}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 221.84, y: 0}
+  m_SizeDelta: {x: 93.864685, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &558568340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558568338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Sell return: XX'
+--- !u!222 &558568341
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558568338}
   m_CullTransparentMesh: 1
 --- !u!1 &564277933
 GameObject:
@@ -3476,7 +3743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &564277936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3565,7 +3834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &603867479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3654,7 +3925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &606027234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3743,7 +4016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &617639582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3814,10 +4089,10 @@ RectTransform:
   m_Father: {fileID: 697671821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20.5, y: 37}
-  m_SizeDelta: {x: 41, y: 30}
+  m_SizeDelta: {x: -59, y: -106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624999524
 MonoBehaviour:
@@ -3911,7 +4186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &642930167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4000,7 +4277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &645078883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4089,7 +4368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &666824861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4140,7 +4421,7 @@ GameObject:
   - component: {fileID: 697671823}
   - component: {fileID: 697671822}
   m_Layer: 5
-  m_Name: TopRight
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4153,7 +4434,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697671820}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4161,13 +4442,13 @@ RectTransform:
   - {fileID: 1095310630}
   - {fileID: 1189349000}
   - {fileID: 1082683213}
-  m_Father: {fileID: 2137302707}
-  m_RootOrder: 1
+  m_Father: {fileID: 360349370}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.21231, y: -68.5}
-  m_SizeDelta: {x: 100.4245, y: 137}
+  m_AnchoredPosition: {x: 0, y: -69}
+  m_SizeDelta: {x: 0, y: 138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697671822
 MonoBehaviour:
@@ -4257,7 +4538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &707587478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4346,7 +4629,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &728912402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4435,7 +4720,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &741797543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4524,7 +4811,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &749293575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4613,7 +4902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &783302334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4651,164 +4942,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783302331}
-  m_CullTransparentMesh: 1
---- !u!1 &795761197
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 795761198}
-  - component: {fileID: 795761200}
-  - component: {fileID: 795761199}
-  m_Layer: 5
-  m_Name: TempStats
-  m_TagString: CoinCounter
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &795761198
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795761197}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1638289818}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93.43224, y: 0.000022888184}
-  m_SizeDelta: {x: 45.3918, y: 58.1508}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &795761199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795761197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 13
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'buy: 40 sell: 15'
---- !u!222 &795761200
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795761197}
-  m_CullTransparentMesh: 1
---- !u!1 &804443977
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 804443978}
-  - component: {fileID: 804443980}
-  - component: {fileID: 804443979}
-  m_Layer: 5
-  m_Name: TempStats
-  m_TagString: CoinCounter
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &804443978
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804443977}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1910441081}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93.43224, y: 0.000022888184}
-  m_SizeDelta: {x: 45.3918, y: 58.1508}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &804443979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804443977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 13
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'buy: 75 sell: 40'
---- !u!222 &804443980
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804443977}
   m_CullTransparentMesh: 1
 --- !u!1 &808624809
 GameObject:
@@ -4860,7 +4993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &808624812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4949,7 +5084,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &837124989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5001,7 +5138,7 @@ GameObject:
   - component: {fileID: 858823136}
   - component: {fileID: 858823135}
   m_Layer: 5
-  m_Name: Button
+  m_Name: HideButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5022,10 +5159,10 @@ RectTransform:
   m_Father: {fileID: 1240084862}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -397.27, y: -0.402}
-  m_SizeDelta: {x: 87.4541, y: 20.804}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 43.73001, y: 0}
+  m_SizeDelta: {x: 87.4541, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858823135
 MonoBehaviour:
@@ -5171,7 +5308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &873005893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5260,7 +5399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &880780808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5349,7 +5490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &933485243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5438,7 +5581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &973190692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5527,7 +5672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &973279334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5616,7 +5763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &982230348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5705,7 +5854,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &982257367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5794,7 +5945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &985121994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5962,7 +6115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &996072139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6051,7 +6206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &998286393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6140,7 +6297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1009075661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6229,7 +6388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1015507537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6318,7 +6479,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1049568710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6407,7 +6570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1067889023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6458,7 +6623,7 @@ GameObject:
   - component: {fileID: 1075819815}
   - component: {fileID: 1075819814}
   m_Layer: 5
-  m_Name: Right
+  m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6471,20 +6636,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075819812}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1994149201}
   - {fileID: 1638289818}
   - {fileID: 1910441081}
-  m_Father: {fileID: 2137302707}
-  m_RootOrder: 2
+  m_Father: {fileID: 360349370}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50.21228, y: 141}
-  m_SizeDelta: {x: 100.4245, y: 282}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -68.600006}
+  m_SizeDelta: {x: 100, y: -137.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075819814
 MonoBehaviour:
@@ -6556,10 +6721,10 @@ RectTransform:
   m_Father: {fileID: 697671821}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 20, y: -37}
-  m_SizeDelta: {x: 38, y: 38}
+  m_SizeDelta: {x: -62, y: -98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1082683214
 MonoBehaviour:
@@ -6574,14 +6739,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.96865493, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b4ae926512934204fbcf00c16062b5ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6649,7 +6814,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1086549495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6720,10 +6887,10 @@ RectTransform:
   m_Father: {fileID: 697671821}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 20, y: 37}
-  m_SizeDelta: {x: 38, y: 38}
+  m_SizeDelta: {x: -62, y: -98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1095310631
 MonoBehaviour:
@@ -6738,14 +6905,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.0184464, g: 0.5471698, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 31737bdf7c846cd4bb5acf398c93a47e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6813,7 +6980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1099003086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6902,7 +7071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1127496203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6991,7 +7162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1132348856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7080,7 +7253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1177636202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7169,7 +7344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1187720738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7240,10 +7417,10 @@ RectTransform:
   m_Father: {fileID: 697671821}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20.5, y: -37}
-  m_SizeDelta: {x: 41, y: 30}
+  m_SizeDelta: {x: -59, y: -106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1189349001
 MonoBehaviour:
@@ -7337,7 +7514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1198809594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7426,7 +7605,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1202527025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7515,7 +7696,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1204537568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7604,7 +7787,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1206238454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7693,7 +7878,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1223572215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7820,7 +8007,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!1 &1240084861
 GameObject:
   m_ObjectHideFlags: 0
@@ -7852,13 +8041,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 858823134}
+  - {fileID: 1486946386}
+  - {fileID: 558568339}
   m_Father: {fileID: 2137302707}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 882, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240084863
 MonoBehaviour:
@@ -7962,7 +8153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1303743857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8051,7 +8244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1307037274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8140,7 +8335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1308208728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8229,7 +8426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1333585028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8318,7 +8517,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1337039156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8407,7 +8608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1342299655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8496,7 +8699,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1344012691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8585,7 +8790,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1349107257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8674,7 +8881,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1353381106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8763,7 +8972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1362420191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8852,7 +9063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1377479541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8941,7 +9154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1383962889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9030,7 +9245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1433408963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9119,7 +9336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1437183118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9208,7 +9427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1441102364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9297,7 +9518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1444646328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9386,7 +9609,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1448990588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9475,7 +9700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1450349520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9564,7 +9791,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1456729145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9602,6 +9831,139 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456729142}
+  m_CullTransparentMesh: 1
+--- !u!1 &1486946385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486946386}
+  - component: {fileID: 1486946389}
+  - component: {fileID: 1486946388}
+  - component: {fileID: 1486946387}
+  m_Layer: 5
+  m_Name: SellButton
+  m_TagString: SellButton
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1486946386
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486946385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 63705985}
+  m_Father: {fileID: 1240084862}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 131.18, y: 0}
+  m_SizeDelta: {x: 87.4541, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1486946387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486946385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1486946388}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1240084863}
+        m_TargetAssemblyTypeName: TowerInfo, Assembly-CSharp
+        m_MethodName: SellTower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1486946388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486946385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1486946389
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486946385}
   m_CullTransparentMesh: 1
 --- !u!1 &1489537234
 GameObject:
@@ -9653,7 +10015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1489537237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9808,7 +10172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1515389378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9897,7 +10263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1534665940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9986,7 +10354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1547357066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10075,7 +10445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1578862687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10164,7 +10536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1578974081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10253,7 +10627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1583440577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10342,7 +10718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1586088901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10431,7 +10809,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1614584428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10520,7 +10900,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1634571616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10589,14 +10971,13 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children:
-  - {fileID: 795761198}
+  m_Children: []
   m_Father: {fileID: 1075819813}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.2, y: 58.8}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -82.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638289819
@@ -10613,7 +10994,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 40
   towerSellCost: 15
+  description: 
   towerType: KoopaTower
+  yTowerImage: {fileID: 0}
   validPosition: 0
 --- !u!114 &1638289820
 MonoBehaviour:
@@ -10628,14 +11011,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.035447698, g: 0.5294118, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8371a65783a11a445a99e8944caa5742, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10715,7 +11098,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1639730754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11007,7 +11392,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1685096473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11096,7 +11483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1686720482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11185,7 +11574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1692066478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11274,7 +11665,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1693717506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11363,7 +11756,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1694808036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11452,7 +11847,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1762605432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11541,7 +11938,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1781523376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11630,7 +12029,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1790607839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11719,7 +12120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1819984052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11808,7 +12211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1823586588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11897,7 +12302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1845973514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11986,7 +12393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1892859608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12075,7 +12484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1897987284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12164,7 +12575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1898299481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12233,14 +12646,13 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children:
-  - {fileID: 804443978}
+  m_Children: []
   m_Father: {fileID: 1075819813}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.2, y: 9.999996}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -131}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910441082
@@ -12257,7 +12669,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 75
   towerSellCost: 40
+  description: 
   towerType: BulletBlaster
+  yTowerImage: {fileID: 21300000, guid: 7c210af558af41f45a0c55422b3ea943, type: 3}
   validPosition: 2
 --- !u!114 &1910441083
 MonoBehaviour:
@@ -12272,14 +12686,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b480dae2cc6022141a48329d014e2e86, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12359,7 +12773,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1963529024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12448,7 +12864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1971123604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12537,7 +12955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1978095832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12626,7 +13046,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1979199161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12715,7 +13137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &1985892862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12788,9 +13212,9 @@ RectTransform:
   m_Father: {fileID: 1075819813}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.2, y: 110}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -31}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1994149202
@@ -12819,7 +13243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 15
   towerSellCost: 5
+  description: 
   towerType: GoombaTower
+  yTowerImage: {fileID: 0}
   validPosition: 0
 --- !u!114 &1994149204
 MonoBehaviour:
@@ -12834,14 +13260,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.24393994, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c55b8f90397d427469577c9f5b17c16c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12909,7 +13335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &2018765129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12998,7 +13426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &2022038207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13087,7 +13517,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &2041462531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13176,7 +13608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSellCost: 0
   towerType: 
+  description: 
 --- !u!114 &2086118411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13307,12 +13741,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1664852483}
-  - {fileID: 697671821}
-  - {fileID: 1075819813}
+  - {fileID: 360349370}
   - {fileID: 80350918}
   - {fileID: 1240084862}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -7,12 +7,13 @@ using UnityEngine.UI;
 
 public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
-    int towerSellCost = 0;
+    public int towerSellCost = 0;
     GameObject draggingTower;
     GameObject towerInfo;
     public string towerType = "none";
-    //1 = path up or down, and not to sides
-    //2 = path left or right, and not above or below
+    public string description = "";
+    //1 = path left or right, and not above or below
+    //2 = path up or down, and not to sides
     //0 = any other situation
     int isNextToPath = 0;
     int cooldown = 0;
@@ -21,7 +22,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.Log("Left click");
+            if (gameObject.tag == "Tower" || gameObject.tag == "PathTower")
+            {
+                towerInfo.GetComponent<TowerInfo>().slide = 1;
+                towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
+            }
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
         {
@@ -29,11 +34,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (gameObject.tag == "Tower" || gameObject.tag == "PathTower")
-            {
-                towerInfo.GetComponent<TowerInfo>().slide = 1;
-                towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
-            }
+            Debug.Log("Right click");
         }
     }
     public void SellTower()
@@ -50,6 +51,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         towerType = "none";
         towerSellCost = 0;
         cooldown = 0;
+        description = "";
         if (gameObject.tag == "PathTower")
         {
             gameObject.tag = "Path";
@@ -88,6 +90,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         towerType = draggingTower.GetComponent<draggingTower>().towerType;
         towerSellCost = draggingTower.GetComponent<draggingTower>().towerSellCost;
         cooldown = 0;
+        if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<draggingTower>().yTowerImage;
     }
 
     // Start is called before the first frame update
@@ -124,12 +127,12 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
                 if (xPath && !yPath)
                 {
                     isNextToPath = 1;
-                    gameObject.GetComponent<Image>().color = Color.black;
+                    //gameObject.GetComponent<Image>().color = Color.black;
                 }
                 else if (yPath && !xPath)
                 {
                     isNextToPath = 2;
-                    gameObject.GetComponent<Image>().color = Color.black;
+                    //gameObject.GetComponent<Image>().color = Color.black;
                 }
             }
         }
@@ -164,11 +167,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
     {
         if (isNextToPath == 1)
         {
-            //updown
+            //leftright
         }
         else if (isNextToPath == 2)
         {
-            //leftright
+            //updown
         }
         else
         {
