@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CastleHealth : MonoBehaviour
 {
 
-    public static float HealthCastle = 10;
+    public int HealthCastle = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,7 @@ public class CastleHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(HealthCastle);
         GameObject.FindGameObjectWithTag("CastleHealth").GetComponent<Text>().text = Convert.ToString(HealthCastle);
 
         if (HealthCastle == 0)

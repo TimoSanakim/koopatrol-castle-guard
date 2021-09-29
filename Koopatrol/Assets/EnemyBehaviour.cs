@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform enemydubes;
-    public GameObject enemyToadOriginal;
+    public GameObject enemyOriginal;
 
-    int EndWaypoint = 13;
+    public GameObject CastleHealth;
+    public GameObject EnemyHealth;
+
+    int EndWaypoint = 10;
 
     // Array of waypoints to walk from one to the next one
     [SerializeField]
@@ -32,19 +35,22 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
         // Move Enemy
         Move();
         EndOfPath();
+        
     }
 
     // Method that actually make Enemy walk
     private void Move()
     {
+        
+        
         // If Enemy didn't reach last waypoint it can move
         // If enemy reached last waypoint then it stops
         if (waypointIndex <= waypoints.Length - 1)
         {
+            
 
             // Move Enemy from current waypoint to the next one
             // using MoveTowards method
@@ -66,11 +72,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (transform.position == waypoints[EndWaypoint].transform.position)
         {
-            CastleHealth.HealthCastle -= 1;
-            enemyToadOriginal =  GameObject.Find("enemy(toad)");
-            if (enemyToadOriginal.transform.position == waypoints[EndWaypoint].transform.position)
+            CastleHealth.GetComponent<CastleHealth>().HealthCastle -= EnemyHealth.GetComponent<EnemyHealth>().HealthEnemy;   
+            //GameObject.Find("castle").GetComponent<CastleHealth>().HealthCastle -= GameObject.Find("enemy").GetComponent<EnemyHealth>().HealthEnemy;
+            enemyOriginal =  GameObject.Find("enemy");
+            if (enemyOriginal.transform.position == waypoints[EndWaypoint].transform.position)
             {
-                enemyToadOriginal.transform.position = waypoints[0].transform.position;
+                enemyOriginal.transform.position = waypoints[0].transform.position;
                
 
             }

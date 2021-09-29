@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int enemyCoin = 1;
-    public int HealthEnemy = 1;
+    public int HealthEnemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("enemyhealth" + HealthEnemy);
         if(HealthEnemy == 0)
         {
             death();
