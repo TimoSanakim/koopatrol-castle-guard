@@ -10,7 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject CastleHealth;
     public GameObject EnemyHealth;
 
-    int EndWaypoint = 10;
+    int EndWaypoint;
 
     // Array of waypoints to walk from one to the next one
     [SerializeField]
@@ -27,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        EndWaypoint = waypoints.Length -1;
         transform.SetParent(enemydubes, false);
         // Set position of Enemy as position of the first waypoint
         transform.position = waypoints[waypointIndex].transform.position;
@@ -74,7 +75,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             CastleHealth.GetComponent<CastleHealth>().HealthCastle -= EnemyHealth.GetComponent<EnemyHealth>().HealthEnemy;   
             //GameObject.Find("castle").GetComponent<CastleHealth>().HealthCastle -= GameObject.Find("enemy").GetComponent<EnemyHealth>().HealthEnemy;
-            enemyOriginal =  GameObject.Find("enemy");
+            //enemyOriginal =  GameObject.Find("enemy");
             if (enemyOriginal.transform.position == waypoints[EndWaypoint].transform.position)
             {
                 enemyOriginal.transform.position = waypoints[0].transform.position;
