@@ -12,6 +12,8 @@ TagManager:
   - CoinCounter
   - CastleHealth
   - TowerInfo
+  - invisible
+  - Wavemanager
   layers:
   - Default
   - TransparentFX

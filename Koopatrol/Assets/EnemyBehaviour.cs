@@ -28,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Start()
     {
         EndWaypoint = waypoints.Length -1;
-        transform.SetParent(enemydubes, false);
+        transform.SetParent(enemydubes);
         // Set position of Enemy as position of the first waypoint
         transform.position = waypoints[waypointIndex].transform.position;
     }
@@ -74,12 +74,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (transform.position == waypoints[EndWaypoint].transform.position)
         {
             CastleHealth.GetComponent<CastleHealth>().HealthCastle -= EnemyHealth.GetComponent<EnemyHealth>().HealthEnemy;   
-            //GameObject.Find("castle").GetComponent<CastleHealth>().HealthCastle -= GameObject.Find("enemy").GetComponent<EnemyHealth>().HealthEnemy;
-            //enemyOriginal =  GameObject.Find("enemy");
             if (enemyOriginal.transform.position == waypoints[EndWaypoint].transform.position)
             {
                 enemyOriginal.transform.position = waypoints[0].transform.position;
-               
+                enemyOriginal.gameObject.tag = "invisible";
 
             }
             else

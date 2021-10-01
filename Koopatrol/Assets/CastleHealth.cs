@@ -18,7 +18,6 @@ public class CastleHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(HealthCastle);
         GameObject.FindGameObjectWithTag("CastleHealth").GetComponent<Text>().text = Convert.ToString(HealthCastle);
 
         if (HealthCastle == 0)
