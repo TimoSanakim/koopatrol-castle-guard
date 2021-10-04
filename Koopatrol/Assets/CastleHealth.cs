@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class CastleHealth : MonoBehaviour
 {
 
-    public static float HealthCastle = 10;
+    public int HealthCastle = 10;
 
     // Start is called before the first frame update
     void Start()

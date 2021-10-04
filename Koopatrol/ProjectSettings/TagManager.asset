@@ -12,6 +12,7 @@ TagManager:
   - CoinCounter
   - CastleHealth
   - TowerInfo
+  - Wavemanager
   - SellButton
   - TowerDescription
   - Bullet
