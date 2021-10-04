@@ -21,9 +21,5 @@ public class CastleHealth : MonoBehaviour
     {
         if (HealthCastle < 0) HealthCastle = 0;
         GameObject.FindGameObjectWithTag("CastleHealth").GetComponent<Text>().text = Convert.ToString(HealthCastle);
-        if (HealthCastle == 0)
-        {
-            Destroy(gameObject);
-        }
     }
 }

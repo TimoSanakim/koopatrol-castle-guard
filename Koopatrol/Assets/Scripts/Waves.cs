@@ -33,7 +33,7 @@ public class Waves : MonoBehaviour
     void Update()
     {
 
-        if (enemiesWaveIndex == TheWaves[waveIndex].wave.Count)
+        if (enemiesWaveIndex == TheWaves[waveIndex].wave.Count && waveIndex < TheWaves.Count - 1)
         {    
             timeBetweenWaves();
             if (waveDelay == 0)
@@ -44,6 +44,10 @@ public class Waves : MonoBehaviour
                 enemiesWaveIndex = 0;
                 waveDelay = 5;
             }
+        }
+        else if (waveIndex == TheWaves.Count - 1 && enemiesWaveIndex == TheWaves[waveIndex].wave.Count - 1)
+        {
+            SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
         }
 
     }

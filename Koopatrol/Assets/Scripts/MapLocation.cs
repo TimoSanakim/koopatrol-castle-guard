@@ -191,7 +191,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             foreach (GameObject path in paths)
             {
-                if (y - path.transform.position.y >= -5 && y - path.transform.position.y <= 5 && x - path.transform.position.x >= -5 && x - path.transform.position.x <= 5)
+                if (y - path.transform.position.y >= -50 && y - path.transform.position.y <= 50 && x - path.transform.position.x >= -50 && x - path.transform.position.x <= 50)
                 {
                     hasPath = true;
                 }
@@ -219,13 +219,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             if (isNextToPath == 1)
             {
-                if (whileLoop == 0) x -= 100;
-                else x += 100;
+                if (whileLoop == 0) x -= 10;
+                else x += 10;
             }
             else if (isNextToPath == 2)
             {
-                if (whileLoop == 0) y += 100;
-                else y -= 100;
+                if (whileLoop == 0) y += 10;
+                else y -= 10;
             }
             if (whileLoop == 0) first += 1;
             else second += 1;

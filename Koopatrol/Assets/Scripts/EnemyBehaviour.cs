@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,38 +6,45 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public float frozenTime = 0;
-    public Transform enemydubes;
     public GameObject enemyOriginal;
 
     public GameObject CastleHealth;
-    public GameObject EnemyHealth;
 
     public bool isClone;
 
-    int EndWaypoint;
 
     // Array of waypoints to walk from one to the next one
     [SerializeField]
-    private Transform[] waypoints;
+    public List<Transform> Paths = new List<Transform>();
+    public List<Transform> PastPaths = new List<Transform>();
+    public Transform NextPath = null;
+    public GameObject startingPosition;
 
     // Walk speed that can be set in Inspector
     [SerializeField]
     private float moveSpeed = 2f;
-
-    // Index of current waypoint from which Enemy walks
-    // to the next one
-    private int waypointIndex = 0;
 
     // Use this for initialization
     private void Start()
     {
         if (isClone)
         {
-            EndWaypoint = waypoints.Length - 1;
-            transform.SetParent(enemydubes);
-            // Set position of Enemy as position of the first waypoint
-            transform.position = waypoints[waypointIndex].transform.position;
             CastleHealth = GameObject.FindGameObjectWithTag("CastleHealth");
+
+            GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+            GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
+            foreach (GameObject path in paths)
+            {
+                Paths.Add(path.transform);
+            }
+            foreach (GameObject path in obstructedPaths)
+            {
+                Paths.Add(path.transform);
+            }
+            // Set position of Enemy as position of the first waypoint
+            transform.position = startingPosition.transform.position;
+            NextPath = startingPosition.transform;
+
         }
     }
 
@@ -49,7 +57,6 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 // Move Enemy
                 Move();
-                EndOfPath();
             }
             if (frozenTime != 0)
             {
@@ -67,46 +74,35 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    // Method that actually make Enemy walk
     private void Move()
     {
-        
-        
-        // If Enemy didn't reach last waypoint it can move
-        // If enemy reached last waypoint then it stops
-        if (waypointIndex <= waypoints.Length - 1)
+        if (Paths.Count >= 1)
         {
-            
-
-            // Move Enemy from current waypoint to the next one
-            // using MoveTowards method
-               transform.position = Vector2.MoveTowards(transform.position,
-               waypoints[waypointIndex].transform.position,
-               moveSpeed * Time.deltaTime);
-
-            // If Enemy reaches position of waypoint he walked towards
-            // then waypointIndex is increased by 1
-            // and Enemy starts to walk to the next waypoint
-            if (transform.position == waypoints[waypointIndex].transform.position)
+            if (transform.position == NextPath.transform.position)
             {
-                waypointIndex += 1;
+                PastPaths.Add(NextPath);
+                Paths.Remove(NextPath);
+                NextPath = null;
+                List<Transform> possiblePaths = new List<Transform>();
+                foreach (Transform path in Paths)
+                {
+                    if ((path.position.x - gameObject.transform.position.x == 0 && path.position.y - gameObject.transform.position.y >= -70 && path.position.y - gameObject.transform.position.y <= 70) || (path.position.y - gameObject.transform.position.y == 0 && path.position.x - gameObject.transform.position.x >= -70 && path.position.x - gameObject.transform.position.x <= 70)) possiblePaths.Add(path);
+                }
+                if (possiblePaths.Count != 0)
+                {
+                    var r = new System.Random();
+                    NextPath = possiblePaths[r.Next(0, possiblePaths.Count)];
+                }
             }
-        }
-    }
-
-    void EndOfPath()
-    {
-        if (transform.position == waypoints[EndWaypoint].transform.position)
-        {
-            CastleHealth.GetComponent<CastleHealth>().HealthCastle -= EnemyHealth.GetComponent<EnemyHealth>().HealthEnemy;   
-            if (enemyOriginal.transform.position == waypoints[EndWaypoint].transform.position)
+            if (NextPath != null)
             {
-                enemyOriginal.transform.position = waypoints[0].transform.position;
+                transform.position = Vector2.MoveTowards(transform.position, NextPath.transform.position, moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().HealthEnemy;
                 Destroy(gameObject);
-
             }
-
         }
-
     }
 }
