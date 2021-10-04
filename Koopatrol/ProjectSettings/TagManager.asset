@@ -17,6 +17,7 @@ TagManager:
   - Bullet
   - Enemy
   - BulletList
+  - Map
   layers:
   - Default
   - TransparentFX

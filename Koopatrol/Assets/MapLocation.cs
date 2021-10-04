@@ -5,30 +5,33 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
+public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     static GameObject bulletOriginal;
     static GameObject bulletList;
     public int towerSellCost = 0;
     GameObject draggingTower;
     GameObject towerInfo;
+    GameObject map;
     public string towerType = "none";
     public string description = "";
     //1 = path left or right, and not above or below
     //2 = path up or down, and not to sides
     //0 = any other situation
     int isNextToPath = 0;
-    int cooldown = 0;
+    float cooldown = 0;
+    bool wasDragging = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (gameObject.tag == "Tower" || gameObject.tag == "PathTower")
+            if ((gameObject.tag == "Tower" || gameObject.tag == "PathTower") && wasDragging == false)
             {
                 towerInfo.GetComponent<TowerInfo>().slide = 1;
                 towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
             }
+            wasDragging = false;
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
         {
@@ -65,23 +68,26 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null && draggingTower.GetComponent<draggingTower>().towerType != "none")
         {
             if (draggingTower.GetComponent<draggingTower>().towerCost > Assets.CoinCounter.GetCoinCount())
             {
                 Debug.Log("Not enough money to place tower");
+                draggingTower.GetComponent<draggingTower>().towerType = "none";
             }
             else if ((gameObject.tag == "Ground") && (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.AnyGround || (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath != 0)))
             {
                 PlaceTower();
                 gameObject.tag = "Tower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost);
+                draggingTower.GetComponent<draggingTower>().towerType = "none";
             }
             else if ((gameObject.tag == "Path") && draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.Path)
             {
                 PlaceTower();
                 gameObject.tag = "PathTower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost);
+                draggingTower.GetComponent<draggingTower>().towerType = "none";
             }
         }
     }
@@ -102,6 +108,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
+        map = GameObject.FindGameObjectWithTag("Map");
         if (gameObject.tag == "Ground")
         {
             GameObject[] field = GameObject.FindGameObjectsWithTag("Path");
@@ -145,8 +152,9 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-        if (cooldown != 0) cooldown -= 1;
-        switch (towerType)
+        if (cooldown != 0) cooldown -= 1 * Time.deltaTime;
+        if (cooldown < 0) cooldown = 0;
+            switch (towerType)
         {
             case "GoombaTower":
                 GoombaTower();
@@ -156,6 +164,12 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
                 break;
             case "BulletBlaster":
                 BulletBlaster();
+                break;
+            case "FreezieTower":
+                FreezieTower();
+                break;
+            case "Bowser":
+                Bowser();
                 break;
         }
     }
@@ -235,11 +249,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         }
         return target;
     }
-    void CreateBullet(Sprite image, int power, float speed, GameObject homingTarget)
+    void CreateBullet(int image, int power, float speed, GameObject homingTarget)
     {
         GameObject bullet = Instantiate(bulletOriginal);
         bullet.transform.position = gameObject.transform.position;
-        bullet.GetComponent<Image>().sprite = image;
+        bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().homingTarget = homingTarget;
         bullet.GetComponent<Assets.Bullet>().power = power;
@@ -247,14 +261,38 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
         bullet.GetComponent<Assets.Bullet>().isClone = true;
         bullet.transform.SetParent(bulletList.transform, true);
     }
-    void CreateBullet(Sprite image, int power, float speed, Vector3 targetPosition)
+    void CreateBullet(int image, int power, float speed, Vector3 targetPosition)
     {
         GameObject bullet = Instantiate(bulletOriginal);
         bullet.transform.position = gameObject.transform.position;
-        bullet.GetComponent<Image>().sprite = image;
+        bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().targetPosition = targetPosition;
         bullet.GetComponent<Assets.Bullet>().power = power;
+        bullet.GetComponent<Assets.Bullet>().speed = speed;
+        bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.transform.SetParent(bulletList.transform, true);
+    }
+    void CreateBullet(int image, float freezeTime, float speed, GameObject homingTarget)
+    {
+        GameObject bullet = Instantiate(bulletOriginal);
+        bullet.transform.position = gameObject.transform.position;
+        bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
+        bullet.GetComponent<Image>().color = Color.white;
+        bullet.GetComponent<Assets.Bullet>().homingTarget = homingTarget;
+        bullet.GetComponent<Assets.Bullet>().freezeAmount = freezeTime;
+        bullet.GetComponent<Assets.Bullet>().speed = speed;
+        bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.transform.SetParent(bulletList.transform, true);
+    }
+    void CreateBullet(int image, float freezeTime, float speed, Vector3 targetPosition)
+    {
+        GameObject bullet = Instantiate(bulletOriginal);
+        bullet.transform.position = gameObject.transform.position;
+        bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
+        bullet.GetComponent<Image>().color = Color.white;
+        bullet.GetComponent<Assets.Bullet>().targetPosition = targetPosition;
+        bullet.GetComponent<Assets.Bullet>().freezeAmount = freezeTime;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
         bullet.transform.SetParent(bulletList.transform, true);
@@ -302,5 +340,42 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler
             Debug.Log("Bullet blaster placed on non-valid location; destroying.");
             DestroyTower();
         }
+    }
+    void FreezieTower()
+    {
+        if (cooldown == 0)
+        {
+            GameObject enemy = GetEnemy(Assets.FreezieTower.range);
+            if (enemy != null)
+            {
+                cooldown = Assets.FreezieTower.cooldown;
+                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.freezeTime, Assets.FreezieTower.speed, enemy.transform.position);
+            }
+        }
+    }
+    void Bowser()
+    {
+        if (cooldown == 0)
+        {
+            GameObject enemy = GetEnemy(Assets.Bowser.range);
+            if (enemy != null)
+            {
+                cooldown = Assets.Bowser.cooldown;
+                CreateBullet(Assets.Bowser.bulletImage, Assets.Bowser.damage, Assets.Bowser.speed, enemy);
+            }
+        }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        wasDragging = true;
+        map.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
     }
 }

@@ -13,6 +13,8 @@ namespace Assets
         public int timeFlying = 0;
         public bool isClone = false;
         public float speed = 50f;
+        public float freezeAmount = 0;
+        public Sprite[] bulletSprites;
         // Use this for initialization
         void Start()
         {
@@ -37,7 +39,8 @@ namespace Assets
                 {
                     if ((gameObject.transform.position.y - enemy.transform.position.y >= -10 && gameObject.transform.position.y - enemy.transform.position.y <= 10) && (gameObject.transform.position.x - enemy.transform.position.x >= -10 && gameObject.transform.position.x - enemy.transform.position.x <= 10))
                     {
-                        enemy.GetComponent<EnemyHealth>().Hurt(power);
+                        if (power != 0) enemy.GetComponent<EnemyHealth>().Hurt(power);
+                        if (freezeAmount != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezeAmount);
                         Destroy(gameObject);
                     }
                 }

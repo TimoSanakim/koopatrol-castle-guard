@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public float frozenTime = 0;
     public Transform enemydubes;
     public GameObject enemyToadOriginal;
 
@@ -32,10 +33,25 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (frozenTime <= 2)
+        {
+            // Move Enemy
+            Move();
+            EndOfPath();
+        }
+        if (frozenTime != 0)
+        {
+            frozenTime -= 1 * Time.deltaTime;
+            if (frozenTime < 0) frozenTime = 0;
+        }
+    }
 
-        // Move Enemy
-        Move();
-        EndOfPath();
+    public void Freeze(float seconds)
+    {
+        if (frozenTime == 0)
+        {
+            frozenTime = 2 + seconds;
+        }
     }
 
     // Method that actually make Enemy walk
