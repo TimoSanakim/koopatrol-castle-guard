@@ -11,6 +11,7 @@ public class SpawnEnemies : MonoBehaviour
     public float spawnTime;
     public float spawnDelay;
     public int spawnAmount;
+    float timer;
 
     private void Start()
     {
@@ -21,14 +22,18 @@ public class SpawnEnemies : MonoBehaviour
 
     void Update()
     {
-        if (Time.time >= spawnTime && !stopSpawning)
-        {
-            enemyOriginal = waves.GetComponent<Waves>().TheWaves [waves.GetComponent<Waves>().waveIndex] .wave[waves.GetComponent<Waves>().enemiesWaveIndex];
-            //enemyOriginal = waves.GetComponent<Waves>().enemiesWave[waves.GetComponent<Waves>().enemiesWaveIndex];
-            Instantiate(enemyOriginal, transform.position, transform.rotation);
-            spawnTime += spawnDelay;
-            spawnAmount++;
-            waves.GetComponent<Waves>().enemiesWaveIndex++;
-        }    
+        Debug.Log(timer);
+        if(!stopSpawning){
+            timer+=Time.deltaTime;
+            if (timer >= spawnTime)
+            {
+                enemyOriginal = waves.GetComponent<Waves>().TheWaves [waves.GetComponent<Waves>().waveIndex] .wave[waves.GetComponent<Waves>().enemiesWaveIndex];
+                //enemyOriginal = waves.GetComponent<Waves>().enemiesWave[waves.GetComponent<Waves>().enemiesWaveIndex];
+                Instantiate(enemyOriginal, transform.position, transform.rotation);
+                spawnTime += spawnDelay;
+                spawnAmount++;
+                waves.GetComponent<Waves>().enemiesWaveIndex++;
+            }    
+        }
     }
 }

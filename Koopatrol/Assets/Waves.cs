@@ -13,22 +13,6 @@ public class Waves : MonoBehaviour
     public List<serializableClass> TheWaves = new List<serializableClass>();
 
 
-
-    //[System.Serializable]
-
-    //public class Point
-    //{
-    //    public int[] wave;
-    //}
-
-    //public List<Point> TheWaves;
-
-
-
-
-
-    //public GameObject[] waves;
-    //public float[] wavetime;
     public int[] Amountspawntimes;
     public int wavecount;
 
@@ -46,14 +30,29 @@ public class Waves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(waveDelay);
-        
 
         if (enemiesWaveIndex == TheWaves[waveIndex].wave.Count)
-        {
-                waveIndex++;
-                enemiesWaveIndex = 0;
+        {    
+            timeBetweenWaves();
+            if(waveDelay == 0){
+            SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = false;
+            waveIndex++;
+            enemiesWaveIndex = 0;
+            Debug.Log(waveIndex);
+            waveDelay= 5;         
+            }
+        }
 
+    }
+
+    void timeBetweenWaves(){
+        SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
+        Debug.Log(waveDelay);
+        if(waveDelay > 0){
+                waveDelay -= Time.deltaTime;
+        }
+        else{
+            waveDelay = 0;
         }
 
     }
