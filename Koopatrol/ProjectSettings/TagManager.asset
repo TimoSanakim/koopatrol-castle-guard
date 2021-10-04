@@ -19,6 +19,7 @@ TagManager:
   - Enemy
   - BulletList
   - Map
+  - RoundCounter
   layers:
   - Default
   - TransparentFX
