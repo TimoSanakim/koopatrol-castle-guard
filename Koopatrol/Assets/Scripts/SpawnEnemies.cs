@@ -29,7 +29,10 @@ public class SpawnEnemies : MonoBehaviour
             {
                 enemyOriginal = waves.GetComponent<Waves>().TheWaves [waves.GetComponent<Waves>().waveIndex] .wave[waves.GetComponent<Waves>().enemiesWaveIndex];
                 //enemyOriginal = waves.GetComponent<Waves>().enemiesWave[waves.GetComponent<Waves>().enemiesWaveIndex];
-                Instantiate(enemyOriginal, transform.position, transform.rotation);
+                GameObject enemy = Instantiate(enemyOriginal, transform.position, transform.rotation);
+                enemy.GetComponent<EnemyBehaviour>().isClone = true;
+                enemy.GetComponent<CanvasGroup>().alpha = 1f;
+                enemy.tag = "Enemy";
                 spawnTime += spawnDelay;
                 spawnAmount++;
                 waves.GetComponent<Waves>().enemiesWaveIndex++;

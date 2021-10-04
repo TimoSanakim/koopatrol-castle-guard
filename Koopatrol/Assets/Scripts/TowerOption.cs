@@ -13,6 +13,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public string description;
     GameObject coinCounter;
     GameObject towerInfo;
+    GameObject map;
     public string towerType;
     public Sprite yTowerImage;
     public Assets.ValidPosition validPosition;
@@ -40,18 +41,23 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
         coinCounter = GameObject.FindGameObjectWithTag("CoinCounter");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
+        map = GameObject.FindGameObjectWithTag("Map");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Convert.ToInt32(coinCounter.GetComponent<Text>().text) >= towerCost)
+        if (Convert.ToInt32(coinCounter.GetComponent<Text>().text) >= towerCost && !(towerType == "Bowser" && map.GetComponent<Map>().bowserPlaced))
         {
             gameObject.GetComponent<CanvasGroup>().alpha = 1f;
+            gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            gameObject.GetComponent<CanvasGroup>().interactable = true;
         }
         else
         {
             gameObject.GetComponent<CanvasGroup>().alpha = 0.6f;
+            gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            gameObject.GetComponent<CanvasGroup>().interactable = false;
         }
 
     }

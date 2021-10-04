@@ -49,6 +49,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void DestroyTower()
     {
+        if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = false;
         gameObject.GetComponent<Image>().sprite = null;
         Color temp = Color.white;
         temp.a = 0f;
@@ -99,6 +100,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerSellCost = draggingTower.GetComponent<draggingTower>().towerSellCost;
         cooldown = 0;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<draggingTower>().yTowerImage;
+        if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = true;
     }
 
     // Start is called before the first frame update
@@ -189,7 +191,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             foreach (GameObject path in paths)
             {
-                if (y - path.transform.position.y >= -50 && y - path.transform.position.y <= 50 && x - path.transform.position.x >= -50 && x - path.transform.position.x <= 50)
+                if (y - path.transform.position.y >= -5 && y - path.transform.position.y <= 5 && x - path.transform.position.x >= -5 && x - path.transform.position.x <= 5)
                 {
                     hasPath = true;
                 }
@@ -198,7 +200,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 foreach (GameObject enemy in enemies)
                 {
-                    if (y - enemy.transform.position.y >= -50 && y - enemy.transform.position.y <= 50 && x - enemy.transform.position.x >= -50 && x - enemy.transform.position.x <= 50)
+                    if (y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
                         if (whileLoop == 0 && target == null) target = enemy;
                         else if (whileLoop == 1 && target == null) target = enemy;

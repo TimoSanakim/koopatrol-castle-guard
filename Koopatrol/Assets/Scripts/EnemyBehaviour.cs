@@ -11,6 +11,8 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject CastleHealth;
     public GameObject EnemyHealth;
 
+    public bool isClone;
+
     int EndWaypoint;
 
     // Array of waypoints to walk from one to the next one
@@ -28,25 +30,32 @@ public class EnemyBehaviour : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        EndWaypoint = waypoints.Length -1;
-        transform.SetParent(enemydubes);
-        // Set position of Enemy as position of the first waypoint
-        transform.position = waypoints[waypointIndex].transform.position;
+        if (isClone)
+        {
+            EndWaypoint = waypoints.Length - 1;
+            transform.SetParent(enemydubes);
+            // Set position of Enemy as position of the first waypoint
+            transform.position = waypoints[waypointIndex].transform.position;
+            CastleHealth = GameObject.FindGameObjectWithTag("CastleHealth");
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (frozenTime <= 2)
+        if (isClone)
         {
-            // Move Enemy
-            Move();
-            EndOfPath();
-        }
-        if (frozenTime != 0)
-        {
-            frozenTime -= 1 * Time.deltaTime;
-            if (frozenTime < 0) frozenTime = 0;
+            if (frozenTime <= 2)
+            {
+                // Move Enemy
+                Move();
+                EndOfPath();
+            }
+            if (frozenTime != 0)
+            {
+                frozenTime -= 1 * Time.deltaTime;
+                if (frozenTime < 0) frozenTime = 0;
+            }
         }
     }
 
@@ -93,14 +102,8 @@ public class EnemyBehaviour : MonoBehaviour
             if (enemyOriginal.transform.position == waypoints[EndWaypoint].transform.position)
             {
                 enemyOriginal.transform.position = waypoints[0].transform.position;
-                enemyOriginal.gameObject.tag = "invisible";
-
-            }
-            else
-            {
-                
                 Destroy(gameObject);
-                
+
             }
 
         }
