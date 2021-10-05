@@ -49,6 +49,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void DestroyTower()
     {
+        if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = false;
         gameObject.GetComponent<Image>().sprite = null;
         Color temp = Color.white;
         temp.a = 0f;
@@ -99,6 +100,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerSellCost = draggingTower.GetComponent<draggingTower>().towerSellCost;
         cooldown = 0;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<draggingTower>().yTowerImage;
+        if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = true;
     }
 
     // Start is called before the first frame update
@@ -109,7 +111,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
         map = GameObject.FindGameObjectWithTag("Map");
-        if (gameObject.tag == "Ground")
+        if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] field = GameObject.FindGameObjectsWithTag("Path");
             bool xPath = false;
@@ -189,7 +191,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             foreach (GameObject path in paths)
             {
-                if (y - path.transform.position.y >= -50 && y - path.transform.position.y <= 50 && x - path.transform.position.x >= -50 && x - path.transform.position.x <= 50)
+                if (y - path.transform.position.y >= -40 && y - path.transform.position.y <= 40 && x - path.transform.position.x >= -40 && x - path.transform.position.x <= 40)
                 {
                     hasPath = true;
                 }
@@ -198,7 +200,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 foreach (GameObject enemy in enemies)
                 {
-                    if (y - enemy.transform.position.y >= -50 && y - enemy.transform.position.y <= 50 && x - enemy.transform.position.x >= -50 && x - enemy.transform.position.x <= 50)
+                    if (y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
                         if (whileLoop == 0 && target == null) target = enemy;
                         else if (whileLoop == 1 && target == null) target = enemy;
@@ -217,13 +219,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             if (isNextToPath == 1)
             {
-                if (whileLoop == 0) x -= 100;
-                else x += 100;
+                if (whileLoop == 0) x -= 10;
+                else x += 10;
             }
             else if (isNextToPath == 2)
             {
-                if (whileLoop == 0) y += 100;
-                else y -= 100;
+                if (whileLoop == 0) y += 10;
+                else y -= 10;
             }
             if (whileLoop == 0) first += 1;
             else second += 1;
@@ -323,7 +325,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void BulletBlaster()
     {
-        if (isNextToPath != 0)
+        if (isNextToPath == 1)
         {
             if (cooldown == 0)
             {
@@ -331,7 +333,19 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 if (enemy != null)
                 {
                     cooldown = Assets.BulletBlaster.cooldown;
-                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, enemy.transform.position);
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
+                }
+            }
+        }
+        else if (isNextToPath == 2)
+        {
+            if (cooldown == 0)
+            {
+                GameObject enemy = GetEnemy();
+                if (enemy != null)
+                {
+                    cooldown = Assets.BulletBlaster.cooldown;
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z));
                 }
             }
         }

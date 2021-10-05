@@ -74,7 +74,7 @@ public class TowerInfo : MonoBehaviour
             towerDescription.GetComponent<Text>().text = "Buy cost: " + Convert.ToString(selectedTower.GetComponent<TowerOption>().towerCost) + ". Sell return: " + Convert.ToString(selectedTower.GetComponent<TowerOption>().towerSellCost) + "." + selectedTower.GetComponent<TowerOption>().description;
             sellButton.SetActive(false);
             Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
-            temp.x = 131.18f;
+            temp.x = 87.45f;
             towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }
         else if (selectedTower.GetComponent<MapLocation>() != null)
@@ -83,7 +83,7 @@ public class TowerInfo : MonoBehaviour
             towerDescription.GetComponent<Text>().text = "Sell return: " + Convert.ToString(selectedTower.GetComponent<MapLocation>().towerSellCost) + "." + selectedTower.GetComponent<MapLocation>().description;
             sellButton.SetActive(true);
             Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
-            temp.x = 221.84f;
+            temp.x = 174.9f;
             towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }
     }

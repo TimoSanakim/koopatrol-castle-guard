@@ -6,6 +6,7 @@ public class Map : MonoBehaviour
 {
     public int sizeX;
     public int sizeY;
+    public bool bowserPlaced = false;
     // Start is called before the first frame update
     void Start()
     {
