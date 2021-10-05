@@ -37,7 +37,7 @@ namespace Assets
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject enemy in enemies)
                 {
-                    if ((gameObject.transform.position.y - enemy.transform.position.y >= -10 && gameObject.transform.position.y - enemy.transform.position.y <= 10) && (gameObject.transform.position.x - enemy.transform.position.x >= -10 && gameObject.transform.position.x - enemy.transform.position.x <= 10))
+                    if ((gameObject.transform.position.y - enemy.transform.position.y >= -20 && gameObject.transform.position.y - enemy.transform.position.y <= 20) && (gameObject.transform.position.x - enemy.transform.position.x >= -20 && gameObject.transform.position.x - enemy.transform.position.x <= 20))
                     {
                         if (power != 0) enemy.GetComponent<EnemyHealth>().Hurt(power);
                         if (freezeAmount != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezeAmount);
