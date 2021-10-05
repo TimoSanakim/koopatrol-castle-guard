@@ -111,7 +111,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
         map = GameObject.FindGameObjectWithTag("Map");
-        if (gameObject.tag == "Ground")
+        if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] field = GameObject.FindGameObjectsWithTag("Path");
             bool xPath = false;
@@ -191,7 +191,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             foreach (GameObject path in paths)
             {
-                if (y - path.transform.position.y >= -50 && y - path.transform.position.y <= 50 && x - path.transform.position.x >= -50 && x - path.transform.position.x <= 50)
+                if (y - path.transform.position.y >= -40 && y - path.transform.position.y <= 40 && x - path.transform.position.x >= -40 && x - path.transform.position.x <= 40)
                 {
                     hasPath = true;
                 }
@@ -325,7 +325,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void BulletBlaster()
     {
-        if (isNextToPath != 0)
+        if (isNextToPath == 1)
         {
             if (cooldown == 0)
             {
@@ -333,7 +333,19 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 if (enemy != null)
                 {
                     cooldown = Assets.BulletBlaster.cooldown;
-                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, enemy.transform.position);
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
+                }
+            }
+        }
+        else if (isNextToPath == 2)
+        {
+            if (cooldown == 0)
+            {
+                GameObject enemy = GetEnemy();
+                if (enemy != null)
+                {
+                    cooldown = Assets.BulletBlaster.cooldown;
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z));
                 }
             }
         }

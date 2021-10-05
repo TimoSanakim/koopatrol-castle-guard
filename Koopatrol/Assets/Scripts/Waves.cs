@@ -45,7 +45,7 @@ public class Waves : MonoBehaviour
                 waveDelay = 5;
             }
         }
-        else if (waveIndex == TheWaves.Count - 1 && enemiesWaveIndex == TheWaves[waveIndex].wave.Count - 1)
+        else if (waveIndex == TheWaves.Count - 1 && enemiesWaveIndex == TheWaves[waveIndex].wave.Count)
         {
             SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
         }
