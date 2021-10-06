@@ -198,7 +198,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 foreach (GameObject enemy in enemies)
                 {
-                    if (y - enemy.transform.position.y >= -50 && y - enemy.transform.position.y <= 50 && x - enemy.transform.position.x >= -50 && x - enemy.transform.position.x <= 50)
+                    if (y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
                         if (whileLoop == 0 && target == null) target = enemy;
                         else if (whileLoop == 1 && target == null) target = enemy;
@@ -217,13 +217,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             if (isNextToPath == 1)
             {
-                if (whileLoop == 0) x -= 100;
-                else x += 100;
+                if (whileLoop == 0) x -= 10;
+                else x += 10;
             }
             else if (isNextToPath == 2)
             {
-                if (whileLoop == 0) y += 100;
-                else y -= 100;
+                if (whileLoop == 0) y += 10;
+                else y -= 10;
             }
             if (whileLoop == 0) first += 1;
             else second += 1;

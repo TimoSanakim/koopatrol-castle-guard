@@ -32,7 +32,7 @@ namespace Assets
             if (isClone)
             {
                 timeFlying += 1;
-                if (homingTarget != null) LookAt(targetPosition);
+                if (homingTarget != null) LookAt(homingTarget.transform.position);
                 gameObject.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject enemy in enemies)
