@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public float frozenTime = 0;
+    float hitTime = 0;
     public GameObject enemyOriginal;
     public string enemyType;
     GameObject CastleHealth;
@@ -59,7 +60,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (isClone)
         {
             if (enemyType == "Luigi" && specialBehavior != 0) Luigi();
-            if (frozenTime <= 2 && specialBehavior == 0)
+            if (frozenTime <= 2 && hitTime == 0 && specialBehavior == 0)
             {
                 // Move Enemy
                 Move();
@@ -69,6 +70,11 @@ public class EnemyBehaviour : MonoBehaviour
                 frozenTime -= 1 * Time.deltaTime;
                 if (frozenTime < 0) frozenTime = 0;
             }
+            if (hitTime != 0)
+            {
+                hitTime -= 1 * Time.deltaTime;
+                if (hitTime < 0) hitTime = 0;
+            }
         }
     }
 
@@ -77,6 +83,13 @@ public class EnemyBehaviour : MonoBehaviour
         if (frozenTime == 0)
         {
             frozenTime = 2 + seconds;
+        }
+    }
+    public void GetHit()
+    {
+        if (hitTime == 0)
+        {
+            hitTime = 0.1f;
         }
     }
 

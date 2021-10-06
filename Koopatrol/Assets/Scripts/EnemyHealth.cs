@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
     public void Hurt(int damage)
     {
         HealthEnemy -= damage;
+        gameObject.GetComponent<EnemyBehaviour>().GetHit();
         if (HealthEnemy <= 0)
         {
             death();
