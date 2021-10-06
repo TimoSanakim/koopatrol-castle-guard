@@ -85,9 +85,9 @@ public class EnemyBehaviour : MonoBehaviour
         {
             frozenTime = 2 + seconds;
         }
-        if (seconds == -1)
+        if (seconds == -1 && frozenTime > 2)
         {
-            frozenTime = 0;
+            frozenTime = 2;
         }
     }
     public void Stagger(float duration)
