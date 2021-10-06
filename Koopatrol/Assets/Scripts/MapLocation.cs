@@ -48,7 +48,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         Assets.CoinCounter.ChangeCoinCounter(towerSellCost);
         DestroyTower();
     }
-    void DestroyTower()
+    public void DestroyTower()
     {
         if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = false;
         gameObject.GetComponent<Image>().sprite = null;

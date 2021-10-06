@@ -10,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject enemyOriginal;
     public string enemyType;
     GameObject CastleHealth;
+    Vector3 previousPosition;
 
     int moveDirection = 0;
     int lastDirection = 0;
@@ -59,10 +60,10 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (isClone)
         {
-            if (enemyType == "Luigi" && specialBehavior != 0) Luigi();
-            if (frozenTime <= 2 && hitTime == 0 && specialBehavior == 0)
+            if (frozenTime <= 2 && enemyType == "Luigi" && specialBehavior != 0) Luigi();
+            else if (frozenTime <= 2 && enemyType == "Mario" && specialBehavior != 0) Mario();
+            else if (frozenTime <= 2 && hitTime == 0 && specialBehavior == 0)
             {
-                // Move Enemy
                 Move();
             }
             if (frozenTime != 0)
@@ -203,6 +204,40 @@ public class EnemyBehaviour : MonoBehaviour
         return found;
     }
 
+    int TargetTower(string towerType, float x, float y)
+    {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        GameObject[] pathTowers = GameObject.FindGameObjectsWithTag("PathTower");
+        List<GameObject> allTowers = new List<GameObject>();
+        foreach (GameObject tower in towers)
+        {
+            allTowers.Add(tower);
+        }
+        foreach (GameObject tower in pathTowers)
+        {
+            allTowers.Add(tower);
+        }
+        foreach (GameObject tower in allTowers)
+        {
+            if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= 40 && y - tower.transform.position.y <= 60)
+            {
+                if (tower.GetComponent<MapLocation>().towerType == towerType) return 0;
+            }
+            if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -60 && y - tower.transform.position.y <= -40)
+            {
+                if (tower.GetComponent<MapLocation>().towerType == towerType) return 1;
+            }
+            if (x - tower.transform.position.x >= 40 && x - tower.transform.position.x <= 60 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+            {
+                if (tower.GetComponent<MapLocation>().towerType == towerType) return 2;
+            }
+            if (x - tower.transform.position.x >= -60 && x - tower.transform.position.x <= -40 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+            {
+                if (tower.GetComponent<MapLocation>().towerType == towerType) return 3;
+            }
+        }
+        return -1;
+    }
     void Luigi()
     {
         if (specialBehavior <= .4f)
@@ -219,7 +254,7 @@ public class EnemyBehaviour : MonoBehaviour
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x - (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
                     break;
                 case 3:
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x + (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.z);
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x + (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
                     break;
             }
         }
@@ -240,12 +275,79 @@ public class EnemyBehaviour : MonoBehaviour
                     gameObject.transform.position = new Vector3(NextPath.transform.position.x - 25, gameObject.transform.position.y, gameObject.transform.position.z);
                     break;
                 case 3:
-                    gameObject.transform.position = new Vector3(NextPath.transform.position.x + 25, gameObject.transform.position.z);
+                    gameObject.transform.position = new Vector3(NextPath.transform.position.x + 25, gameObject.transform.position.y, gameObject.transform.position.z);
                     break;
             }
         }
     }
 
+    void Mario()
+    {
+        if (specialBehavior >= 1f)
+        {
+            switch (offsetDirection)
+            {
+                case 0:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.z);
+                    break;
+                case 1:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.z);
+                    break;
+                case 2:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x - (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
+                    break;
+                case 3:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x + (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
+                    break;
+            }
+        }
+        if (specialBehavior <= 1f)
+        {
+            GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+            GameObject[] pathTowers = GameObject.FindGameObjectsWithTag("PathTower");
+            List<GameObject> allTowers = new List<GameObject>();
+            foreach (GameObject tower in towers)
+            {
+                allTowers.Add(tower);
+            }
+            foreach (GameObject tower in pathTowers)
+            {
+                allTowers.Add(tower);
+            }
+            foreach (GameObject tower in allTowers)
+            {
+                if (gameObject.transform.position.x - tower.transform.position.x >= -10 && gameObject.transform.position.x - tower.transform.position.x <= 10 && gameObject.transform.position.y - tower.transform.position.y >= -10 && gameObject.transform.position.y - tower.transform.position.y <= 10)
+                {
+                    if (tower.GetComponent<MapLocation>().towerType == "GoombaTower") tower.GetComponent<MapLocation>().DestroyTower();
+                }
+            }
+        }
+        if (specialBehavior <= 1f)
+        {
+            switch (offsetDirection)
+            {
+                case 0:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.z);
+                    break;
+                case 1:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.z);
+                    break;
+                case 2:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x + (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
+                    break;
+                case 3:
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x - (moveSpeed * 2 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
+                    break;
+            }
+        }
+        specialBehavior -= Time.deltaTime;
+        if (specialBehavior <= 0)
+        {
+            specialBehavior = 0f;
+            transform.position = previousPosition;
+            offsetDirection = -1;
+        }
+    }
     private void Move()
     {
         if (Paths.Count >= 1)
@@ -260,6 +362,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 PastPaths.Add(NextPath);
                 Paths.Remove(NextPath);
+                transform.position = NextPath.transform.position;
                 NextPath = null;
                 List<Transform> possiblePaths = new List<Transform>();
                 float x = transform.position.x;
@@ -301,6 +404,16 @@ public class EnemyBehaviour : MonoBehaviour
                         offsetDirection = -1;
                         if (LookForTower("BulletBlaster", x, y)) specialBehavior = 1.5f;
                     }
+                    else if (enemyType == "Mario")
+                    {
+                        offsetDirection = -1;
+                        offsetDirection = TargetTower("GoombaTower", x, y);
+                        if (offsetDirection != -1)
+                        {
+                            previousPosition = transform.position;
+                            specialBehavior = 2f;
+                        }
+                    }
                 }
             }
             if (NextPath != null)
@@ -328,6 +441,7 @@ public class EnemyBehaviour : MonoBehaviour
             else
             {
                 CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().HealthEnemy;
+                if (enemyType == "Mario") CastleHealth.GetComponent<CastleHealth>().HealthCastle = 0;
                 Destroy(gameObject);
             }
         }
