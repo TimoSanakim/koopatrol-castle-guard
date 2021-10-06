@@ -18,7 +18,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     //1 = path left or right, and not above or below
     //2 = path up or down, and not to sides
     //0 = any other situation
-    int isNextToPath = 0;
+    public int isNextToPath = 0;
     float cooldown = 0;
     bool wasDragging = false;
 
@@ -74,23 +74,21 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             if (draggingTower.GetComponent<draggingTower>().towerCost > Assets.CoinCounter.GetCoinCount())
             {
                 Debug.Log("Not enough money to place tower");
-                draggingTower.GetComponent<draggingTower>().towerType = "none";
             }
             else if ((gameObject.tag == "Ground") && (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.AnyGround || (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath != 0)))
             {
                 PlaceTower();
                 gameObject.tag = "Tower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost);
-                draggingTower.GetComponent<draggingTower>().towerType = "none";
             }
             else if ((gameObject.tag == "Path") && draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.Path)
             {
                 PlaceTower();
                 gameObject.tag = "PathTower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost);
-                draggingTower.GetComponent<draggingTower>().towerType = "none";
             }
         }
+        draggingTower.GetComponent<draggingTower>().towerType = "none";
     }
     void PlaceTower()
     {
@@ -200,7 +198,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 foreach (GameObject enemy in enemies)
                 {
-                    if (y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
+                    if (enemy.GetComponent<EnemyBehaviour>().isClone && y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
                         if (whileLoop == 0 && target == null) target = enemy;
                         else if (whileLoop == 1 && target == null) target = enemy;
@@ -243,7 +241,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         foreach (GameObject enemy in enemies)
         {
             distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
-            if (distance < lowestDistance)
+            if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance)
             {
                 target = enemy;
                 lowestDistance = distance;

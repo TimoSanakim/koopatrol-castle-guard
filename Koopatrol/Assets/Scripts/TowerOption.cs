@@ -64,7 +64,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        draggingTower.SetActive(true);
+        draggingTower.GetComponent<CanvasGroup>().alpha = 0.5f;
         draggingTower.GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
         draggingTower.GetComponent<Image>().color = gameObject.GetComponent<Image>().color;
         draggingTower.GetComponent<draggingTower>().towerCost = towerCost;
@@ -77,7 +77,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        draggingTower.SetActive(false);
+        draggingTower.GetComponent<CanvasGroup>().alpha = 0f;
     }
 
     public void OnDrag(PointerEventData eventData)
