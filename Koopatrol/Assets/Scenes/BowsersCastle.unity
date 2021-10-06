@@ -4095,6 +4095,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 872048097}
     m_Modifications:
+    - target: {fileID: 109588874156786562, guid: 442a05e0e3dd806428efae940ef59be5, type: 3}
+      propertyPath: bulletSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6965b2182e79b3b4494a00a8bee25afd, type: 3}
+    - target: {fileID: 109588874156786562, guid: 442a05e0e3dd806428efae940ef59be5, type: 3}
+      propertyPath: bulletSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 71da23f321f500f41a03d28e973eaebe, type: 3}
+    - target: {fileID: 109588874156786562, guid: 442a05e0e3dd806428efae940ef59be5, type: 3}
+      propertyPath: bulletSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 843dc05e021f21f40b86b8bcebfcb9b2, type: 3}
+    - target: {fileID: 109588874156786562, guid: 442a05e0e3dd806428efae940ef59be5, type: 3}
+      propertyPath: bulletSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 49fc6e553fc60fd4cb91af8e538ceec8, type: 3}
     - target: {fileID: 109588874701299682, guid: 442a05e0e3dd806428efae940ef59be5, type: 3}
       propertyPath: m_Name
       value: Bullets
@@ -11362,6 +11378,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2137302707}
     m_Modifications:
+    - target: {fileID: 1721091639581287807, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5095b993f0ac96f4c8dfa6cd636b2adf, type: 3}
+    - target: {fileID: 2410493794612201320, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d5ac32a67c3e2814494e4719b9ce341a, type: 3}
+    - target: {fileID: 2863932096135430200, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92d98f7ba4fba29418696ad0359b8b65, type: 3}
     - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11450,6 +11478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4087582347185723891, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dcb0d164c7f754c45b5c71c9f3508900, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
 --- !u!224 &1785699124 stripped

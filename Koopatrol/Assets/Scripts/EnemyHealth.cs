@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
     public void Hurt(int damage)
     {
         HealthEnemy -= damage;
-        gameObject.GetComponent<EnemyBehaviour>().Stagger(0.5f);
+        gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f);
         if (HealthEnemy <= 0)
         {
             death();

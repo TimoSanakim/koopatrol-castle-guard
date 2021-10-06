@@ -65,8 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCoin: 4
-  HealthEnemy: 8
+  enemyCoin: 70
+  HealthEnemy: 70
 --- !u!225 &8688087726926327657
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -405,8 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCoin: 1
-  HealthEnemy: 1
+  enemyCoin: 2
+  HealthEnemy: 2
 --- !u!225 &5490103831362836658
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -484,8 +484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCoin: 2
-  HealthEnemy: 4
+  enemyCoin: 10
+  HealthEnemy: 10
 --- !u!225 &3445341459816532436
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 0
-  HealthEnemy: 100
+  HealthEnemy: 650
 --- !u!225 &1074307894073583791
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -754,8 +754,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCoin: 20
-  HealthEnemy: 30
+  enemyCoin: 300
+  HealthEnemy: 300
 --- !u!225 &4169335005110640158
 CanvasGroup:
   m_ObjectHideFlags: 0

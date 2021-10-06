@@ -62,6 +62,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         cooldown = 0;
         towerLevel = 0;
         description = "";
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         if (gameObject.tag == "PathTower")
         {
             gameObject.tag = "Path";
@@ -162,7 +163,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         if (towerBuffed) towerLevel += 1; 
         if (cooldown != 0) cooldown -= 1 * Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
-            switch (towerType)
+        switch (towerType)
         {
             case "GoombaTower":
                 GoombaTower();
@@ -191,6 +192,12 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         }
         if (towerBuffed) towerLevel -= 1;
         towerBuffed = false;
+    }
+    void LookAt(Vector3 targetPosition)
+    {
+        Vector3 difference = targetPosition - gameObject.transform.position;
+        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
     }
     //Get based on isNextToPath
     GameObject GetEnemy()
@@ -454,9 +461,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void Bowser()
     {
+        GameObject enemy = GetEnemy(Assets.Bowser.GetRange(towerLevel));
+        LookAt(enemy.transform.position);
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.Bowser.GetRange(towerLevel));
             if (enemy != null)
             {
                 cooldown = Assets.Bowser.GetCooldown(towerLevel);
