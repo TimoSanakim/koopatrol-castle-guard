@@ -22,7 +22,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            towerInfo.GetComponent<TowerInfo>().slide = 1;
+            towerInfo.GetComponent<TowerInfo>().ShowInfo();
             towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)

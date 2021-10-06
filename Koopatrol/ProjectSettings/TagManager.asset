@@ -22,6 +22,7 @@ TagManager:
   - RoundCounter
   - EnemyList
   - PathTower
+  - UpgradeButton
   layers:
   - Default
   - TransparentFX

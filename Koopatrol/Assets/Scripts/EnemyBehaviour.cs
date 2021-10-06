@@ -47,7 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
                 Paths.Add(path.transform);
             }
             // Set position of Enemy as position of the first waypoint
-            transform.position = startingPosition.transform.position;
+            
             NextPath = startingPosition.transform;
 
         }
@@ -307,7 +307,7 @@ public class EnemyBehaviour : MonoBehaviour
                         if (transform.position.x >= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, transform.position.y, transform.position.z);
                         break;
                     case 3:
-                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - (moveSpeed * Time.deltaTime), gameObject.transform.position.z);
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - (moveSpeed * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
                         if (transform.position.x <= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, transform.position.y, transform.position.z); 
                         break;
                 }

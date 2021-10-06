@@ -10,6 +10,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     static GameObject bulletOriginal;
     static GameObject bulletList;
     public int towerSellCost = 0;
+    public int towerLevel = 0;
     GameObject draggingTower;
     GameObject towerInfo;
     GameObject map;
@@ -28,7 +29,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             if ((gameObject.tag == "Tower" || gameObject.tag == "PathTower") && wasDragging == false)
             {
-                towerInfo.GetComponent<TowerInfo>().slide = 1;
+                towerInfo.GetComponent<TowerInfo>().ShowInfo();
                 towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
             }
             wasDragging = false;
@@ -57,6 +58,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerType = "none";
         towerSellCost = 0;
         cooldown = 0;
+        towerLevel = 0;
         description = "";
         if (gameObject.tag == "PathTower")
         {
@@ -96,6 +98,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         gameObject.GetComponent<Image>().color = draggingTower.GetComponent<Image>().color;
         towerType = draggingTower.GetComponent<draggingTower>().towerType;
         towerSellCost = draggingTower.GetComponent<draggingTower>().towerSellCost;
+        towerLevel = 1;
         cooldown = 0;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<draggingTower>().yTowerImage;
         if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = true;
@@ -301,11 +304,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.GoomaTower.range);
+            GameObject enemy = GetEnemy(Assets.GoomaTower.GetRange(towerLevel));
             if (enemy != null)
             {
-                cooldown = Assets.GoomaTower.cooldown;
-                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.damage, Assets.GoomaTower.speed, enemy.transform.position);
+                cooldown = Assets.GoomaTower.GetCooldown(towerLevel);
+                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.GetDamage(towerLevel), Assets.GoomaTower.GetSpeed(towerLevel), enemy.transform.position);
             }
         }
     }
@@ -313,11 +316,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.KoopaTower.range);
+            GameObject enemy = GetEnemy(Assets.KoopaTower.GetRange(towerLevel));
             if (enemy != null)
             {
-                cooldown = Assets.KoopaTower.cooldown;
-                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.damage, Assets.KoopaTower.speed, enemy.transform.position);
+                cooldown = Assets.KoopaTower.GetCooldown(towerLevel);
+                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.GetDamage(towerLevel), Assets.KoopaTower.GetSpeed(towerLevel), enemy.transform.position);
             }
         }
     }
@@ -330,8 +333,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 GameObject enemy = GetEnemy();
                 if (enemy != null)
                 {
-                    cooldown = Assets.BulletBlaster.cooldown;
-                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
+                    cooldown = Assets.BulletBlaster.GetCooldown(towerLevel);
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.GetDamage(towerLevel), Assets.BulletBlaster.GetSpeed(towerLevel), new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
                 }
             }
         }
@@ -342,8 +345,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 GameObject enemy = GetEnemy();
                 if (enemy != null)
                 {
-                    cooldown = Assets.BulletBlaster.cooldown;
-                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.damage, Assets.BulletBlaster.speed, new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z));
+                    cooldown = Assets.BulletBlaster.GetCooldown(towerLevel);
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.GetDamage(towerLevel), Assets.BulletBlaster.GetSpeed(towerLevel), new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z));
                 }
             }
         }
@@ -357,11 +360,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.FreezieTower.range);
+            GameObject enemy = GetEnemy(Assets.FreezieTower.GetRange(towerLevel));
             if (enemy != null)
             {
-                cooldown = Assets.FreezieTower.cooldown;
-                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.freezeTime, Assets.FreezieTower.speed, enemy.transform.position);
+                cooldown = Assets.FreezieTower.GetCooldown(towerLevel);
+                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.GetFreezeTime(towerLevel), Assets.FreezieTower.GetSpeed(towerLevel), enemy.transform.position);
             }
         }
     }
@@ -369,11 +372,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.Bowser.range);
+            GameObject enemy = GetEnemy(Assets.Bowser.GetRange(towerLevel));
             if (enemy != null)
             {
-                cooldown = Assets.Bowser.cooldown;
-                CreateBullet(Assets.Bowser.bulletImage, Assets.Bowser.damage, Assets.Bowser.speed, enemy);
+                cooldown = Assets.Bowser.GetCooldown(towerLevel);
+                CreateBullet(Assets.Bowser.bulletImage, Assets.Bowser.GetDamage(towerLevel), Assets.Bowser.GetSpeed(towerLevel), enemy);
             }
         }
     }
