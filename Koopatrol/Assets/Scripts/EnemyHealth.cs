@@ -15,11 +15,8 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //test death
-        if (Input.GetKey(KeyCode.Space))
-        {
-            death();
-        }
+        
+        
     }
 
     public void Hurt(int damage)
