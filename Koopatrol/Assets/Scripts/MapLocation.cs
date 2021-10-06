@@ -22,6 +22,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     public int isNextToPath = 0;
     float cooldown = 0;
     bool wasDragging = false;
+    public bool towerBuffed = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -155,6 +156,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     // Update is called once per frame
     void Update()
     {
+        if (towerBuffed) towerLevel += 1; 
         if (cooldown != 0) cooldown -= 1 * Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
             switch (towerType)
@@ -165,16 +167,27 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             case "KoopaTower":
                 KoopaTower();
                 break;
+            case "FreezieTower":
+                FreezieTower();
+                break;
+            case "Thwomp":
+                Thwomp();
+                break;
             case "BulletBlaster":
                 BulletBlaster();
                 break;
-            case "FreezieTower":
-                FreezieTower();
+            case "PiranhaPlant":
+                PiranhaPlant();
+                break;
+            case "MagikoopaTower":
+                MagikoopaTower();
                 break;
             case "Bowser":
                 Bowser();
                 break;
         }
+        if (towerBuffed) towerLevel -= 1;
+        towerBuffed = false;
     }
     //Get based on isNextToPath
     GameObject GetEnemy()
@@ -240,6 +253,23 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         GameObject target = null;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float lowestDistance = range;
+        float distance;
+        foreach (GameObject enemy in enemies)
+        {
+            distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
+            if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance)
+            {
+                target = enemy;
+                lowestDistance = distance;
+            }
+        }
+        return target;
+    }
+    GameObject GetEnemyOnPath()
+    {
+        GameObject target = null;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float lowestDistance = 5;
         float distance;
         foreach (GameObject enemy in enemies)
         {
@@ -324,6 +354,34 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
         }
     }
+    void FreezieTower()
+    {
+        if (cooldown == 0)
+        {
+            GameObject enemy = GetEnemy(Assets.FreezieTower.GetRange(towerLevel));
+            if (enemy != null)
+            {
+                cooldown = Assets.FreezieTower.GetCooldown(towerLevel);
+                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.GetFreezeTime(towerLevel), Assets.FreezieTower.GetSpeed(towerLevel), enemy.transform.position);
+            }
+        }
+    }
+    void Thwomp()
+    {
+        if (cooldown == 0)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < Assets.Thwomp.GetRange(towerLevel))
+                {
+                    cooldown = Assets.Thwomp.GetCooldown(towerLevel);
+                    enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.Thwomp.GetStaggerTime(towerLevel));
+                    enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
+                }
+            }
+        }
+    }
     void BulletBlaster()
     {
         if (isNextToPath == 1)
@@ -356,15 +414,38 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             DestroyTower();
         }
     }
-    void FreezieTower()
+    void PiranhaPlant()
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.FreezieTower.GetRange(towerLevel));
+            GameObject enemy = GetEnemyOnPath();
             if (enemy != null)
             {
-                cooldown = Assets.FreezieTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.GetFreezeTime(towerLevel), Assets.FreezieTower.GetSpeed(towerLevel), enemy.transform.position);
+                cooldown = Assets.PiranhaPlant.GetCooldown(towerLevel);
+                enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.PiranhaPlant.GetStaggerTime(towerLevel));
+                enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
+                enemy.GetComponent<EnemyHealth>().Hurt(Assets.PiranhaPlant.GetDamage(towerLevel));
+            }
+        }
+    }
+    void MagikoopaTower()
+    {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        GameObject[] pathTowers = GameObject.FindGameObjectsWithTag("PathTower");
+        List<GameObject> allTowers = new List<GameObject>();
+        foreach (GameObject tower in towers)
+        {
+            allTowers.Add(tower);
+        }
+        foreach (GameObject tower in pathTowers)
+        {
+            allTowers.Add(tower);
+        }
+        foreach (GameObject tower in allTowers)
+        {
+            if (Vector3.Distance(tower.transform.position, gameObject.transform.position) <= Assets.MagikoopaTower.GetRange(towerLevel))
+            {
+                tower.GetComponent<MapLocation>().towerBuffed = true;
             }
         }
     }

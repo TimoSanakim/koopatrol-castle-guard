@@ -14,7 +14,7 @@ namespace Assets
         {
             if (towerLevel == 1) return 3;
             if (towerLevel == 2) return 2;
-            if (towerLevel == 3) return 1;
+            if (towerLevel >= 3) return 1;
             else return 0;
         }
         public static int GetDamage(int towerLevel)

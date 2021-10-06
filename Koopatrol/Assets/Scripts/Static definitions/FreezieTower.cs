@@ -17,13 +17,13 @@ namespace Assets
         public static float GetFreezeTime(int towerLevel)
         {
             if (towerLevel <= 2) return 4;
-            if (towerLevel == 3) return 6;
+            if (towerLevel >= 3) return 6;
             else return 0;
         }
         public static float GetSpeed(int towerLevel)
         {
             if (towerLevel == 1) return 25;
-            if (towerLevel == 2 || towerLevel == 3) return 50;
+            if (towerLevel >= 2) return 50;
             else return 0;
         }
         public static int GetUpgradeCost(int towerLevel)

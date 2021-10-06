@@ -85,12 +85,16 @@ public class EnemyBehaviour : MonoBehaviour
         {
             frozenTime = 2 + seconds;
         }
+        if (seconds == -1)
+        {
+            frozenTime = 0;
+        }
     }
-    public void GetHit()
+    public void Stagger(float duration)
     {
         if (hitTime == 0)
         {
-            hitTime = 0.1f;
+            hitTime = duration;
         }
     }
 

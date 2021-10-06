@@ -94,8 +94,14 @@ public class TowerInfo : MonoBehaviour
                 return Assets.KoopaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
                 return Assets.FreezieTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "Thwomp":
+                return Assets.Thwomp.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "BulletBlaster":
                 return Assets.BulletBlaster.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "PiranhaPlant":
+                return Assets.PiranhaPlant.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "MagikoopaTower":
+                return Assets.MagikoopaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "Bowser":
                 return Assets.Bowser.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
         }

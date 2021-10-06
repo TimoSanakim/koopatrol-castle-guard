@@ -9,7 +9,7 @@ namespace Assets
         public static float GetRange(int towerLevel)
         {
             if (towerLevel <= 2) return 200;
-            if (towerLevel == 3) return 300;
+            if (towerLevel >= 3) return 300;
             else return 0;
         }
         public static float GetCooldown(int towerLevel)
