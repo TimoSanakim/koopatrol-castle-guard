@@ -20,6 +20,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     //2 = path up or down, and not to sides
     //0 = any other situation
     public int isNextToPath = 0;
+    Sprite originalImage;
     float cooldown = 0;
     bool wasDragging = false;
     public bool towerBuffed = false;
@@ -69,6 +70,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             gameObject.tag = "Ground";
         }
+        gameObject.GetComponent<Image>().sprite = originalImage;
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -113,6 +115,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
         map = GameObject.FindGameObjectWithTag("Map");
+        originalImage = gameObject.GetComponent<Image>().sprite;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] field = GameObject.FindGameObjectsWithTag("Path");
@@ -205,7 +208,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             foreach (GameObject path in paths)
             {
-                if (y - path.transform.position.y >= -40 && y - path.transform.position.y <= 40 && x - path.transform.position.x >= -40 && x - path.transform.position.x <= 40)
+                if (y - path.transform.position.y >= -45 && y - path.transform.position.y <= 45 && x - path.transform.position.x >= -45 && x - path.transform.position.x <= 45)
                 {
                     hasPath = true;
                 }

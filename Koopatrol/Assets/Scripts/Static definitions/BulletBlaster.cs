@@ -12,7 +12,7 @@ namespace Assets
         }
         public static int GetDamage(int towerLevel)
         {
-            return 3;
+            return 2;
         }
         public static float GetSpeed(int towerLevel)
         {

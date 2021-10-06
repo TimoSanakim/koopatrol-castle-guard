@@ -366,7 +366,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 PastPaths.Add(NextPath);
                 Paths.Remove(NextPath);
-                transform.position = NextPath.transform.position;
+                if (enemyType == "Mario") transform.position = NextPath.transform.position;
                 NextPath = null;
                 List<Transform> possiblePaths = new List<Transform>();
                 float x = transform.position.x;
@@ -406,7 +406,11 @@ public class EnemyBehaviour : MonoBehaviour
                     if (moveDirection != lastDirection && enemyType == "Luigi" && transform.position != startingPosition.transform.position)
                     {
                         offsetDirection = -1;
-                        if (LookForTower("BulletBlaster", x, y)) specialBehavior = 1.5f;
+                        if (LookForTower("BulletBlaster", x, y))
+                        {
+                            previousPosition = transform.position;
+                            specialBehavior = 1.5f;
+                        }
                     }
                     else if (enemyType == "Mario")
                     {
