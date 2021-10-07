@@ -20,11 +20,14 @@ public class Waves : MonoBehaviour
     public int waveIndex;
 
     public float waveDelay;
+    public float currentWaveDelay;
+    
     public GameObject SpawnEnemies;
     GameObject RoundCounter;
     // Start is called before the first frame update
     void Start()
     {
+        currentWaveDelay = waveDelay;
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
         RoundCounter.GetComponent<Text>().text = "Round: " + (waveIndex + 1);
     }
@@ -36,13 +39,13 @@ public class Waves : MonoBehaviour
         if (enemiesWaveIndex == TheWaves[waveIndex].wave.Count && waveIndex < TheWaves.Count - 1)
         {    
             timeBetweenWaves();
-            if (waveDelay == 0)
+            if (currentWaveDelay == 0)
             {
                 SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = false;
                 waveIndex++;
                 RoundCounter.GetComponent<Text>().text = "Round: " + (waveIndex + 1);
                 enemiesWaveIndex = 0;
-                waveDelay = 5;
+                currentWaveDelay = waveDelay;
             }
         }
         else if (waveIndex == TheWaves.Count - 1 && enemiesWaveIndex == TheWaves[waveIndex].wave.Count)
@@ -54,11 +57,11 @@ public class Waves : MonoBehaviour
 
     void timeBetweenWaves(){
         SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
-        if(waveDelay > 0){
-                waveDelay -= Time.deltaTime;
+        if(currentWaveDelay > 0){
+                currentWaveDelay -= Time.deltaTime;
         }
         else{
-            waveDelay = 0;
+            currentWaveDelay = 0;
         }
 
     }
