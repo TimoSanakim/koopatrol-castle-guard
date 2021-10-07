@@ -102,6 +102,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         gameObject.GetComponent<Image>().color = draggingTower.GetComponent<Image>().color;
         towerType = draggingTower.GetComponent<draggingTower>().towerType;
         towerSellCost = draggingTower.GetComponent<draggingTower>().towerSellCost;
+        description = draggingTower.GetComponent<draggingTower>().description;
         towerLevel = 1;
         cooldown = 0;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<draggingTower>().yTowerImage;
