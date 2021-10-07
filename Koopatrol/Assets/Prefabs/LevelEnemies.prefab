@@ -65,8 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCoin: 70
-  HealthEnemy: 70
+  enemyCoin: 50
+  HealthEnemy: 50
 --- !u!225 &8688087726926327657
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -247,23 +247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheWaves:
-  - wave:
-    - {fileID: 1019613950769196843}
-    - {fileID: 1019613950769196843}
-    - {fileID: 1019613950769196843}
-    - {fileID: 1019613950769196843}
-  - wave:
-    - {fileID: 1019613950877606763}
-    - {fileID: 1019613950877606763}
-    - {fileID: 1019613950877606763}
-    - {fileID: 1019613950877606763}
-    - {fileID: 1019613950877606763}
-  - wave:
-    - {fileID: 7013976622914092319}
-  Amountspawntimes: 0500000003000000
+  - wave: []
   enemiesWaveIndex: 0
   waveIndex: 0
-  waveDelay: 3
+  waveDelay: 20
+  currentWaveDelay: 0
   SpawnEnemies: {fileID: 461168777475816565}
 --- !u!1 &1019613950545790236
 GameObject:
@@ -639,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 0
-  HealthEnemy: 650
+  HealthEnemy: 1000
 --- !u!225 &1074307894073583791
 CanvasGroup:
   m_ObjectHideFlags: 0

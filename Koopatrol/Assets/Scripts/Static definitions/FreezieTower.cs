@@ -12,7 +12,7 @@ namespace Assets
         }
         public static float GetCooldown(int towerLevel)
         {
-            return 4;
+            return 7;
         }
         public static float GetFreezeTime(int towerLevel)
         {

@@ -462,7 +462,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     void Bowser()
     {
         GameObject enemy = GetEnemy(Assets.Bowser.GetRange(towerLevel));
-        LookAt(enemy.transform.position);
+        if (enemy != null) LookAt(enemy.transform.position);
         if (cooldown == 0)
         {
             if (enemy != null)

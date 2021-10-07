@@ -16,6 +16,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     GameObject map;
     public string towerType;
     public Sprite yTowerImage;
+    bool canPlace = true;
     public Assets.ValidPosition validPosition;
 
     public void OnPointerClick(PointerEventData eventData)
@@ -47,32 +48,33 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     // Update is called once per frame
     void Update()
     {
-        if (Convert.ToInt32(coinCounter.GetComponent<Text>().text) >= towerCost && !(towerType == "Bowser" && map.GetComponent<Map>().bowserPlaced))
+        if (Assets.CoinCounter.GetCoinCount() >= towerCost && !(towerType == "Bowser" && map.GetComponent<Map>().bowserPlaced))
         {
             gameObject.GetComponent<CanvasGroup>().alpha = 1f;
-            gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            gameObject.GetComponent<CanvasGroup>().interactable = true;
+            canPlace = true;
         }
         else
         {
             gameObject.GetComponent<CanvasGroup>().alpha = 0.6f;
-            gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            gameObject.GetComponent<CanvasGroup>().interactable = false;
+            canPlace = false;
         }
 
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        draggingTower.GetComponent<CanvasGroup>().alpha = 0.5f;
-        draggingTower.GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
-        draggingTower.GetComponent<Image>().color = gameObject.GetComponent<Image>().color;
-        draggingTower.GetComponent<draggingTower>().towerCost = towerCost;
-        draggingTower.GetComponent<draggingTower>().towerSellCost = towerSellCost;
-        draggingTower.GetComponent<draggingTower>().towerType = towerType;
-        draggingTower.GetComponent<draggingTower>().description = description;
-        draggingTower.GetComponent<draggingTower>().yTowerImage = yTowerImage;
-        draggingTower.GetComponent<draggingTower>().validPosition = validPosition;
+        if (canPlace)
+        {
+            draggingTower.GetComponent<CanvasGroup>().alpha = 0.5f;
+            draggingTower.GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
+            draggingTower.GetComponent<Image>().color = gameObject.GetComponent<Image>().color;
+            draggingTower.GetComponent<draggingTower>().towerCost = towerCost;
+            draggingTower.GetComponent<draggingTower>().towerSellCost = towerSellCost;
+            draggingTower.GetComponent<draggingTower>().towerType = towerType;
+            draggingTower.GetComponent<draggingTower>().description = description;
+            draggingTower.GetComponent<draggingTower>().yTowerImage = yTowerImage;
+            draggingTower.GetComponent<draggingTower>().validPosition = validPosition;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -82,6 +84,9 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnDrag(PointerEventData eventData)
     {
-        draggingTower.GetComponent<RectTransform>().position = Input.mousePosition;
+        if (canPlace)
+        {
+            draggingTower.GetComponent<RectTransform>().position = Input.mousePosition;
+        }
     }
 }

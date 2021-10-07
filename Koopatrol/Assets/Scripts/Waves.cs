@@ -13,9 +13,6 @@ public class Waves : MonoBehaviour
     }
     public List<serializableClass> TheWaves = new List<serializableClass>();
 
-
-    public int[] Amountspawntimes;
-
     public int enemiesWaveIndex;
     public int waveIndex;
 

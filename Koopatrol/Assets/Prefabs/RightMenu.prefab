@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d5ac32a67c3e2814494e4719b9ce341a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,7 +91,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 120
   towerSellCost: 50
-  description: 
+  description: A pipe which can be placed on paths, when an enemy walks on top, a
+    Piranha Plant will grab and hold that enemy. When grabbed, breaks ice. Can be
+    enhanced with magic to increase hold time.
   towerType: PiranhaPlant
   yTowerImage: {fileID: 0}
   validPosition: 1
@@ -174,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5095b993f0ac96f4c8dfa6cd636b2adf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -198,7 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 150
   towerSellCost: 60
-  description: 
+  description: A tower which doesn't affect enemies, instead enhances nearby towers
+    with magic, treating them as a tower of one upgrade higher.
   towerType: MagikoopaTower
   yTowerImage: {fileID: 0}
   validPosition: 0
@@ -646,6 +649,7 @@ RectTransform:
   - {fileID: 2818320696129976132}
   - {fileID: 9095522580225495528}
   - {fileID: 4087582347185723894}
+  - {fileID: 2326876009752109193}
   m_Father: {fileID: 4087582346068601405}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -882,7 +886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -253}
+  m_AnchoredPosition: {x: 25, y: -177}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4087582347185723890
@@ -913,7 +917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: dcb0d164c7f754c45b5c71c9f3508900, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -937,7 +941,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 500
   towerSellCost: 250
-  description: 
+  description: All hail the king! Only one can exist in the map. Has high range,
+    deals the most damage of all towers and fire is homing at the target. Can be
+    upgraded twice to increase fire rate.
   towerType: Bowser
   yTowerImage: {fileID: 0}
   validPosition: 0
@@ -1044,7 +1050,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 40
   towerSellCost: 15
-  description: 
+  description: A tower which launches Koopas at the enemies, faster than the Goomba
+    tower. Can be upgraded to increase the fire rate, and once more to increase the
+    detection range.
   towerType: KoopaTower
   yTowerImage: {fileID: 0}
   validPosition: 0
@@ -1230,7 +1238,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 60
   towerSellCost: 25
-  description: 
+  description: A slow shooting, non-damaging tower. Instead it freezes the enemy
+    hit in place for a little while. Can be upgraded to increase the Freezies movement
+    speed and once more to increase the freeze time.
   towerType: FreezieTower
   yTowerImage: {fileID: 0}
   validPosition: 0
@@ -1337,7 +1347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 100
   towerSellCost: 40
-  description: 
+  description: A high-fire rate tower which can only be placed next to a path on
+    1 axis, so not corners. Deals two damage, rather than 1. Can be upgraded twice
+    to increase Bullet Bill's movement speed.
   towerType: BulletBlaster
   yTowerImage: {fileID: 21300000, guid: 7c210af558af41f45a0c55422b3ea943, type: 3}
   validPosition: 2
@@ -1444,7 +1456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 15
   towerSellCost: 5
-  description: 
+  description: Slow shooting tower, can be upgraded to have the Goombas move a little
+    faster
   towerType: GoombaTower
   yTowerImage: {fileID: 0}
   validPosition: 0
@@ -1460,6 +1473,109 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &6882112666277836262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2326876009752109193}
+  - component: {fileID: 4828965017375619162}
+  - component: {fileID: 6341698376779034099}
+  - component: {fileID: 7327829206128672486}
+  - component: {fileID: 7047599570477140743}
+  m_Layer: 5
+  m_Name: Bowser (1)
+  m_TagString: TowerOption
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2326876009752109193
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882112666277836262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4087582346796491170}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -239.77884}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4828965017375619162
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882112666277836262}
+  m_CullTransparentMesh: 1
+--- !u!114 &6341698376779034099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882112666277836262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c1409286e8836054b9779b8ba32ce00b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7327829206128672486
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882112666277836262}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7047599570477140743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882112666277836262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9ed5caa18c26440a6a27ec0a7cf47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  costs: 100
+  damage: 15
 --- !u!1 &6908718968979118051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 92d98f7ba4fba29418696ad0359b8b65, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1551,7 +1667,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 75
   towerSellCost: 30
-  description: 
+  description: A Non-firing tower, instead scares nearby enemies for a little bit
+    by slamming the ground. They break the ice enemies got frozen by. When enchanced
+    by magic, increases the scare time.
   towerType: Thwomp
   yTowerImage: {fileID: 0}
   validPosition: 0
