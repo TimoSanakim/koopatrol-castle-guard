@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnEnemies : MonoBehaviour
 {
     public Transform LevelEnemies;
-    public GameObject enemyOriginal;
     GameObject waves;
     GameObject enemydubes;
     public bool stopSpawning = false;
@@ -28,9 +27,8 @@ public class SpawnEnemies : MonoBehaviour
             timer+=Time.deltaTime;
             if (timer >= spawnTime)
             {
-                enemyOriginal = waves.GetComponent<Waves>().TheWaves [waves.GetComponent<Waves>().waveIndex] .wave[waves.GetComponent<Waves>().enemiesWaveIndex];
                 //enemyOriginal = waves.GetComponent<Waves>().enemiesWave[waves.GetComponent<Waves>().enemiesWaveIndex];
-                GameObject enemy = Instantiate(enemyOriginal);
+                GameObject enemy = Instantiate(waves.GetComponent<Waves>().TheWaves[waves.GetComponent<Waves>().waveIndex].wave[waves.GetComponent<Waves>().enemiesWaveIndex]);
                 enemy.transform.position = enemy.GetComponent<EnemyBehaviour>().startingPosition.transform.position;
                 enemy.transform.SetParent(enemydubes.transform, true);
                 enemy.GetComponent<EnemyBehaviour>().isClone = true;
