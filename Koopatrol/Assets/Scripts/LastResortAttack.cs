@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class LastResortAttack : MonoBehaviour, IPointerClickHandler
 {
+    AudioSource audioData;
     bool used = false;
     public int costs;
     public int damage;
@@ -44,6 +45,8 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler
                     }
                 }
                 Assets.CoinCounter.ChangeCoinCounter(-costs);
+                audioData = GetComponent<AudioSource>();
+                audioData.Play(0);
             }
         }
     }

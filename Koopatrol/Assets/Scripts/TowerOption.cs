@@ -16,7 +16,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public Sprite yTowerImage;
     bool canPlace = true;
     public Assets.ValidPosition validPosition;
-
+    AudioSource audioData;  
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -70,6 +70,8 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     {
         draggingTower.GetComponent<CanvasGroup>().alpha = 0f;
         draggingTower.GetComponent<draggingTower>().dragging = false;
+        audioData = GetComponent<AudioSource>();
+        audioData.Play(0);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -77,6 +79,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (canPlace)
         {
             draggingTower.GetComponent<RectTransform>().position = Input.mousePosition;
+            
         }
     }
 }

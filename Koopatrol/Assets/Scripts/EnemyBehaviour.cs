@@ -30,6 +30,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Walk speed that can be set in Inspector
     [SerializeField]
     private float moveSpeed = 2f;
+    AudioSource audioData;
 
     // Use this for initialization
     private void Start()
@@ -40,7 +41,11 @@ public class EnemyBehaviour : MonoBehaviour
             // Set position of Enemy as position of the first waypoint
             
             NextPath = startingPosition.transform;
-
+            if(enemyType == "Mario" || enemyType == "Luigi"){
+                audioData = GetComponent<AudioSource>();
+                audioData.Play(0);
+            }
+            
         }
     }
 
