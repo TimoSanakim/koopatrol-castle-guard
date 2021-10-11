@@ -11,9 +11,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public int towerCost;
     public int towerSellCost;
     public string description;
-    GameObject coinCounter;
     GameObject towerInfo;
-    GameObject map;
     public string towerType;
     public Sprite yTowerImage;
     bool canPlace = true;
@@ -40,15 +38,13 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     void Start()
     {
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
-        coinCounter = GameObject.FindGameObjectWithTag("CoinCounter");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
-        map = GameObject.FindGameObjectWithTag("Map");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Assets.CoinCounter.GetCoinCount() >= towerCost && !(towerType == "Bowser" && map.GetComponent<Map>().bowserPlaced))
+        if (Assets.CoinCounter.GetCoinCount() >= towerCost && !(towerType == "Bowser" && Map.bowserPlaced))
         {
             gameObject.GetComponent<CanvasGroup>().alpha = 1f;
             canPlace = true;
@@ -74,12 +70,14 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             draggingTower.GetComponent<draggingTower>().description = description;
             draggingTower.GetComponent<draggingTower>().yTowerImage = yTowerImage;
             draggingTower.GetComponent<draggingTower>().validPosition = validPosition;
+            draggingTower.GetComponent<draggingTower>().dragging = true;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         draggingTower.GetComponent<CanvasGroup>().alpha = 0f;
+        draggingTower.GetComponent<draggingTower>().dragging = false;
     }
 
     public void OnDrag(PointerEventData eventData)

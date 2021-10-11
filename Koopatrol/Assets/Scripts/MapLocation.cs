@@ -52,7 +52,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     public void DestroyTower()
     {
-        if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = false;
+        if (towerType == "Bowser") Map.bowserPlaced = false;
         gameObject.GetComponent<Image>().sprite = null;
         Color temp = Color.white;
         temp.a = 0f;
@@ -106,12 +106,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerLevel = 1;
         cooldown = 0;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<draggingTower>().yTowerImage;
-        if (towerType == "Bowser") map.GetComponent<Map>().bowserPlaced = true;
+        if (towerType == "Bowser") Map.bowserPlaced = true;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Map.Tiles.Add(gameObject);
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
@@ -120,7 +121,17 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         originalImage = gameObject.GetComponent<Image>().sprite;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
-            GameObject[] field = GameObject.FindGameObjectsWithTag("Path");
+            GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+            GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
+            List<GameObject> field = new List<GameObject>();
+            foreach (GameObject path in paths)
+            {
+                field.Add(path);
+            }
+            foreach (GameObject path in obstructedPaths)
+            {
+                field.Add(path);
+            }
             bool xPath = false;
             bool yPath = false;
             foreach (GameObject path in field)
@@ -203,8 +214,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     //Get based on isNextToPath
     GameObject GetEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
         float x = gameObject.transform.position.x;
         float y = gameObject.transform.position.y;
         int first = 0;
@@ -214,16 +223,16 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         GameObject target = null;
         while (whileLoop != 2)
         {
-            foreach (GameObject path in paths)
+            foreach (GameObject spot in Map.Tiles)
             {
-                if (y - path.transform.position.y >= -45 && y - path.transform.position.y <= 45 && x - path.transform.position.x >= -45 && x - path.transform.position.x <= 45)
+                if (spot.tag == "Path" && y - spot.transform.position.y >= -45 && y - spot.transform.position.y <= 45 && x - spot.transform.position.x >= -45 && x - spot.transform.position.x <= 45)
                 {
                     hasPath = true;
                 }
             }
             if (hasPath)
             {
-                foreach (GameObject enemy in enemies)
+                foreach (GameObject enemy in Map.Enemies)
                 {
                     if (enemy.GetComponent<EnemyBehaviour>().isClone && y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
@@ -262,10 +271,9 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     GameObject GetEnemy(float range)
     {
         GameObject target = null;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float lowestDistance = range;
         float distance;
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in Map.Enemies)
         {
             distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
             if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance)
@@ -279,10 +287,9 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     GameObject GetEnemyOnPath()
     {
         GameObject target = null;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float lowestDistance = 5;
         float distance;
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in Map.Enemies)
         {
             distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
             if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance)
@@ -381,8 +388,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in enemies)
+            foreach (GameObject enemy in Map.Enemies)
             {
                 if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < Assets.Thwomp.GetRange(towerLevel))
                 {
@@ -441,20 +447,9 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void MagikoopaTower()
     {
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-        GameObject[] pathTowers = GameObject.FindGameObjectsWithTag("PathTower");
-        List<GameObject> allTowers = new List<GameObject>();
-        foreach (GameObject tower in towers)
+        foreach (GameObject tower in Map.Tiles)
         {
-            allTowers.Add(tower);
-        }
-        foreach (GameObject tower in pathTowers)
-        {
-            allTowers.Add(tower);
-        }
-        foreach (GameObject tower in allTowers)
-        {
-            if (Vector3.Distance(tower.transform.position, gameObject.transform.position) <= Assets.MagikoopaTower.GetRange(towerLevel))
+            if ((tower.tag == "Tower" || tower.tag == "PathTower") && Vector3.Distance(tower.transform.position, gameObject.transform.position) <= Assets.MagikoopaTower.GetRange(towerLevel))
             {
                 tower.GetComponent<MapLocation>().towerBuffed = true;
             }

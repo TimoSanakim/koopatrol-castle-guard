@@ -32,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
     void death()
     {
         Assets.CoinCounter.ChangeCoinCounter(enemyCoin);
+        Map.Enemies.Remove(gameObject);
         Destroy(gameObject);
     }
 

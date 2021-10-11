@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     // Array of waypoints to walk from one to the next one
     [SerializeField]
-    List<Transform> Paths = new List<Transform>();
+    public List<Transform> Paths = new List<Transform>();
     List<Transform> PastPaths = new List<Transform>();
     Transform NextPath = null;
     public GameObject startingPosition;
@@ -37,17 +37,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (isClone)
         {
             CastleHealth = GameObject.FindGameObjectWithTag("CastleHealth");
-
-            GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
-            GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
-            foreach (GameObject path in paths)
-            {
-                Paths.Add(path.transform);
-            }
-            foreach (GameObject path in obstructedPaths)
-            {
-                Paths.Add(path.transform);
-            }
             // Set position of Enemy as position of the first waypoint
             
             NextPath = startingPosition.transform;
@@ -102,18 +91,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         bool found = false;
         bool stop = false;
-        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-        GameObject[] pathTowers = GameObject.FindGameObjectsWithTag("PathTower");
-        List<GameObject> allTowers = new List<GameObject>();
-        foreach (GameObject tower in towers)
-        {
-            allTowers.Add(tower);
-        }
-        foreach (GameObject tower in pathTowers)
-        {
-            allTowers.Add(tower);
-        }
         switch (moveDirection)
         {
             case 0:
@@ -121,16 +98,16 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     y += 50;
                     stop = true;
-                    foreach (GameObject path in paths)
+                    foreach (GameObject path in Map.Tiles)
                     {
-                        if (x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
                     }
-                    foreach (GameObject tower in allTowers)
+                    foreach (GameObject tower in Map.Tiles)
                     {
-                        if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+                        if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
                             if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
                             break;
@@ -143,16 +120,16 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     y -= 50;
                     stop = true;
-                    foreach (GameObject path in paths)
+                    foreach (GameObject path in Map.Tiles)
                     {
-                        if (x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
                     }
-                    foreach (GameObject tower in allTowers)
+                    foreach (GameObject tower in Map.Tiles)
                     {
-                        if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+                        if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
                             if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
                             break;
@@ -165,16 +142,16 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     x += 50;
                     stop = true;
-                    foreach (GameObject path in paths)
+                    foreach (GameObject path in Map.Tiles)
                     {
-                        if (x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
                     }
-                    foreach (GameObject tower in allTowers)
+                    foreach (GameObject tower in Map.Tiles)
                     {
-                        if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+                        if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
                             if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
                             break;
@@ -187,16 +164,16 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     x -= 50;
                     stop = true;
-                    foreach (GameObject path in paths)
+                    foreach (GameObject path in Map.Tiles)
                     {
-                        if (x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
                     }
-                    foreach (GameObject tower in allTowers)
+                    foreach (GameObject tower in Map.Tiles)
                     {
-                        if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+                        if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
                             if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
                             break;
@@ -210,34 +187,23 @@ public class EnemyBehaviour : MonoBehaviour
 
     int TargetTower(string towerType, float x, float y)
     {
-        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-        GameObject[] pathTowers = GameObject.FindGameObjectsWithTag("PathTower");
-        List<GameObject> allTowers = new List<GameObject>();
-        foreach (GameObject tower in towers)
+        foreach (GameObject spot in Map.Tiles)
         {
-            allTowers.Add(tower);
-        }
-        foreach (GameObject tower in pathTowers)
-        {
-            allTowers.Add(tower);
-        }
-        foreach (GameObject tower in allTowers)
-        {
-            if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= 40 && y - tower.transform.position.y <= 60)
+            if (x - spot.transform.position.x >= -10 && x - spot.transform.position.x <= 10 && y - spot.transform.position.y >= 40 && y - spot.transform.position.y <= 60)
             {
-                if (tower.GetComponent<MapLocation>().towerType == towerType) return 0;
+                if (spot.GetComponent<MapLocation>().towerType == towerType) return 0;
             }
-            if (x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -60 && y - tower.transform.position.y <= -40)
+            if (x - spot.transform.position.x >= -10 && x - spot.transform.position.x <= 10 && y - spot.transform.position.y >= -60 && y - spot.transform.position.y <= -40)
             {
-                if (tower.GetComponent<MapLocation>().towerType == towerType) return 1;
+                if (spot.GetComponent<MapLocation>().towerType == towerType) return 1;
             }
-            if (x - tower.transform.position.x >= 40 && x - tower.transform.position.x <= 60 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+            if (x - spot.transform.position.x >= 40 && x - spot.transform.position.x <= 60 && y - spot.transform.position.y >= -10 && y - spot.transform.position.y <= 10)
             {
-                if (tower.GetComponent<MapLocation>().towerType == towerType) return 2;
+                if (spot.GetComponent<MapLocation>().towerType == towerType) return 2;
             }
-            if (x - tower.transform.position.x >= -60 && x - tower.transform.position.x <= -40 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
+            if (x - spot.transform.position.x >= -60 && x - spot.transform.position.x <= -40 && y - spot.transform.position.y >= -10 && y - spot.transform.position.y <= 10)
             {
-                if (tower.GetComponent<MapLocation>().towerType == towerType) return 3;
+                if (spot.GetComponent<MapLocation>().towerType == towerType) return 3;
             }
         }
         return -1;
@@ -307,18 +273,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         if (specialBehavior <= 1f)
         {
-            GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-            GameObject[] pathTowers = GameObject.FindGameObjectsWithTag("PathTower");
-            List<GameObject> allTowers = new List<GameObject>();
-            foreach (GameObject tower in towers)
-            {
-                allTowers.Add(tower);
-            }
-            foreach (GameObject tower in pathTowers)
-            {
-                allTowers.Add(tower);
-            }
-            foreach (GameObject tower in allTowers)
+            foreach (GameObject tower in Map.Tiles)
             {
                 if (gameObject.transform.position.x - tower.transform.position.x >= -10 && gameObject.transform.position.x - tower.transform.position.x <= 10 && gameObject.transform.position.y - tower.transform.position.y >= -10 && gameObject.transform.position.y - tower.transform.position.y <= 10)
                 {
@@ -450,6 +405,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().HealthEnemy;
                 if (enemyType == "Mario") CastleHealth.GetComponent<CastleHealth>().HealthCastle = 0;
+                Map.Enemies.Remove(gameObject);
                 Destroy(gameObject);
             }
         }
