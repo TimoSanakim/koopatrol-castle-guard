@@ -23,6 +23,7 @@ TagManager:
   - EnemyList
   - PathTower
   - UpgradeButton
+  - Castle
   layers:
   - Default
   - TransparentFX

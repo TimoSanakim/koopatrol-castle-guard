@@ -20,6 +20,6 @@ public class CastleHealth : MonoBehaviour
     void Update()
     {
         if (HealthCastle < 0) HealthCastle = 0;
-        GameObject.FindGameObjectWithTag("CastleHealth").GetComponent<Text>().text = Convert.ToString(HealthCastle);
+        gameObject.GetComponent<Text>().text = Convert.ToString(HealthCastle);
     }
 }

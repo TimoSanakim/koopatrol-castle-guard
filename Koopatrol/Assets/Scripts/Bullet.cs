@@ -34,14 +34,14 @@ namespace Assets
                 timeFlying += 1;
                 if (homingTarget != null) LookAt(homingTarget.transform.position);
                 gameObject.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
-                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach (GameObject enemy in enemies)
+                foreach (GameObject enemy in Map.Enemies)
                 {
-                    if ((gameObject.transform.position.y - enemy.transform.position.y >= -20 && gameObject.transform.position.y - enemy.transform.position.y <= 20) && (gameObject.transform.position.x - enemy.transform.position.x >= -20 && gameObject.transform.position.x - enemy.transform.position.x <= 20))
+                    if (Vector3.Distance(enemy.transform.position, gameObject.transform.position) <= 20)
                     {
                         if (power != 0) enemy.GetComponent<EnemyHealth>().Hurt(power);
                         if (freezeAmount != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezeAmount);
                         Destroy(gameObject);
+                        break;
                     }
                 }
                 if (timeFlying == 3600) Destroy(gameObject);

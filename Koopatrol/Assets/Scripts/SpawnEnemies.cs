@@ -12,11 +12,23 @@ public class SpawnEnemies : MonoBehaviour
     public float spawnDelay;
     public int spawnAmount;
     float timer;
+    List<Transform> Paths = new List<Transform>();
 
     private void Start()
     {
         waves = GameObject.FindGameObjectWithTag("Wavemanager");
         enemydubes = GameObject.FindGameObjectWithTag("EnemyList");
+        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+        GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
+        Paths.Add(GameObject.FindGameObjectWithTag("Castle").transform);
+        foreach (GameObject path in paths)
+        {
+            Paths.Add(path.transform);
+        }
+        foreach (GameObject path in obstructedPaths)
+        {
+            Paths.Add(path.transform);
+        }
     }
 
 
@@ -37,6 +49,8 @@ public class SpawnEnemies : MonoBehaviour
                 spawnTime += spawnDelay;
                 spawnAmount++;
                 waves.GetComponent<Waves>().enemiesWaveIndex++;
+                enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Paths);
+                Map.Enemies.Add(enemy);
 
 
             }    
