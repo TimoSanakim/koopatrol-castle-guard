@@ -19,18 +19,17 @@ public class EnemyBehaviour : MonoBehaviour
     public bool isClone;
 
 
-    // Array of waypoints to walk from one to the next one
-    [SerializeField]
     public List<Transform> Paths = new List<Transform>();
     List<Transform> PastPaths = new List<Transform>();
     Transform NextPath = null;
     public GameObject startingPosition;
     float specialBehavior = 0f;
 
-    // Walk speed that can be set in Inspector
-    [SerializeField]
-    private float moveSpeed = 2f;
+
     AudioSource audioData;
+
+    public float moveSpeed = 2f;
+
 
     // Use this for initialization
     private void Start()

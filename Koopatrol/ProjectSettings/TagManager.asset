@@ -24,6 +24,7 @@ TagManager:
   - PathTower
   - UpgradeButton
   - Castle
+  - Music
   layers:
   - Default
   - TransparentFX

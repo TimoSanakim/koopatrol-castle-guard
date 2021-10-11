@@ -36,8 +36,10 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler
         {
             if (!used && Assets.CoinCounter.GetCoinCount() >= costs)
             {
+                List<GameObject> enemies = new List<GameObject>();
+                enemies.AddRange(Map.Enemies);
                 used = true;
-                foreach (GameObject enemy in Map.Enemies)
+                foreach (GameObject enemy in enemies)
                 {
                     if (enemy.GetComponent<EnemyBehaviour>().isClone)
                     {
