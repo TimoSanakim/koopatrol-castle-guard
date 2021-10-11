@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
             deathTime += Time.deltaTime;
             if (deathTime >= 1f && deathTime <= 1.5f) gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (200 * Time.deltaTime), gameObject.transform.position.z);
             else if (deathTime > 1.5f) gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (200 * Time.deltaTime), gameObject.transform.position.z);
-            else if (deathTime >= 4f) Destroy(gameObject);
+            if (deathTime >= 4f) Destroy(gameObject);
         }
     }
 

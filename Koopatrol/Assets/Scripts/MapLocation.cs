@@ -230,7 +230,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                     {
                         if (whileLoop == 0 && target == null) target = enemy;
                         else if (whileLoop == 1 && target == null) target = enemy;
-                        else if (whileLoop == 1 && first < second) target = enemy;
+                        else if (whileLoop == 1 && first > second) target = enemy;
                         x = gameObject.transform.position.x;
                         y = gameObject.transform.position.y;
                         whileLoop += 1;
