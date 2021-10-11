@@ -20,6 +20,7 @@ public class SpawnEnemies : MonoBehaviour
         enemydubes = GameObject.FindGameObjectWithTag("EnemyList");
         GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
         GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
+        Paths.Add(GameObject.FindGameObjectWithTag("Castle").transform);
         foreach (GameObject path in paths)
         {
             Paths.Add(path.transform);

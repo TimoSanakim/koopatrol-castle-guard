@@ -1,84 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &232062715948234161
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3679326664316544518}
-  - component: {fileID: 6195733832970619414}
-  - component: {fileID: 1268425791864379693}
-  - component: {fileID: 8688087726926327657}
-  m_Layer: 0
-  m_Name: yoshi
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3679326664316544518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232062715948234161}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -192.6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1527753526646244865}
-  m_Father: {fileID: 5218556861691102204}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6195733832970619414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232062715948234161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frozenTime: 0
-  enemyOriginal: {fileID: 232062715948234161}
-  enemyType: Yoshi
-  isClone: 0
-  Paths: []
-  startingPosition: {fileID: 0}
-  moveSpeed: 45
---- !u!114 &1268425791864379693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232062715948234161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCoin: 50
-  HealthEnemy: 50
---- !u!225 &8688087726926327657
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232062715948234161}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &382680506421326169
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,8 +11,11 @@ GameObject:
   - component: {fileID: 8601170367611752111}
   - component: {fileID: 1797404199476627016}
   - component: {fileID: 583838579430724460}
+  - component: {fileID: 7339154088824261715}
+  - component: {fileID: 3308360217128004895}
+  - component: {fileID: 1273059948419468625}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Luigi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,16 +28,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382680506421326169}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5864053158714617512}
-  m_RootOrder: 0
+  m_Father: {fileID: 5218556861691102204}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -279.9, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1797404199476627016
@@ -154,6 +78,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7339154088824261715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382680506421326169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frozenTime: 0
+  enemyOriginal: {fileID: 382680506421326169}
+  enemyType: Luigi
+  isClone: 0
+  Paths: []
+  startingPosition: {fileID: 0}
+  moveSpeed: 30
+--- !u!114 &3308360217128004895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382680506421326169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCoin: 300
+  Health: 300
+--- !u!225 &1273059948419468625
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382680506421326169}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &461168777475816565
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,8 +232,11 @@ GameObject:
   - component: {fileID: 1019613950545790235}
   - component: {fileID: 1019613950545790233}
   - component: {fileID: 1019613950545790234}
+  - component: {fileID: 1676888253465246289}
+  - component: {fileID: 7210227819126598245}
+  - component: {fileID: 7337009546830402482}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Toad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,12 +249,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019613950545790236}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1019613950769196840}
-  m_RootOrder: 0
+  m_Father: {fileID: 5218556861691102204}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -327,159 +299,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &1019613950769196843
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1019613950769196840}
-  - component: {fileID: 1019613950769196842}
-  - component: {fileID: 1019613950769196841}
-  - component: {fileID: 5490103831362836658}
-  m_Layer: 0
-  m_Name: toad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1019613950769196840
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950769196843}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1019613950545790235}
-  m_Father: {fileID: 5218556861691102204}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1019613950769196842
+--- !u!114 &1676888253465246289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950769196843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frozenTime: 0
-  enemyOriginal: {fileID: 1019613950769196843}
-  enemyType: Toad
-  isClone: 0
-  Paths: []
-  startingPosition: {fileID: 0}
-  moveSpeed: 30
---- !u!114 &1019613950769196841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950769196843}
+  m_GameObject: {fileID: 1019613950545790236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 2
-  HealthEnemy: 2
---- !u!225 &5490103831362836658
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950769196843}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
---- !u!1 &1019613950877606763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6766461766501036484}
-  - component: {fileID: 4145007345172099550}
-  - component: {fileID: 6257314299466035574}
-  - component: {fileID: 3445341459816532436}
-  m_Layer: 0
-  m_Name: captaintoad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6766461766501036484
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950877606763}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -95.6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4819680199603670586}
-  m_Father: {fileID: 5218556861691102204}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4145007345172099550
+  Health: 2
+--- !u!114 &7210227819126598245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950877606763}
+  m_GameObject: {fileID: 1019613950545790236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frozenTime: 0
-  enemyOriginal: {fileID: 1019613950877606763}
-  enemyType: CaptainToad
+  enemyOriginal: {fileID: 1019613950545790236}
+  enemyType: Toad
   isClone: 0
   Paths: []
   startingPosition: {fileID: 0}
   moveSpeed: 30
---- !u!114 &6257314299466035574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950877606763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCoin: 10
-  HealthEnemy: 10
---- !u!225 &3445341459816532436
+--- !u!225 &7337009546830402482
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019613950877606763}
+  m_GameObject: {fileID: 1019613950545790236}
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 0
@@ -496,8 +355,11 @@ GameObject:
   - component: {fileID: 7976929754515193904}
   - component: {fileID: 2762521744294755712}
   - component: {fileID: 2828569743462875945}
+  - component: {fileID: 425090887915377118}
+  - component: {fileID: 7137360707363868277}
+  - component: {fileID: 4943138579780136779}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Mario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,16 +372,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711985410906455229}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6681768345724666999}
-  m_RootOrder: 0
+  m_Father: {fileID: 5218556861691102204}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -389.3, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2762521744294755712
@@ -560,80 +422,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &4575110376199585374
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6681768345724666999}
-  - component: {fileID: 6997041585115531468}
-  - component: {fileID: 6917600368056716649}
-  - component: {fileID: 1074307894073583791}
-  m_Layer: 0
-  m_Name: mario
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6681768345724666999
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4575110376199585374}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -389.3, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7976929754515193904}
-  m_Father: {fileID: 5218556861691102204}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6997041585115531468
+--- !u!114 &425090887915377118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4575110376199585374}
+  m_GameObject: {fileID: 1711985410906455229}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   frozenTime: 0
-  enemyOriginal: {fileID: 4575110376199585374}
+  enemyOriginal: {fileID: 1711985410906455229}
   enemyType: Mario
   isClone: 0
   Paths: []
   startingPosition: {fileID: 0}
   moveSpeed: 30
---- !u!114 &6917600368056716649
+--- !u!114 &7137360707363868277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4575110376199585374}
+  m_GameObject: {fileID: 1711985410906455229}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 0
-  HealthEnemy: 1000
---- !u!225 &1074307894073583791
+  Health: 3500
+--- !u!225 &4943138579780136779
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4575110376199585374}
+  m_GameObject: {fileID: 1711985410906455229}
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 0
@@ -668,93 +496,14 @@ Transform:
   m_Children:
   - {fileID: 1019613949225477507}
   - {fileID: 461168777475816564}
-  - {fileID: 1019613950769196840}
-  - {fileID: 6766461766501036484}
-  - {fileID: 3679326664316544518}
-  - {fileID: 5864053158714617512}
-  - {fileID: 6681768345724666999}
+  - {fileID: 1019613950545790235}
+  - {fileID: 4819680199603670586}
+  - {fileID: 1527753526646244865}
+  - {fileID: 8601170367611752111}
+  - {fileID: 7976929754515193904}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7013976622914092319
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5864053158714617512}
-  - component: {fileID: 4005246274525823672}
-  - component: {fileID: 8355461356455055747}
-  - component: {fileID: 4169335005110640158}
-  m_Layer: 0
-  m_Name: luigi
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5864053158714617512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013976622914092319}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -279.9, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 8601170367611752111}
-  m_Father: {fileID: 5218556861691102204}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4005246274525823672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013976622914092319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frozenTime: 0
-  enemyOriginal: {fileID: 7013976622914092319}
-  enemyType: Luigi
-  isClone: 0
-  Paths: []
-  startingPosition: {fileID: 0}
-  moveSpeed: 30
---- !u!114 &8355461356455055747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013976622914092319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCoin: 300
-  HealthEnemy: 300
---- !u!225 &4169335005110640158
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013976622914092319}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &7431318410483562999
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,8 +515,11 @@ GameObject:
   - component: {fileID: 1527753526646244865}
   - component: {fileID: 8835918177354206950}
   - component: {fileID: 7671005946904566722}
+  - component: {fileID: 6438844533767132772}
+  - component: {fileID: 1183772395827768173}
+  - component: {fileID: 5109399096197284932}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Yoshi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,16 +532,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7431318410483562999}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3679326664316544518}
-  m_RootOrder: 0
+  m_Father: {fileID: 5218556861691102204}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -192.6, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8835918177354206950
@@ -830,6 +582,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6438844533767132772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431318410483562999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frozenTime: 0
+  enemyOriginal: {fileID: 7431318410483562999}
+  enemyType: Yoshi
+  isClone: 0
+  Paths: []
+  startingPosition: {fileID: 0}
+  moveSpeed: 45
+--- !u!114 &1183772395827768173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431318410483562999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCoin: 50
+  Health: 50
+--- !u!225 &5109399096197284932
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431318410483562999}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &8897662022492212749
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,8 +638,11 @@ GameObject:
   - component: {fileID: 4819680199603670586}
   - component: {fileID: 2929891917755513753}
   - component: {fileID: 5206223992310045573}
+  - component: {fileID: 4683285800909361741}
+  - component: {fileID: 1456680594172925320}
+  - component: {fileID: 2148487945329804838}
   m_Layer: 0
-  m_Name: Image
+  m_Name: CaptainToad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,16 +655,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8897662022492212749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6766461766501036484}
-  m_RootOrder: 0
+  m_Father: {fileID: 5218556861691102204}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -95.6, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2929891917755513753
@@ -905,3 +705,48 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4683285800909361741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897662022492212749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6891bb7c250fbd46881fbe94f54cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frozenTime: 0
+  enemyOriginal: {fileID: 8897662022492212749}
+  enemyType: CaptainToad
+  isClone: 0
+  Paths: []
+  startingPosition: {fileID: 0}
+  moveSpeed: 30
+--- !u!114 &1456680594172925320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897662022492212749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCoin: 10
+  Health: 10
+--- !u!225 &2148487945329804838
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897662022492212749}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

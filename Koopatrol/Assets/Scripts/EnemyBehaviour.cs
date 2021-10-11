@@ -403,7 +403,7 @@ public class EnemyBehaviour : MonoBehaviour
             }
             else
             {
-                CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().HealthEnemy;
+                CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().Health;
                 if (enemyType == "Mario") CastleHealth.GetComponent<CastleHealth>().HealthCastle = 0;
                 Map.Enemies.Remove(gameObject);
                 Destroy(gameObject);

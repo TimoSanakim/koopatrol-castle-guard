@@ -36,14 +36,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             wasDragging = false;
         }
-        else if (eventData.button == PointerEventData.InputButton.Middle)
-        {
-            Debug.Log("Middle click");
-        }
-        else if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            Debug.Log("Right click");
-        }
     }
     public void SellTower()
     {

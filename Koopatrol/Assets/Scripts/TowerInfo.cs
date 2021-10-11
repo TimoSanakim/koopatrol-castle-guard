@@ -56,7 +56,7 @@ public class TowerInfo : MonoBehaviour
 
     public void HideInfo()
     {
-        if (slide == 0) slide = 2;
+        if (slide == 0 || slide == 1) slide = 2;
     }
 
     public void ShowInfo()

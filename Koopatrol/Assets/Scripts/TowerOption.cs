@@ -24,14 +24,6 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             towerInfo.GetComponent<TowerInfo>().ShowInfo();
             towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
         }
-        else if (eventData.button == PointerEventData.InputButton.Middle)
-        {
-            Debug.Log("Middle click");
-        }
-        else if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            Debug.Log("Right click");
-        }
     }
 
     // Start is called before the first frame update
