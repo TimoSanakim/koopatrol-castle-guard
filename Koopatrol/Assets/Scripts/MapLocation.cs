@@ -45,6 +45,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     public void DestroyTower()
     {
         if (towerType == "Bowser") Map.bowserPlaced = false;
+        if (towerType == "Bowser") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         gameObject.GetComponent<Image>().sprite = null;
         Color temp = Color.white;
         temp.a = 0f;
@@ -54,7 +55,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         cooldown = 0;
         towerLevel = 0;
         description = "";
-        transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         if (gameObject.tag == "PathTower")
         {
             gameObject.tag = "Path";

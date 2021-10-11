@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class ResetGame : MonoBehaviour
 {
     bool paused = false;
-    public void restartGame(){
+    public void restartGame()
+    {
+        Map.Enemies.Clear();
+        Map.Tiles.Clear();
+        Map.bowserPlaced = false;
         SceneManager.LoadScene("BowsersCastle");
         
     }
