@@ -53,7 +53,7 @@ public class draggingTower : MonoBehaviour
             {
                 foreach (GameObject spot in Map.Tiles)
                 {
-                    if (spot.tag == "Path" && spot.GetComponent<MapLocation>().isNextToPath != 0) spot.GetComponent<Image>().color = valid;
+                    if (spot.tag == "Ground" && spot.GetComponent<MapLocation>().isNextToPath != 0) spot.GetComponent<Image>().color = valid;
                 }
             }
         }

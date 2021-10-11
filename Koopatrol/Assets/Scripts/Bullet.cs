@@ -44,7 +44,7 @@ namespace Assets
                         break;
                     }
                 }
-                if (timeFlying == 3600) Destroy(gameObject);
+                if (timeFlying >= 3600) Destroy(gameObject);
             }
         }
     }

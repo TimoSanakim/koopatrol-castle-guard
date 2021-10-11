@@ -10,6 +10,7 @@ public class Waves : MonoBehaviour
     public class serializableClass
     {
         public List<GameObject> wave;
+        public string music;
     }
     public List<serializableClass> TheWaves = new List<serializableClass>();
 
@@ -21,11 +22,13 @@ public class Waves : MonoBehaviour
     
     public GameObject SpawnEnemies;
     GameObject RoundCounter;
+    GameObject Music;
     // Start is called before the first frame update
     void Start()
     {
         currentWaveDelay = waveDelay;
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
+        Music = GameObject.FindGameObjectWithTag("Music");
         RoundCounter.GetComponent<Text>().text = "Round: " + (waveIndex + 1);
     }
 
@@ -43,6 +46,7 @@ public class Waves : MonoBehaviour
                 RoundCounter.GetComponent<Text>().text = "Round: " + (waveIndex + 1);
                 enemiesWaveIndex = 0;
                 currentWaveDelay = waveDelay;
+                if (TheWaves[waveIndex].music != null && TheWaves[waveIndex].music != "") Music.GetComponent<Music>().PlayNew(TheWaves[waveIndex].music);
             }
         }
         else if (waveIndex == TheWaves.Count - 1 && enemiesWaveIndex == TheWaves[waveIndex].wave.Count)
