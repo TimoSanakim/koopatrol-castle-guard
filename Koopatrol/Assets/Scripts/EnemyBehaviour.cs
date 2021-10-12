@@ -29,7 +29,15 @@ public class EnemyBehaviour : MonoBehaviour
     AudioSource audioData;
 
     public float moveSpeed = 2f;
-
+    public string GetDescription()
+    {
+        if (enemyType == "Toad") return "Enemy type: Toad. Special behavior: None.";
+        if (enemyType == "CaptainToad") return "Enemy type: Captain Toad. Special behavior: None.";
+        if (enemyType == "Yoshi") return "Enemy type: Yoshi. Special behavior: Fast movement.";
+        if (enemyType == "Luigi") return "Enemy type: Luigi. Special behavior: Scared of bullet blasters.";
+        if (enemyType == "Mario") return "Enemy type: Mario. Special behavior: Destroys goomba towers and always removed all castle health when he reaches it.";
+        return "Enemy type: Unknown. Special behavior: Unknown.";
+    }
 
     // Use this for initialization
     private void Start()
@@ -61,12 +69,14 @@ public class EnemyBehaviour : MonoBehaviour
             }
             if (frozenTime != 0)
             {
-                frozenTime -= 1 * Time.deltaTime;
+                frozenTime -= Time.deltaTime;
                 if (frozenTime < 0) frozenTime = 0;
+                if (frozenTime <= 2) gameObject.transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0f;
+                else gameObject.transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 1f;
             }
             if (hitTime != 0)
             {
-                hitTime -= 1 * Time.deltaTime;
+                hitTime -= Time.deltaTime;
                 if (hitTime < 0) hitTime = 0;
             }
         }
@@ -340,9 +350,8 @@ public class EnemyBehaviour : MonoBehaviour
                 }
                 if (possiblePaths.Count != 0)
                 {
-                    var r = new System.Random();
                     if (possiblePaths.Count == 1) NextPath = possiblePaths[0];
-                    else NextPath = possiblePaths[r.Next(0, possiblePaths.Count)];
+                    else NextPath = possiblePaths[Map.randomizer.Next(0, possiblePaths.Count)];
                     float diffx = NextPath.position.x - x;
                     float diffy = NextPath.position.y - y;
                     lastDirection = moveDirection;

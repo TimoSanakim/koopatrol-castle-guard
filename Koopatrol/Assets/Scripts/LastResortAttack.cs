@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LastResortAttack : MonoBehaviour, IPointerClickHandler
+public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
+    GameObject towerInfo;
     AudioSource audioData;
     bool used = false;
     public int costs;
     public int damage;
+    public string description = "A last resort attack, dealing 15 damage to all enemies on the map. Can only be used once!";
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
     }
 
     // Update is called once per frame
@@ -46,10 +48,16 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler
                         enemy.GetComponent<EnemyHealth>().Hurt(damage);
                     }
                 }
-                Assets.CoinCounter.ChangeCoinCounter(-costs);
+                Assets.CoinCounter.ChangeCoinCounter(-costs, false);
                 audioData = GetComponent<AudioSource>();
                 audioData.Play(0);
             }
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        towerInfo.GetComponent<TowerInfo>().ShowInfo();
+        towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
     }
 }

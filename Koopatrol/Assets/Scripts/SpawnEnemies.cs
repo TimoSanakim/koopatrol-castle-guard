@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnEnemies : MonoBehaviour
 {
     public Transform LevelEnemies;
     GameObject waves;
     GameObject enemydubes;
+    GameObject towerInfo;
     public bool stopSpawning = false;
     public float spawnTime;
     public float spawnDelay;
@@ -17,6 +20,7 @@ public class SpawnEnemies : MonoBehaviour
     private void Start()
     {
         waves = GameObject.FindGameObjectWithTag("Wavemanager");
+        towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         enemydubes = GameObject.FindGameObjectWithTag("EnemyList");
         GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
         GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
@@ -45,10 +49,13 @@ public class SpawnEnemies : MonoBehaviour
                 enemy.transform.SetParent(enemydubes.transform, true);
                 enemy.GetComponent<EnemyBehaviour>().isClone = true;
                 enemy.GetComponent<CanvasGroup>().alpha = 1f;
+                enemy.GetComponent<CanvasGroup>().interactable = true;
+                enemy.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 enemy.tag = "Enemy";
                 spawnTime += spawnDelay;
                 spawnAmount++;
                 waves.GetComponent<Waves>().enemiesWaveIndex++;
+                enemy.GetComponent<EnemyHealth>().towerInfo = towerInfo;
                 enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Paths);
                 Map.Enemies.Add(enemy);
 

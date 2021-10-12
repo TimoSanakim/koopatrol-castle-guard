@@ -6,6 +6,17 @@ namespace Assets
     public static class GoomaTower
     {
         public static int bulletImage = 0;
+        public static int GetSellCost(int towerLevel)
+        {
+            if (towerLevel == 1) return 5;
+            if (towerLevel == 2) return 10;
+            return 0;
+        }
+        public static string GetDescription(int towerLevel)
+        {
+            if (towerLevel == 1) return "Goomba tower. Slow shooting tower, can be upgraded to have the Goombas move a little faster";
+            return "Goomba tower+1. Slow shooting tower";
+        }
         public static float GetRange(int towerLevel)
         {
             return 200;
@@ -22,12 +33,12 @@ namespace Assets
         {
             if (towerLevel == 1) return 50;
             if (towerLevel >= 2) return 75;
-            else return 0;
+            return 0;
         }
         public static int GetUpgradeCost(int towerLevel)
         {
             if (towerLevel == 1) return 10;
-            else return 0;
+            return 0;
         }
     }
 }

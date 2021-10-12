@@ -9,13 +9,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
 {
     static GameObject bulletOriginal;
     static GameObject bulletList;
-    public int towerSellCost = 0;
     public int towerLevel = 0;
     GameObject draggingTower;
     GameObject towerInfo;
-    GameObject map;
     public string towerType = "none";
-    public string description = "";
+    public List<Sprite> towerSprites;
     //1 = path left or right, and not above or below
     //2 = path up or down, and not to sides
     //0 = any other situation
@@ -37,24 +35,18 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             wasDragging = false;
         }
     }
-    public void SellTower()
-    {
-        Assets.CoinCounter.ChangeCoinCounter(towerSellCost);
-        DestroyTower();
-    }
     public void DestroyTower()
     {
         if (towerType == "Bowser") Map.bowserPlaced = false;
-        if (towerType == "Bowser") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        if (tag != "PathTower" && tag != "Path") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         gameObject.GetComponent<Image>().sprite = null;
         Color temp = Color.white;
         temp.a = 0f;
         gameObject.GetComponent<Image>().color = temp;
         towerType = "none";
-        towerSellCost = 0;
         cooldown = 0;
         towerLevel = 0;
-        description = "";
+        towerSprites.Clear();
         if (gameObject.tag == "PathTower")
         {
             gameObject.tag = "Path";
@@ -77,13 +69,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 PlaceTower();
                 gameObject.tag = "Tower";
-                Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost);
+                Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost, false);
             }
             else if ((gameObject.tag == "Path") && draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.Path)
             {
                 PlaceTower();
                 gameObject.tag = "PathTower";
-                Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost);
+                Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost, false);
             }
         }
         draggingTower.GetComponent<draggingTower>().towerType = "none";
@@ -93,11 +85,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<Image>().sprite;
         gameObject.GetComponent<Image>().color = draggingTower.GetComponent<Image>().color;
         towerType = draggingTower.GetComponent<draggingTower>().towerType;
-        towerSellCost = draggingTower.GetComponent<draggingTower>().towerSellCost;
-        description = draggingTower.GetComponent<draggingTower>().description;
+        towerSprites = draggingTower.GetComponent<draggingTower>().towerSprites;
         towerLevel = 1;
-        cooldown = 0;
-        if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) gameObject.GetComponent<Image>().sprite = draggingTower.GetComponent<draggingTower>().yTowerImage;
+        cooldown = 1;
+        if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
         if (towerType == "Bowser") Map.bowserPlaced = true;
     }
 
@@ -109,13 +100,14 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
-        map = GameObject.FindGameObjectWithTag("Map");
         originalImage = gameObject.GetComponent<Image>().sprite;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
             GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
+            GameObject castle = GameObject.FindGameObjectWithTag("Castle");
             List<GameObject> field = new List<GameObject>();
+            field.Add(castle);
             foreach (GameObject path in paths)
             {
                 field.Add(path);
@@ -150,12 +142,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 if (xPath && !yPath)
                 {
                     isNextToPath = 1;
-                    //gameObject.GetComponent<Image>().color = Color.black;
                 }
                 else if (yPath && !xPath)
                 {
                     isNextToPath = 2;
-                    //gameObject.GetComponent<Image>().color = Color.black;
                 }
             }
         }
@@ -217,7 +207,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             foreach (GameObject spot in Map.Tiles)
             {
-                if (spot.tag == "Path" && y - spot.transform.position.y >= -45 && y - spot.transform.position.y <= 45 && x - spot.transform.position.x >= -45 && x - spot.transform.position.x <= 45)
+                if ((spot.tag == "Path" || spot.tag == "PathTower") && y - spot.transform.position.y >= -45 && y - spot.transform.position.y <= 45 && x - spot.transform.position.x >= -45 && x - spot.transform.position.x <= 45)
                 {
                     hasPath = true;
                 }

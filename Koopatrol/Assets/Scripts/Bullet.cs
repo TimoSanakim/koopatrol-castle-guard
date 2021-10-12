@@ -10,7 +10,7 @@ namespace Assets
         public GameObject homingTarget = null;
         public Vector3 targetPosition;
         public int power = 0;
-        public int timeFlying = 0;
+        public float timeFlying = 0;
         public bool isClone = false;
         public float speed = 50f;
         public float freezeAmount = 0;
@@ -31,7 +31,7 @@ namespace Assets
         {
             if (isClone)
             {
-                timeFlying += 1;
+                timeFlying += Time.deltaTime;
                 if (homingTarget != null) LookAt(homingTarget.transform.position);
                 gameObject.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
                 foreach (GameObject enemy in Map.Enemies)
@@ -44,7 +44,7 @@ namespace Assets
                         break;
                     }
                 }
-                if (timeFlying >= 3600) Destroy(gameObject);
+                if (timeFlying >= 60) Destroy(gameObject);
             }
         }
     }

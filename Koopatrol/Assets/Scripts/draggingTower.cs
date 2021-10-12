@@ -6,25 +6,24 @@ using UnityEngine.UI;
 public class draggingTower : MonoBehaviour
 {
     public int towerCost = 0;
-    public int towerSellCost = 0;
     public string towerType = "none";
-    public string description;
-    public Sprite yTowerImage;
+    public List<Sprite> towerSprites;
     public Assets.ValidPosition validPosition;
     public bool dragging = false;
+    Color valid = new Color(0.3f, 1f, 0.3f, 0.5f);
+    Color notvalid;
+    Color notvalidpath;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        notvalidpath = GameObject.FindGameObjectWithTag("Path").GetComponent<Image>().color;
+        notvalid = GameObject.FindGameObjectWithTag("Ground").GetComponent<Image>().color;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Color valid = new Color(0.3f, 1f, 0.3f, 0.5f);
-        Color notvalid = new Color(0f, 0f, 0f, 0f);
-        Color notvalidpath = new Color(1f, 1f, 1f, 1f);
         if (!dragging)
         {
             foreach (GameObject spot in Map.Tiles)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,6 @@ using UnityEngine.UI;
 
 public class ResetGame : MonoBehaviour
 {
-    bool paused = true;
     void Start()
     {
         Time.timeScale = 0;   
@@ -16,21 +16,28 @@ public class ResetGame : MonoBehaviour
         Map.Enemies.Clear();
         Map.Tiles.Clear();
         Map.bowserPlaced = false;
+        Map.paused = true;
+        Map.gameSpeed = 1;
         SceneManager.LoadScene("BowsersCastle");
         
         
     }
 
     public void pauseGame(){
-        if(!paused){
-            paused = true;
-            Time.timeScale = 0; 
+        if(!Map.paused){
+            Map.paused = true;
+            Time.timeScale = 0;
             gameObject.GetComponentInChildren<Text>().text = "Resume Game";
         }
         else{
-            paused = false;
-            Time.timeScale = 1;   
+            Map.paused = false;
+            Time.timeScale = Map.gameSpeed;
             gameObject.GetComponentInChildren<Text>().text = "Pause Game";
         }
+    }
+    public void changeSpeed()
+    {
+        Map.gameSpeed = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
+        if (!Map.paused) Time.timeScale = Map.gameSpeed;
     }
 }

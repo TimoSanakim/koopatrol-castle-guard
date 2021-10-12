@@ -9,7 +9,7 @@ namespace Assets
     public static class CoinCounter
     {
         //Returns true if coin count doesn't become negative
-        public static bool ChangeCoinCounter(int increaseAmount)
+        public static bool ChangeCoinCounter(int increaseAmount, bool forceSound)
         {
             int coinCounter = Convert.ToInt32(GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text);
             coinCounter += increaseAmount;
@@ -21,6 +21,7 @@ namespace Assets
             else
             {
                 GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text = Convert.ToString(coinCounter);
+                if (increaseAmount < 0 || forceSound) GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<AudioSource>().Play(0);
                 return true;
             }
         }

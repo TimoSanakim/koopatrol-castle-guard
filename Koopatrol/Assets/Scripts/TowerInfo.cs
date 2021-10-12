@@ -31,7 +31,7 @@ public class TowerInfo : MonoBehaviour
                 hidden = false;
             }
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
-            temp.y = temp.y + (60 * Time.deltaTime);
+            temp.y = temp.y + 1;
             if (temp.y >= 20)
             {
                 temp.y = 20;
@@ -42,7 +42,7 @@ public class TowerInfo : MonoBehaviour
         else if (slide == 2 || slide == 3)
         {
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
-            temp.y = temp.y - (60 * Time.deltaTime);
+            temp.y = temp.y - 1;
             if (temp.y <= -20)
             {
                 temp.y = -20;
@@ -68,7 +68,8 @@ public class TowerInfo : MonoBehaviour
     {
         if (selectedTower.GetComponent<MapLocation>() != null)
         {
-            selectedTower.GetComponent<MapLocation>().SellTower();
+            Assets.CoinCounter.ChangeCoinCounter(GetSellCost(), true);
+            selectedTower.GetComponent<MapLocation>().DestroyTower();
             HideInfo();
         }
     }
@@ -78,11 +79,35 @@ public class TowerInfo : MonoBehaviour
         {
             if (GetUpgradeCost() <= Assets.CoinCounter.GetCoinCount())
             {
-                Assets.CoinCounter.ChangeCoinCounter(-GetUpgradeCost());
+                Assets.CoinCounter.ChangeCoinCounter(-GetUpgradeCost(), false);
+                selectedTower.GetComponent<Image>().sprite = selectedTower.GetComponent<MapLocation>().towerSprites[selectedTower.GetComponent<MapLocation>().towerLevel];
                 selectedTower.GetComponent<MapLocation>().towerLevel += 1;
-                HideInfo();
+                ShowInfo();
             }
         }
+    }
+    int GetSellCost()
+    {
+        switch (selectedTower.GetComponent<MapLocation>().towerType)
+        {
+            case "GoombaTower":
+                return Assets.GoomaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "KoopaTower":
+                return Assets.KoopaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "FreezieTower":
+                return Assets.FreezieTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "Thwomp":
+                return Assets.Thwomp.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "BulletBlaster":
+                return Assets.BulletBlaster.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "PiranhaPlant":
+                return Assets.PiranhaPlant.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "MagikoopaTower":
+                return Assets.MagikoopaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "Bowser":
+                return Assets.Bowser.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+        }
+        return 0;
     }
     int GetUpgradeCost()
     {
@@ -107,12 +132,58 @@ public class TowerInfo : MonoBehaviour
         }
         return 0;
     }
-    void SetInfo()
+    string GetDesciptionMap()
+    {
+        switch (selectedTower.GetComponent<MapLocation>().towerType)
+        {
+            case "GoombaTower":
+                return Assets.GoomaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "KoopaTower":
+                return Assets.KoopaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "FreezieTower":
+                return Assets.FreezieTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "Thwomp":
+                return Assets.Thwomp.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "BulletBlaster":
+                return Assets.BulletBlaster.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "PiranhaPlant":
+                return Assets.PiranhaPlant.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "MagikoopaTower":
+                return Assets.MagikoopaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+            case "Bowser":
+                return Assets.Bowser.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+        }
+        return "";
+    }
+    string GetDesciptionOption()
+    {
+        switch (selectedTower.GetComponent<TowerOption>().towerType)
+        {
+            case "GoombaTower":
+                return Assets.GoomaTower.GetDescription(1);
+            case "KoopaTower":
+                return Assets.KoopaTower.GetDescription(1);
+            case "FreezieTower":
+                return Assets.FreezieTower.GetDescription(1);
+            case "Thwomp":
+                return Assets.Thwomp.GetDescription(1);
+            case "BulletBlaster":
+                return Assets.BulletBlaster.GetDescription(1);
+            case "PiranhaPlant":
+                return Assets.PiranhaPlant.GetDescription(1);
+            case "MagikoopaTower":
+                return Assets.MagikoopaTower.GetDescription(1);
+            case "Bowser":
+                return Assets.Bowser.GetDescription(1);
+        }
+        return "";
+    }
+    public void SetInfo()
     {
         if (selectedTower.GetComponent<TowerOption>() != null)
         {
             //Tower Menu
-            towerDescription.GetComponent<Text>().text = "Buy cost: " + Convert.ToString(selectedTower.GetComponent<TowerOption>().towerCost) + ". Sell return: " + Convert.ToString(selectedTower.GetComponent<TowerOption>().towerSellCost) + "." + selectedTower.GetComponent<TowerOption>().description;
+            towerDescription.GetComponent<Text>().text = GetDesciptionOption();
             sellButton.SetActive(false);
             upgradeButton.SetActive(false);
             Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
@@ -123,20 +194,41 @@ public class TowerInfo : MonoBehaviour
         {
             //Placed tower
             sellButton.SetActive(true);
+            sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
+            towerDescription.GetComponent<Text>().text = GetDesciptionMap();
             int UpgradeCost = GetUpgradeCost();
             Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
             if (UpgradeCost != 0)
             {
                 upgradeButton.SetActive(true);
+                upgradeButton.GetComponentInChildren<Text>().text = "Upgrade\n" + Convert.ToString(GetUpgradeCost() + " coins");
                 temp.x = 262.36f;
-                towerDescription.GetComponent<Text>().text = "Sell return: " + Convert.ToString(selectedTower.GetComponent<MapLocation>().towerSellCost) + ". Upgrade cost: " + Convert.ToString(GetUpgradeCost()) + "." + selectedTower.GetComponent<MapLocation>().description;
             }
             else
             {
                 upgradeButton.SetActive(false);
                 temp.x = 174.9f;
-                towerDescription.GetComponent<Text>().text = "Sell return: " + Convert.ToString(selectedTower.GetComponent<MapLocation>().towerSellCost) + "." + selectedTower.GetComponent<MapLocation>().description;
             }
+            towerDescription.GetComponent<RectTransform>().transform.position = temp;
+        }
+        else if (selectedTower.GetComponent<LastResortAttack>() != null)
+        {
+            //Lava attack
+            towerDescription.GetComponent<Text>().text = selectedTower.GetComponent<LastResortAttack>().description;
+            sellButton.SetActive(false);
+            upgradeButton.SetActive(false);
+            Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
+            temp.x = 87.45f;
+            towerDescription.GetComponent<RectTransform>().transform.position = temp;
+        }
+        else if (selectedTower.GetComponent<EnemyHealth>() != null)
+        {
+            //Enemy
+            towerDescription.GetComponent<Text>().text = "Health: " + selectedTower.GetComponent<EnemyHealth>().Health + "/" + selectedTower.GetComponent<EnemyHealth>().MaxHealth + ". " + selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
+            sellButton.SetActive(false);
+            upgradeButton.SetActive(false);
+            Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
+            temp.x = 87.45f;
             towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }
     }

@@ -9,11 +9,9 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 {
     GameObject draggingTower;
     public int towerCost;
-    public int towerSellCost;
-    public string description;
     GameObject towerInfo;
     public string towerType;
-    public Sprite yTowerImage;
+    public List<Sprite> towerSprites;
     bool canPlace = true;
     public Assets.ValidPosition validPosition;
     AudioSource audioData;  
@@ -57,10 +55,8 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             draggingTower.GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
             draggingTower.GetComponent<Image>().color = gameObject.GetComponent<Image>().color;
             draggingTower.GetComponent<draggingTower>().towerCost = towerCost;
-            draggingTower.GetComponent<draggingTower>().towerSellCost = towerSellCost;
             draggingTower.GetComponent<draggingTower>().towerType = towerType;
-            draggingTower.GetComponent<draggingTower>().description = description;
-            draggingTower.GetComponent<draggingTower>().yTowerImage = yTowerImage;
+            draggingTower.GetComponent<draggingTower>().towerSprites = towerSprites;
             draggingTower.GetComponent<draggingTower>().validPosition = validPosition;
             draggingTower.GetComponent<draggingTower>().dragging = true;
         }
@@ -70,8 +66,6 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     {
         draggingTower.GetComponent<CanvasGroup>().alpha = 0f;
         draggingTower.GetComponent<draggingTower>().dragging = false;
-        audioData = GetComponent<AudioSource>();
-        audioData.Play(0);
     }
 
     public void OnDrag(PointerEventData eventData)
