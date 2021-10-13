@@ -7,6 +7,7 @@ public class draggingTower : MonoBehaviour
 {
     public int towerCost = 0;
     public string towerType = "none";
+    public AudioClip towerSound;
     public List<Sprite> towerSprites;
     public Assets.ValidPosition validPosition;
     public bool dragging = false;

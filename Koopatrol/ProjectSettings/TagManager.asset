@@ -25,6 +25,7 @@ TagManager:
   - UpgradeButton
   - Castle
   - Music
+  - LavaAttack
   layers:
   - Default
   - TransparentFX

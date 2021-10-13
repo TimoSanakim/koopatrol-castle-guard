@@ -20,15 +20,14 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     public List<Transform> Paths = new List<Transform>();
-    List<Transform> PastPaths = new List<Transform>();
     Transform NextPath = null;
     public GameObject startingPosition;
     float specialBehavior = 0f;
 
-
-    AudioSource audioData;
-
-    public float moveSpeed = 2f;
+    public float moveSpeed = 0f;
+    public AudioClip spawnSound;
+    public AudioClip deathSound;
+    public AudioClip specialSound;
     public string GetDescription()
     {
         if (enemyType == "Toad") return "Enemy type: Toad. Special behavior: None.";
@@ -46,11 +45,18 @@ public class EnemyBehaviour : MonoBehaviour
         {
             CastleHealth = GameObject.FindGameObjectWithTag("CastleHealth");
             // Set position of Enemy as position of the first waypoint
-            
             NextPath = startingPosition.transform;
-            if(enemyType == "Mario" || enemyType == "Luigi"){
-                audioData = GetComponent<AudioSource>();
-                audioData.Play(0);
+            foreach (Transform path in Paths)
+            {
+                if (path.transform.position == NextPath.transform.position)
+                {
+                    Paths.Remove(path);
+                    break;
+                }
+            }
+            if (spawnSound != null){
+                GetComponent<AudioSource>().clip = spawnSound;
+                GetComponent<AudioSource>().Play();
             }
             
         }
@@ -333,7 +339,6 @@ public class EnemyBehaviour : MonoBehaviour
             if (transform.position.x <= NextPath.transform.position.x && moveDirection == 3) atPath = true;
             if (atPath)
             {
-                PastPaths.Add(NextPath);
                 Paths.Remove(NextPath);
                 if (enemyType == "Mario") transform.position = NextPath.transform.position;
                 NextPath = null;
@@ -378,6 +383,8 @@ public class EnemyBehaviour : MonoBehaviour
                         {
                             previousPosition = transform.position;
                             specialBehavior = 1.5f;
+                            GetComponent<AudioSource>().clip = specialSound;
+                            GetComponent<AudioSource>().Play();
                         }
                     }
                     else if (enemyType == "Mario")

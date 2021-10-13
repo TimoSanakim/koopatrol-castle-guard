@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     public GameObject towerInfo;
     public int MaxHealth;
     bool dying = false;
+    bool playedDeathSound = false;
+    public bool HitByLava = false;
     float deathTime = 0f;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,12 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
             deathTime += Time.deltaTime;
             if (deathTime >= 1f && deathTime <= 1.5f)
             {
+                if (GetComponent<EnemyBehaviour>().deathSound != null && !playedDeathSound)
+                {
+                    GetComponent<AudioSource>().clip = GetComponent<EnemyBehaviour>().deathSound;
+                    GetComponent<AudioSource>().Play();
+                    playedDeathSound = true;
+                }
                 gameObject.transform.Rotate(0, 0, Time.deltaTime * -200, Space.Self);
                 gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x + (1f * Time.deltaTime)), Convert.ToSingle(gameObject.transform.localScale.x + (1f * Time.deltaTime)), Convert.ToSingle(gameObject.transform.localScale.x + (1f * Time.deltaTime)));
             }
@@ -65,6 +73,11 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
         {
             towerInfo.GetComponent<TowerInfo>().HideInfo();
+            if (GetComponent<EnemyBehaviour>().deathSound != null)
+            {
+                GetComponent<AudioSource>().clip = GetComponent<EnemyBehaviour>().deathSound;
+                GetComponent<AudioSource>().Play();
+            }
         }
         gameObject.GetComponent<CanvasGroup>().interactable = false;
         gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;

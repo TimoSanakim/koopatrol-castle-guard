@@ -32,7 +32,7 @@ namespace Assets
         public static float GetSpeed(int towerLevel)
         {
             if (towerLevel == 1) return 50;
-            if (towerLevel == 2) return 100;
+            if (towerLevel >= 2) return 100;
             return 0;
         }
         public static int GetUpgradeCost(int towerLevel)

@@ -91,11 +91,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 120
-  towerSellCost: 0
-  description: 
   towerType: PiranhaPlant
   towerSprites: []
   validPosition: 1
+  towerSound: {fileID: 8300000, guid: ae2dbd0995851514995bc47997ebb4d0, type: 3}
 --- !u!225 &5103617896686494042
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -601,11 +600,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 150
-  towerSellCost: 0
-  description: 
   towerType: MagikoopaTower
   towerSprites: []
   validPosition: 0
+  towerSound: {fileID: 0}
 --- !u!225 &2248106671116662623
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -650,7 +648,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4087582346068601405}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -720,9 +718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 0
-  towerSellCost: 0
   towerType: none
-  description: 
+  towerSound: {fileID: 0}
   towerSprites: []
   validPosition: 0
   dragging: 0
@@ -753,6 +750,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7502997716755851531}
   - {fileID: 4087582346134189066}
   - {fileID: 4087582346796491170}
   - {fileID: 4087582345776060993}
@@ -799,7 +797,7 @@ RectTransform:
   - {fileID: 4087582346786749386}
   - {fileID: 4087582347407334361}
   m_Father: {fileID: 4087582346068601405}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1053,7 +1051,7 @@ RectTransform:
   - {fileID: 4087582347185723894}
   - {fileID: 2326876009752109193}
   m_Father: {fileID: 4087582346068601405}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1440,14 +1438,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 500
-  towerSellCost: 0
-  description: 
   towerType: Bowser
   towerSprites:
   - {fileID: 21300000, guid: dcb0d164c7f754c45b5c71c9f3508900, type: 3}
   - {fileID: 21300000, guid: dcb0d164c7f754c45b5c71c9f3508900, type: 3}
   - {fileID: 21300000, guid: dcb0d164c7f754c45b5c71c9f3508900, type: 3}
   validPosition: 0
+  towerSound: {fileID: 0}
 --- !u!225 &4087582347185723893
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1551,14 +1548,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 40
-  towerSellCost: 0
-  description: 
   towerType: KoopaTower
   towerSprites:
   - {fileID: 21300000, guid: 8371a65783a11a445a99e8944caa5742, type: 3}
   - {fileID: 21300000, guid: e77e2d78e6018494896081f0b6b33f46, type: 3}
   - {fileID: 21300000, guid: 27fff543ae43b0140b56cca23fcc6def, type: 3}
   validPosition: 0
+  towerSound: {fileID: 0}
 --- !u!225 &4087582347339203865
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1741,14 +1737,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 60
-  towerSellCost: 0
-  description: 
   towerType: FreezieTower
   towerSprites:
   - {fileID: 21300000, guid: e26a31b0ba0241a4d9d7935b6de92b84, type: 3}
   - {fileID: 21300000, guid: f00ebd17f5600f34c88e825f7d56447d, type: 3}
   - {fileID: 21300000, guid: 9b444a499242f25418870dd34a230af5, type: 3}
   validPosition: 0
+  towerSound: {fileID: 0}
 --- !u!225 &4087582347457454744
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1852,14 +1847,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 100
-  towerSellCost: 0
-  description: 
   towerType: BulletBlaster
   towerSprites:
   - {fileID: 21300000, guid: b480dae2cc6022141a48329d014e2e86, type: 3}
   - {fileID: 21300000, guid: fa1132806e1fa1146b8f149d74f81052, type: 3}
   - {fileID: 21300000, guid: bde216dbbf79dda4693fd0c7e3a5e1d1, type: 3}
   validPosition: 2
+  towerSound: {fileID: 0}
 --- !u!225 &4087582347606020346
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1963,13 +1957,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 15
-  towerSellCost: 0
-  description: 
   towerType: GoombaTower
   towerSprites:
   - {fileID: 21300000, guid: c55b8f90397d427469577c9f5b17c16c, type: 3}
   - {fileID: 21300000, guid: 97d5511779adb4c48b62d796d25e83e9, type: 3}
   validPosition: 0
+  towerSound: {fileID: 0}
 --- !u!225 &4087582347622717909
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2263,6 +2256,7 @@ GameObject:
   - component: {fileID: 6341698376779034099}
   - component: {fileID: 7327829206128672486}
   - component: {fileID: 7047599570477140743}
+  - component: {fileID: 3588124290106195885}
   m_Layer: 5
   m_Name: LavaAttack
   m_TagString: TowerOption
@@ -2354,6 +2348,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costs: 100
   damage: 15
+  progress: 0
+  description: A last resort attack, dealing 15 damage to all enemies on the map.
+    Can only be used once!
+--- !u!82 &3588124290106195885
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882112666277836262}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69fc346da8f1f3548bad1001d8b9115e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6908718968979118051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,11 +2538,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerCost: 75
-  towerSellCost: 0
-  description: 
   towerType: Thwomp
   towerSprites: []
   validPosition: 0
+  towerSound: {fileID: 8300000, guid: 7c14e55d815e52c43b4c1dbfbcde58d0, type: 3}
 --- !u!225 &7661033046548436549
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2730,6 +2822,94 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8447794766848684252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7502997716755851531}
+  - component: {fileID: 2928877525567672015}
+  - component: {fileID: 2187480577148652495}
+  - component: {fileID: 4688753906693947981}
+  m_Layer: 5
+  m_Name: LavaAttack
+  m_TagString: LavaAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7502997716755851531
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447794766848684252}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4087582346068601405}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2844.5, y: -213}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2928877525567672015
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447794766848684252}
+  m_CullTransparentMesh: 1
+--- !u!114 &2187480577148652495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447794766848684252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 76a3f6227b15d5145b0d46720a97f566, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4688753906693947981
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447794766848684252}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &8619427833287230933
 GameObject:
   m_ObjectHideFlags: 0

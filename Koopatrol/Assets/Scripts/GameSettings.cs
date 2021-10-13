@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ResetGame : MonoBehaviour
+public class GameSettings : MonoBehaviour
 {
     void Start()
     {
         Time.timeScale = 0;   
     }
-    public void restartGame()
+    public static void restartGame()
     {
         Map.Enemies.Clear();
         Map.Tiles.Clear();
@@ -38,6 +38,6 @@ public class ResetGame : MonoBehaviour
     public void changeSpeed()
     {
         Map.gameSpeed = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
-        if (!Map.paused) Time.timeScale = Map.gameSpeed;
+        if (!Map.paused && !CastleHealth.castleDead) Time.timeScale = Map.gameSpeed;
     }
 }

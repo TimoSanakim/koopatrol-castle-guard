@@ -12,6 +12,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     public int towerLevel = 0;
     GameObject draggingTower;
     GameObject towerInfo;
+    GameObject map;
     public string towerType = "none";
     public List<Sprite> towerSprites;
     //1 = path left or right, and not above or below
@@ -47,6 +48,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         cooldown = 0;
         towerLevel = 0;
         towerSprites.Clear();
+        GetComponent<AudioSource>().clip = null;
         if (gameObject.tag == "PathTower")
         {
             gameObject.tag = "Path";
@@ -56,6 +58,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             gameObject.tag = "Ground";
         }
         gameObject.GetComponent<Image>().sprite = originalImage;
+        map.GetComponent<AudioSource>().Play();
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -86,6 +89,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         gameObject.GetComponent<Image>().color = draggingTower.GetComponent<Image>().color;
         towerType = draggingTower.GetComponent<draggingTower>().towerType;
         towerSprites = draggingTower.GetComponent<draggingTower>().towerSprites;
+        GetComponent<AudioSource>().clip = draggingTower.GetComponent<draggingTower>().towerSound;
         towerLevel = 1;
         cooldown = 1;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
@@ -100,6 +104,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
+        map = GameObject.FindGameObjectWithTag("Map");
         originalImage = gameObject.GetComponent<Image>().sprite;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
@@ -374,6 +379,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < Assets.Thwomp.GetRange(towerLevel))
                 {
+                    if (cooldown == 0) GetComponent<AudioSource>().Play();
                     cooldown = Assets.Thwomp.GetCooldown(towerLevel);
                     enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.Thwomp.GetStaggerTime(towerLevel));
                     enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
@@ -420,6 +426,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             GameObject enemy = GetEnemyOnPath();
             if (enemy != null)
             {
+                GetComponent<AudioSource>().Play();
                 cooldown = Assets.PiranhaPlant.GetCooldown(towerLevel);
                 enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.PiranhaPlant.GetStaggerTime(towerLevel));
                 enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
