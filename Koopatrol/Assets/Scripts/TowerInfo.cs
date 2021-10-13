@@ -230,6 +230,7 @@ public class TowerInfo : MonoBehaviour
             //Lava attack
             towerDescription.GetComponent<Text>().text = selectedTower.GetComponent<LastResortAttack>().description;
             sellButton.SetActive(false);
+            targetButton.SetActive(false);
             upgradeButton.SetActive(false);
             Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
             temp.x = 87.45f;
@@ -240,6 +241,7 @@ public class TowerInfo : MonoBehaviour
             //Enemy
             towerDescription.GetComponent<Text>().text = "Health: " + selectedTower.GetComponent<EnemyHealth>().Health + "/" + selectedTower.GetComponent<EnemyHealth>().MaxHealth + ". " + selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
             sellButton.SetActive(false);
+            targetButton.SetActive(false);
             upgradeButton.SetActive(false);
             Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
             temp.x = 87.45f;
