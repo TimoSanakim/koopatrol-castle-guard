@@ -10,15 +10,17 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     public int enemyCoin = 1;
     public int Health;
     public GameObject towerInfo;
+    GameObject Music;
     public int MaxHealth;
     bool dying = false;
     bool playedDeathSound = false;
     public bool HitByLava = false;
-    float deathTime = 0f;
+    int deathTime = 0;
     // Start is called before the first frame update
     void Start()
     {
         MaxHealth = Health;
+        Music = GameObject.FindGameObjectWithTag("Music");
     }
 
     // Update is called once per frame
@@ -26,8 +28,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     {
         if (dying)
         {
-            deathTime += Time.deltaTime;
-            if (deathTime >= 1f && deathTime <= 1.5f)
+            if (deathTime >= 60 && deathTime <= 100)
             {
                 if (GetComponent<EnemyBehaviour>().deathSound != null && !playedDeathSound)
                 {
@@ -35,15 +36,19 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
                     GetComponent<AudioSource>().Play();
                     playedDeathSound = true;
                 }
-                gameObject.transform.Rotate(0, 0, Time.deltaTime * -200, Space.Self);
-                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x + (1f * Time.deltaTime)), Convert.ToSingle(gameObject.transform.localScale.x + (1f * Time.deltaTime)), Convert.ToSingle(gameObject.transform.localScale.x + (1f * Time.deltaTime)));
+                gameObject.transform.Rotate(0, 0, -3, Space.Self);
+                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 1f));
             }
-            else if (deathTime > 1.5f)
+            else if (deathTime >= 100 && deathTime <= 240)
             {
-                gameObject.transform.Rotate(0, 0, Time.deltaTime * -200, Space.Self);
-                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x - (1f * Time.deltaTime)), Convert.ToSingle(gameObject.transform.localScale.x - (1f * Time.deltaTime)), Convert.ToSingle(gameObject.transform.localScale.x - (1f * Time.deltaTime)));
+                gameObject.transform.Rotate(0, 0, -3, Space.Self);
+                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 1f));
             }
-            if (deathTime >= 3f) Destroy(gameObject);
+            if (!Music.GetComponent<AudioSource>().isPlaying)
+            {
+                GameSettings.restartGame();
+            }
+            deathTime += 1;
         }
     }
 
@@ -81,13 +86,16 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         }
         gameObject.GetComponent<CanvasGroup>().interactable = false;
         gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        if (GetComponent<EnemyBehaviour>().enemyType == "Mario")
+        if (GetComponent<EnemyBehaviour>().finalEnemy)
         {
-            GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayNew("Victory");
+            Music.GetComponent<Music>().PlayNew("Victory");
             GetComponent<EnemyBehaviour>().moveSpeed = 0f;
             GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
-            foreach (GameObject bullet in bullets) { bullet.GetComponent<Assets.Bullet>().timeFlying = 60; }
+            foreach (GameObject bullet in bullets) Destroy(bullet);
+            Map.Victory = true;
+            Map.gameSpeed = 0;
             dying = true;
+            Time.timeScale = Map.gameSpeed;
             if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
             {
                 towerInfo.GetComponent<TowerInfo>().HideInfo();

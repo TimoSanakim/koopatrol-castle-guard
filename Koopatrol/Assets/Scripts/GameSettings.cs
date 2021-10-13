@@ -18,6 +18,8 @@ public class GameSettings : MonoBehaviour
         Map.bowserPlaced = false;
         Map.paused = true;
         Map.gameSpeed = 1;
+        CastleHealth.castleDead = false;
+        Map.Victory = false;
         SceneManager.LoadScene("BowsersCastle");
         
         

@@ -26,6 +26,7 @@ TagManager:
   - Castle
   - Music
   - LavaAttack
+  - TargetButton
   layers:
   - Default
   - TransparentFX

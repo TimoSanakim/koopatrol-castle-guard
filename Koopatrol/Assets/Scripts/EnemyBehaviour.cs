@@ -9,6 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
     float hitTime = 0;
     public GameObject enemyOriginal;
     public string enemyType;
+    public bool finalEnemy = false;
     GameObject CastleHealth;
     Vector3 previousPosition;
 
@@ -120,7 +121,7 @@ public class EnemyBehaviour : MonoBehaviour
                     stop = true;
                     foreach (GameObject path in Map.Tiles)
                     {
-                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
@@ -142,7 +143,7 @@ public class EnemyBehaviour : MonoBehaviour
                     stop = true;
                     foreach (GameObject path in Map.Tiles)
                     {
-                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
@@ -164,7 +165,7 @@ public class EnemyBehaviour : MonoBehaviour
                     stop = true;
                     foreach (GameObject path in Map.Tiles)
                     {
-                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
@@ -186,7 +187,7 @@ public class EnemyBehaviour : MonoBehaviour
                     stop = true;
                     foreach (GameObject path in Map.Tiles)
                     {
-                        if (path.tag == "Path" && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
+                        if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
                             stop = false;
                         }
@@ -297,7 +298,12 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if (gameObject.transform.position.x - tower.transform.position.x >= -10 && gameObject.transform.position.x - tower.transform.position.x <= 10 && gameObject.transform.position.y - tower.transform.position.y >= -10 && gameObject.transform.position.y - tower.transform.position.y <= 10)
                 {
-                    if (tower.GetComponent<MapLocation>().towerType == "GoombaTower") tower.GetComponent<MapLocation>().DestroyTower();
+                    if (tower.GetComponent<MapLocation>().towerType == "GoombaTower")
+                    {
+                        GetComponent<AudioSource>().clip = specialSound;
+                        GetComponent<AudioSource>().Play();
+                        tower.GetComponent<MapLocation>().DestroyTower();
+                    }
                 }
             }
         }
@@ -426,6 +432,10 @@ public class EnemyBehaviour : MonoBehaviour
                 CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().Health;
                 if (enemyType == "Mario") CastleHealth.GetComponent<CastleHealth>().HealthCastle = 0;
                 Map.Enemies.Remove(gameObject);
+                if (GetComponent<EnemyHealth>().towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
+                {
+                    GetComponent<EnemyHealth>().towerInfo.GetComponent<TowerInfo>().HideInfo();
+                }
                 Destroy(gameObject);
             }
         }

@@ -10,12 +10,14 @@ public class TowerInfo : MonoBehaviour
     public byte slide = 0;
     public GameObject selectedTower;
     GameObject sellButton;
+    GameObject targetButton;
     GameObject upgradeButton;
     GameObject towerDescription;
     // Start is called before the first frame update
     void Start()
     {
         sellButton = GameObject.FindGameObjectWithTag("SellButton");
+        targetButton = GameObject.FindGameObjectWithTag("TargetButton");
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
         towerDescription = GameObject.FindGameObjectWithTag("TowerDescription");
     }
@@ -73,6 +75,14 @@ public class TowerInfo : MonoBehaviour
             HideInfo();
         }
     }
+    public void SwitchTarget()
+    {
+        if (selectedTower.GetComponent<MapLocation>() != null)
+        {
+            selectedTower.GetComponent<MapLocation>().TargetFurthestEnemy = !selectedTower.GetComponent<MapLocation>().TargetFurthestEnemy;
+            SetInfo();
+        }
+    }
     public void UpgradeTower()
     {
         if (selectedTower.GetComponent<MapLocation>() != null)
@@ -82,7 +92,7 @@ public class TowerInfo : MonoBehaviour
                 Assets.CoinCounter.ChangeCoinCounter(-GetUpgradeCost(), false);
                 selectedTower.GetComponent<Image>().sprite = selectedTower.GetComponent<MapLocation>().towerSprites[selectedTower.GetComponent<MapLocation>().towerLevel];
                 selectedTower.GetComponent<MapLocation>().towerLevel += 1;
-                ShowInfo();
+                SetInfo();
             }
         }
     }
@@ -185,6 +195,7 @@ public class TowerInfo : MonoBehaviour
             //Tower Menu
             towerDescription.GetComponent<Text>().text = GetDesciptionOption();
             sellButton.SetActive(false);
+            targetButton.SetActive(false);
             upgradeButton.SetActive(false);
             Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
             temp.x = 87.45f;
@@ -194,6 +205,9 @@ public class TowerInfo : MonoBehaviour
         {
             //Placed tower
             sellButton.SetActive(true);
+            targetButton.SetActive(true);
+            if (!selectedTower.GetComponent<MapLocation>().TargetFurthestEnemy) targetButton.GetComponentInChildren<Text>().text = "Focus:\nNearest";
+            else targetButton.GetComponentInChildren<Text>().text = "Focus:\nCastle";
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
             towerDescription.GetComponent<Text>().text = GetDesciptionMap();
             int UpgradeCost = GetUpgradeCost();
@@ -202,12 +216,12 @@ public class TowerInfo : MonoBehaviour
             {
                 upgradeButton.SetActive(true);
                 upgradeButton.GetComponentInChildren<Text>().text = "Upgrade\n" + Convert.ToString(GetUpgradeCost() + " coins");
-                temp.x = 262.36f;
+                temp.x = 349.81f;
             }
             else
             {
                 upgradeButton.SetActive(false);
-                temp.x = 174.9f;
+                temp.x = 262.36f;
             }
             towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }

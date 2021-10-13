@@ -95,6 +95,7 @@ MonoBehaviour:
   frozenTime: 0
   enemyOriginal: {fileID: 382680506421326169}
   enemyType: Luigi
+  finalEnemy: 0
   isClone: 0
   Paths: []
   startingPosition: {fileID: 0}
@@ -118,6 +119,7 @@ MonoBehaviour:
   Health: 300
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  HitByLava: 0
 --- !u!82 &4318748977478695443
 AudioSource:
   m_ObjectHideFlags: 0
@@ -421,6 +423,7 @@ MonoBehaviour:
   Health: 2
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  HitByLava: 0
 --- !u!114 &7210227819126598245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +439,7 @@ MonoBehaviour:
   frozenTime: 0
   enemyOriginal: {fileID: 1019613950545790236}
   enemyType: Toad
+  finalEnemy: 0
   isClone: 0
   Paths: []
   startingPosition: {fileID: 0}
@@ -646,13 +650,14 @@ MonoBehaviour:
   frozenTime: 0
   enemyOriginal: {fileID: 1711985410906455229}
   enemyType: Mario
+  finalEnemy: 0
   isClone: 0
   Paths: []
   startingPosition: {fileID: 0}
   moveSpeed: 30
   spawnSound: {fileID: 8300000, guid: a1c77c8c2c6c4204ebe41494661e20b6, type: 3}
   deathSound: {fileID: 8300000, guid: 5d226343bb42d044fafd97945634211b, type: 3}
-  specialSound: {fileID: 0}
+  specialSound: {fileID: 8300000, guid: 9a8d79ad858051a4a815591cb265b0c0, type: 3}
 --- !u!114 &7137360707363868277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,6 +674,7 @@ MonoBehaviour:
   Health: 3500
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  HitByLava: 0
 --- !u!82 &927750130177164894
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1174,6 +1180,7 @@ MonoBehaviour:
   frozenTime: 0
   enemyOriginal: {fileID: 7431318410483562999}
   enemyType: Yoshi
+  finalEnemy: 0
   isClone: 0
   Paths: []
   startingPosition: {fileID: 0}
@@ -1197,6 +1204,7 @@ MonoBehaviour:
   Health: 50
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  HitByLava: 0
 --- !u!225 &5109399096197284932
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1733,6 +1741,7 @@ MonoBehaviour:
   frozenTime: 0
   enemyOriginal: {fileID: 8897662022492212749}
   enemyType: CaptainToad
+  finalEnemy: 0
   isClone: 0
   Paths: []
   startingPosition: {fileID: 0}
@@ -1756,6 +1765,7 @@ MonoBehaviour:
   Health: 10
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  HitByLava: 0
 --- !u!225 &2148487945329804838
 CanvasGroup:
   m_ObjectHideFlags: 0
