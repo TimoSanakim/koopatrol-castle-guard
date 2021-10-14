@@ -7,8 +7,11 @@ using UnityEngine.UI;
 
 public class CastleHealth : MonoBehaviour
 {
+    [SerializeField] private Image HealthbarFill;
     public static bool castleDead = false;
     public int HealthCastle;
+    public int MaxHealthCastle;
+    public float testfloat = 0.5f;
     GameObject Music;
 
     // Start is called before the first frame update
@@ -37,5 +40,8 @@ public class CastleHealth : MonoBehaviour
             GameSettings.restartGame();
         }
         gameObject.GetComponent<Text>().text = Convert.ToString(HealthCastle);
+
+        float pct = (float)HealthCastle / (float)MaxHealthCastle;
+        HealthbarFill.fillAmount = pct;
     }
 }
