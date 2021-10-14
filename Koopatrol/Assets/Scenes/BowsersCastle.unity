@@ -350,6 +350,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &28369217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +766,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &59355185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,6 +957,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &70383125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,6 +1148,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &77879409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,6 +1339,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &82503638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4327,6 +4332,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &125140303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4517,6 +4523,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &129109998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4707,6 +4714,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &139954965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4972,6 +4980,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &150707109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5181,7 +5190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4235961108217424009, guid: 83d335064ac023643afc7cd2b85ac4ca, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4235961108217424009, guid: 83d335064ac023643afc7cd2b85ac4ca, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5418,6 +5427,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &201935881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5608,6 +5618,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &204547066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6098,6 +6109,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &215963423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6901,6 +6913,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &271097322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7246,6 +7259,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &279938994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7586,6 +7600,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &322799234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7851,6 +7866,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &346563687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8191,6 +8207,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &371456424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8531,6 +8548,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &413927676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8876,6 +8894,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &454099513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9066,6 +9085,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &467562717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9256,6 +9276,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &471617688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9446,6 +9467,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &475026662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9636,6 +9658,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &483307152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9826,6 +9849,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &515592912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10399,6 +10423,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &564632742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10589,6 +10614,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &568055668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10784,6 +10810,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &574775239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10974,6 +11001,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &599851265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11164,6 +11192,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &603523186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11579,6 +11608,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &620292788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11769,6 +11799,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &623201386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11959,6 +11990,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &632633368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12374,6 +12406,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &670599928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12564,6 +12597,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &687404928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12754,6 +12788,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &690036240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13024,6 +13059,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &709269817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13214,6 +13250,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &713242166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13404,6 +13441,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &713259502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13594,6 +13632,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &713361730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13859,6 +13898,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &734181826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14049,6 +14089,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &741381425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14314,6 +14355,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &744070142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14504,6 +14546,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &746144568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14769,6 +14812,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &759712014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14959,6 +15003,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &774486458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15224,6 +15269,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &802208031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15489,6 +15535,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &809318385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15679,6 +15726,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &811287757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15869,6 +15917,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &811728444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16134,6 +16183,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &843494301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16324,6 +16374,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &866005375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16514,6 +16565,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &869395941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16818,6 +16870,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &876606665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17008,6 +17061,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &879322484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17273,6 +17327,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &902786053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17463,6 +17518,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &908019095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17728,6 +17784,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &944463769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17918,6 +17975,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &944499063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18108,6 +18166,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &945530823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18536,6 +18595,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &973781901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19106,6 +19166,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1007321690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19684,6 +19745,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1055811081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19874,6 +19936,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1060959517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20144,6 +20207,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1074725701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20334,6 +20398,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1074955420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20524,6 +20589,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1077306809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20864,6 +20930,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1099444509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21054,6 +21121,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1107252908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21244,6 +21312,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1111089060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21646,6 +21715,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1135035757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21836,6 +21906,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1141539062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22026,6 +22097,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1144832795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22216,6 +22288,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1156814987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22406,6 +22479,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1161356807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22596,6 +22670,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1165846345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22936,6 +23011,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1197529118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23276,6 +23352,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1203885078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23616,6 +23693,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1211814657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23806,6 +23884,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1214899465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24146,6 +24225,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1233087000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24336,6 +24416,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1233372871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24526,6 +24607,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1245072858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24716,6 +24798,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1248743318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24906,6 +24989,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1271673032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25321,6 +25405,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1315131273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25359,6 +25444,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315131269}
   m_CullTransparentMesh: 1
+--- !u!224 &1324916748 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+  m_PrefabInstance: {fileID: 1419664542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1333585025
 GameObject:
   m_ObjectHideFlags: 0
@@ -26111,6 +26201,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1381387619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26224,6 +26315,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383962886}
   m_CullTransparentMesh: 1
+--- !u!1001 &1419664542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2137302707}
+    m_Modifications:
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829593, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918826428114829594, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Name
+      value: RightMenu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
 --- !u!1 &1433408960
 GameObject:
   m_ObjectHideFlags: 0
@@ -26751,6 +26939,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1449565421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27091,6 +27280,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1481138689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27356,6 +27546,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1493807922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27612,6 +27803,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1499127703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27802,6 +27994,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1503261731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27992,6 +28185,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1512579438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28182,6 +28376,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1513104574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28522,6 +28717,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1538186109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29087,6 +29283,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1589909595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29277,6 +29474,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1601838474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29467,6 +29665,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1607293231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29882,6 +30081,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1659322653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30447,6 +30647,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1719402134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30637,6 +30838,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1721609545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30827,6 +31029,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1750699619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31092,6 +31295,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1773488910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31282,6 +31486,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1775495718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31472,6 +31677,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1779872790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31585,272 +31791,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781523373}
   m_CullTransparentMesh: 1
---- !u!1001 &1785699123
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2137302707}
-    m_Modifications:
-    - target: {fileID: 378531857590443154, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1062172318395409836, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1107011926151866964, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1721091639581287807, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5095b993f0ac96f4c8dfa6cd636b2adf, type: 3}
-    - target: {fileID: 2326876009752109193, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -272
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410493794612201320, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d5ac32a67c3e2814494e4719b9ce341a, type: 3}
-    - target: {fileID: 2818320696129976132, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2863932096135430200, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 92d98f7ba4fba29418696ad0359b8b65, type: 3}
-    - target: {fileID: 4017038162171874677, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346068601406, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Name
-      value: RightMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346134189066, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346134189066, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346786749386, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346786749386, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346786749386, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346786749386, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346786749386, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 46
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346786749386, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346796491170, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346807658913, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346807658913, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346807658913, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346807658913, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346807658913, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 46
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582346807658913, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347185723891, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: dcb0d164c7f754c45b5c71c9f3508900, type: 3}
-    - target: {fileID: 4087582347185723894, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347339203869, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347407334361, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.0000305
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347457454745, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347606020350, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347622717910, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347622717910, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4087582347622717910, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4384317934874159791, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4646567671794737647, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5291611093848828587, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5908660010477339325, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6882112666277836262, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_Name
-      value: LavaAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 7061508397251333239, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8766838469475488168, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9095522580225495528, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
---- !u!224 &1785699124 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4087582346068601405, guid: e01a57ccf11eff441904ab80b4d452d0, type: 3}
-  m_PrefabInstance: {fileID: 1785699123}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1790607836
 GameObject:
   m_ObjectHideFlags: 0
@@ -32078,6 +32018,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1803593281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32268,6 +32209,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1805815122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32458,6 +32400,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1806344009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32648,6 +32591,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1814783943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32838,6 +32782,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1816335961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33028,6 +32973,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1817345901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33368,6 +33314,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1827822247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33558,6 +33505,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1834336633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33748,6 +33696,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1835383613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33938,6 +33887,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1844414485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34128,6 +34078,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1844716770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34393,6 +34344,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1875439753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34583,6 +34535,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1888216434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34998,6 +34951,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1905154815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35188,6 +35142,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1932055492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35378,6 +35333,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1934828060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35568,6 +35524,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1960531706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35908,6 +35865,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1973540477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36098,6 +36056,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &1975593023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36513,6 +36472,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &2004050327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36928,6 +36888,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &2064112380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37193,6 +37154,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &2096918142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37383,6 +37345,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &2107572570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37573,6 +37536,7 @@ MonoBehaviour:
   towerSprites: []
   isNextToPath: 0
   towerBuffed: 0
+  TargetFurthestEnemy: 0
 --- !u!114 &2116042655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37705,7 +37669,7 @@ RectTransform:
   - {fileID: 966608661}
   - {fileID: 872048097}
   - {fileID: 568902663}
-  - {fileID: 1785699124}
+  - {fileID: 1324916748}
   - {fileID: 194066038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
