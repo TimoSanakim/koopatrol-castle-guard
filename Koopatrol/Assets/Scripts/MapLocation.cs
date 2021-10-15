@@ -22,7 +22,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     float cooldown = 0;
     bool wasDragging = false;
     public bool towerBuffed = false;
-    public bool TargetFurthestEnemy = false;
+    public int TargetPriority = 0;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -48,6 +48,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         cooldown = 0;
         towerLevel = 0;
         towerSprites.Clear();
+        TargetPriority = 0;
         GetComponent<AudioSource>().clip = null;
         if (gameObject.tag == "PathTower")
         {
@@ -197,7 +198,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
     }
     //Get based on isNextToPath
-    GameObject GetEnemy(bool NearestToCastle)
+    GameObject GetEnemy(int TargetPriority)
     {
         float x = gameObject.transform.position.x;
         float y = gameObject.transform.position.y;
@@ -221,13 +222,14 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 {
                     if (enemy.GetComponent<EnemyBehaviour>().isClone && y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
-                        if (whileLoop == 0 && target == null) target = enemy;
-                        else if (whileLoop == 1 && target == null) target = enemy;
-                        else if (whileLoop == 1 && first > second && !NearestToCastle) target = enemy;
-                        else if (whileLoop == 1 && NearestToCastle && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count) target = enemy;
-                        x = gameObject.transform.position.x;
-                        y = gameObject.transform.position.y;
-                        whileLoop += 1;
+                        if (target == null) target = enemy;
+                        else if (whileLoop == 1 && first > second && TargetPriority == 0) target = enemy;
+                        else if (TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count) target = enemy;
+                        else if (whileLoop == 1 && first > second && TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count) target = enemy;
+                        else if (TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health) target = enemy;
+                        else if (whileLoop == 1 && first > second && TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health) target = enemy;
+                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage()) target = enemy;
+                        else if (whileLoop == 1 && first > second && TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage()) target = enemy;
                     }
                 }
             }
@@ -254,24 +256,45 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         return target;
     }
     //Circular range
-    GameObject GetEnemy(float range, bool NearestToCastle)
+    GameObject GetEnemy(float range, int TargetPriority)
     {
         GameObject target = null;
-        float lowestDistance = range;
         float distance;
+        float lowestDistance = range;
         foreach (GameObject enemy in Map.Enemies)
         {
             distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
-            if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && !NearestToCastle)
+            if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target == null)
+            {
+                target = enemy;
+                if (TargetPriority == 0) lowestDistance = distance;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && TargetPriority == 0)
             {
                 target = enemy;
                 lowestDistance = distance;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target == null && NearestToCastle)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count && TargetPriority == 1)
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count && NearestToCastle)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count && TargetPriority == 1)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 2)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 2)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 3)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 3)
             {
                 target = enemy;
             }
@@ -346,7 +369,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.GoomaTower.GetRange(towerLevel), TargetFurthestEnemy);
+            GameObject enemy = GetEnemy(Assets.GoomaTower.GetRange(towerLevel), TargetPriority);
             if (enemy != null)
             {
                 cooldown = Assets.GoomaTower.GetCooldown(towerLevel);
@@ -358,7 +381,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.KoopaTower.GetRange(towerLevel), TargetFurthestEnemy);
+            GameObject enemy = GetEnemy(Assets.KoopaTower.GetRange(towerLevel), TargetPriority);
             if (enemy != null)
             {
                 cooldown = Assets.KoopaTower.GetCooldown(towerLevel);
@@ -370,7 +393,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.FreezieTower.GetRange(towerLevel), TargetFurthestEnemy);
+            GameObject enemy = GetEnemy(Assets.FreezieTower.GetRange(towerLevel), TargetPriority);
             if (enemy != null)
             {
                 cooldown = Assets.FreezieTower.GetCooldown(towerLevel);
@@ -400,7 +423,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             if (cooldown == 0)
             {
-                GameObject enemy = GetEnemy(TargetFurthestEnemy);
+                GameObject enemy = GetEnemy(TargetPriority);
                 if (enemy != null)
                 {
                     cooldown = Assets.BulletBlaster.GetCooldown(towerLevel);
@@ -412,7 +435,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             if (cooldown == 0)
             {
-                GameObject enemy = GetEnemy(TargetFurthestEnemy);
+                GameObject enemy = GetEnemy(TargetPriority);
                 if (enemy != null)
                 {
                     cooldown = Assets.BulletBlaster.GetCooldown(towerLevel);
@@ -453,7 +476,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void Bowser()
     {
-        GameObject enemy = GetEnemy(Assets.Bowser.GetRange(towerLevel), TargetFurthestEnemy);
+        GameObject enemy = GetEnemy(Assets.Bowser.GetRange(towerLevel), TargetPriority);
         if (enemy != null) LookAt(enemy.transform.position);
         if (cooldown == 0)
         {

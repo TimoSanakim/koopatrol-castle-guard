@@ -82,7 +82,8 @@ public class TowerInfo : MonoBehaviour
     {
         if (selectedTower.GetComponent<MapLocation>() != null)
         {
-            selectedTower.GetComponent<MapLocation>().TargetFurthestEnemy = !selectedTower.GetComponent<MapLocation>().TargetFurthestEnemy;
+            selectedTower.GetComponent<MapLocation>().TargetPriority += 1;
+            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4) selectedTower.GetComponent<MapLocation>().TargetPriority = 0;
             SetInfo();
         }
     }
@@ -175,6 +176,19 @@ public class TowerInfo : MonoBehaviour
         }
         return "";
     }
+    bool CanTarget()
+    {
+        switch (selectedTower.GetComponent<MapLocation>().towerType)
+        {
+            case "Thwomp":
+                return false;
+            case "PiranhaPlant":
+                return false;
+            case "MagikoopaTower":
+                return false;
+        }
+        return true;
+    }
     string GetDesciptionOption()
     {
         switch (selectedTower.GetComponent<TowerOption>().towerType)
@@ -212,9 +226,27 @@ public class TowerInfo : MonoBehaviour
         {
             //Placed tower
             sellButton.SetActive(true);
-            targetButton.SetActive(true);
-            if (!selectedTower.GetComponent<MapLocation>().TargetFurthestEnemy) targetButton.GetComponentInChildren<Text>().text = "Focus:\nNearest";
-            else targetButton.GetComponentInChildren<Text>().text = "Focus:\nCastle";
+            if (CanTarget()) targetButton.SetActive(true);
+            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 0)
+            {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nNearest Enemy";
+                targetButton.GetComponentInChildren<Text>().fontSize = 17;
+            }
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 1)
+            {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nProtect Castle";
+                targetButton.GetComponentInChildren<Text>().fontSize = 13;
+            }
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 2)
+            {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLowest Health";
+                targetButton.GetComponentInChildren<Text>().fontSize = 13;
+            }
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 3)
+            {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Damage";
+                targetButton.GetComponentInChildren<Text>().fontSize = 13;
+            }
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
             towerDescription.GetComponent<Text>().text = GetDesciptionMap();
             int UpgradeCost = GetUpgradeCost();
@@ -244,5 +276,5 @@ public class TowerInfo : MonoBehaviour
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
         }
-    }
-}
+            }
+            }

@@ -70,6 +70,10 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+    public int GetDamage()
+    {
+        return -(Health - MaxHealth);
+    }
 
     public void Hurt(int damage)
     {
