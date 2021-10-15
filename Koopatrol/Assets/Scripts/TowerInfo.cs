@@ -39,10 +39,10 @@ public class TowerInfo : MonoBehaviour
                 hidden = false;
             }
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
-            temp.y = temp.y + 1;
-            if (temp.y >= 20)
+            temp.y = temp.y + 4;
+            if (temp.y >= 100)
             {
-                temp.y = 20;
+                temp.y = 100;
                 slide = 0;
             }
             gameObject.GetComponent<RectTransform>().transform.position = temp;
@@ -50,10 +50,10 @@ public class TowerInfo : MonoBehaviour
         else if (slide == 2 || slide == 3)
         {
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
-            temp.y = temp.y - 1;
-            if (temp.y <= -20)
+            temp.y = temp.y - 4;
+            if (temp.y <= 0)
             {
-                temp.y = -20;
+                temp.y = 0;
                 if (slide == 2) slide = 0;
                 else slide = 1;
                 hidden = true;
@@ -210,9 +210,6 @@ public class TowerInfo : MonoBehaviour
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
-            Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
-            temp.x = 87.45f;
-            towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }
         else if (selectedTower.GetComponent<MapLocation>() != null)
         {
@@ -224,19 +221,15 @@ public class TowerInfo : MonoBehaviour
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
             towerDescription.GetComponent<Text>().text = GetDesciptionMap();
             int UpgradeCost = GetUpgradeCost();
-            Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
             if (UpgradeCost != 0)
             {
                 upgradeButton.SetActive(true);
                 upgradeButton.GetComponentInChildren<Text>().text = "Upgrade\n" + Convert.ToString(GetUpgradeCost() + " coins");
-                temp.x = 349.81f;
             }
             else
             {
                 upgradeButton.SetActive(false);
-                temp.x = 262.36f;
             }
-            towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }
         else if (selectedTower.GetComponent<LastResortAttack>() != null)
         {
@@ -245,9 +238,6 @@ public class TowerInfo : MonoBehaviour
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
-            Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
-            temp.x = 87.45f;
-            towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }
         else if (selectedTower.GetComponent<EnemyHealth>() != null)
         {
@@ -256,9 +246,6 @@ public class TowerInfo : MonoBehaviour
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
-            Vector3 temp = towerDescription.GetComponent<RectTransform>().transform.position;
-            temp.x = 87.45f;
-            towerDescription.GetComponent<RectTransform>().transform.position = temp;
         }
     }
 }
