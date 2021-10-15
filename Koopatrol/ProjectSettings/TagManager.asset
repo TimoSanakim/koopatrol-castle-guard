@@ -27,6 +27,7 @@ TagManager:
   - Music
   - LavaAttack
   - TargetButton
+  - BossBar
   layers:
   - Default
   - TransparentFX

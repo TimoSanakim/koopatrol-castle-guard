@@ -10,8 +10,7 @@ public class CastleHealth : MonoBehaviour
     [SerializeField] private Image HealthbarFill;
     public static bool castleDead = false;
     public int HealthCastle;
-    public int MaxHealthCastle;
-    public float testfloat = 0.5f;
+    int MaxHealthCastle;
     GameObject Music;
 
     // Start is called before the first frame update
@@ -19,6 +18,7 @@ public class CastleHealth : MonoBehaviour
     {
         HealthCastle = Convert.ToInt32(gameObject.GetComponent<Text>().text);
         Music = GameObject.FindGameObjectWithTag("Music");
+        MaxHealthCastle = HealthCastle;
     }
 
     // Update is called once per frame

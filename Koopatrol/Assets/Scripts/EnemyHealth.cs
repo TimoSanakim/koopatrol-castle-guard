@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     public int enemyCoin = 1;
     public int Health;
     public GameObject towerInfo;
+    GameObject BossBar;
     GameObject Music;
     public int MaxHealth;
     bool dying = false;
@@ -21,12 +22,17 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     {
         MaxHealth = Health;
         Music = GameObject.FindGameObjectWithTag("Music");
+        BossBar = GameObject.FindGameObjectWithTag("BossBar");
+        if (GetComponent<EnemyBehaviour>().finalEnemy && GetComponent<EnemyBehaviour>().isClone)
+        {
+            BossBar.GetComponent<BossBar>().UpdateValue(Health, MaxHealth);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dying)
+        if (dying && GetComponent<EnemyBehaviour>().finalEnemy)
         {
             if (deathTime >= 60 && deathTime <= 100)
             {
@@ -44,11 +50,24 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
                 gameObject.transform.Rotate(0, 0, -3, Space.Self);
                 gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 1f));
             }
-            if (!Music.GetComponent<AudioSource>().isPlaying)
+            else if (deathTime >= 240)
             {
                 GameSettings.restartGame();
             }
             deathTime += 1;
+        }
+        else if (dying && !GetComponent<EnemyBehaviour>().finalEnemy)
+        {
+            if (GetComponent<EnemyBehaviour>().deathSound != null && !playedDeathSound)
+            {
+                GetComponent<AudioSource>().clip = GetComponent<EnemyBehaviour>().deathSound;
+                GetComponent<AudioSource>().Play();
+                playedDeathSound = true;
+            }
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -69,6 +88,10 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
                 towerInfo.GetComponent<TowerInfo>().SetInfo();
             }
         }
+        if (GetComponent<EnemyBehaviour>().finalEnemy)
+        {
+            BossBar.GetComponent<BossBar>().UpdateValue(Health, MaxHealth);
+        }
     }
 
     void death()
@@ -78,14 +101,11 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
         {
             towerInfo.GetComponent<TowerInfo>().HideInfo();
-            if (GetComponent<EnemyBehaviour>().deathSound != null)
-            {
-                GetComponent<AudioSource>().clip = GetComponent<EnemyBehaviour>().deathSound;
-                GetComponent<AudioSource>().Play();
-            }
         }
         gameObject.GetComponent<CanvasGroup>().interactable = false;
         gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        gameObject.GetComponent<EnemyBehaviour>().moveSpeed = 0f;
+        dying = true;
         if (GetComponent<EnemyBehaviour>().finalEnemy)
         {
             Music.GetComponent<Music>().PlayNew("Victory");
@@ -94,7 +114,6 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
             foreach (GameObject bullet in bullets) Destroy(bullet);
             Map.Victory = true;
             Map.gameSpeed = 0;
-            dying = true;
             Time.timeScale = Map.gameSpeed;
             if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
             {
@@ -103,7 +122,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<CanvasGroup>().alpha = 0f;
         }
     }
 

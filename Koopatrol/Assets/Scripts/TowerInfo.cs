@@ -23,9 +23,6 @@ public class TowerInfo : MonoBehaviour
         targetButton = GameObject.FindGameObjectWithTag("TargetButton");
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
         towerDescription = GameObject.FindGameObjectWithTag("TowerDescription");
-
-       
-
     }
 
     // Update is called once per frame
