@@ -13,6 +13,9 @@ public class TowerInfo : MonoBehaviour
     GameObject targetButton;
     GameObject upgradeButton;
     GameObject towerDescription;
+
+    public AudioClip upgradeSound;
+    public AudioClip errorSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,9 @@ public class TowerInfo : MonoBehaviour
         targetButton = GameObject.FindGameObjectWithTag("TargetButton");
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
         towerDescription = GameObject.FindGameObjectWithTag("TowerDescription");
+
+       
+
     }
 
     // Update is called once per frame
@@ -93,6 +99,13 @@ public class TowerInfo : MonoBehaviour
                 selectedTower.GetComponent<Image>().sprite = selectedTower.GetComponent<MapLocation>().towerSprites[selectedTower.GetComponent<MapLocation>().towerLevel];
                 selectedTower.GetComponent<MapLocation>().towerLevel += 1;
                 SetInfo();
+                GetComponent<AudioSource>().clip = upgradeSound;
+                GetComponent<AudioSource>().Play();
+            }
+            else
+            {
+                GetComponent<AudioSource>().clip = errorSound;
+                GetComponent<AudioSource>().Play();
             }
         }
     }
