@@ -119,6 +119,7 @@ MonoBehaviour:
   Health: 300
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  dying: 0
   HitByLava: 0
 --- !u!82 &4318748977478695443
 AudioSource:
@@ -423,6 +424,7 @@ MonoBehaviour:
   Health: 2
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  dying: 0
   HitByLava: 0
 --- !u!114 &7210227819126598245
 MonoBehaviour:
@@ -674,6 +676,7 @@ MonoBehaviour:
   Health: 3500
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  dying: 0
   HitByLava: 0
 --- !u!82 &927750130177164894
 AudioSource:
@@ -1204,6 +1207,7 @@ MonoBehaviour:
   Health: 50
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  dying: 0
   HitByLava: 0
 --- !u!225 &5109399096197284932
 CanvasGroup:
@@ -1740,7 +1744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frozenTime: 0
   enemyOriginal: {fileID: 8897662022492212749}
-  enemyType: CaptainToad
+  enemyType: Captain Toad
   finalEnemy: 0
   isClone: 0
   Paths: []
@@ -1765,6 +1769,7 @@ MonoBehaviour:
   Health: 10
   towerInfo: {fileID: 0}
   MaxHealth: 0
+  dying: 0
   HitByLava: 0
 --- !u!225 &2148487945329804838
 CanvasGroup:

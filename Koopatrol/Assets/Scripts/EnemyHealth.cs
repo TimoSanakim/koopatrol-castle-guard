@@ -26,6 +26,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         if (GetComponent<EnemyBehaviour>().finalEnemy && GetComponent<EnemyBehaviour>().isClone)
         {
             BossBar.GetComponent<BossBar>().UpdateValue(Health, MaxHealth);
+            BossBar.GetComponentInChildren<Text>().text = GetComponent<EnemyBehaviour>().enemyType;
         }
     }
 
