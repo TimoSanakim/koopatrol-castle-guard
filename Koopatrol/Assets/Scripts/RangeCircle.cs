@@ -76,8 +76,6 @@ float GetRangeDraggedTower()
         RangeCircle.transform.SetParent(map.transform, true);
         RangeCircle.GetComponent<RangeCircle>().isClone = true;
         RangeCircle.GetComponent<CanvasGroup>().alpha = 1f;
-        RangeCircle.GetComponent<CanvasGroup>().interactable = true;
-        RangeCircle.GetComponent<CanvasGroup>().blocksRaycasts = true;
         RangeCircle.tag = "RangeCircle";
         return RangeCircle;
     }

@@ -30,8 +30,6 @@ public class MagicEffect : MonoBehaviour
         magicEffect.transform.SetParent(parent.transform, true);
         magicEffect.GetComponent<MagicEffect>().isClone = true;
         magicEffect.GetComponent<CanvasGroup>().alpha = 1f;
-        magicEffect.GetComponent<CanvasGroup>().interactable = true;
-        magicEffect.GetComponent<CanvasGroup>().blocksRaycasts = true;
         magicEffect.tag = "MagicEffect";
         return magicEffect;
     }

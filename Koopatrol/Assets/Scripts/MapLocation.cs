@@ -48,7 +48,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerType = "none";
         cooldown = 0;
         towerLevel = 0;
-        towerSprites.Clear();
+        towerSprites = new List<Sprite>();
         TargetPriority = 0;
         GetComponent<AudioSource>().clip = null;
         if (gameObject.tag == "PathTower")

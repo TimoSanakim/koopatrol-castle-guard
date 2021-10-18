@@ -15,6 +15,7 @@ public class TowerInfo : MonoBehaviour
     GameObject towerDescription;
     GameObject rangeCircle;
     GameObject mapRange;
+    GameObject fallbackTower;
     Color replacedColor = new Color(1f, 1f, 1f, 1f);
 
     public AudioClip upgradeSound;
@@ -27,11 +28,17 @@ public class TowerInfo : MonoBehaviour
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
         towerDescription = GameObject.FindGameObjectWithTag("TowerDescription");
         rangeCircle = GameObject.FindGameObjectWithTag("RangeCircle");
+        fallbackTower = selectedTower;
     }
 
     // Update is called once per frame
     void Update()
-    {            
+    {
+        if (selectedTower == null)
+        {
+            selectedTower = fallbackTower;
+            replacedColor = new Color(1f, 1f, 1f, 1f);
+        }
         if (mapRange != null && selectedTower.GetComponent<MapLocation>() != null && !hidden) mapRange.GetComponent<RangeCircle>().killNextTime = false;
         else if (selectedTower.GetComponent<MapLocation>() != null && !hidden) mapRange = rangeCircle.GetComponent<RangeCircle>().CreateRangeCircle(selectedTower);
 
