@@ -29,6 +29,7 @@ TagManager:
   - TargetButton
   - BossBar
   - MagicEffect
+  - RangeCircle
   layers:
   - Default
   - TransparentFX

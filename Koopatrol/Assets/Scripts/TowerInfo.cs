@@ -13,6 +13,8 @@ public class TowerInfo : MonoBehaviour
     GameObject targetButton;
     GameObject upgradeButton;
     GameObject towerDescription;
+    GameObject rangeCircle;
+    GameObject mapRange;
     Color replacedColor = new Color(1f, 1f, 1f, 1f);
 
     public AudioClip upgradeSound;
@@ -24,11 +26,15 @@ public class TowerInfo : MonoBehaviour
         targetButton = GameObject.FindGameObjectWithTag("TargetButton");
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
         towerDescription = GameObject.FindGameObjectWithTag("TowerDescription");
+        rangeCircle = GameObject.FindGameObjectWithTag("RangeCircle");
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {            
+        if (mapRange != null && selectedTower.GetComponent<MapLocation>() != null && !hidden) mapRange.GetComponent<RangeCircle>().killNextTime = false;
+        else if (selectedTower.GetComponent<MapLocation>() != null && !hidden) mapRange = rangeCircle.GetComponent<RangeCircle>().CreateRangeCircle(selectedTower);
+
         if (slide == 1)
         {
             if (hidden)
@@ -68,12 +74,14 @@ public class TowerInfo : MonoBehaviour
 
     public void ShowInfo(GameObject selectedObject)
     {
+        mapRange = null;
         if (hidden) slide = 1;
         else slide = 3;
         if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
         selectedTower = selectedObject;
         if (selectedTower.GetComponent<Image>() != null) replacedColor = selectedTower.GetComponent<Image>().color;
         if (selectedTower.GetComponent<MapLocation>() != null) selectedTower.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
+
     }
     public void SellTower()
     {

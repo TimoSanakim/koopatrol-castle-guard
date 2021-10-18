@@ -160,7 +160,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     // Update is called once per frame
     void Update()
     {
-        if (towerBuffed)
+        if (towerBuffed && towerType != "MagikoopaTower")
         {
             towerLevel += 1;
             if (myMagic != null) myMagic.GetComponent<MagicEffect>().killNextTime = false;

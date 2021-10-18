@@ -17,7 +17,7 @@ public class MagicEffect : MonoBehaviour
     {
         if (isClone)
         {
-            gameObject.transform.Rotate(0, 0, -5, Space.Self);
+            gameObject.transform.Rotate(0, 0, 1, Space.Self);
             if (killNextTime) Destroy(gameObject);
             else killNextTime = true;
         }
