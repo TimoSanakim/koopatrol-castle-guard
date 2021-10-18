@@ -15,9 +15,9 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            if (towerLevel == 1) return "Bullet blaster. A high-fire rate tower which can only be placed next to a path on 1 axis, so not corners. Deals 2 damage, rather than 1. Can be upgraded to increase Bullet Bill's movement speed and once again to increase damage further.";
-            if (towerLevel == 2) return "Bullet blaster+1. A high-fire rate tower which can only be placed next to a path on 1 axis, so not corners. Deals 2 damage, rather than 1. Can be upgraded once again to increase damage further.";
-            return "Bullet blaster+2. A high-fire rate tower which can only be placed next to a path on 1 axis, so not corners. Deals 3 damage, rather than 1.";
+            if (towerLevel == 1) return "Bullet blaster. Can only be placed next to a path on 1 axis. Deals 2 damage. Can be upgraded to increase Bullet Bill's movement speed and once again to increase damage further.";
+            if (towerLevel == 2) return "Bullet blaster+1. Can only be placed next to a path on 1 axis. Deals 2 damage. Can be upgraded once again to increase damage further.";
+            return "Bullet blaster+2. Can only be placed next to a path on 1 axis. Deals 3 damage.";
         }
         public static float GetCooldown(int towerLevel)
         {

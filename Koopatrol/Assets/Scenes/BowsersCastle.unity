@@ -346,6 +346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -762,6 +764,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -953,6 +957,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -1144,6 +1150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -1335,6 +1343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -1378,103 +1388,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82503634}
   m_CullTransparentMesh: 1
---- !u!1001 &90748858
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2137302707}
-    m_Modifications:
-    - target: {fileID: 6582090138799473053, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_Name
-      value: InfoBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.99999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
 --- !u!1 &96346670
 GameObject:
   m_ObjectHideFlags: 0
@@ -4429,6 +4342,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -4620,6 +4535,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -4811,6 +4728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -5077,6 +4996,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -5418,6 +5339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -5609,6 +5532,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -6100,6 +6025,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -6904,6 +6831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -7250,6 +7179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -7591,6 +7522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -7857,6 +7790,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -8198,6 +8133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -8539,6 +8476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -8885,6 +8824,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -9076,6 +9017,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -9267,6 +9210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -9458,6 +9403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -9649,6 +9596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -9840,6 +9789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -10414,6 +10365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -10605,6 +10558,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -10796,6 +10751,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -10987,6 +10944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -11178,6 +11137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -11594,6 +11555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -11785,6 +11748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -11976,6 +11941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -12397,6 +12364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -12588,6 +12557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -12779,6 +12750,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -13050,6 +13023,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -13241,6 +13216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -13432,6 +13409,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -13623,6 +13602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -13889,6 +13870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -14080,6 +14063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -14346,6 +14331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -14537,6 +14524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -14803,6 +14792,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -14994,6 +14985,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -15260,6 +15253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -15526,6 +15521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -15717,6 +15714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -15908,6 +15907,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -16174,6 +16175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -16365,6 +16368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -16556,6 +16561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -16861,6 +16868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -17052,6 +17061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -17170,6 +17181,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880780805}
   m_CullTransparentMesh: 1
+--- !u!1001 &892478059
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2137302707}
+    m_Modifications:
+    - target: {fileID: 6582090138799473052, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: selectedTower
+      value: 
+      objectReference: {fileID: 1874117927}
+    - target: {fileID: 6582090138799473053, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_Name
+      value: InfoBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
 --- !u!1 &902786049
 GameObject:
   m_ObjectHideFlags: 0
@@ -17318,6 +17430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -17509,6 +17623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -17775,6 +17891,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -17966,6 +18084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -18157,6 +18277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -18586,6 +18708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -19157,6 +19281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -19736,6 +19862,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -19927,6 +20055,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -20312,6 +20442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -20503,6 +20635,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -20694,6 +20828,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -21035,6 +21171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -21226,6 +21364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -21417,6 +21557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -21820,6 +21962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -22011,6 +22155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -22202,6 +22348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -22393,6 +22541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -22584,6 +22734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -22775,6 +22927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -23116,6 +23270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -23457,6 +23613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -23798,6 +23956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -23989,6 +24149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -24330,6 +24492,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -24521,6 +24685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -24712,6 +24878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -24903,6 +25071,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -24946,6 +25116,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248743314}
   m_CullTransparentMesh: 1
+--- !u!224 &1254794345 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
+  m_PrefabInstance: {fileID: 892478059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1271673028
 GameObject:
   m_ObjectHideFlags: 0
@@ -25094,6 +25269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -25510,6 +25687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -26306,6 +26485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -26947,6 +27128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -27288,6 +27471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -27554,6 +27739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -27811,6 +27998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -28002,6 +28191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -28193,6 +28384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -28384,6 +28577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -28725,6 +28920,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -29370,6 +29567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -29561,6 +29760,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -29752,6 +29953,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -30168,6 +30371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -30880,6 +31085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -31071,6 +31278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -31262,6 +31471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -31528,6 +31739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -31719,6 +31932,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -31910,6 +32125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -32251,6 +32468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -32442,6 +32661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -32633,6 +32854,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -32824,6 +33047,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -33015,6 +33240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -33206,6 +33433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -33547,6 +33776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -33738,6 +33969,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -33929,6 +34162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -34120,6 +34355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -34311,6 +34548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -34429,6 +34668,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845973511}
   m_CullTransparentMesh: 1
+--- !u!1 &1874117927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3658054563651862947, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+  m_PrefabInstance: {fileID: 3658054563768867922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1875439749
 GameObject:
   m_ObjectHideFlags: 0
@@ -34577,6 +34821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -34768,6 +35014,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -35184,6 +35432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -35375,6 +35625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -35566,6 +35818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -35757,6 +36011,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -36098,6 +36354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -36289,6 +36547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -36705,6 +36965,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -37121,6 +37383,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -37261,11 +37525,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a137e73ae91acb141b7c775905262c31, type: 3}
---- !u!224 &2072538633 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
-  m_PrefabInstance: {fileID: 90748858}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086118408
 GameObject:
   m_ObjectHideFlags: 0
@@ -37489,6 +37748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -37680,6 +37941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -37871,6 +38134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerLevel: 0
+  magicEffect: {fileID: 0}
+  myMagic: {fileID: 0}
   towerType: 
   towerSprites: []
   isNextToPath: 0
@@ -38008,7 +38273,7 @@ RectTransform:
   - {fileID: 966608661}
   - {fileID: 872048097}
   - {fileID: 652194206}
-  - {fileID: 2072538633}
+  - {fileID: 1254794345}
   - {fileID: 1324916748}
   - {fileID: 1065192165}
   - {fileID: 1685775809}

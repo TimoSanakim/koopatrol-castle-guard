@@ -12,6 +12,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     public int towerLevel = 0;
     GameObject draggingTower;
     GameObject towerInfo;
+    GameObject magicEffect;
+    GameObject myMagic;
     public string towerType = "none";
     public List<Sprite> towerSprites;
     //1 = path left or right, and not above or below
@@ -103,6 +105,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
+        magicEffect = GameObject.FindGameObjectWithTag("MagicEffect");
         originalImage = gameObject.GetComponent<Image>().sprite;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
@@ -157,7 +160,12 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     // Update is called once per frame
     void Update()
     {
-        if (towerBuffed) towerLevel += 1; 
+        if (towerBuffed)
+        {
+            towerLevel += 1;
+            if (myMagic != null) myMagic.GetComponent<MagicEffect>().killNextTime = false;
+            else myMagic = magicEffect.GetComponent<MagicEffect>().CreateMagicEffect(gameObject);
+        }
         if (cooldown != 0) cooldown -= 1 * Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
         switch (towerType)

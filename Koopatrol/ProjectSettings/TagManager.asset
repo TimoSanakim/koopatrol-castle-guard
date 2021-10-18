@@ -28,6 +28,7 @@ TagManager:
   - LavaAttack
   - TargetButton
   - BossBar
+  - MagicEffect
   layers:
   - Default
   - TransparentFX
