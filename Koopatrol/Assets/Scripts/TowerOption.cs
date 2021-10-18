@@ -19,8 +19,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            towerInfo.GetComponent<TowerInfo>().ShowInfo();
-            towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
+            towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
         }
     }
 

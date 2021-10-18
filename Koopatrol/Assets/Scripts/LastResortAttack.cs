@@ -78,7 +78,6 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        towerInfo.GetComponent<TowerInfo>().ShowInfo();
-        towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
+        towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
     }
 }

@@ -2677,7 +2677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -67.38306, y: 6.2309113}
+  m_AnchoredPosition: {x: -67.58, y: 6.231613}
   m_SizeDelta: {x: 15, y: 516.2577}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3658054564473387483
@@ -2814,8 +2814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthbarFill: {fileID: 3658054564999976298}
   HealthCastle: 150
-  MaxHealthCastle: 150
-  testfloat: 0.5
 --- !u!1 &3658054564633945222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,7 +3336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -107.03308, y: -21.3296}
+  m_AnchoredPosition: {x: -106.9, y: -21.33}
   m_SizeDelta: {x: 15, y: 490.13812}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3658054564961141560

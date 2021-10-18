@@ -32,7 +32,7 @@ namespace Assets
             if (isClone)
             {
                 timeFlying += Time.deltaTime;
-                if (homingTarget != null) LookAt(homingTarget.transform.position);
+                if (homingTarget != null && !homingTarget.GetComponent<EnemyHealth>().dying) LookAt(homingTarget.transform.position);
                 gameObject.transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0), Space.Self);
                 foreach (GameObject enemy in Map.Enemies)
                 {

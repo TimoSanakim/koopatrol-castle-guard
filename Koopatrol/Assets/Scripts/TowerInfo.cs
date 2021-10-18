@@ -13,6 +13,7 @@ public class TowerInfo : MonoBehaviour
     GameObject targetButton;
     GameObject upgradeButton;
     GameObject towerDescription;
+    Color replacedColor = new Color(1f, 1f, 1f, 1f);
 
     public AudioClip upgradeSound;
     public AudioClip errorSound;
@@ -62,12 +63,17 @@ public class TowerInfo : MonoBehaviour
     public void HideInfo()
     {
         if (slide == 0 || slide == 1) slide = 2;
+        if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
     }
 
-    public void ShowInfo()
+    public void ShowInfo(GameObject selectedObject)
     {
         if (hidden) slide = 1;
         else slide = 3;
+        if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
+        selectedTower = selectedObject;
+        if (selectedTower.GetComponent<Image>() != null) replacedColor = selectedTower.GetComponent<Image>().color;
+        if (selectedTower.GetComponent<MapLocation>() != null) selectedTower.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
     }
     public void SellTower()
     {
@@ -244,8 +250,8 @@ public class TowerInfo : MonoBehaviour
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 3)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Damage";
-                targetButton.GetComponentInChildren<Text>().fontSize = 13;
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLowest Health%";
+                targetButton.GetComponentInChildren<Text>().fontSize = 11;
             }
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
             towerDescription.GetComponent<Text>().text = GetDesciptionMap();
@@ -276,5 +282,5 @@ public class TowerInfo : MonoBehaviour
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
         }
-            }
-            }
+    }
+}

@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     GameObject BossBar;
     GameObject Music;
     public int MaxHealth;
-    bool dying = false;
+    public bool dying = false;
     bool playedDeathSound = false;
     public bool HitByLava = false;
     int deathTime = 0;
@@ -134,8 +134,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            towerInfo.GetComponent<TowerInfo>().ShowInfo();
-            towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
+            towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
         }
     }
 

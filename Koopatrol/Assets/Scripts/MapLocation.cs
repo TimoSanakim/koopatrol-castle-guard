@@ -30,8 +30,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             if ((gameObject.tag == "Tower" || gameObject.tag == "PathTower") && wasDragging == false)
             {
-                towerInfo.GetComponent<TowerInfo>().ShowInfo();
-                towerInfo.GetComponent<TowerInfo>().selectedTower = gameObject;
+                towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
             }
             wasDragging = false;
         }
@@ -197,6 +196,23 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
     }
+    //At me
+    GameObject GetEnemy()
+    {
+        GameObject target = null;
+        float lowestDistance = 5;
+        float distance;
+        foreach (GameObject enemy in Map.Enemies)
+        {
+            distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
+            if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance)
+            {
+                target = enemy;
+                lowestDistance = distance;
+            }
+        }
+        return target;
+    }
     //Get based on isNextToPath
     GameObject GetEnemy(int TargetPriority)
     {
@@ -297,22 +313,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 3)
             {
                 target = enemy;
-            }
-        }
-        return target;
-    }
-    GameObject GetEnemyOnPath()
-    {
-        GameObject target = null;
-        float lowestDistance = 5;
-        float distance;
-        foreach (GameObject enemy in Map.Enemies)
-        {
-            distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
-            if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance)
-            {
-                target = enemy;
-                lowestDistance = distance;
             }
         }
         return target;
@@ -453,7 +453,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemyOnPath();
+            GameObject enemy = GetEnemy();
             if (enemy != null)
             {
                 GetComponent<AudioSource>().Play();
