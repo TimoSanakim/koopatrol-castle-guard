@@ -32,7 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
     public string GetDescription()
     {
         if (enemyType == "Toad") return "Enemy type: Toad. Special behavior: None.";
-        if (enemyType == "CaptainToad") return "Enemy type: Captain Toad. Special behavior: None.";
+        if (enemyType == "Captain Toad") return "Enemy type: Captain Toad. Special behavior: None.";
         if (enemyType == "Yoshi") return "Enemy type: Yoshi. Special behavior: Fast movement.";
         if (enemyType == "Luigi") return "Enemy type: Luigi. Special behavior: Scared of bullet blasters.";
         if (enemyType == "Mario") return "Enemy type: Mario. Special behavior: Destroys goomba towers and always removed all castle health when he reaches it.";
