@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e6891bb7c250fbd46881fbe94f54cacc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyOriginal: {instanceID: 0}
+  - startingPosition: {instanceID: 0}
+  - spawnSound: {instanceID: 0}
+  - deathSound: {instanceID: 0}
+  - specialSound: {instanceID: 0}
+  - healthbarfill: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

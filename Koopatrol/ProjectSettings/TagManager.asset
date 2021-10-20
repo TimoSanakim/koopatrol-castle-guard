@@ -3,7 +3,33 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Path
+  - Tower
+  - TowerOption
+  - DraggingTower
+  - CoinCounter
+  - CastleHealth
+  - TowerInfo
+  - Wavemanager
+  - SellButton
+  - TowerDescription
+  - Bullet
+  - Enemy
+  - BulletList
+  - Map
+  - RoundCounter
+  - EnemyList
+  - PathTower
+  - UpgradeButton
+  - Castle
+  - Music
+  - LavaAttack
+  - TargetButton
+  - BossBar
+  - MagicEffect
+  - RangeCircle
   layers:
   - Default
   - TransparentFX
