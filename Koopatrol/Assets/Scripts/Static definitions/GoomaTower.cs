@@ -15,7 +15,7 @@ namespace Assets
         public static string GetDescription(int towerLevel)
         {
             if (towerLevel == 1) return "Goomba tower. Slow shooting tower, can be upgraded to have the Goombas move a little faster";
-            return "Goomba tower+1. Slow shooting tower";
+            return "Goomba tower+1. Slow shooting tower. When enhanced by magic, increases fire rate.";
         }
         public static float GetRange(int towerLevel)
         {
@@ -23,7 +23,9 @@ namespace Assets
         }
         public static float GetCooldown(int towerLevel)
         {
-            return 2;
+            if (towerLevel <= 2) return 2;
+            if (towerLevel >= 3) return 1;
+            return 0;
         }
         public static int GetDamage(int towerLevel)
         {
@@ -32,7 +34,7 @@ namespace Assets
         public static float GetSpeed(int towerLevel)
         {
             if (towerLevel == 1) return 50;
-            if (towerLevel >= 2) return 75;
+            if (towerLevel >= 2) return 100;
             return 0;
         }
         public static int GetUpgradeCost(int towerLevel)
