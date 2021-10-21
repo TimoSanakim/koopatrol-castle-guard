@@ -14,7 +14,7 @@ public class Music : MonoBehaviour
     public AudioClip GameOver;
     public AudioClip Victory;
 
-    string music = "Toads";
+    public string music = "Toads";
     bool musicStopped = false;
 
     // Update is called once per frame
