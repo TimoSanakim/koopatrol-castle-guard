@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BowsersCastle.unity
     guid: 7fe25670fa7b20a4f98fd0df1d0e0fbe
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 7e3002e973d5aa54fbd04ae45ada151c
+  - enabled: 1
+    path: Assets/Scenes/Levelselect.unity
+    guid: 6674675e863d829468240d772b1f8333
   m_configObjects: {}
