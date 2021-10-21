@@ -1623,10 +1623,6 @@ PrefabInstance:
       value: EnemyList
       objectReference: {fileID: 0}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
-      propertyPath: waveDelay
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.size
       value: 23
       objectReference: {fileID: 0}
