@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         MaxHealth = Health;
         Music = GameObject.FindGameObjectWithTag("Music");
         BossBar = GameObject.FindGameObjectWithTag("BossBar");
-        if (GetComponent<EnemyBehaviour>().finalEnemy && GetComponent<EnemyBehaviour>().isClone)
+        if (BossBar != null && GetComponent<EnemyBehaviour>().finalEnemy && GetComponent<EnemyBehaviour>().isClone)
         {
             BossBar.GetComponent<BossBar>().UpdateValue(Health, MaxHealth);
             BossBar.GetComponentInChildren<Text>().text = GetComponent<EnemyBehaviour>().enemyType;

@@ -59,7 +59,6 @@ public class SpawnEnemies : MonoBehaviour
                 enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Paths);
                 Map.Enemies.Add(enemy);
 
-
             }    
         }
     }

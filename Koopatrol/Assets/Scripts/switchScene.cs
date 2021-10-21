@@ -19,12 +19,11 @@ public class switchScene : MonoBehaviour
     }
     public void sceneSwitch()
     {
-        Debug.Log("load scene");
         SceneManager.LoadScene(loadingScene);
+        Map.LoadedLevel = loadingScene;
     }
     public void quitgame()
     {
-        Debug.Log("quit game");
         Application.Quit();
     }
 }

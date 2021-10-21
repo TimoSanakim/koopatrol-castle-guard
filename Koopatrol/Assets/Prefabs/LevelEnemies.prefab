@@ -325,6 +325,15 @@ MonoBehaviour:
     music: 
   enemiesWaveIndex: 0
   waveIndex: 0
+  endlessMode: 0
+  hasSpawnedYoshi: 0
+  hasSpawnedLuigi: 0
+  hasSpawnedMario: 0
+  EndlessToad: {fileID: 1019613950545790236}
+  EndlessCaptainToad: {fileID: 8897662022492212749}
+  EndlessYoshi: {fileID: 7431318410483562999}
+  EndlessLuigi: {fileID: 382680506421326169}
+  EndlessMario: {fileID: 1711985410906455229}
   waveDelay: 20
   currentWaveDelay: 0
   SpawnEnemies: {fileID: 461168777475816565}

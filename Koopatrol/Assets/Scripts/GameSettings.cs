@@ -9,7 +9,7 @@ public class GameSettings : MonoBehaviour
 {
     void Start()
     {
-        Time.timeScale = 0;   
+        Time.timeScale = 0;
     }
     public static void restartGame()
     {
@@ -20,9 +20,23 @@ public class GameSettings : MonoBehaviour
         Map.gameSpeed = 1;
         CastleHealth.castleDead = false;
         Map.Victory = false;
-        SceneManager.LoadScene("BowsersCastle");
-        
-        
+        SceneManager.LoadScene(Map.LoadedLevel);
+
+
+    }
+    public static void backToMenu()
+    {
+        Map.Enemies.Clear();
+        Map.Tiles.Clear();
+        Map.bowserPlaced = false;
+        Map.paused = true;
+        Map.gameSpeed = 1;
+        CastleHealth.castleDead = false;
+        Map.Victory = false;
+        Map.LoadedLevel = "MainMenu";
+        SceneManager.LoadScene(Map.LoadedLevel);
+
+
     }
 
     public void pauseGame(){

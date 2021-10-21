@@ -21,7 +21,7 @@ public class MovingBackOrForeground : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x - 2048f, gameObject.transform.position.y, gameObject.transform.position.z);
         }
-        else if (gameObject.transform.position.x >= HomePos.x - 1024f)
+        else if (gameObject.transform.position.x <= HomePos.x - 1024f)
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x + 2048f, gameObject.transform.position.y, gameObject.transform.position.z);
         }
@@ -29,7 +29,7 @@ public class MovingBackOrForeground : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 2048f, gameObject.transform.position.z);
         }
-        else if (gameObject.transform.position.y >= HomePos.y - 1024f)
+        else if (gameObject.transform.position.y <= HomePos.y - 1024f)
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2048f, gameObject.transform.position.z);
         }

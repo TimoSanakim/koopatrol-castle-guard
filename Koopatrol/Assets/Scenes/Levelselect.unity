@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bowsers Castle
+  m_text: 'Bowser''s Castle
 
 '
   m_isRightToLeft: 0
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f965e7235296c2447b23ae8404cfc030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScene: BowsersCastle
+  loadingScene: FrozenCastle
 --- !u!114 &1105592975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f965e7235296c2447b23ae8404cfc030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScene: BowsersCastle
+  loadingScene: DesertCastle
 --- !u!114 &1764274518
 MonoBehaviour:
   m_ObjectHideFlags: 0
