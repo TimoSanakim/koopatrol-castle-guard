@@ -8,7 +8,7 @@ namespace Assets
 {
     public static class CoinCounter
     {
-        static int CoinCount = 0;
+        public static int CoinCount = 0;
         //Returns true if coin count doesn't become negative
         public static bool ChangeCoinCounter(int increaseAmount, bool forceSound)
         {

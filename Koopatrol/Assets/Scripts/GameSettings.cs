@@ -20,6 +20,7 @@ public class GameSettings : MonoBehaviour
         Map.gameSpeed = 1;
         CastleHealth.castleDead = false;
         Map.Victory = false;
+        Assets.CoinCounter.CoinCount = 0;
         SceneManager.LoadScene(Map.LoadedLevel);
 
 
@@ -33,6 +34,7 @@ public class GameSettings : MonoBehaviour
         Map.gameSpeed = 1;
         CastleHealth.castleDead = false;
         Map.Victory = false;
+        Assets.CoinCounter.CoinCount = 0;
         Map.LoadedLevel = "MainMenu";
         SceneManager.LoadScene(Map.LoadedLevel);
 
