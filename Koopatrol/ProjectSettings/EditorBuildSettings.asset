@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BowsersCastle.unity
+    path: Assets/Scenes/DesertCastle.unity
     guid: 7fe25670fa7b20a4f98fd0df1d0e0fbe
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levelselect.unity
     guid: 6674675e863d829468240d772b1f8333
+  - enabled: 1
+    path: Assets/Scenes/FrozenCastle.unity
+    guid: c0e0ca8544cc0c745b07e2ed8998d681
+  - enabled: 1
+    path: Assets/Scenes/BowsersCastle.unity
+    guid: 5012f96c2173a244b8f5c3775172bba9
   m_configObjects: {}
