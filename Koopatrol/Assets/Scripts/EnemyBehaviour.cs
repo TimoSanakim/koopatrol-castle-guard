@@ -518,7 +518,6 @@ public class EnemyBehaviour : MonoBehaviour
                         moveDirection = 3;
                     }
                 }
-                else moveDirection = -1;
             }
             if (NextPath != null)
             {
@@ -540,6 +539,20 @@ public class EnemyBehaviour : MonoBehaviour
                         gameObject.transform.position = new Vector3(gameObject.transform.position.x - (20 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
                         if (transform.position.x <= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, transform.position.y, transform.position.z);
                         break;
+                }
+            }
+        }
+        else
+        {
+            NextPath = startingPosition.transform;
+            foreach (Transform path in Paths)
+            {
+                if (path.transform.position == NextPath.transform.position)
+                {
+                    PastPaths.Add(path);
+                    Paths.Remove(path);
+                    tornadoTime = 0;
+                    break;
                 }
             }
         }

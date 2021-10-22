@@ -13,13 +13,12 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     public int costs;
     public int damage;
     public float freezetime;
-    public float progress = 0f;
-    public string description = "A last resort attack, dealing 15 damage to all enemies on the map. Can only be used once!";
+    float progress = 0f;
+    public string description;
     public bool isTornado = false;
-    public List<Transform> Paths = new List<Transform>();
-    public List<Transform> PastPaths = new List<Transform>();
-    public Transform NextPath = null;
-    public GameObject startingPosition;
+    List<Transform> Paths = new List<Transform>();
+    List<Transform> PastPaths = new List<Transform>();
+    Transform NextPath = null;
     int moveDirection = -1;
 
 
@@ -181,8 +180,9 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
                         if (Attack.transform.position.x <= NextPath.transform.position.x) Attack.transform.position = new Vector3(NextPath.transform.position.x, Attack.transform.position.y, Attack.transform.position.z);
                         break;
                 }
-
-                foreach (GameObject enemy in Map.Enemies)
+                List<GameObject> enemies = new List<GameObject>();
+                enemies.AddRange(Map.Enemies);
+                foreach (GameObject enemy in enemies)
                 {
                     if (enemy.GetComponent<EnemyBehaviour>().isClone && !enemy.GetComponent<EnemyHealth>().HitByLava && Vector3.Distance(enemy.transform.position, Attack.transform.position) < 50)
                     {
