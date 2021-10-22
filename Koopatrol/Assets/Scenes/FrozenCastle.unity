@@ -37970,6 +37970,15 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 3658054564215510961, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: freezetime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658054564215510961, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: description
+      value: A last resort attack, dealing 5 damage to all enemies on the map and
+        freeing them for 10 seconds. Can only be used once!
+      objectReference: {fileID: 0}
     - target: {fileID: 3658054564473387477, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.2309113

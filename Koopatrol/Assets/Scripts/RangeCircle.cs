@@ -18,7 +18,7 @@ public class RangeCircle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       gameObject.transform.Rotate(0, 0, 0.07f, Space.Self);
+        gameObject.transform.Rotate(0, 0, 0.07f, Space.Self);
         if (isClone)
         {
             if (killNextTime) Destroy(gameObject);

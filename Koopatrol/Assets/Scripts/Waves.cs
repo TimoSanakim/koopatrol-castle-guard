@@ -138,13 +138,12 @@ public class Waves : MonoBehaviour
         }
         else if (hasSpawnedMario && variable >= 7000 && round >= 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !Map.Enemies.Contains(EndlessMario) && totalweight + 25 < maxweight)
         {
-            if (endlessMarioCount <= 3) endlessMarioCount += 1;
+            if (endlessMarioCount <= 2) endlessMarioCount += 1;
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             totalweight += 25;
             stop = true;
             if (endlessMarioCount >= 1) TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             if (endlessMarioCount >= 2) TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
-            if (endlessMarioCount >= 3) TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
         }
         else if (!hasSpawnedLuigi && round == 20 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
         {
