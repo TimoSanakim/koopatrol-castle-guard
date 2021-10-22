@@ -27,10 +27,11 @@ public class Waves : MonoBehaviour
     public GameObject EndlessLuigi;
     public GameObject EndlessMario;
     int lastMusicChange = 0;
+    int round = 1;
 
     public float waveDelay;
     public float currentWaveDelay;
-    
+
     public GameObject SpawnEnemies;
     GameObject RoundCounter;
     GameObject Music;
@@ -40,7 +41,7 @@ public class Waves : MonoBehaviour
         currentWaveDelay = waveDelay;
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
         Music = GameObject.FindGameObjectWithTag("Music");
-        RoundCounter.GetComponent<Text>().text = "Round: " + (waveIndex + 1);
+        RoundCounter.GetComponent<Text>().text = "Round: " + round;
     }
 
     // Update is called once per frame
@@ -53,8 +54,13 @@ public class Waves : MonoBehaviour
             if (currentWaveDelay == 0)
             {
                 SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = false;
-                waveIndex++;
-                if (waveIndex <= 9998) RoundCounter.GetComponent<Text>().text = "Round: " + (waveIndex + 1);
+                round += 1;
+                if (waveIndex == 0) waveIndex++;
+                else TheWaves.RemoveAt(0);
+                if (round <= 9998)
+                {
+                    RoundCounter.GetComponent<Text>().text = "Round: " + round;
+                }
                 else RoundCounter.GetComponent<Text>().text = "Round: ????";
                 enemiesWaveIndex = 0;
                 currentWaveDelay = waveDelay;
@@ -68,8 +74,11 @@ public class Waves : MonoBehaviour
                 TheWaves.Add(new serializableClass());
                 TheWaves[TheWaves.Count - 1].wave = new List<GameObject>();
                 TheWaves[TheWaves.Count - 1].music = "";
-                AddEnemy();
-                if (TheWaves[TheWaves.Count - 1].music == "") {
+                int maxweight = round + 10;
+                if (maxweight > 100) maxweight = 100;
+                AddEnemy(0, maxweight);
+                if (TheWaves[TheWaves.Count - 1].music == "")
+                {
                     lastMusicChange += 1;
                     if (lastMusicChange >= 25)
                     {
@@ -101,28 +110,66 @@ public class Waves : MonoBehaviour
 
     }
 
-    void timeBetweenWaves(){
+    void timeBetweenWaves()
+    {
         SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
-        if(currentWaveDelay > 0){
-                currentWaveDelay -= Time.deltaTime;
+        if (currentWaveDelay > 0)
+        {
+            currentWaveDelay -= Time.deltaTime;
         }
-        else{
+        else
+        {
             currentWaveDelay = 0;
         }
 
     }
-    void AddEnemy()
+    void AddEnemy(int weight, int maxweight)
     {
+        int totalweight = weight;
         bool stop = false;
         int variable = Map.randomizer.Next(0, 8000);
-        if (hasSpawnedLuigi && TheWaves.Count == 30 && !hasSpawnedMario && TheWaves[TheWaves.Count - 1].wave.Count == 0) { TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject); stop = true; }
-        else if (hasSpawnedLuigi && variable >= 7999 && TheWaves.Count >= 30 && hasSpawnedMario && TheWaves[TheWaves.Count - 1].wave.Count == 0) { TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject); stop = true; }
-        else if (hasSpawnedYoshi && TheWaves.Count == 20 && !hasSpawnedLuigi && TheWaves[TheWaves.Count - 1].wave.Count == 0) TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
-        else if (hasSpawnedYoshi && variable >= 7700 && TheWaves.Count >= 20 && hasSpawnedLuigi) TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
-        else if (TheWaves.Count == 10 && !hasSpawnedYoshi && TheWaves[TheWaves.Count - 1].wave.Count == 0) TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
-        else if (variable >= 7500 && TheWaves.Count >= 10 && hasSpawnedYoshi) TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
-        else if (variable >= 6000 && TheWaves.Count >= 3) TheWaves[TheWaves.Count - 1].wave.Add(EndlessCaptainToad.gameObject);
-        else TheWaves[TheWaves.Count - 1].wave.Add(EndlessToad.gameObject);
+        if (!hasSpawnedMario && round == 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !Map.Enemies.Contains(EndlessMario))
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
+            totalweight += 100;
+            stop = true;
+        }
+        else if (hasSpawnedMario && variable >= 7999 && round >= 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !Map.Enemies.Contains(EndlessMario) && totalweight + 100 < maxweight)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
+            totalweight += 100;
+            stop = true;
+        }
+        else if (!hasSpawnedLuigi && round == 20 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
+            totalweight += 30;
+        }
+        else if (hasSpawnedLuigi && variable >= 7700 && round >= 20 && totalweight + 30 < maxweight)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
+            totalweight += 30;
+        }
+        else if (!hasSpawnedYoshi && round == 10 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
+            totalweight += 15;
+        }
+        else if (hasSpawnedYoshi && variable >= 7500 && round >= 10 && totalweight + 15 < maxweight)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
+            totalweight += 15;
+        }
+        else if (variable >= 6000 && round >= 3 && totalweight + 3 < maxweight)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessCaptainToad.gameObject);
+            totalweight += 3;
+        }
+        else
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessToad.gameObject);
+            totalweight += 1;
+        }
         if (TheWaves[TheWaves.Count - 1].wave.Count == 1)
         {
             if (TheWaves[TheWaves.Count - 1].wave[0].GetComponent<EnemyBehaviour>().enemyType == "Yoshi" && !hasSpawnedYoshi)
@@ -144,6 +191,6 @@ public class Waves : MonoBehaviour
                 stop = true;
             }
         }
-        if (!stop && TheWaves[TheWaves.Count - 1].wave.Count <= 60 && Map.randomizer.Next(0, 20) >= 1) AddEnemy();
+        if (!stop && TheWaves[TheWaves.Count - 1].wave.Count <= 60 && (Map.randomizer.Next(0, 20) >= 1 && weight < maxweight || weight < 10)) AddEnemy(totalweight, maxweight);
     }
 }
