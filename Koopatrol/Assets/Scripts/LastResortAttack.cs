@@ -12,6 +12,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     bool used = false;
     public int costs;
     public int damage;
+    public float freezetime;
     public float progress = 0f;
     public string description = "A last resort attack, dealing 15 damage to all enemies on the map. Can only be used once!";
 
@@ -53,6 +54,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
                 {
                     enemy.GetComponent<EnemyHealth>().HitByLava = true;
                     enemy.GetComponent<EnemyHealth>().Hurt(damage);
+                    enemy.GetComponent<EnemyBehaviour>().Freeze(10);
                 }
             }
         }
