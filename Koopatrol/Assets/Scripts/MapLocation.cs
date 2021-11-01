@@ -23,10 +23,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     Sprite originalImage;
     float cooldown = 0;
     bool wasDragging = false;
+    public bool highlight = false;
+    int highlightTime = 0;
     public bool towerBuffed = false;
     public int TargetPriority = 0;
     GameObject CooldownCounter;
     GameObject MyCooldown = null;
+    Color originalColor;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -44,9 +47,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         if (towerType == "Bowser") Map.bowserPlaced = false;
         if (tag != "PathTower" && tag != "Path") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         gameObject.GetComponent<Image>().sprite = null;
-        Color temp = Color.white;
-        temp.a = 0f;
-        gameObject.GetComponent<Image>().color = temp;
+        gameObject.GetComponent<Image>().color = originalColor;
         towerType = "none";
         cooldown = 0;
         towerLevel = 0;
@@ -125,6 +126,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         magicEffect = GameObject.FindGameObjectWithTag("MagicEffect");
         CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
         originalImage = gameObject.GetComponent<Image>().sprite;
+        originalColor = gameObject.GetComponent<Image>().color;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
@@ -178,6 +180,21 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     // Update is called once per frame
     void Update()
     {
+        if (highlight)
+        {
+            if (highlightTime == 0) highlightTime = 120;
+            if (highlightTime >= 91) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r - 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b - 0.03));
+            if (highlightTime >= 61 && highlightTime <= 90) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r + 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b + 0.03));
+            if (highlightTime >= 31 && highlightTime <= 60) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r - 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b - 0.03));
+            if (highlightTime >= 1 && highlightTime <= 30) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r + 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b + 0.03));
+            highlightTime -= 1;
+            if (highlightTime == 0)
+            {
+                highlight = false;
+                if (gameObject.tag == "Path") gameObject.GetComponent<Image>().color = originalColor;
+                else gameObject.GetComponent<Image>().color = new Color(1, 1, 1);
+            }
+        }
         if (towerBuffed && towerType != "MagikoopaTower")
         {
             towerLevel += 1;
