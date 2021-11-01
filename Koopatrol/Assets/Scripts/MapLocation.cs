@@ -25,6 +25,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     bool wasDragging = false;
     public bool towerBuffed = false;
     public int TargetPriority = 0;
+    GameObject CooldownCounter;
+    GameObject MyCooldown = null;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -60,6 +62,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             gameObject.tag = "Ground";
         }
         gameObject.GetComponent<Image>().sprite = originalImage;
+        Destroy(MyCooldown);
+        MyCooldown = null;
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -95,8 +99,21 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         cooldown = 1;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
         if (towerType == "Bowser") Map.bowserPlaced = true;
+        if (hasCooldownCounter()) MyCooldown = CooldownCounter.GetComponent<Cooldown>().CreateCooldownCounter(gameObject);
     }
-
+    bool hasCooldownCounter()
+    {
+        switch (towerType)
+        {
+            case "FreezieTower":
+                return true;
+            case "Thwomp":
+                return true;
+            case "PiranhaPlant":
+                return true;
+        }
+        return false;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -106,6 +123,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
         magicEffect = GameObject.FindGameObjectWithTag("MagicEffect");
+        CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
         originalImage = gameObject.GetComponent<Image>().sprite;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
