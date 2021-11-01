@@ -5,7 +5,11 @@ using UnityEngine;
 public class tutorial : MonoBehaviour
 { 
     public void tutorialscript(){
-        Destroy(gameObject);
+        Map.SkippedTutorial = true;
+    }
+    void Update()
+    {
+        if (Map.SkippedTutorial) Destroy(gameObject);
     }
 
 }

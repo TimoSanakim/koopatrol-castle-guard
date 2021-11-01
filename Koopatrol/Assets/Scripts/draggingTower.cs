@@ -14,6 +14,7 @@ public class draggingTower : MonoBehaviour
     Color valid = new Color(0.3f, 1f, 0.3f, 0.5f);
     Color notvalid;
     Color notvalidpath;
+    bool wasDragging;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +26,16 @@ public class draggingTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!dragging)
+        if (!dragging && wasDragging)
         {
             foreach (GameObject spot in Map.Tiles)
             {
                 if (spot.tag == "Ground") spot.GetComponent<Image>().color = notvalid;
                 else if (spot.tag == "Path") spot.GetComponent<Image>().color = notvalidpath;
             }
+            wasDragging = false;
         }
-        else
+        else if (dragging)
         {
             if (validPosition == Assets.ValidPosition.AnyGround)
             {
@@ -56,6 +58,7 @@ public class draggingTower : MonoBehaviour
                     if (spot.tag == "Ground" && spot.GetComponent<MapLocation>().isNextToPath != 0) spot.GetComponent<Image>().color = valid;
                 }
             }
+            wasDragging = true;
         }
     }
 }

@@ -44,12 +44,12 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
                     playedDeathSound = true;
                 }
                 gameObject.transform.Rotate(0, 0, -3, Space.Self);
-                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 1f));
+                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x));
             }
             else if (deathTime >= 100 && deathTime <= 240)
             {
                 gameObject.transform.Rotate(0, 0, -3, Space.Self);
-                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 1f));
+                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x));
             }
             else if (deathTime >= 240)
             {
