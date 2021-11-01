@@ -101,9 +101,9 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void Freeze(float seconds)
+    public void Freeze(float seconds, bool force)
     {
-        if (frozenTime == 0)
+        if (frozenTime == 0 || force)
         {
             frozenTime = 2 + seconds;
         }
@@ -112,9 +112,13 @@ public class EnemyBehaviour : MonoBehaviour
             frozenTime = 2;
         }
     }
-    public void Stagger(float duration)
+    public void Stagger(float duration, bool force)
     {
         if (hitTime == 0)
+        {
+            hitTime = duration;
+        }
+        else if (hitTime <= 0.1 && force)
         {
             hitTime = duration;
         }
@@ -165,11 +169,14 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
-                            tower.GetComponent<MapLocation>().highlight = true;
-                            foreach (GameObject path in paths)
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
                             {
-                                path.GetComponent<MapLocation>().highlight = true;
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
                             }
                             break;
                         }
@@ -193,11 +200,14 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
-                            tower.GetComponent<MapLocation>().highlight = true;
-                            foreach (GameObject path in paths)
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
                             {
-                                path.GetComponent<MapLocation>().highlight = true;
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
                             }
                             break;
                         }
@@ -221,11 +231,14 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
-                            tower.GetComponent<MapLocation>().highlight = true;
-                            foreach (GameObject path in paths)
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
                             {
-                                path.GetComponent<MapLocation>().highlight = true;
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
                             }
                             break;
                         }
@@ -249,11 +262,14 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
-                            tower.GetComponent<MapLocation>().highlight = true;
-                            foreach (GameObject path in paths)
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
                             {
-                                path.GetComponent<MapLocation>().highlight = true;
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
                             }
                             break;
                         }

@@ -30,6 +30,7 @@ TagManager:
   - BossBar
   - MagicEffect
   - RangeCircle
+  - CooldownCounter
   layers:
   - Default
   - TransparentFX

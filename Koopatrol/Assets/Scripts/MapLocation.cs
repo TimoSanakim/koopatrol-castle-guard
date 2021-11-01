@@ -30,6 +30,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     GameObject CooldownCounter;
     GameObject MyCooldown = null;
     Color originalColor;
+    Vector3 originalPosition;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -46,6 +47,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (towerType == "Bowser") Map.bowserPlaced = false;
         if (tag != "PathTower" && tag != "Path") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        transform.position = originalPosition;
         gameObject.GetComponent<Image>().sprite = null;
         gameObject.GetComponent<Image>().color = originalColor;
         towerType = "none";
@@ -127,6 +129,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
         originalImage = gameObject.GetComponent<Image>().sprite;
         originalColor = gameObject.GetComponent<Image>().color;
+        originalPosition = gameObject.transform.position;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
@@ -370,6 +373,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().power = power;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.position);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(int image, int power, float speed, Vector3 targetPosition)
@@ -382,6 +386,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().power = power;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(targetPosition);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(int image, float freezeTime, float speed, GameObject homingTarget)
@@ -394,6 +399,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().freezeAmount = freezeTime;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.position);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(int image, float freezeTime, float speed, Vector3 targetPosition)
@@ -406,6 +412,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().freezeAmount = freezeTime;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(targetPosition);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void GoombaTower()
@@ -416,7 +423,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             if (enemy != null)
             {
                 cooldown = Assets.GoomaTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.GetDamage(towerLevel), Assets.GoomaTower.GetSpeed(towerLevel), enemy.transform.position);
+                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.GetDamage(towerLevel), Assets.GoomaTower.GetSpeed(towerLevel), enemy);
             }
         }
     }
@@ -428,7 +435,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             if (enemy != null)
             {
                 cooldown = Assets.KoopaTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.GetDamage(towerLevel), Assets.KoopaTower.GetSpeed(towerLevel), enemy.transform.position);
+                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.GetDamage(towerLevel), Assets.KoopaTower.GetSpeed(towerLevel), enemy);
             }
         }
     }
@@ -440,22 +447,24 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             if (enemy != null)
             {
                 cooldown = Assets.FreezieTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.GetFreezeTime(towerLevel), Assets.FreezieTower.GetSpeed(towerLevel), enemy.transform.position);
+                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.GetFreezeTime(towerLevel), Assets.FreezieTower.GetSpeed(towerLevel), enemy);
             }
         }
     }
     void Thwomp()
     {
+        if (cooldown > 0 && cooldown <= 1) gameObject.transform.position = new Vector3(gameObject.transform.position.x, Convert.ToSingle(gameObject.transform.position.y + (10*Time.deltaTime)), gameObject.transform.position.z);
         if (cooldown == 0)
         {
             foreach (GameObject enemy in Map.Enemies)
             {
                 if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < Assets.Thwomp.GetRange(towerLevel))
                 {
+                    gameObject.transform.position = originalPosition;
                     if (cooldown == 0) GetComponent<AudioSource>().Play();
                     cooldown = Assets.Thwomp.GetCooldown(towerLevel);
-                    enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.Thwomp.GetStaggerTime(towerLevel));
-                    enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
+                    enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.Thwomp.GetStaggerTime(towerLevel), true);
+                    enemy.GetComponent<EnemyBehaviour>().Freeze(-1, false);
                 }
             }
         }
@@ -501,8 +510,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 GetComponent<AudioSource>().Play();
                 cooldown = Assets.PiranhaPlant.GetCooldown(towerLevel);
-                enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.PiranhaPlant.GetStaggerTime(towerLevel));
-                enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
+                enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.PiranhaPlant.GetStaggerTime(towerLevel), true);
+                enemy.GetComponent<EnemyBehaviour>().Freeze(-1, false);
                 enemy.GetComponent<EnemyHealth>().Hurt(Assets.PiranhaPlant.GetDamage(towerLevel));
             }
         }

@@ -79,7 +79,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     public void Hurt(int damage)
     {
         Health -= damage;
-        gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f);
+        gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f, false);
         if (Health <= 0)
         {
             death();

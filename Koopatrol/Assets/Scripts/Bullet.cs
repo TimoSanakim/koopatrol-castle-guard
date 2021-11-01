@@ -16,11 +16,7 @@ namespace Assets
         public float freezeAmount = 0;
         public Sprite[] bulletSprites;
         // Use this for initialization
-        void Start()
-        {
-            if (homingTarget == null && isClone) LookAt(targetPosition);
-        }
-        void LookAt(Vector3 targetPosition)
+        public void LookAt(Vector3 targetPosition)
         {
             Vector3 difference = targetPosition - gameObject.transform.position;
             float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
@@ -39,7 +35,7 @@ namespace Assets
                     if (Vector3.Distance(enemy.transform.position, gameObject.transform.position) <= 20)
                     {
                         if (power != 0) enemy.GetComponent<EnemyHealth>().Hurt(power);
-                        if (freezeAmount != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezeAmount);
+                        if (freezeAmount != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezeAmount, false);
                         Destroy(gameObject);
                         break;
                     }

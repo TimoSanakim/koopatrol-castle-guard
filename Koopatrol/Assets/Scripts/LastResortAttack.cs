@@ -64,7 +64,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
                 {
                     enemy.GetComponent<EnemyHealth>().HitByLava = true;
                     enemy.GetComponent<EnemyHealth>().Hurt(damage);
-                    if (freezetime != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezetime);
+                    if (freezetime != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezetime, true);
                 }
             }
         }

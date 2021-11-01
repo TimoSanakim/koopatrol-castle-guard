@@ -31,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 382680506421326169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 816331298612197031}
   m_Father: {fileID: 5218556861691102204}
@@ -98,6 +98,8 @@ MonoBehaviour:
   finalEnemy: 0
   isClone: 0
   Paths: []
+  PastPaths: []
+  NextPath: {fileID: 0}
   startingPosition: {fileID: 0}
   moveSpeed: 30
   spawnSound: {fileID: 8300000, guid: 4b7aeb7c2ea63ef44b330e569e022d7d, type: 3}
@@ -368,7 +370,7 @@ RectTransform:
   m_GameObject: {fileID: 1019613950545790236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 8447871443380898156}
   m_Father: {fileID: 5218556861691102204}
@@ -430,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 2
-  Health: 2
+  Health: 3
   towerInfo: {fileID: 0}
   MaxHealth: 0
   dying: 0
@@ -453,6 +455,8 @@ MonoBehaviour:
   finalEnemy: 0
   isClone: 0
   Paths: []
+  PastPaths: []
+  NextPath: {fileID: 0}
   startingPosition: {fileID: 0}
   moveSpeed: 30
   spawnSound: {fileID: 0}
@@ -597,7 +601,7 @@ RectTransform:
   m_GameObject: {fileID: 1711985410906455229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3724755209987839543}
   m_Father: {fileID: 5218556861691102204}
@@ -664,6 +668,8 @@ MonoBehaviour:
   finalEnemy: 0
   isClone: 0
   Paths: []
+  PastPaths: []
+  NextPath: {fileID: 0}
   startingPosition: {fileID: 0}
   moveSpeed: 30
   spawnSound: {fileID: 8300000, guid: a1c77c8c2c6c4204ebe41494661e20b6, type: 3}
@@ -681,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e256c1ce678ea4e91dee0261861456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCoin: 3500
+  enemyCoin: 700
   Health: 3500
   towerInfo: {fileID: 0}
   MaxHealth: 0
@@ -1195,6 +1201,8 @@ MonoBehaviour:
   finalEnemy: 0
   isClone: 0
   Paths: []
+  PastPaths: []
+  NextPath: {fileID: 0}
   startingPosition: {fileID: 0}
   moveSpeed: 45
   spawnSound: {fileID: 0}
@@ -1213,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 50
-  Health: 50
+  Health: 60
   towerInfo: {fileID: 0}
   MaxHealth: 0
   dying: 0
@@ -1659,6 +1667,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d0ed914a46c1ee94a82dcd44414d88b9, type: 3}
   GameOver: {fileID: 8300000, guid: 0535a084f8e39a945b077d162937774a, type: 3}
   Victory: {fileID: 8300000, guid: cf870a17b237b974cbcdfc56331a68be, type: 3}
+  music: Toads
 --- !u!1 &8897662022492212749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,7 +1699,7 @@ RectTransform:
   m_GameObject: {fileID: 8897662022492212749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 3325548833568038512}
   m_Father: {fileID: 5218556861691102204}
@@ -1757,6 +1766,8 @@ MonoBehaviour:
   finalEnemy: 0
   isClone: 0
   Paths: []
+  PastPaths: []
+  NextPath: {fileID: 0}
   startingPosition: {fileID: 0}
   moveSpeed: 30
   spawnSound: {fileID: 0}
@@ -1775,7 +1786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 10
-  Health: 10
+  Health: 15
   towerInfo: {fileID: 0}
   MaxHealth: 0
   dying: 0
