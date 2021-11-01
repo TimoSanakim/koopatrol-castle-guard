@@ -124,21 +124,27 @@ public class Waves : MonoBehaviour
         }
 
     }
+    bool MarioExists() {
+        foreach (GameObject enemy in Map.Enemies)
+        {
+            if (enemy.GetComponent<EnemyBehaviour>().enemyType == "Mario") return true;
+        }
+        return false;
+    }
     void AddEnemy(int weight, int maxweight)
     {
         int totalweight = weight;
         bool stop = false;
         int variable = Map.randomizer.Next(0, 8000);
-        if (!hasSpawnedMario && round == 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !Map.Enemies.Contains(EndlessMario))
+        if (!hasSpawnedMario && round == 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !MarioExists())
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             totalweight += 25;
             stop = true;
-            endlessMarioCount += 1;
         }
-        else if (hasSpawnedMario && variable >= 7000 && round >= 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !Map.Enemies.Contains(EndlessMario) && totalweight + 25 < maxweight)
+        else if (hasSpawnedMario && variable >= 7000 && round >= 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !MarioExists() && totalweight + 25 < maxweight)
         {
-            if (endlessMarioCount <= 2) endlessMarioCount += 1;
+            if (endlessMarioCount <= 2) endlessMarioCount += 2;
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             totalweight += 25;
             stop = true;
