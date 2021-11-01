@@ -21,7 +21,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     //0 = any other situation
     public int isNextToPath = 0;
     Sprite originalImage;
-    float cooldown = 0;
+    public float cooldown = 0;
     bool wasDragging = false;
     public bool highlight = false;
     int highlightTime = 0;
