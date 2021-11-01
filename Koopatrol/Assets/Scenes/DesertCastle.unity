@@ -36698,6 +36698,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2137302707}
     m_Modifications:
+    - target: {fileID: 3658054563472571414, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Text
+      value: '500
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3658054564215510961, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: damage
       value: 5
@@ -36711,6 +36717,10 @@ PrefabInstance:
       value: A last resort attack, dealing 5 damage to all enemies on the map, and
         pushing them back. Can only be used once!
       objectReference: {fileID: 0}
+    - target: {fileID: 3658054564215510967, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3a06053c0502004faa0512158ffd05f, type: 3}
     - target: {fileID: 3658054564473387477, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.2309113

@@ -77,7 +77,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
         else if (used && isTornado && progress != 20)
         {
             Move();
-            Attack.transform.Rotate(0, 0, 1f, Space.Self);
+            Attack.transform.Rotate(0, 0, -2f, Space.Self);
         }
     }
 
