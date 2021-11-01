@@ -37859,7 +37859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658054564473387477, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.230896
+      value: 6.2309113
       objectReference: {fileID: 0}
     - target: {fileID: 3658054564641987467, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_Name
@@ -37956,6 +37956,12 @@ PrefabInstance:
     - target: {fileID: 3658054564999976298, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_FillAmount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514765838637093416, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Text
+      value: 'Pause Game
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 8206563236068491567, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_AnchoredPosition.y

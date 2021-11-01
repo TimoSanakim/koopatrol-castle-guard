@@ -53,6 +53,21 @@ public class GameSettings : MonoBehaviour
             gameObject.GetComponentInChildren<Text>().text = "Pause Game";
         }
     }
+
+       public void Startgame(){
+        if(!Map.paused){
+            Map.paused = true;
+            Time.timeScale = 0;
+            gameObject.GetComponentInChildren<Text>().text = "Resume Game";
+            
+        }
+        else{
+            Map.paused = false;
+            Time.timeScale = Map.gameSpeed;
+            gameObject.GetComponentInChildren<Text>().text = "Pause Game";
+            Destroy(gameObject);
+        }
+    }
     public void changeSpeed()
     {
         Map.gameSpeed = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
