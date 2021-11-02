@@ -41,31 +41,20 @@ public class GameSettings : MonoBehaviour
 
     }
 
-    public void pauseGame(){
-        if(!Map.paused){
+    public void pauseGame()
+    {
+        if (!Map.paused)
+        {
             Map.paused = true;
             Time.timeScale = 0;
             gameObject.GetComponentInChildren<Text>().text = "Resume Game";
         }
-        else{
+        else
+        {
             Map.paused = false;
             Time.timeScale = Map.gameSpeed;
             gameObject.GetComponentInChildren<Text>().text = "Pause Game";
-        }
-    }
-
-       public void Startgame(){
-        if(!Map.paused){
-            Map.paused = true;
-            Time.timeScale = 0;
-            gameObject.GetComponentInChildren<Text>().text = "Resume Game";
-            
-        }
-        else{
-            Map.paused = false;
-            Time.timeScale = Map.gameSpeed;
-            gameObject.GetComponentInChildren<Text>().text = "Pause Game";
-            Destroy(gameObject);
+            Destroy(GameObject.FindGameObjectWithTag("Startbutton"));
         }
     }
     public void changeSpeed()

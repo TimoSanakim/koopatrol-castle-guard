@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     bool used = false;
     public int costs;
     public int damage;
+    public int damageperc;
     public float freezetime;
     float progress = 0f;
     public string description;
@@ -63,7 +65,8 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
                 if (enemy.GetComponent<EnemyBehaviour>().isClone && !enemy.GetComponent<EnemyHealth>().HitByLava && Vector3.Distance(enemy.transform.position, Attack.transform.position) <= 50 * Attack.transform.localScale.x && Vector3.Distance(enemy.transform.position, Attack.transform.position) >= 50 * (Attack.transform.localScale.x - (10 * Time.deltaTime)) - 10)
                 {
                     enemy.GetComponent<EnemyHealth>().HitByLava = true;
-                    enemy.GetComponent<EnemyHealth>().Hurt(damage);
+                    if (damage != 0) enemy.GetComponent<EnemyHealth>().Hurt(damage);
+                    else enemy.GetComponent<EnemyHealth>().Hurt(Convert.ToInt32(Math.Ceiling(Convert.ToDouble(enemy.GetComponent<EnemyHealth>().MaxHealth) / 100 * damageperc)));
                     if (freezetime != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezetime, true);
                 }
             }

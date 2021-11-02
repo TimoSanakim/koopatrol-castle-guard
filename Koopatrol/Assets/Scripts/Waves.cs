@@ -144,7 +144,7 @@ public class Waves : MonoBehaviour
         }
         else if (hasSpawnedMario && variable >= 7000 && round >= 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !MarioExists() && totalweight + 25 < maxweight)
         {
-            if (endlessMarioCount <= 2) endlessMarioCount += 2;
+            if (endlessMarioCount <= 3) endlessMarioCount += 1;
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             totalweight += 25;
             stop = true;

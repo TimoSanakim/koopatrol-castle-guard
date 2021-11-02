@@ -76,7 +76,7 @@ public class TowerInfo : MonoBehaviour
     public void HideInfo()
     {
         if (slide == 0 || slide == 1) slide = 2;
-        if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
+        if (selectedTower != null && selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
     }
 
     public void ShowInfo(GameObject selectedObject)
@@ -96,6 +96,7 @@ public class TowerInfo : MonoBehaviour
         {
             Assets.CoinCounter.ChangeCoinCounter(GetSellCost(), true);
             selectedTower.GetComponent<MapLocation>().DestroyTower();
+            selectedTower = null;
             HideInfo();
         }
     }

@@ -31,6 +31,7 @@ TagManager:
   - MagicEffect
   - RangeCircle
   - CooldownCounter
+  - Startbutton
   layers:
   - Default
   - TransparentFX

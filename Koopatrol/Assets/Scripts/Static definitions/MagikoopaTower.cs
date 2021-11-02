@@ -15,7 +15,7 @@ namespace Assets
         }
         public static float GetRange(int towerLevel)
         {
-            return 110;
+            return 111;
         }
         public static int GetUpgradeCost(int towerLevel)
         {

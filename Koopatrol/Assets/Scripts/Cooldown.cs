@@ -35,6 +35,8 @@ public class Cooldown : MonoBehaviour
             cooldowntimer = gameObject.GetComponentInParent<MapLocation>().cooldown;
             if (cooldowntimer == 0) cooldowntimer = maxcooldown;
             cooldowncent = cooldowntimer / maxcooldown;
+            if (cooldowntimer == maxcooldown) gameObject.GetComponent<CanvasGroup>().alpha = 0f;
+            else gameObject.GetComponent<CanvasGroup>().alpha = 1f;
         }
     }
 

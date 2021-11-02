@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 300
-  Health: 300
+  Health: 350
   towerInfo: {fileID: 0}
   MaxHealth: 0
   dying: 0
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 700
-  Health: 3500
+  Health: 6000
   towerInfo: {fileID: 0}
   MaxHealth: 0
   dying: 0
@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCoin: 10
-  Health: 15
+  Health: 12
   towerInfo: {fileID: 0}
   MaxHealth: 0
   dying: 0

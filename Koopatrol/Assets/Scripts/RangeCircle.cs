@@ -32,7 +32,7 @@ public class RangeCircle : MonoBehaviour
     }
 float GetRangeTower()
     {
-        if (towerInfo.GetComponent<TowerInfo>().selectedTower.transform.childCount == 1)
+        if (towerInfo.GetComponent<TowerInfo>().selectedTower.transform.GetComponentInChildren<MagicEffect>())
         {
             switch (towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerType)
             {

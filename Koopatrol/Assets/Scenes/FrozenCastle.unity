@@ -349,6 +349,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &28369217
@@ -571,7 +573,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2137302707}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -910,6 +912,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &59355185
@@ -1101,6 +1105,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &70383125
@@ -1292,6 +1298,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &77879409
@@ -1483,6 +1491,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &82503638
@@ -1805,7 +1815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[2].wave.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[3].wave.Array.size
@@ -1982,15 +1992,15 @@ PrefabInstance:
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[2].wave.Array.data[3]
       value: 
-      objectReference: {fileID: 1068522269}
+      objectReference: {fileID: 976962696}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[2].wave.Array.data[4]
       value: 
-      objectReference: {fileID: 1068522269}
+      objectReference: {fileID: 976962696}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[2].wave.Array.data[5]
       value: 
-      objectReference: {fileID: 1068522269}
+      objectReference: {fileID: 976962696}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[2].wave.Array.data[6]
       value: 
@@ -4369,7 +4379,7 @@ PrefabInstance:
       objectReference: {fileID: 1229915055}
     - target: {fileID: 7137360707363868277, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: Health
-      value: 1500
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 7137360707363868277, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: enemyCoin
@@ -4624,6 +4634,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &125140303
@@ -4815,6 +4827,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &129109998
@@ -5006,6 +5020,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &139954965
@@ -5272,6 +5288,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &150707109
@@ -5613,6 +5631,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &201935881
@@ -5804,6 +5824,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &204547066
@@ -6295,6 +6317,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &215963423
@@ -7099,6 +7123,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &271097322
@@ -7445,6 +7471,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &279938994
@@ -7786,6 +7814,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &322799234
@@ -7900,6 +7930,109 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325149508}
+  m_CullTransparentMesh: 1
+--- !u!1 &330262897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 330262898}
+  - component: {fileID: 330262902}
+  - component: {fileID: 330262901}
+  - component: {fileID: 330262900}
+  - component: {fileID: 330262899}
+  m_Layer: 0
+  m_Name: Foreground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &330262898
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330262897}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2137302707}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10000, y: 10000}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &330262899
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330262897}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &330262900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330262897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247fe5477a5c12e4794a71aa5cb06e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveRight: 0.5
+  moveUp: -1
+--- !u!114 &330262901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330262897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 003fa9a941a105e4ea22acbe40a9b932, type: 3}
+  m_Type: 2
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &330262902
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330262897}
   m_CullTransparentMesh: 1
 --- !u!1 &346563683
 GameObject:
@@ -8052,6 +8185,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &346563687
@@ -8393,6 +8528,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &371456424
@@ -8734,6 +8871,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &413927676
@@ -9080,6 +9219,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &454099513
@@ -9271,6 +9412,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &467562717
@@ -9462,6 +9605,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &471617688
@@ -9653,6 +9798,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &475026662
@@ -9844,6 +9991,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &483307152
@@ -10035,6 +10184,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &515592912
@@ -10609,6 +10760,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &564632742
@@ -10800,6 +10953,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &568055668
@@ -10991,6 +11146,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &574775239
@@ -11182,6 +11339,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &599851265
@@ -11373,6 +11532,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &603523186
@@ -11789,6 +11950,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &620292788
@@ -11980,6 +12143,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &623201386
@@ -12171,6 +12336,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &632633368
@@ -12592,6 +12759,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &670599928
@@ -12783,6 +12952,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &687404928
@@ -12974,6 +13145,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &690036240
@@ -13245,6 +13418,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &709269817
@@ -13436,6 +13611,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &713242166
@@ -13627,6 +13804,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &713259502
@@ -13818,6 +13997,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &713361730
@@ -14084,6 +14265,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &734181826
@@ -14275,6 +14458,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &741381425
@@ -14541,6 +14726,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &744070142
@@ -14732,6 +14919,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &746144568
@@ -14998,6 +15187,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &759712014
@@ -15189,6 +15380,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &774486458
@@ -15455,6 +15648,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &802208031
@@ -15721,6 +15916,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &809318385
@@ -15912,6 +16109,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &811287757
@@ -16103,6 +16302,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &811728444
@@ -16369,6 +16570,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &843494301
@@ -16560,6 +16763,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &866005375
@@ -16751,6 +16956,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &869395941
@@ -17056,6 +17263,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &876606665
@@ -17247,6 +17456,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &879322484
@@ -17387,7 +17598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6582090139264447245, guid: 7cf3131679afd02499af7eb8cece2b6e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -17614,6 +17825,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &902786053
@@ -17805,6 +18018,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &908019095
@@ -18071,6 +18286,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &944463769
@@ -18262,6 +18479,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &944499063
@@ -18453,6 +18672,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &945530823
@@ -18884,6 +19105,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &973781901
@@ -19455,6 +19678,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1007321690
@@ -20034,6 +20259,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1055811081
@@ -20225,6 +20452,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1060959517
@@ -20286,7 +20515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441128836359308801, guid: 3f01b84eda47eb04393f5e3ec4737678, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4605562160217788652, guid: 3f01b84eda47eb04393f5e3ec4737678, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -20626,6 +20855,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1074725701
@@ -20817,6 +21048,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1074955420
@@ -21008,6 +21241,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1077306809
@@ -21349,6 +21584,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1099444509
@@ -21540,6 +21777,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1107252908
@@ -21731,6 +21970,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1111089060
@@ -22134,6 +22375,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1135035757
@@ -22325,6 +22568,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1141539062
@@ -22516,6 +22761,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1144832795
@@ -22707,6 +22954,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1156814987
@@ -22898,6 +23147,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1161356807
@@ -23089,6 +23340,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1165846345
@@ -23430,6 +23683,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1197529118
@@ -23771,6 +24026,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1203885078
@@ -24112,6 +24369,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1211814657
@@ -24303,6 +24562,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1214899465
@@ -24644,6 +24905,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1233087000
@@ -24835,6 +25098,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1233372871
@@ -25026,6 +25291,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1245072858
@@ -25217,6 +25484,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1248743318
@@ -25413,6 +25682,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1271673032
@@ -25829,6 +26100,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1315131273
@@ -26625,6 +26898,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1381387619
@@ -27266,6 +27541,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1449565421
@@ -27607,6 +27884,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1481138689
@@ -27873,6 +28152,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1493807922
@@ -28130,6 +28411,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1499127703
@@ -28321,6 +28604,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1503261731
@@ -28512,6 +28797,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1512579438
@@ -28703,6 +28990,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1513104574
@@ -29044,6 +29333,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1538186109
@@ -29610,6 +29901,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1589909595
@@ -29801,6 +30094,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1601838474
@@ -29992,6 +30287,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1607293231
@@ -30408,6 +30705,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1659322653
@@ -30974,6 +31273,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1719402134
@@ -31165,6 +31466,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1721609545
@@ -31356,6 +31659,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1750699619
@@ -31622,6 +31927,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1773488910
@@ -31813,6 +32120,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1775495718
@@ -32004,6 +32313,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1779872790
@@ -32345,6 +32656,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1803593281
@@ -32536,6 +32849,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1805815122
@@ -32727,6 +33042,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1806344009
@@ -32918,6 +33235,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1814783943
@@ -33109,6 +33428,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1816335961
@@ -33300,6 +33621,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1817345901
@@ -33641,6 +33964,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1827822247
@@ -33832,6 +34157,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1834336633
@@ -34023,6 +34350,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1835383613
@@ -34214,6 +34543,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1844414485
@@ -34405,6 +34736,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1844716770
@@ -34676,6 +35009,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1875439753
@@ -34867,6 +35202,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1888216434
@@ -35283,6 +35620,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1905154815
@@ -35474,6 +35813,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1932055492
@@ -35665,6 +36006,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1934828060
@@ -35856,6 +36199,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1960531706
@@ -36197,6 +36542,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1973540477
@@ -36388,6 +36735,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &1975593023
@@ -36804,6 +37153,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &2004050327
@@ -37220,6 +37571,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &2064112380
@@ -37281,7 +37634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2761758456767933393, guid: a137e73ae91acb141b7c775905262c31, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2761758456767933393, guid: a137e73ae91acb141b7c775905262c31, type: 3}
       propertyPath: m_AnchorMax.x
@@ -37583,6 +37936,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &2096918142
@@ -37774,6 +38129,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &2107572570
@@ -37965,6 +38322,8 @@ MonoBehaviour:
   towerType: 
   towerSprites: []
   isNextToPath: 0
+  cooldown: 0
+  highlight: 0
   towerBuffed: 0
   TargetPriority: 0
 --- !u!114 &2116042655
@@ -38098,6 +38457,7 @@ RectTransform:
   m_Children:
   - {fileID: 966608661}
   - {fileID: 872048097}
+  - {fileID: 330262898}
   - {fileID: 652194206}
   - {fileID: 1254794345}
   - {fileID: 1324916748}
@@ -38128,12 +38488,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658054564215510961, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: freezetime
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3658054564215510961, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: description
       value: A last resort attack, dealing 5 damage to all enemies on the map and
-        freeing them for 10 seconds. Can only be used once!
+        freeing them for 20 seconds. Can only be used once!
       objectReference: {fileID: 0}
     - target: {fileID: 3658054564215510967, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_Sprite
@@ -38157,7 +38517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658054564743494750, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3658054564743494750, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_AnchorMax.x
