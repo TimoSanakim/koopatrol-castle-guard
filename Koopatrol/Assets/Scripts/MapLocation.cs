@@ -29,6 +29,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     public int TargetPriority = 0;
     GameObject CooldownCounter;
     GameObject MyCooldown = null;
+    public bool rangeIndicating = false;
     Color originalColor;
     Vector3 originalPosition;
 
@@ -236,6 +237,47 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         if (towerBuffed) towerLevel -= 1;
         towerBuffed = false;
     }
+    public void bulletBlasterRangeVisualization()
+    {
+        float x = gameObject.transform.position.x;
+        float y = gameObject.transform.position.y;
+        int whileLoop = 0;
+        bool hasPath = true;
+        while (whileLoop != 2)
+        {
+            foreach (GameObject spot in Map.Tiles)
+            {
+                if ((spot.tag == "Path" || spot.tag == "PathTower") && y - spot.transform.position.y >= -45 && y - spot.transform.position.y <= 45 && x - spot.transform.position.x >= -45 && x - spot.transform.position.x <= 45)
+                {
+                    hasPath = true;
+                    spot.GetComponent<Image>().color = new Color(1f, 0.3f, 0.3f);
+                    spot.GetComponent<MapLocation>().rangeIndicating = true;
+                }
+            }
+            if (!hasPath)
+            {
+                x = gameObject.transform.position.x;
+                y = gameObject.transform.position.y;
+                whileLoop += 1;
+            }
+            if (isNextToPath == 1)
+            {
+                if (whileLoop == 0) x -= 10;
+                else x += 10;
+            }
+            else if (isNextToPath == 2)
+            {
+                if (whileLoop == 0) y += 10;
+                else y -= 10;
+            }
+            hasPath = false;
+        }
+    }
+    public void RemoveRangeIndication()
+    {
+        GetComponent<Image>().color = originalColor;
+        rangeIndicating = false;
+    }
     void LookAt(Vector3 targetPosition)
     {
         Vector3 difference = targetPosition - gameObject.transform.position;
@@ -267,6 +309,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         int first = 0;
         int second = 0;
         int whileLoop = 0;
+        int enemyDistance = 1000000;
         bool hasPath = true;
         GameObject target = null;
         while (whileLoop != 2)
@@ -284,14 +327,50 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 {
                     if (enemy.GetComponent<EnemyBehaviour>().isClone && y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
-                        if (target == null) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 0) target = enemy;
-                        else if (TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count) target = enemy;
-                        else if (TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health) target = enemy;
-                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage()) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage()) target = enemy;
+                        if (target == null)
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 0)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count)
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health)
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage())
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage())
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
                     }
                 }
             }

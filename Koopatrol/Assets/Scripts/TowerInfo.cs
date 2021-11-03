@@ -39,9 +39,12 @@ public class TowerInfo : MonoBehaviour
             selectedTower = fallbackTower;
             replacedColor = new Color(1f, 1f, 1f, 1f);
         }
-        if (mapRange != null && selectedTower.GetComponent<MapLocation>() != null && !hidden) mapRange.GetComponent<RangeCircle>().killNextTime = false;
-        else if (selectedTower.GetComponent<MapLocation>() != null && !hidden) mapRange = rangeCircle.GetComponent<RangeCircle>().CreateRangeCircle(selectedTower);
-
+        if ((slide == 0 || slide == 1) && !hidden && selectedTower.GetComponent<MapLocation>() != null)
+        {
+            if (mapRange != null && selectedTower.GetComponent<MapLocation>().towerType != "BulletBlaster") mapRange.GetComponent<RangeCircle>().killNextTime = false;
+            else if (selectedTower.GetComponent<MapLocation>().towerType != "BulletBlaster") mapRange = rangeCircle.GetComponent<RangeCircle>().CreateRangeCircle(selectedTower);
+            else if (selectedTower.GetComponent<MapLocation>().towerType == "BulletBlaster") selectedTower.GetComponent<MapLocation>().bulletBlasterRangeVisualization();
+        }
         if (slide == 1)
         {
             if (hidden)
@@ -68,6 +71,10 @@ public class TowerInfo : MonoBehaviour
                 if (slide == 2) slide = 0;
                 else slide = 1;
                 hidden = true;
+                foreach (GameObject spot in Map.Tiles) 
+                {
+                    if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
+                }
             }
             gameObject.GetComponent<RectTransform>().transform.position = temp;
         }
