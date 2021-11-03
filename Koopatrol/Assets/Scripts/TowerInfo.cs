@@ -7,7 +7,7 @@ using TMPro;
 
 public class TowerInfo : MonoBehaviour
 {
-    bool hidden = true;
+    public bool hidden = true;
     public byte slide = 0;
     public GameObject selectedTower;
     GameObject sellButton;
