@@ -17,7 +17,7 @@ namespace Assets
         {
             if (towerLevel == 1) return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target. Can be upgraded twice to increase fire rate.";
             if (towerLevel == 2) return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target. Can be upgraded once more to increase fire rate.";
-            return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target.";
+            return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target. When enhanced by magic, gains additional small radial attack.";
         }
         public static float GetRange(int towerLevel)
         {

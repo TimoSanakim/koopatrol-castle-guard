@@ -21,10 +21,19 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     //0 = any other situation
     public int isNextToPath = 0;
     Sprite originalImage;
-    float cooldown = 0;
+    public float cooldown = 0;
     bool wasDragging = false;
+    public bool highlight = false;
+    int highlightTime = 0;
     public bool towerBuffed = false;
     public int TargetPriority = 0;
+    GameObject CooldownCounter;
+    GameObject MyCooldown = null;
+    GameObject lavaFieldSource;
+    GameObject lavaField = null;
+    public bool rangeIndicating = false;
+    Color originalColor;
+    Vector3 originalPosition;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -41,10 +50,9 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (towerType == "Bowser") Map.bowserPlaced = false;
         if (tag != "PathTower" && tag != "Path") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        transform.position = originalPosition;
         gameObject.GetComponent<Image>().sprite = null;
-        Color temp = Color.white;
-        temp.a = 0f;
-        gameObject.GetComponent<Image>().color = temp;
+        gameObject.GetComponent<Image>().color = originalColor;
         towerType = "none";
         cooldown = 0;
         towerLevel = 0;
@@ -60,6 +68,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             gameObject.tag = "Ground";
         }
         gameObject.GetComponent<Image>().sprite = originalImage;
+        Destroy(MyCooldown);
+        MyCooldown = null;
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -95,8 +105,21 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         cooldown = 1;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
         if (towerType == "Bowser") Map.bowserPlaced = true;
+        if (hasCooldownCounter()) MyCooldown = CooldownCounter.GetComponent<Cooldown>().CreateCooldownCounter(gameObject);
     }
-
+    bool hasCooldownCounter()
+    {
+        switch (towerType)
+        {
+            case "FreezieTower":
+                return true;
+            case "Thwomp":
+                return true;
+            case "PiranhaPlant":
+                return true;
+        }
+        return false;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -106,7 +129,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
         magicEffect = GameObject.FindGameObjectWithTag("MagicEffect");
+        CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
+        lavaFieldSource = GameObject.FindGameObjectWithTag("LavaAttack");
         originalImage = gameObject.GetComponent<Image>().sprite;
+        originalColor = gameObject.GetComponent<Image>().color;
+        originalPosition = gameObject.transform.position;
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
@@ -160,6 +187,21 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     // Update is called once per frame
     void Update()
     {
+        if (highlight)
+        {
+            if (highlightTime == 0) highlightTime = 120;
+            if (highlightTime >= 91) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r - 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b - 0.03));
+            if (highlightTime >= 61 && highlightTime <= 90) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r + 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b + 0.03));
+            if (highlightTime >= 31 && highlightTime <= 60) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r - 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b - 0.03));
+            if (highlightTime >= 1 && highlightTime <= 30) gameObject.GetComponent<Image>().color = new Color(Convert.ToSingle(gameObject.GetComponent<Image>().color.r + 0.03), Convert.ToSingle(gameObject.GetComponent<Image>().color.g), Convert.ToSingle(gameObject.GetComponent<Image>().color.b + 0.03));
+            highlightTime -= 1;
+            if (highlightTime == 0)
+            {
+                highlight = false;
+                if (gameObject.tag == "Path") gameObject.GetComponent<Image>().color = originalColor;
+                else gameObject.GetComponent<Image>().color = new Color(1, 1, 1);
+            }
+        }
         if (towerBuffed && towerType != "MagikoopaTower")
         {
             towerLevel += 1;
@@ -198,6 +240,47 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         if (towerBuffed) towerLevel -= 1;
         towerBuffed = false;
     }
+    public void bulletBlasterRangeVisualization()
+    {
+        float x = gameObject.transform.position.x;
+        float y = gameObject.transform.position.y;
+        int whileLoop = 0;
+        bool hasPath = true;
+        while (whileLoop != 2)
+        {
+            foreach (GameObject spot in Map.Tiles)
+            {
+                if ((spot.tag == "Path" || spot.tag == "PathTower") && y - spot.transform.position.y >= -45 && y - spot.transform.position.y <= 45 && x - spot.transform.position.x >= -45 && x - spot.transform.position.x <= 45)
+                {
+                    hasPath = true;
+                    spot.GetComponent<Image>().color = new Color(1f, 0.3f, 0.3f);
+                    spot.GetComponent<MapLocation>().rangeIndicating = true;
+                }
+            }
+            if (!hasPath)
+            {
+                x = gameObject.transform.position.x;
+                y = gameObject.transform.position.y;
+                whileLoop += 1;
+            }
+            if (isNextToPath == 1)
+            {
+                if (whileLoop == 0) x -= 10;
+                else x += 10;
+            }
+            else if (isNextToPath == 2)
+            {
+                if (whileLoop == 0) y += 10;
+                else y -= 10;
+            }
+            hasPath = false;
+        }
+    }
+    public void RemoveRangeIndication()
+    {
+        GetComponent<Image>().color = originalColor;
+        rangeIndicating = false;
+    }
     void LookAt(Vector3 targetPosition)
     {
         Vector3 difference = targetPosition - gameObject.transform.position;
@@ -229,6 +312,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         int first = 0;
         int second = 0;
         int whileLoop = 0;
+        int enemyDistance = 1000000;
         bool hasPath = true;
         GameObject target = null;
         while (whileLoop != 2)
@@ -246,14 +330,50 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 {
                     if (enemy.GetComponent<EnemyBehaviour>().isClone && y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
                     {
-                        if (target == null) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 0) target = enemy;
-                        else if (TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count) target = enemy;
-                        else if (TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health) target = enemy;
-                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage()) target = enemy;
-                        else if (whileLoop == 1 && first > second && TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage()) target = enemy;
+                        if (target == null)
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 0)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count > enemy.GetComponent<EnemyBehaviour>().Paths.Count)
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 1 && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health)
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage())
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage())
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
                     }
                 }
             }
@@ -335,6 +455,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().power = power;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.position);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(int image, int power, float speed, Vector3 targetPosition)
@@ -347,6 +468,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().power = power;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(targetPosition);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(int image, float freezeTime, float speed, GameObject homingTarget)
@@ -359,6 +481,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().freezeAmount = freezeTime;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.position);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(int image, float freezeTime, float speed, Vector3 targetPosition)
@@ -371,6 +494,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().freezeAmount = freezeTime;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
+        bullet.GetComponent<Assets.Bullet>().LookAt(targetPosition);
         bullet.transform.SetParent(bulletList.transform, true);
     }
     void GoombaTower()
@@ -381,7 +505,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             if (enemy != null)
             {
                 cooldown = Assets.GoomaTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.GetDamage(towerLevel), Assets.GoomaTower.GetSpeed(towerLevel), enemy.transform.position);
+                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.GetDamage(towerLevel), Assets.GoomaTower.GetSpeed(towerLevel), enemy);
             }
         }
     }
@@ -393,7 +517,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             if (enemy != null)
             {
                 cooldown = Assets.KoopaTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.GetDamage(towerLevel), Assets.KoopaTower.GetSpeed(towerLevel), enemy.transform.position);
+                CreateBullet(Assets.KoopaTower.bulletImage, Assets.KoopaTower.GetDamage(towerLevel), Assets.KoopaTower.GetSpeed(towerLevel), enemy);
             }
         }
     }
@@ -405,22 +529,24 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             if (enemy != null)
             {
                 cooldown = Assets.FreezieTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.GetFreezeTime(towerLevel), Assets.FreezieTower.GetSpeed(towerLevel), enemy.transform.position);
+                CreateBullet(Assets.FreezieTower.bulletImage, Assets.FreezieTower.GetFreezeTime(towerLevel), Assets.FreezieTower.GetSpeed(towerLevel), enemy);
             }
         }
     }
     void Thwomp()
     {
+        if (cooldown > 0 && cooldown <= 1) gameObject.transform.position = new Vector3(gameObject.transform.position.x, Convert.ToSingle(gameObject.transform.position.y + (10*Time.deltaTime)), gameObject.transform.position.z);
         if (cooldown == 0)
         {
             foreach (GameObject enemy in Map.Enemies)
             {
                 if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < Assets.Thwomp.GetRange(towerLevel))
                 {
+                    gameObject.transform.position = originalPosition;
                     if (cooldown == 0) GetComponent<AudioSource>().Play();
                     cooldown = Assets.Thwomp.GetCooldown(towerLevel);
-                    enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.Thwomp.GetStaggerTime(towerLevel));
-                    enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
+                    enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.Thwomp.GetStaggerTime(towerLevel), true);
+                    enemy.GetComponent<EnemyBehaviour>().Freeze(-1, false);
                 }
             }
         }
@@ -466,8 +592,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 GetComponent<AudioSource>().Play();
                 cooldown = Assets.PiranhaPlant.GetCooldown(towerLevel);
-                enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.PiranhaPlant.GetStaggerTime(towerLevel));
-                enemy.GetComponent<EnemyBehaviour>().Freeze(-1);
+                enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.PiranhaPlant.GetStaggerTime(towerLevel), true);
+                enemy.GetComponent<EnemyBehaviour>().Freeze(-1, false);
                 enemy.GetComponent<EnemyHealth>().Hurt(Assets.PiranhaPlant.GetDamage(towerLevel));
             }
         }
@@ -493,6 +619,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 cooldown = Assets.Bowser.GetCooldown(towerLevel);
                 CreateBullet(Assets.Bowser.bulletImage, Assets.Bowser.GetDamage(towerLevel), Assets.Bowser.GetSpeed(towerLevel), enemy);
             }
+        }
+        if (towerLevel >= 4)
+        {
+            if (lavaField != null) lavaField.GetComponent<LavaField>().killNextTime = false;
+            else lavaField = lavaFieldSource.GetComponent<LavaField>().CreateLavaField(gameObject);
         }
     }
 

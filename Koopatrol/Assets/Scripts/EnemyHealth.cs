@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         MaxHealth = Health;
         Music = GameObject.FindGameObjectWithTag("Music");
         BossBar = GameObject.FindGameObjectWithTag("BossBar");
-        if (GetComponent<EnemyBehaviour>().finalEnemy && GetComponent<EnemyBehaviour>().isClone)
+        if (BossBar != null && GetComponent<EnemyBehaviour>().finalEnemy && GetComponent<EnemyBehaviour>().isClone)
         {
             BossBar.GetComponent<BossBar>().UpdateValue(Health, MaxHealth);
             BossBar.GetComponentInChildren<Text>().text = GetComponent<EnemyBehaviour>().enemyType;
@@ -44,12 +44,12 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
                     playedDeathSound = true;
                 }
                 gameObject.transform.Rotate(0, 0, -3, Space.Self);
-                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 1f));
+                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x + 0.01f), Convert.ToSingle(gameObject.transform.localScale.x));
             }
             else if (deathTime >= 100 && deathTime <= 240)
             {
                 gameObject.transform.Rotate(0, 0, -3, Space.Self);
-                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 1f));
+                gameObject.transform.localScale = new Vector3(Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x - 0.01f), Convert.ToSingle(gameObject.transform.localScale.x));
             }
             else if (deathTime >= 240)
             {
@@ -79,7 +79,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     public void Hurt(int damage)
     {
         Health -= damage;
-        gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f);
+        gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f, false);
         if (Health <= 0)
         {
             death();

@@ -8,19 +8,22 @@ namespace Assets
 {
     public static class CoinCounter
     {
+        public static int CoinCount = 0;
         //Returns true if coin count doesn't become negative
         public static bool ChangeCoinCounter(int increaseAmount, bool forceSound)
         {
-            int coinCounter = Convert.ToInt32(GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text);
-            coinCounter += increaseAmount;
-            if (coinCounter < 0)
+            if (CoinCount == 0) CoinCount = Convert.ToInt32(GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text);
+            CoinCount += increaseAmount;
+            if (CoinCount < 0)
             {
                 Debug.Log("Action resulted in negative coin counter; action should be cancled.");
+                CoinCount -= increaseAmount;
                 return false;
             }
             else
             {
-                GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text = Convert.ToString(coinCounter);
+                if (CoinCount <= 9999) GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text = Convert.ToString(CoinCount);
+                else GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text = "????";
                 if (increaseAmount < 0 || forceSound) GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<AudioSource>().Play(0);
                 return true;
             }
@@ -28,7 +31,8 @@ namespace Assets
         //Returns coint counter value
         public static int GetCoinCount()
         {
-            return Convert.ToInt32(GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text);
+            if (CoinCount != 0) return CoinCount;
+            else return Convert.ToInt32(GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text);
         }
     }
 }

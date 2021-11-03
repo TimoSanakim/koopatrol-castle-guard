@@ -17,11 +17,13 @@ namespace Assets
         {
             if (towerLevel == 1) return "Freezie tower. A slow shooting, non-damaging tower. Instead it freezes the enemy hit in place for a little while. Can be upgraded to increase the Freezies movement speed and once more to increase the freeze time.";
             if (towerLevel == 2) return "Freezie tower+1. A slow shooting, non-damaging tower. Instead it freezes the enemy hit in place for a little while. Can be upgraded once more to increase the freeze time.";
-            return "Freezie tower+2. A slow shooting, non-damaging tower. Instead it freezes the enemy hit in place for a little while.";
+            return "Freezie tower+2. A slow shooting, non-damaging tower. Instead it freezes the enemy hit in place for a little while. When enhanced by magic, increases range.";
         }
         public static float GetRange(int towerLevel)
         {
-            return 100;
+            if (towerLevel <= 3) return 100;
+            if (towerLevel >= 4) return 150;
+            return 0;
         }
         public static float GetCooldown(int towerLevel)
         {

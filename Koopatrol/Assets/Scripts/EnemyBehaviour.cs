@@ -21,11 +21,13 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     public List<Transform> Paths = new List<Transform>();
-    Transform NextPath = null;
+    public List<Transform> PastPaths = new List<Transform>();
+    public Transform NextPath = null;
     public GameObject startingPosition;
     float specialBehavior = 0f;
 
     public float moveSpeed = 0f;
+    float tornadoTime = 0f;
     public AudioClip spawnSound;
     public AudioClip deathSound;
     public AudioClip specialSound;
@@ -51,6 +53,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if (path.transform.position == NextPath.transform.position)
                 {
+                    PastPaths.Add(path);
                     Paths.Remove(path);
                     break;
                 }
@@ -70,9 +73,13 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (frozenTime <= 2 && enemyType == "Luigi" && specialBehavior != 0) Luigi();
             else if (frozenTime <= 2 && enemyType == "Mario" && specialBehavior != 0) Mario();
-            else if (frozenTime <= 2 && hitTime == 0 && specialBehavior == 0)
+            else if (tornadoTime == 0 && frozenTime <= 2 && hitTime == 0 && specialBehavior == 0)
             {
                 Move();
+            }
+            else if (tornadoTime != 0 && specialBehavior == 0)
+            {
+                PushedByTornado();
             }
             if (frozenTime != 0)
             {
@@ -86,12 +93,17 @@ public class EnemyBehaviour : MonoBehaviour
                 hitTime -= Time.deltaTime;
                 if (hitTime < 0) hitTime = 0;
             }
+            if (tornadoTime != 0)
+            {
+                tornadoTime -= Time.deltaTime;
+                if (tornadoTime < 0) tornadoTime = 0;
+            }
         }
     }
 
-    public void Freeze(float seconds)
+    public void Freeze(float seconds, bool force)
     {
-        if (frozenTime == 0)
+        if (frozenTime == 0 || force)
         {
             frozenTime = 2 + seconds;
         }
@@ -100,11 +112,36 @@ public class EnemyBehaviour : MonoBehaviour
             frozenTime = 2;
         }
     }
-    public void Stagger(float duration)
+    public void Stagger(float duration, bool force)
     {
         if (hitTime == 0)
         {
             hitTime = duration;
+        }
+        else if (hitTime <= 0.1 && force)
+        {
+            hitTime = duration;
+        }
+    }
+    public void HitByTornado()
+    {
+        tornadoTime = 10;
+        if (PastPaths.Count >= 1) NextPath = PastPaths[PastPaths.Count - 1];
+        if (moveDirection == 0)
+        {
+            moveDirection = 1;
+        }
+        else if (moveDirection == 1)
+        {
+            moveDirection = 0;
+        }
+        else if (moveDirection == 2)
+        {
+            moveDirection = 3;
+        }
+        else if (moveDirection == 3)
+        {
+            moveDirection = 2;
         }
     }
 
@@ -112,6 +149,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         bool found = false;
         bool stop = false;
+        List<GameObject> paths = new List<GameObject>();
         switch (moveDirection)
         {
             case 0:
@@ -123,6 +161,7 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
+                            paths.Add(path);
                             stop = false;
                         }
                     }
@@ -130,7 +169,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
+                            {
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
+                            }
                             break;
                         }
                     }
@@ -145,6 +192,7 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
+                            paths.Add(path);
                             stop = false;
                         }
                     }
@@ -152,7 +200,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
+                            {
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
+                            }
                             break;
                         }
                     }
@@ -167,6 +223,7 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
+                            paths.Add(path);
                             stop = false;
                         }
                     }
@@ -174,7 +231,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
+                            {
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
+                            }
                             break;
                         }
                     }
@@ -189,6 +254,7 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((path.tag == "Path" || path.tag == "PathTower") && x - path.transform.position.x >= -10 && x - path.transform.position.x <= 10 && y - path.transform.position.y >= -10 && y - path.transform.position.y <= 10)
                         {
+                            paths.Add(path);
                             stop = false;
                         }
                     }
@@ -196,7 +262,15 @@ public class EnemyBehaviour : MonoBehaviour
                     {
                         if ((tower.tag == "Tower" || tower.tag == "PathTower") && x - tower.transform.position.x >= -10 && x - tower.transform.position.x <= 10 && y - tower.transform.position.y >= -10 && y - tower.transform.position.y <= 10)
                         {
-                            if (tower.GetComponent<MapLocation>().towerType == towerType) found = true;
+                            if (tower.GetComponent<MapLocation>().towerType == towerType)
+                            {
+                                found = true;
+                                tower.GetComponent<MapLocation>().highlight = true;
+                                foreach (GameObject path in paths)
+                                {
+                                    path.GetComponent<MapLocation>().highlight = true;
+                                }
+                            }
                             break;
                         }
                     }
@@ -345,6 +419,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (transform.position.x <= NextPath.transform.position.x && moveDirection == 3) atPath = true;
             if (atPath)
             {
+                PastPaths.Add(NextPath);
                 Paths.Remove(NextPath);
                 if (enemyType == "Mario") transform.position = NextPath.transform.position;
                 NextPath = null;
@@ -423,7 +498,7 @@ public class EnemyBehaviour : MonoBehaviour
                         break;
                     case 3:
                         gameObject.transform.position = new Vector3(gameObject.transform.position.x - (moveSpeed * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
-                        if (transform.position.x <= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, transform.position.y, transform.position.z); 
+                        if (transform.position.x <= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, transform.position.y, transform.position.z);
                         break;
                 }
             }
@@ -437,6 +512,89 @@ public class EnemyBehaviour : MonoBehaviour
                     GetComponent<EnemyHealth>().towerInfo.GetComponent<TowerInfo>().HideInfo();
                 }
                 Destroy(gameObject);
+            }
+        }
+    }
+    private void PushedByTornado()
+    {
+        if (PastPaths.Count >= 1)
+        {
+            bool atPath = false;
+            if (transform.position == NextPath.transform.position) atPath = true;
+            if (transform.position.y >= NextPath.transform.position.y && moveDirection == 0) atPath = true;
+            if (transform.position.y <= NextPath.transform.position.y && moveDirection == 1) atPath = true;
+            if (transform.position.x >= NextPath.transform.position.x && moveDirection == 2) atPath = true;
+            if (transform.position.x <= NextPath.transform.position.x && moveDirection == 3) atPath = true;
+            if (atPath)
+            {
+                Paths.Add(NextPath);
+                PastPaths.Remove(NextPath);
+                NextPath = null;
+                float x = transform.position.x;
+                float y = transform.position.y;
+                if (offsetDirection == 0) y += 25;
+                else if (offsetDirection == 1) y -= 25;
+                else if (offsetDirection == 2) x += 25;
+                else if (offsetDirection == 3) x -= 25;
+                if (PastPaths.Count != 0)
+                {
+                    NextPath = PastPaths[PastPaths.Count - 1];
+                    float diffx = NextPath.position.x - x;
+                    float diffy = NextPath.position.y - y;
+                    lastDirection = moveDirection;
+                    if (diffy > 0)
+                    {
+                        moveDirection = 0;
+                    }
+                    else if (diffy < 0)
+                    {
+                        moveDirection = 1;
+                    }
+                    else if (diffx > 0)
+                    {
+                        moveDirection = 2;
+                    }
+                    else if (diffx < 0)
+                    {
+                        moveDirection = 3;
+                    }
+                }
+            }
+            if (NextPath != null)
+            {
+                switch (moveDirection)
+                {
+                    case 0:
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (20 * Time.deltaTime), gameObject.transform.position.z);
+                        if (transform.position.y >= NextPath.transform.position.y) gameObject.transform.position = new Vector3(transform.position.x, NextPath.transform.position.y, transform.position.z);
+                        break;
+                    case 1:
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (20 * Time.deltaTime), gameObject.transform.position.z);
+                        if (transform.position.y <= NextPath.transform.position.y) gameObject.transform.position = new Vector3(transform.position.x, NextPath.transform.position.y, transform.position.z);
+                        break;
+                    case 2:
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x + (20 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
+                        if (transform.position.x >= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, transform.position.y, transform.position.z);
+                        break;
+                    case 3:
+                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - (20 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
+                        if (transform.position.x <= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, transform.position.y, transform.position.z);
+                        break;
+                }
+            }
+        }
+        else
+        {
+            NextPath = startingPosition.transform;
+            foreach (Transform path in Paths)
+            {
+                if (path.transform.position == NextPath.transform.position)
+                {
+                    PastPaths.Add(path);
+                    Paths.Remove(path);
+                    tornadoTime = 0;
+                    break;
+                }
             }
         }
     }

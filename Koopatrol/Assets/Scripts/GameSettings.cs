@@ -9,7 +9,7 @@ public class GameSettings : MonoBehaviour
 {
     void Start()
     {
-        Time.timeScale = 0;   
+        Time.timeScale = 0;
     }
     public static void restartGame()
     {
@@ -20,21 +20,41 @@ public class GameSettings : MonoBehaviour
         Map.gameSpeed = 1;
         CastleHealth.castleDead = false;
         Map.Victory = false;
-        SceneManager.LoadScene("BowsersCastle");
-        
-        
+        Assets.CoinCounter.CoinCount = 0;
+        SceneManager.LoadScene(Map.LoadedLevel);
+
+
+    }
+    public static void backToMenu()
+    {
+        Map.Enemies.Clear();
+        Map.Tiles.Clear();
+        Map.bowserPlaced = false;
+        Map.paused = true;
+        Map.gameSpeed = 1;
+        CastleHealth.castleDead = false;
+        Map.Victory = false;
+        Assets.CoinCounter.CoinCount = 0;
+        Map.LoadedLevel = "MainMenu";
+        SceneManager.LoadScene(Map.LoadedLevel);
+
+
     }
 
-    public void pauseGame(){
-        if(!Map.paused){
+    public void pauseGame()
+    {
+        if (!Map.paused)
+        {
             Map.paused = true;
             Time.timeScale = 0;
             gameObject.GetComponentInChildren<Text>().text = "Resume Game";
         }
-        else{
+        else
+        {
             Map.paused = false;
             Time.timeScale = Map.gameSpeed;
             gameObject.GetComponentInChildren<Text>().text = "Pause Game";
+            Destroy(GameObject.FindGameObjectWithTag("Startbutton"));
         }
     }
     public void changeSpeed()

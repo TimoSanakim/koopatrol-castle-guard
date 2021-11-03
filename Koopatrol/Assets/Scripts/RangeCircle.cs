@@ -18,7 +18,7 @@ public class RangeCircle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       gameObject.transform.Rotate(0, 0, 0.07f, Space.Self);
+        gameObject.transform.Rotate(0, 0, 0.07f, Space.Self);
         if (isClone)
         {
             if (killNextTime) Destroy(gameObject);
@@ -32,6 +32,24 @@ public class RangeCircle : MonoBehaviour
     }
 float GetRangeTower()
     {
+        if (towerInfo.GetComponent<TowerInfo>().selectedTower.transform.GetComponentInChildren<MagicEffect>())
+        {
+            switch (towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerType)
+            {
+                case "GoombaTower":
+                    return Assets.GoomaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
+                case "KoopaTower":
+                    return Assets.KoopaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
+                case "FreezieTower":
+                    return Assets.FreezieTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
+                case "Thwomp":
+                    return Assets.Thwomp.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
+                case "MagikoopaTower":
+                    return Assets.MagikoopaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
+                case "Bowser":
+                    return Assets.Bowser.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
+            }
+        }
         switch (towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":

@@ -11,11 +11,11 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            return "Thwomp. A Non-firing tower, instead scares nearby enemies for a little bit by slamming the ground. Breaks the ice enemies got frozen by. When enchanced by magic, increases the scare time.";
+            return "Thwomp. A Non-firing tower, instead scares nearby enemies for a little bit by slamming the ground. Breaks the ice enemies got frozen by. When enhanced by magic, increases the scare time.";
         }
         public static float GetRange(int towerLevel)
         {
-            return 100;
+            return 140;
         }
         public static float GetCooldown(int towerLevel)
         {
