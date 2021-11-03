@@ -669,7 +669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7c0d449f321b1fa41b4a70bef339495d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23db6318fa6778b449f2ceca2825eda3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37261,6 +37261,7 @@ PrefabInstance:
     - target: {fileID: 4016383722209613212, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: description
       value: Tornado that follows the path doeals 5 damage and pushes enemies back.
+        Can only be used once!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}

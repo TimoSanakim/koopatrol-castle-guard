@@ -3603,7 +3603,7 @@ MonoBehaviour:
   damage: 0
   damageperc: 30
   freezetime: 0
-  description: Deals damage equal to 30% of max healthto all enemies on the map.
+  description: Deals damage equal to 30% of max health to all enemies on the map.
     Can only be used once!
   isTornado: 0
 --- !u!82 &4016383722209613213
