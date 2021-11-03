@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TowerInfo : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TowerInfo : MonoBehaviour
     GameObject sellButton;
     GameObject targetButton;
     GameObject upgradeButton;
-    GameObject towerDescription;
+    GameObject NewtowerDescription;
     GameObject rangeCircle;
     GameObject mapRange;
     GameObject fallbackTower;
@@ -27,7 +28,7 @@ public class TowerInfo : MonoBehaviour
         sellButton = GameObject.FindGameObjectWithTag("SellButton");
         targetButton = GameObject.FindGameObjectWithTag("TargetButton");
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
-        towerDescription = GameObject.FindGameObjectWithTag("TowerDescription");
+        NewtowerDescription = GameObject.FindGameObjectWithTag("NewTowerDescription");
         rangeCircle = GameObject.FindGameObjectWithTag("RangeCircle");
         fallbackTower = selectedTower;
     }
@@ -247,7 +248,7 @@ public class TowerInfo : MonoBehaviour
         if (selectedTower.GetComponent<TowerOption>() != null)
         {
             //Tower Menu
-            towerDescription.GetComponent<Text>().text = GetDesciptionOption();
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = GetDesciptionOption();
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
@@ -278,7 +279,7 @@ public class TowerInfo : MonoBehaviour
                 targetButton.GetComponentInChildren<Text>().fontSize = 11;
             }
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
-            towerDescription.GetComponent<Text>().text = GetDesciptionMap();
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = GetDesciptionMap();
             int UpgradeCost = GetUpgradeCost();
             if (UpgradeCost != 0)
             {
@@ -293,7 +294,7 @@ public class TowerInfo : MonoBehaviour
         else if (selectedTower.GetComponent<LastResortAttack>() != null)
         {
             //Lava attack
-            towerDescription.GetComponent<Text>().text = selectedTower.GetComponent<LastResortAttack>().description;
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = selectedTower.GetComponent<LastResortAttack>().description;
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
@@ -301,7 +302,7 @@ public class TowerInfo : MonoBehaviour
         else if (selectedTower.GetComponent<EnemyHealth>() != null)
         {
             //Enemy
-            towerDescription.GetComponent<Text>().text = "Health: " + selectedTower.GetComponent<EnemyHealth>().Health + "/" + selectedTower.GetComponent<EnemyHealth>().MaxHealth + ". " + selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = "Health: " + selectedTower.GetComponent<EnemyHealth>().Health + "/" + selectedTower.GetComponent<EnemyHealth>().MaxHealth + ". " + selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
