@@ -11,7 +11,7 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            return "Magikoopa. A tower which doesn't affect enemies, instead enhances nearby towers with magic, treating them as a tower of one upgrade higher.";
+            return "<sprite=3>=2.2| Magikoopa. Uses magic on towers, making them 1 upgrade level higher.";
         }
         public static float GetRange(int towerLevel)
         {

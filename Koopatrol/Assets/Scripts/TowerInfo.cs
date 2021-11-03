@@ -302,7 +302,7 @@ public class TowerInfo : MonoBehaviour
         else if (selectedTower.GetComponent<EnemyHealth>() != null)
         {
             //Enemy
-            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = "Health: " + selectedTower.GetComponent<EnemyHealth>().Health + "/" + selectedTower.GetComponent<EnemyHealth>().MaxHealth + ". " + selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
