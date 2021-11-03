@@ -29,6 +29,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     public int TargetPriority = 0;
     GameObject CooldownCounter;
     GameObject MyCooldown = null;
+    GameObject lavaFieldSource;
+    GameObject lavaField = null;
     public bool rangeIndicating = false;
     Color originalColor;
     Vector3 originalPosition;
@@ -128,6 +130,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bulletList = GameObject.FindGameObjectWithTag("BulletList");
         magicEffect = GameObject.FindGameObjectWithTag("MagicEffect");
         CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
+        lavaFieldSource = GameObject.FindGameObjectWithTag("LavaAttack");
         originalImage = gameObject.GetComponent<Image>().sprite;
         originalColor = gameObject.GetComponent<Image>().color;
         originalPosition = gameObject.transform.position;
@@ -616,6 +619,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 cooldown = Assets.Bowser.GetCooldown(towerLevel);
                 CreateBullet(Assets.Bowser.bulletImage, Assets.Bowser.GetDamage(towerLevel), Assets.Bowser.GetSpeed(towerLevel), enemy);
             }
+        }
+        if (towerLevel >= 4)
+        {
+            if (lavaField != null) lavaField.GetComponent<LavaField>().killNextTime = false;
+            else lavaField = lavaFieldSource.GetComponent<LavaField>().CreateLavaField(gameObject);
         }
     }
 

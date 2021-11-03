@@ -17,7 +17,7 @@ namespace Assets
         {
             if (towerLevel == 1) return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target. Can be upgraded twice to increase fire rate.";
             if (towerLevel == 2) return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target. Can be upgraded once more to increase fire rate.";
-            return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target. When enhanced by magic, increases damage by 1.";
+            return "All hail the king! Only one can exist in the map. Has high range, deals 5 damage and fire is homing at the target. When enhanced by magic, gains additional small radial attack.";
         }
         public static float GetRange(int towerLevel)
         {
@@ -32,9 +32,7 @@ namespace Assets
         }
         public static int GetDamage(int towerLevel)
         {
-            if (towerLevel <= 3) return 5;
-            if (towerLevel >= 4) return 6;
-            return 0;
+            return 5;
         }
         public static float GetSpeed(int towerLevel)
         {

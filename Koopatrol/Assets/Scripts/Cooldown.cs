@@ -16,20 +16,20 @@ public class Cooldown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectname = name;
-        if (name != "CooldownCounter") { 
-        towertype = gameObject.GetComponentInParent<MapLocation>().towerType;
-        if (towertype == "Thwomp") maxcooldown = Assets.Thwomp.GetCooldown(towerLevel);
-        if (towertype == "FreezieTower") maxcooldown = Assets.FreezieTower.GetCooldown(towerLevel);
-        if (towertype == "PiranhaPlant") maxcooldown = Assets.PiranhaPlant.GetCooldown(towerLevel);
-        
+        if (isClone)
+        {
+            towertype = gameObject.GetComponentInParent<MapLocation>().towerType;
+            if (towertype == "Thwomp") maxcooldown = Assets.Thwomp.GetCooldown(towerLevel);
+            if (towertype == "FreezieTower") maxcooldown = Assets.FreezieTower.GetCooldown(towerLevel);
+            if (towertype == "PiranhaPlant") maxcooldown = Assets.PiranhaPlant.GetCooldown(towerLevel);
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (name != "CooldownCounter")
+        if (isClone)
         {
             gameObject.GetComponent<Image>().fillAmount = cooldowncent;
             cooldowntimer = gameObject.GetComponentInParent<MapLocation>().cooldown;
@@ -46,6 +46,7 @@ public class Cooldown : MonoBehaviour
         cooldown.transform.position = parent.transform.position;
         cooldown.transform.SetParent(parent.transform, true);
         cooldown.GetComponent<CanvasGroup>().alpha = 1f;
+        cooldown.GetComponent<Cooldown>().isClone = true;
         cooldown.tag = "CooldownCounter";
         return cooldown;   
     }

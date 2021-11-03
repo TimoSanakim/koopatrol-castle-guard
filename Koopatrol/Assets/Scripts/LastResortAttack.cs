@@ -10,7 +10,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     GameObject towerInfo;
     GameObject Attack;
     GameObject Castle;
-    bool used = false;
+    public bool used = false;
     public int costs;
     public int damage;
     public int damageperc;
@@ -28,7 +28,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     void Start()
     {
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
-        Attack = GameObject.FindGameObjectWithTag("LavaAttack");
+        Attack = GameObject.FindGameObjectWithTag("LastResortAttack");
         Castle = GameObject.FindGameObjectWithTag("Castle");
         GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
         GameObject[] pathtowers = GameObject.FindGameObjectsWithTag("PathTower");
@@ -110,6 +110,22 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
                 }
             }
         }
+    }
+
+    public void Reset()
+    {
+        Attack.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+        Attack.transform.localScale = new Vector3(0f, 0f, 0f);
+        progress = 0;
+        used = false;
+        PastPaths.Clear();
+        Paths.Clear();
+        Castle = GameObject.FindGameObjectWithTag("Castle");
+        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+        GameObject[] pathtowers = GameObject.FindGameObjectsWithTag("PathTower");
+        Paths.Add(Castle.transform);
+        foreach (GameObject path in paths) { Paths.Add(path.transform); }
+        foreach (GameObject path in pathtowers) { Paths.Add(path.transform); }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -199,7 +215,6 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
             {
                 Attack.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
                 Attack.transform.localScale = new Vector3(0f, 0f, 0f);
-                Attack.SetActive(false);
                 progress = 20;
             }
         }

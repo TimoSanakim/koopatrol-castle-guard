@@ -32,6 +32,7 @@ TagManager:
   - RangeCircle
   - CooldownCounter
   - Startbutton
+  - LastResortAttack
   layers:
   - Default
   - TransparentFX

@@ -126,7 +126,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void HitByTornado()
     {
         tornadoTime = 10;
-        NextPath = PastPaths[PastPaths.Count - 1];
+        if (PastPaths.Count >= 1) NextPath = PastPaths[PastPaths.Count - 1];
         if (moveDirection == 0)
         {
             moveDirection = 1;
