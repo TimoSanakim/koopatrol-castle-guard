@@ -39,9 +39,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if ((gameObject.tag == "Tower" || gameObject.tag == "PathTower") && wasDragging == false)
+            if ((gameObject.tag == "Tower" || gameObject.tag == "PathTower") && !wasDragging)
             {
                 towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
+            }
+            else if (!wasDragging)
+            {
+                towerInfo.GetComponent<TowerInfo>().HideInfo();
             }
             wasDragging = false;
         }

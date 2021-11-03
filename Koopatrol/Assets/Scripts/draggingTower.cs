@@ -43,6 +43,8 @@ public class draggingTower : MonoBehaviour
                 {
                     if (spot.tag == "Ground") spot.GetComponent<Image>().color = valid;
                 }
+                transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 0f;
+                transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 0f;
             }
             else if (validPosition == Assets.ValidPosition.Path)
             {
@@ -50,6 +52,8 @@ public class draggingTower : MonoBehaviour
                 {
                     if (spot.tag == "Path") spot.GetComponent<Image>().color = valid;
                 }
+                transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 0f;
+                transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 0f;
             }
             else if (validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis)
             {
@@ -57,6 +61,8 @@ public class draggingTower : MonoBehaviour
                 {
                     if (spot.tag == "Ground" && spot.GetComponent<MapLocation>().isNextToPath != 0) spot.GetComponent<Image>().color = valid;
                 }
+                transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 1f;
+                transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 1f;
             }
             wasDragging = true;
         }
