@@ -33,6 +33,7 @@ TagManager:
   - CooldownCounter
   - Startbutton
   - LastResortAttack
+  - NewTowerDescription
   layers:
   - Default
   - TransparentFX
