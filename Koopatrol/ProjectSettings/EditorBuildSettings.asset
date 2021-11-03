@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Levelselect.unity
     guid: 6674675e863d829468240d772b1f8333
   - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 58e7d10ebfe965945a9e1f569e3d8423
+  - enabled: 1
+    path: Assets/Scenes/TestMap.unity
+    guid: ff2b319e3d7c1f94498f828db12bb41c
+  - enabled: 1
     path: Assets/Scenes/BowsersCastle.unity
     guid: 5012f96c2173a244b8f5c3775172bba9
   - enabled: 1

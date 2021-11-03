@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class Map
 {
+    public static int MusicVolume = 100;
+    public static int SoundVolume = 100;
     public static int gameSpeed = 1;
     public static bool paused = true;
     public static bool Victory = true;

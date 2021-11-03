@@ -62,4 +62,12 @@ public class GameSettings : MonoBehaviour
         Map.gameSpeed = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
         if (!Map.paused && !CastleHealth.castleDead) Time.timeScale = Map.gameSpeed;
     }
+    public void changeMusicVolume()
+    {
+        Map.MusicVolume = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
+    }
+    public void changeSoundVolume()
+    {
+        Map.SoundVolume = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
+    }
 }

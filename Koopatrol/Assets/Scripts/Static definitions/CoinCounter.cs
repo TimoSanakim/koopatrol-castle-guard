@@ -24,6 +24,7 @@ namespace Assets
             {
                 if (CoinCount <= 9999) GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text = Convert.ToString(CoinCount);
                 else GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Text>().text = "????";
+                GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
                 if (increaseAmount < 0 || forceSound) GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<AudioSource>().Play(0);
                 return true;
             }

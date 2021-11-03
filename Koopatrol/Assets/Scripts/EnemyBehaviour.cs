@@ -46,6 +46,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (isClone)
         {
+            gameObject.GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
             CastleHealth = GameObject.FindGameObjectWithTag("CastleHealth");
             // Set position of Enemy as position of the first waypoint
             NextPath = startingPosition.transform;

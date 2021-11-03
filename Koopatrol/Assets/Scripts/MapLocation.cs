@@ -124,6 +124,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     void Start()
     {
         Map.Tiles.Add(gameObject);
+        gameObject.GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         bulletOriginal = GameObject.FindGameObjectWithTag("Bullet");

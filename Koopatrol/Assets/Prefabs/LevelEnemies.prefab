@@ -1205,8 +1205,8 @@ MonoBehaviour:
   NextPath: {fileID: 0}
   startingPosition: {fileID: 0}
   moveSpeed: 45
-  spawnSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  spawnSound: {fileID: 8300000, guid: 3dfb8a79bd719cf4a987e1540e5ecfdf, type: 3}
+  deathSound: {fileID: 8300000, guid: 4f9e784da5e285440a0e9a7037ae40e6, type: 3}
   specialSound: {fileID: 0}
 --- !u!114 &1183772395827768173
 MonoBehaviour:

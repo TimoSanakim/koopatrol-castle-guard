@@ -27,6 +27,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         Attack = GameObject.FindGameObjectWithTag("LastResortAttack");
         Castle = GameObject.FindGameObjectWithTag("Castle");
