@@ -26,6 +26,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     public bool highlight = false;
     int highlightTime = 0;
     public bool towerBuffed = false;
+    public bool towerWasBuffed = false;
     public int TargetPriority = 0;
     GameObject CooldownCounter;
     GameObject MyCooldown = null;
@@ -115,12 +116,27 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         switch (towerType)
         {
+            case "GoombaTower":
+                if (Assets.GoombaTower.GetCooldown(towerLevel) >= Map.ShowCooldowns) return true;
+                break;
+            case "KoopaTower":
+                if (Assets.KoopaTower.GetCooldown(towerLevel) >= Map.ShowCooldowns) return true;
+                break;
             case "FreezieTower":
-                return true;
+                if (Assets.FreezieTower.GetCooldown(towerLevel) >= Map.ShowCooldowns) return true;
+                break;
             case "Thwomp":
-                return true;
+                if (Assets.Thwomp.GetCooldown(towerLevel) >= Map.ShowCooldowns) return true;
+                break;
+            case "BulletBlaster":
+                if (Assets.BulletBlaster.GetCooldown(towerLevel) >= Map.ShowCooldowns) return true;
+                break;
             case "PiranhaPlant":
-                return true;
+                if (Assets.PiranhaPlant.GetCooldown(towerLevel) >= Map.ShowCooldowns) return true;
+                break;
+            case "Bowser":
+                if (Assets.Bowser.GetCooldown(towerLevel) >= Map.ShowCooldowns) return true;
+                break;
         }
         return false;
     }
@@ -207,8 +223,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 else gameObject.GetComponent<Image>().color = new Color(1, 1, 1);
             }
         }
+        if (!towerBuffed && towerWasBuffed) towerWasBuffed = false;
         if (towerBuffed && towerType != "MagikoopaTower")
         {
+            towerWasBuffed = true;
             towerLevel += 1;
             if (myMagic != null) myMagic.GetComponent<MagicEffect>().killNextTime = false;
             else myMagic = magicEffect.GetComponent<MagicEffect>().CreateMagicEffect(gameObject);
@@ -506,11 +524,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (cooldown == 0)
         {
-            GameObject enemy = GetEnemy(Assets.GoomaTower.GetRange(towerLevel), TargetPriority);
+            GameObject enemy = GetEnemy(Assets.GoombaTower.GetRange(towerLevel), TargetPriority);
             if (enemy != null)
             {
-                cooldown = Assets.GoomaTower.GetCooldown(towerLevel);
-                CreateBullet(Assets.GoomaTower.bulletImage, Assets.GoomaTower.GetDamage(towerLevel), Assets.GoomaTower.GetSpeed(towerLevel), enemy);
+                cooldown = Assets.GoombaTower.GetCooldown(towerLevel);
+                CreateBullet(Assets.GoombaTower.bulletImage, Assets.GoombaTower.GetDamage(towerLevel), Assets.GoombaTower.GetSpeed(towerLevel), enemy);
             }
         }
     }

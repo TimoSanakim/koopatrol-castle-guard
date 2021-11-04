@@ -143,7 +143,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+                return Assets.GoombaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "KoopaTower":
                 return Assets.KoopaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
@@ -166,7 +166,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+                return Assets.GoombaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "KoopaTower":
                 return Assets.KoopaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
@@ -189,7 +189,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+                return Assets.GoombaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "KoopaTower":
                 return Assets.KoopaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
@@ -225,7 +225,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<TowerOption>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetDescription(1);
+                return Assets.GoombaTower.GetDescription(1);
             case "KoopaTower":
                 return Assets.KoopaTower.GetDescription(1);
             case "FreezieTower":

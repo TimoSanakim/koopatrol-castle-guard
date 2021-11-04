@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -65,9 +66,17 @@ public class GameSettings : MonoBehaviour
     public void changeMusicVolume()
     {
         Map.MusicVolume = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
+        gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Music volume " + Map.MusicVolume + "%";
     }
     public void changeSoundVolume()
     {
         Map.SoundVolume = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
+        gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Sound volume " + Map.SoundVolume + "%";
+    }
+    public void changeShownCooldowns()
+    {
+        Map.ShowCooldowns = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
+        if (Map.ShowCooldowns == 0) gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Show cooldowns all";
+        else gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Show cooldowns " + Map.ShowCooldowns + "+";
     }
 }

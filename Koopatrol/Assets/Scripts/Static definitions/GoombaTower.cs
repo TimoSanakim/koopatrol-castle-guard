@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets
 {
-    public static class GoomaTower
+    public static class GoombaTower
     {
         public static int bulletImage = 0;
         public static int GetSellCost(int towerLevel)

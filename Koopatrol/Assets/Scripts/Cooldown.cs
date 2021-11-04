@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,9 @@ using UnityEngine.UI;
 
 public class Cooldown : MonoBehaviour
 {
-    int towerLevel = 0;
     public float maxcooldown;
     public float cooldowntimer;
     public float cooldowncent;
-    public string towertype;
     public bool isClone;
     public string objectname;
 
@@ -18,11 +17,7 @@ public class Cooldown : MonoBehaviour
     {
         if (isClone)
         {
-            towertype = gameObject.GetComponentInParent<MapLocation>().towerType;
-            if (towertype == "Thwomp") maxcooldown = Assets.Thwomp.GetCooldown(towerLevel);
-            if (towertype == "FreezieTower") maxcooldown = Assets.FreezieTower.GetCooldown(towerLevel);
-            if (towertype == "PiranhaPlant") maxcooldown = Assets.PiranhaPlant.GetCooldown(towerLevel);
-
+            maxcooldown = GetMaxCooldown();
         }
     }
 
@@ -33,11 +28,38 @@ public class Cooldown : MonoBehaviour
         {
             gameObject.GetComponent<Image>().fillAmount = cooldowncent;
             cooldowntimer = gameObject.GetComponentInParent<MapLocation>().cooldown;
-            if (cooldowntimer == 0) cooldowntimer = maxcooldown;
+            if (cooldowntimer == 0)
+            {
+                maxcooldown = GetMaxCooldown();
+                cooldowntimer = maxcooldown;
+            }
             cooldowncent = cooldowntimer / maxcooldown;
             if (cooldowntimer == maxcooldown) gameObject.GetComponent<CanvasGroup>().alpha = 0f;
             else gameObject.GetComponent<CanvasGroup>().alpha = 1f;
         }
+    }
+    int GetMaxCooldown()
+    {
+        int towerLevel = gameObject.GetComponentInParent<MapLocation>().towerLevel;
+        if (gameObject.GetComponentInParent<MapLocation>().towerWasBuffed) towerLevel += 1;
+        switch (gameObject.GetComponentInParent<MapLocation>().towerType)
+        {
+            case "GoombaTower":
+                return Convert.ToInt32(Assets.GoombaTower.GetCooldown(towerLevel));
+            case "KoopaTower":
+                return Convert.ToInt32(Assets.KoopaTower.GetCooldown(towerLevel));
+            case "FreezieTower":
+                return Convert.ToInt32(Assets.FreezieTower.GetCooldown(towerLevel));
+            case "Thwomp":
+                return Convert.ToInt32(Assets.Thwomp.GetCooldown(towerLevel));
+            case "BulletBlaster":
+                return Convert.ToInt32(Assets.BulletBlaster.GetCooldown(towerLevel));
+            case "PiranhaPlant":
+                return Convert.ToInt32(Assets.PiranhaPlant.GetCooldown(towerLevel));
+            case "Bowser":
+                return Convert.ToInt32(Assets.Bowser.GetCooldown(towerLevel));
+        }
+        return -1;
     }
 
     public GameObject CreateCooldownCounter(GameObject parent)
