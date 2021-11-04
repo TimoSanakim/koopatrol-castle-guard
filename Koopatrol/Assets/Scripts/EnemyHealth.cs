@@ -17,6 +17,8 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     bool playedDeathSound = false;
     public bool HitByLava = false;
     int deathTime = 0;
+    float healthPercent;
+    float blinktime = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,10 +77,24 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     {
         return -(Health - MaxHealth);
     }
+    IEnumerator blinking(){ 
+        gameObject.GetComponent<CanvasGroup>().alpha = 1;
+        yield return new WaitForSeconds(blinktime);
+        gameObject.GetComponent<CanvasGroup>().alpha = 0.2f;
+        Debug.Log("blinking");
+    }
+    void startblinking()
+    {
+        StartCoroutine(blinking());
+    }
 
     public void Hurt(int damage)
     {
+        if(healthPercent < 0.15f) { 
+        InvokeRepeating("startblinking", 1, blinktime*2);
+        }
         Health -= damage;
+        healthPercent = (float)Health / (float)MaxHealth;
         gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f, false);
         if (Health <= 0)
         {
@@ -86,8 +102,11 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         }
         else
         {
+            
             Color newcolor = new Color(1f, Convert.ToSingle(Health-1) / Convert.ToSingle(MaxHealth), Convert.ToSingle(Health-1) / Convert.ToSingle(MaxHealth), 1f);
             gameObject.GetComponent<Image>().color = newcolor;
+
+            
             if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
             {
                 towerInfo.GetComponent<TowerInfo>().SetInfo();
@@ -97,6 +116,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         {
             BossBar.GetComponent<BossBar>().UpdateValue(Health, MaxHealth);
         }
+        
     }
 
     void death()
