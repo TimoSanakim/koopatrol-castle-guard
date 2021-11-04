@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     int deathTime = 0;
     float healthPercent;
     float blinktime = 0.2f;
+    bool blink = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +81,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     IEnumerator blinking(){ 
         gameObject.GetComponent<CanvasGroup>().alpha = 1;
         yield return new WaitForSeconds(blinktime);
-        gameObject.GetComponent<CanvasGroup>().alpha = 0.2f;
+        gameObject.GetComponent<CanvasGroup>().alpha = 0;
     }
     void startblinking()
     {
@@ -91,10 +92,12 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     {   
         Health -= damage;
         healthPercent = (float)Health / (float)MaxHealth;
-        if (healthPercent < 0.15f)
+        if (healthPercent < 0.15f && !blink)
         {
-            InvokeRepeating("startblinking", 1, blinktime * 2);
+            blink =true;
+            InvokeRepeating("startblinking", 0.01f, blinktime * 2);
         }
+
         gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f, false);
         if (Health <= 0)
         {
@@ -121,6 +124,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
 
     void death()
     {
+        CancelInvoke();
         Assets.CoinCounter.ChangeCoinCounter(enemyCoin, false);
         Map.Enemies.Remove(gameObject);
         if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
