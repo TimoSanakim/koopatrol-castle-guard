@@ -81,7 +81,6 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         gameObject.GetComponent<CanvasGroup>().alpha = 1;
         yield return new WaitForSeconds(blinktime);
         gameObject.GetComponent<CanvasGroup>().alpha = 0.2f;
-        Debug.Log("blinking");
     }
     void startblinking()
     {
@@ -89,12 +88,13 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     }
 
     public void Hurt(int damage)
-    {
-        if(healthPercent < 0.15f) { 
-        InvokeRepeating("startblinking", 1, blinktime*2);
-        }
+    {   
         Health -= damage;
         healthPercent = (float)Health / (float)MaxHealth;
+        if (healthPercent < 0.15f)
+        {
+            InvokeRepeating("startblinking", 1, blinktime * 2);
+        }
         gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f, false);
         if (Health <= 0)
         {
