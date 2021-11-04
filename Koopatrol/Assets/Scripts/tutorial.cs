@@ -715,7 +715,7 @@ public class Tutorial : MonoBehaviour
                 if (Map.Enemies.Count == 1)
                 {
                     step += 1;
-                    TextField.text = "Oh no! It's Luigi! He's a scaredy cat though, so when he'll see the bullet blaster, he'll go running home... wait.. what!? He's evading it! Oh no! Get them Koopas!";
+                    TextField.text = "Oh no! It's Luigi! He's a scaredy cat though, so when he'll see the bullet blaster, he'll go running home... wait.. what!? He's evading it! Oh no! Get him Koopas!";
                 }
                 break;
             case 31:
