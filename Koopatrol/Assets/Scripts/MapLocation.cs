@@ -96,6 +96,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 gameObject.tag = "PathTower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost, false);
             }
+            else if ((gameObject == Tutorial.TutorialPosition) && draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.TutorialPosition)
+            {
+                PlaceTower();
+                if (gameObject.tag == "Path") gameObject.tag = "PathTower";
+                else gameObject.tag = "Tower";
+                Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost, false);
+            }
         }
         draggingTower.GetComponent<draggingTower>().towerType = "none";
     }

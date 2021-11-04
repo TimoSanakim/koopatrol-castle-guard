@@ -33,12 +33,12 @@ public class EnemyBehaviour : MonoBehaviour
     public AudioClip specialSound;
     public string GetDescription()
     {
-        if (enemyType == "Toad") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Enemy type: Toad. Special behavior: None.";
-        if (enemyType == "Captain Toad") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Enemy type: Captain Toad. Special behavior: None.";
-        if (enemyType == "Yoshi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=3| Enemy type: Yoshi. Special behavior: Fast movement.";
-        if (enemyType == "Luigi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Enemy type: Luigi. Special behavior: Scared of bullet blasters.";
-        if (enemyType == "Mario") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Enemy type: Mario. Special behavior: Destroys goomba towers and always removed all castle health when he reaches it.";
-        return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Enemy type: Unknown. Special behavior: Unknown.";
+        if (enemyType == "Toad") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: None.";
+        if (enemyType == "Captain Toad") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: None.";
+        if (enemyType == "Yoshi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=3| Special behavior: Fast movement.";
+        if (enemyType == "Luigi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Scared of bullet blasters.";
+        if (enemyType == "Mario") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Destroys goomba towers, removes all castle health reached.";
+        return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Unknown.";
     }
 
     // Use this for initialization

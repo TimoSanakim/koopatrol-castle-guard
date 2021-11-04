@@ -33,7 +33,7 @@ public class TowerOption : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     // Update is called once per frame
     void Update()
     {
-        if (Assets.CoinCounter.GetCoinCount() >= towerCost && !(towerType == "Bowser" && Map.bowserPlaced))
+        if (Assets.CoinCounter.GetCoinCount() >= towerCost && !(towerType == "Bowser" && Map.bowserPlaced) && validPosition != Assets.ValidPosition.None)
         {
             gameObject.GetComponent<CanvasGroup>().alpha = 1f;
             canPlace = true;

@@ -58,8 +58,7 @@ public class SpawnEnemies : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().towerInfo = towerInfo;
                 enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Paths);
                 Map.Enemies.Add(enemy);
-
-            }    
+            }
         }
     }
 }

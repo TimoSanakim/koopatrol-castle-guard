@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef721e96c96faa64e8bcdfb2887a1349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hidden: 1
   slide: 0
   selectedTower: {fileID: 0}
   upgradeSound: {fileID: 8300000, guid: 11387403768603c4884aa432cc6f5549, type: 3}
@@ -648,6 +649,7 @@ GameObject:
   - component: {fileID: 6582090138838848663}
   - component: {fileID: 6582090138838848656}
   - component: {fileID: 6582090138838848657}
+  - component: {fileID: 5543458995164460882}
   m_Layer: 5
   m_Name: HideButton
   m_TagString: Untagged
@@ -769,6 +771,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &5543458995164460882
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582090138838848659}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6582090138911060154
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +874,7 @@ GameObject:
   - component: {fileID: 6582090139157811259}
   - component: {fileID: 6582090139157811268}
   - component: {fileID: 6582090139157811269}
+  - component: {fileID: 2518428309441260406}
   m_Layer: 5
   m_Name: SellButton
   m_TagString: SellButton
@@ -981,6 +996,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &2518428309441260406
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582090139157811271}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6582090139191478845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1180,7 @@ GameObject:
   - component: {fileID: 6582090139444614919}
   - component: {fileID: 6582090139444614912}
   - component: {fileID: 6582090139444614913}
+  - component: {fileID: 7106707897072930068}
   m_Layer: 5
   m_Name: UpgradeButton
   m_TagString: UpgradeButton
@@ -1274,6 +1302,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &7106707897072930068
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582090139444614915}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6582090139782873908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1326,7 @@ GameObject:
   - component: {fileID: 6582090139782873896}
   - component: {fileID: 6582090139782873897}
   - component: {fileID: 6582090139782873898}
+  - component: {fileID: 8560254411004316068}
   m_Layer: 5
   m_Name: TargetOption
   m_TagString: TargetButton
@@ -1407,6 +1448,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &8560254411004316068
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582090139782873908}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6867876445275055699
 GameObject:
   m_ObjectHideFlags: 0

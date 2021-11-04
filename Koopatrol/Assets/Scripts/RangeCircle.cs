@@ -28,7 +28,7 @@ public class RangeCircle : MonoBehaviour
                 gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(2*GetRangeTower(), 2*GetRangeTower());
             }
         }
-        else gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(2*GetRangeDraggedTower(), 2*GetRangeDraggedTower());
+        else if (transform.parent.GetComponent<draggingTower>().wasDragging) gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(2*GetRangeDraggedTower(), 2*GetRangeDraggedTower());
     }
 float GetRangeTower()
     {

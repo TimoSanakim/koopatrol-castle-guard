@@ -7,6 +7,8 @@ namespace Assets
     {
         AnyGround,
         Path,
-        GroundNextToPathOnOneAxis
+        GroundNextToPathOnOneAxis,
+        TutorialPosition,
+        None
     }
 }
