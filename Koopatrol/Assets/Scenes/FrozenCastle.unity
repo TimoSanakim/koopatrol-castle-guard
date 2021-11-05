@@ -352,6 +352,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &28369217
@@ -541,151 +542,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48160861}
-  m_CullTransparentMesh: 1
---- !u!1 &52952613
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 52952614}
-  - component: {fileID: 52952618}
-  - component: {fileID: 52952617}
-  - component: {fileID: 52952616}
-  - component: {fileID: 52952615}
-  m_Layer: 5
-  m_Name: Tutorial
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &52952614
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52952613}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2137302707}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &52952615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52952613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b48a9cf53ff73c4bb41f9f381912371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &52952616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52952613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 52952617}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 52952615}
-        m_TargetAssemblyTypeName: tutorial, Assembly-CSharp
-        m_MethodName: tutorialscript
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &52952617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52952613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf54adb7337d3454e8a7cd0e998ef6f8, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &52952618
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52952613}
   m_CullTransparentMesh: 1
 --- !u!1 &54011402
 GameObject:
@@ -916,6 +772,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &59355185
@@ -1110,6 +967,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &70383125
@@ -1304,6 +1162,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &77879409
@@ -1498,6 +1357,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &82503638
@@ -4642,6 +4502,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &125140303
@@ -4836,6 +4697,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &129109998
@@ -5030,6 +4892,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &139954965
@@ -5299,6 +5162,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &150707109
@@ -5643,6 +5507,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &201935881
@@ -5837,6 +5702,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &204547066
@@ -6331,6 +6197,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &215963423
@@ -7195,6 +7062,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &271097322
@@ -7544,6 +7412,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &279938994
@@ -7888,6 +7757,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &322799234
@@ -8260,6 +8130,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &346563687
@@ -8604,6 +8475,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &371456424
@@ -8948,6 +8820,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &413927676
@@ -9297,6 +9170,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &454099513
@@ -9491,6 +9365,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &467562717
@@ -9685,6 +9560,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &471617688
@@ -9879,6 +9755,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &475026662
@@ -10073,6 +9950,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &483307152
@@ -10267,6 +10145,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &515592912
@@ -10844,6 +10723,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &564632742
@@ -11038,6 +10918,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &568055668
@@ -11232,6 +11113,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &574775239
@@ -11426,6 +11308,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &599851265
@@ -11620,6 +11503,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &603523186
@@ -12039,6 +11923,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &620292788
@@ -12233,6 +12118,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &623201386
@@ -12427,6 +12313,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &632633368
@@ -12851,6 +12738,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &670599928
@@ -13045,6 +12933,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &687404928
@@ -13239,6 +13128,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &690036240
@@ -13513,6 +13403,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &709269817
@@ -13707,6 +13598,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &713242166
@@ -13901,6 +13793,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &713259502
@@ -14095,6 +13988,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &713361730
@@ -14364,6 +14258,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &734181826
@@ -14558,6 +14453,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &741381425
@@ -14827,6 +14723,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &744070142
@@ -15021,6 +14918,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &746144568
@@ -15290,6 +15188,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &759712014
@@ -15484,6 +15383,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &774486458
@@ -15753,6 +15653,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &802208031
@@ -16022,6 +15923,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &809318385
@@ -16216,6 +16118,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &811287757
@@ -16410,6 +16313,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &811728444
@@ -16679,6 +16583,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &843494301
@@ -16873,6 +16778,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &866005375
@@ -17067,6 +16973,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &869395941
@@ -17375,6 +17282,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &876606665
@@ -17569,6 +17477,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &879322484
@@ -17939,6 +17848,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &902786053
@@ -18133,6 +18043,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &908019095
@@ -18402,6 +18313,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &944463769
@@ -18596,6 +18508,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &944499063
@@ -18790,6 +18703,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &945530823
@@ -19224,6 +19138,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &973781901
@@ -19798,6 +19713,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1007321690
@@ -20380,6 +20296,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1055811081
@@ -20574,6 +20491,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1060959517
@@ -20978,6 +20896,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1074725701
@@ -21172,6 +21091,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1074955420
@@ -21366,6 +21286,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1077306809
@@ -21710,6 +21631,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1099444509
@@ -21904,6 +21826,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1107252908
@@ -22098,6 +22021,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1111089060
@@ -22504,6 +22428,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1135035757
@@ -22698,6 +22623,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1141539062
@@ -22892,6 +22818,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1144832795
@@ -23086,6 +23013,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1156814987
@@ -23280,6 +23208,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1161356807
@@ -23474,6 +23403,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1165846345
@@ -23818,6 +23748,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1197529118
@@ -24162,6 +24093,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1203885078
@@ -24506,6 +24438,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1211814657
@@ -24700,6 +24633,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1214899465
@@ -25044,6 +24978,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1233087000
@@ -25238,6 +25173,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1233372871
@@ -25432,6 +25368,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1245072858
@@ -25626,6 +25563,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1248743318
@@ -25825,6 +25763,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1271673032
@@ -26244,6 +26183,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1315131273
@@ -27043,6 +26983,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1381387619
@@ -27687,6 +27628,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1449565421
@@ -28031,6 +27973,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1481138689
@@ -28300,6 +28243,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1493807922
@@ -28560,6 +28504,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1499127703
@@ -28754,6 +28699,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1503261731
@@ -28948,6 +28894,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1512579438
@@ -29142,6 +29089,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1513104574
@@ -29486,6 +29434,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1538186109
@@ -30055,6 +30004,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1589909595
@@ -30249,6 +30199,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1601838474
@@ -30443,6 +30394,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1607293231
@@ -30862,6 +30814,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1659322653
@@ -31431,6 +31384,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1719402134
@@ -31625,6 +31579,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1721609545
@@ -31819,6 +31774,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1750699619
@@ -32088,6 +32044,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1773488910
@@ -32282,6 +32239,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1775495718
@@ -32476,6 +32434,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1779872790
@@ -32820,6 +32779,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1803593281
@@ -33014,6 +32974,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1805815122
@@ -33208,6 +33169,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1806344009
@@ -33402,6 +33364,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1814783943
@@ -33596,6 +33559,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1816335961
@@ -33790,6 +33754,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1817345901
@@ -34134,6 +34099,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1827822247
@@ -34328,6 +34294,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1834336633
@@ -34522,6 +34489,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1835383613
@@ -34716,6 +34684,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1844414485
@@ -34910,6 +34879,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1844716770
@@ -35184,6 +35154,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1875439753
@@ -35378,6 +35349,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1888216434
@@ -35797,6 +35769,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1905154815
@@ -35991,6 +35964,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1932055492
@@ -36185,6 +36159,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1934828060
@@ -36379,6 +36354,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1960531706
@@ -36723,6 +36699,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1973540477
@@ -36917,6 +36894,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &1975593023
@@ -37336,6 +37314,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &2004050327
@@ -37755,6 +37734,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &2064112380
@@ -38121,6 +38101,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &2096918142
@@ -38315,6 +38296,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &2107572570
@@ -38509,6 +38491,7 @@ MonoBehaviour:
   cooldown: 0
   highlight: 0
   towerBuffed: 0
+  towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
 --- !u!114 &2116042655
@@ -38647,7 +38630,6 @@ RectTransform:
   - {fileID: 1254794345}
   - {fileID: 1324916748}
   - {fileID: 1065192165}
-  - {fileID: 52952614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

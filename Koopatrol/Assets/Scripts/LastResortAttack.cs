@@ -18,6 +18,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     float progress = 0f;
     public string description;
     public bool isTornado = false;
+    public bool disabled = false;
     List<Transform> Paths = new List<Transform>();
     List<Transform> PastPaths = new List<Transform>();
     Transform NextPath = null;
@@ -42,7 +43,7 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     // Update is called once per frame
     void Update()
     {
-        if (Assets.CoinCounter.GetCoinCount() >= costs && !used)
+        if (Assets.CoinCounter.GetCoinCount() >= costs && !used && !disabled)
         {
             gameObject.GetComponent<CanvasGroup>().alpha = 1f;
         }

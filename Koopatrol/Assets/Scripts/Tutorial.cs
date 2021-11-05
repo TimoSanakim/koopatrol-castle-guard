@@ -106,8 +106,9 @@ public class Tutorial : MonoBehaviour
                     step += 1;
                     stepHint = 0;
                     TextField.text = "Now, an enemy will appear. Select the enemy to see details about it.";
-                    Map.gameSpeed = 5;
-                    Time.timeScale = 5;
+                    WaveManager.GetComponent<Waves>().currentWaveDelay = 0;
+                    Map.gameSpeed = 1;
+                    Time.timeScale = 1;
                     Map.paused = false;
                     towerOptions[0].GetComponent<TowerOption>().validPosition = Assets.ValidPosition.None;
                 }
@@ -199,18 +200,20 @@ public class Tutorial : MonoBehaviour
                     WaveManager.GetComponent<Waves>().TheWaves[WaveManager.GetComponent<Waves>().TheWaves.Count - 1].wave.Add(WaveManager.GetComponent<Waves>().EndlessToad);
                     WaveManager.GetComponent<Waves>().TheWaves[WaveManager.GetComponent<Waves>().TheWaves.Count - 1].wave.Add(WaveManager.GetComponent<Waves>().EndlessToad);
                     WaveManager.GetComponent<Waves>().TheWaves[WaveManager.GetComponent<Waves>().TheWaves.Count - 1].wave.Add(WaveManager.GetComponent<Waves>().EndlessToad);
+                    WaveManager.GetComponent<Waves>().TheWaves[WaveManager.GetComponent<Waves>().TheWaves.Count - 1].wave.Add(WaveManager.GetComponent<Waves>().EndlessToad);
+                    WaveManager.GetComponent<Waves>().TheWaves[WaveManager.GetComponent<Waves>().TheWaves.Count - 1].wave.Add(WaveManager.GetComponent<Waves>().EndlessToad);
                     WaveManager.GetComponent<Waves>().currentWaveDelay = 5;
                     EnemySpawner.GetComponent<SpawnEnemies>().stopSpawning = false;
                 }
                 break;
             case 6:
-                if (Map.Enemies.Count == 6)
+                if (Map.Enemies.Count == 8)
                 {
                     step += 1;
                 }
                 break;
             case 7:
-                if (Map.Enemies.Count == 5)
+                if (Map.Enemies.Count == 7)
                 {
                     step += 1;
                     TextField.text = "I don't think it can handle this alone... Here, I'll give you some more coins so you can place another tower near the castle.";
@@ -253,13 +256,70 @@ public class Tutorial : MonoBehaviour
                 }
                 break;
             case 9:
-                if (Map.Enemies.Count == 0)
+                if (Map.Enemies.Count == 6)
                 {
                     step += 1;
-                    TextField.text = "Alright! This was only the beginning though. Let's place something more exiting! Let's take a look at the third tower.";
+                    TextField.text = "Hm, they're getting far. Let's make sure the towers focus on the enemy closest to the castle. Selected the highlighed towers, and then press the focus button.";
+                    Map.paused = true;
+                    Time.timeScale = 0;
+                    Map.gameSpeed = 0;
                 }
                 break;
             case 10:
+                if (InfoBox.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>() != null && InfoBox.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().TargetPriority == 0)
+                {
+                    FocusButton.GetComponent<CanvasGroup>().alpha = 1f;
+                    FocusButton.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                    FocusButton.GetComponent<CanvasGroup>().interactable = true;
+                }
+                else
+                {
+                    FocusButton.GetComponent<CanvasGroup>().alpha = 0.3f;
+                    FocusButton.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                    FocusButton.GetComponent<CanvasGroup>().interactable = false;
+                }
+                if (stepHint <= 60)
+                {
+                    stepHint += 1;
+                    if (InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[0] && selectedPositions[0].GetComponent<MapLocation>().TargetPriority == 0) selectedPositions[0].transform.localScale = new Vector3(selectedPositions[0].transform.localScale.x + 0.003f, selectedPositions[0].transform.localScale.y + 0.003f, selectedPositions[0].transform.localScale.z);
+                    if (InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[1] && selectedPositions[1].GetComponent<MapLocation>().TargetPriority == 0) selectedPositions[1].transform.localScale = new Vector3(selectedPositions[1].transform.localScale.x + 0.003f, selectedPositions[1].transform.localScale.y + 0.003f, selectedPositions[1].transform.localScale.z);
+                    if (InfoBox.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>() != null && InfoBox.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().TargetPriority == 0) FocusButton.transform.localScale = new Vector3(FocusButton.transform.localScale.x + 0.003f, FocusButton.transform.localScale.y + 0.003f, FocusButton.transform.localScale.z);
+                }
+                else if (stepHint <= 120)
+                {
+                    stepHint += 1;
+                    if (stepHint == 120)
+                    {
+                        stepHint = 0;
+                        selectedPositions[0].transform.localScale = new Vector3(1, 1, 1);
+                        selectedPositions[1].transform.localScale = new Vector3(1, 1, 1);
+                        FocusButton.transform.localScale = new Vector3(1, 1, 1);
+                    }
+                    if (InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[0] && selectedPositions[0].GetComponent<MapLocation>().TargetPriority == 0) selectedPositions[0].transform.localScale = new Vector3(selectedPositions[0].transform.localScale.x - 0.003f, selectedPositions[0].transform.localScale.y - 0.003f, selectedPositions[0].transform.localScale.z);
+                    if (InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[1] && selectedPositions[1].GetComponent<MapLocation>().TargetPriority == 0) selectedPositions[1].transform.localScale = new Vector3(selectedPositions[1].transform.localScale.x - 0.003f, selectedPositions[1].transform.localScale.y - 0.003f, selectedPositions[1].transform.localScale.z);
+                    if (InfoBox.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>() != null && InfoBox.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().TargetPriority == 0) FocusButton.transform.localScale = new Vector3(FocusButton.transform.localScale.x - 0.003f, FocusButton.transform.localScale.y - 0.003f, FocusButton.transform.localScale.z);
+                }
+                if (selectedPositions[0].GetComponent<MapLocation>().TargetPriority == 1 && selectedPositions[1].GetComponent<MapLocation>().TargetPriority == 1)
+                {
+                    step += 1;
+                    selectedPositions[0].transform.localScale = new Vector3(1, 1, 1);
+                    selectedPositions[1].transform.localScale = new Vector3(1, 1, 1);
+                    FocusButton.transform.localScale = new Vector3(1, 1, 1);
+                    stepHint = 0;
+                    TextField.text = "This should help defeat the enemies.";
+                    Map.paused = false;
+                    Time.timeScale = 1;
+                    Map.gameSpeed = 1;
+                }
+                break;
+            case 11:
+                if (Map.Enemies.Count == 0)
+                {
+                    step += 1;
+                    TextField.text = "Only one got through, that's fine, after all, we need a toad to tell Mario the princess is in another castle. This was only the beginning though. Let's place something more exiting! Let's take a look at the third tower.";
+                }
+                break;
+            case 12:
                 if (stepHint <= 60)
                 {
                     stepHint += 1;
@@ -281,14 +341,14 @@ public class Tutorial : MonoBehaviour
                     towerOptions[2].transform.localScale = new Vector3(0.5f, 0.5f, 1f);
                     stepHint = 0;
                     TextField.text = "Hmm, no damage sprite, but has another one instead... <sprite=4>= the time enemies will be frozen. A frozen enemy won't move, even when it gets hit. So this tower won't deal damage, but will stop enemies. Let's place it strategically between the Goombas.";
-                    Assets.CoinCounter.ChangeCoinCounter(46, false);
+                    Assets.CoinCounter.ChangeCoinCounter(44, false);
                     draggingTower.GetComponent<draggingTower>().towerType = "FreezieTower";
                     draggingTower.GetComponent<Image>().sprite = towerOptions[2].GetComponent<Image>().sprite;
                     TutorialPosition = selectedPositions[2];
                     towerOptions[2].GetComponent<TowerOption>().validPosition = Assets.ValidPosition.TutorialPosition;
                 }
                 break;
-            case 11:
+            case 13:
                 if (Assets.CoinCounter.GetCoinCount() == 0)
                 {
                     step += 1;
@@ -315,7 +375,7 @@ public class Tutorial : MonoBehaviour
                     }
                 }
                 break;
-            case 12:
+            case 14:
                 if (stepHint <= 60)
                 {
                     stepHint += 1;
@@ -344,7 +404,7 @@ public class Tutorial : MonoBehaviour
                     towerOptions[3].GetComponent<TowerOption>().validPosition = Assets.ValidPosition.TutorialPosition;
                 }
                 break;
-            case 13:
+            case 15:
                 if (Assets.CoinCounter.GetCoinCount() == 0)
                 {
                     step += 1;
@@ -382,13 +442,13 @@ public class Tutorial : MonoBehaviour
                     }
                 }
                 break;
-            case 14:
+            case 16:
                 if (Map.Enemies.Count == 6)
                 {
                     step += 1;
                 }
                 break;
-            case 15:
+            case 17:
                 if (Map.Enemies.Count == 5)
                 {
                     step += 1;
@@ -403,7 +463,7 @@ public class Tutorial : MonoBehaviour
                     towerOptions[1].GetComponent<TowerOption>().validPosition = Assets.ValidPosition.TutorialPosition;
                 }
                 break;
-            case 16:
+            case 18:
                 if (Assets.CoinCounter.GetCoinCount() == 40)
                 {
                     step += 1;
@@ -429,7 +489,7 @@ public class Tutorial : MonoBehaviour
                     }
                 }
                 break;
-            case 17:
+            case 19:
                 if (Assets.CoinCounter.GetCoinCount() == 0)
                 {
                     step += 1;
@@ -459,14 +519,14 @@ public class Tutorial : MonoBehaviour
                     }
                 }
                 break;
-            case 18:
+            case 20:
                 if (Map.Enemies.Count == 0)
                 {
                     step += 1;
                     TextField.text = "That was great! Let's move on to upgrading towers. Select the highlighted tower.";
                 }
                 break;
-            case 19:
+            case 21:
                 if (stepHint <= 60)
                 {
                     stepHint += 1;
@@ -490,7 +550,7 @@ public class Tutorial : MonoBehaviour
                     TextField.text = "Select upgrade to improve this tower.";
                 }
                 break;
-            case 20:
+            case 22:
                 if (InfoBox.GetComponent<TowerInfo>().selectedTower == selectedPositions[0])
                 {
                     UpgradeButton.GetComponent<CanvasGroup>().alpha = 1f;
@@ -526,7 +586,7 @@ public class Tutorial : MonoBehaviour
                     TextField.text = "Go ahead and upgrade all highlighted towers.";
                 }
                 break;
-            case 21:
+            case 23:
                 if (InfoBox.GetComponent<TowerInfo>().selectedTower == selectedPositions[1] || InfoBox.GetComponent<TowerInfo>().selectedTower == selectedPositions[4] || InfoBox.GetComponent<TowerInfo>().selectedTower == selectedPositions[5])
                 {
                     UpgradeButton.GetComponent<CanvasGroup>().alpha = 1f;
@@ -542,9 +602,9 @@ public class Tutorial : MonoBehaviour
                 if (stepHint <= 60)
                 {
                     stepHint += 1;
-                    if (selectedPositions[1].GetComponent<MapLocation>().towerLevel == 1) selectedPositions[1].transform.localScale = new Vector3(selectedPositions[1].transform.localScale.x + 0.003f, selectedPositions[1].transform.localScale.y + 0.003f, selectedPositions[1].transform.localScale.z);
-                    if (selectedPositions[4].GetComponent<MapLocation>().towerLevel == 1) selectedPositions[4].transform.localScale = new Vector3(selectedPositions[4].transform.localScale.x + 0.003f, selectedPositions[4].transform.localScale.y + 0.003f, selectedPositions[4].transform.localScale.z);
-                    if (selectedPositions[5].GetComponent<MapLocation>().towerLevel == 1) selectedPositions[5].transform.localScale = new Vector3(selectedPositions[5].transform.localScale.x + 0.003f, selectedPositions[5].transform.localScale.y + 0.003f, selectedPositions[5].transform.localScale.z);
+                    if (selectedPositions[1].GetComponent<MapLocation>().towerLevel == 1 && InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[1]) selectedPositions[1].transform.localScale = new Vector3(selectedPositions[1].transform.localScale.x + 0.003f, selectedPositions[1].transform.localScale.y + 0.003f, selectedPositions[1].transform.localScale.z);
+                    if (selectedPositions[4].GetComponent<MapLocation>().towerLevel == 1 && InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[4]) selectedPositions[4].transform.localScale = new Vector3(selectedPositions[4].transform.localScale.x + 0.003f, selectedPositions[4].transform.localScale.y + 0.003f, selectedPositions[4].transform.localScale.z);
+                    if (selectedPositions[5].GetComponent<MapLocation>().towerLevel == 1 && InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[5]) selectedPositions[5].transform.localScale = new Vector3(selectedPositions[5].transform.localScale.x + 0.003f, selectedPositions[5].transform.localScale.y + 0.003f, selectedPositions[5].transform.localScale.z);
                 }
                 else if (stepHint <= 120)
                 {
@@ -556,14 +616,16 @@ public class Tutorial : MonoBehaviour
                         selectedPositions[4].transform.localScale = new Vector3(1, 1, 1);
                         selectedPositions[5].transform.localScale = new Vector3(1, 1, 1);
                     }
-                    if (selectedPositions[1].GetComponent<MapLocation>().towerLevel == 1) selectedPositions[1].transform.localScale = new Vector3(selectedPositions[1].transform.localScale.x - 0.003f, selectedPositions[1].transform.localScale.y - 0.003f, selectedPositions[1].transform.localScale.z);
-                    if (selectedPositions[4].GetComponent<MapLocation>().towerLevel == 1) selectedPositions[4].transform.localScale = new Vector3(selectedPositions[4].transform.localScale.x - 0.003f, selectedPositions[4].transform.localScale.y - 0.003f, selectedPositions[4].transform.localScale.z);
-                    if (selectedPositions[5].GetComponent<MapLocation>().towerLevel == 1) selectedPositions[5].transform.localScale = new Vector3(selectedPositions[5].transform.localScale.x - 0.003f, selectedPositions[5].transform.localScale.y - 0.003f, selectedPositions[5].transform.localScale.z);
+                    if (selectedPositions[1].GetComponent<MapLocation>().towerLevel == 1 && InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[1]) selectedPositions[1].transform.localScale = new Vector3(selectedPositions[1].transform.localScale.x - 0.003f, selectedPositions[1].transform.localScale.y - 0.003f, selectedPositions[1].transform.localScale.z);
+                    if (selectedPositions[4].GetComponent<MapLocation>().towerLevel == 1 && InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[4]) selectedPositions[4].transform.localScale = new Vector3(selectedPositions[4].transform.localScale.x - 0.003f, selectedPositions[4].transform.localScale.y - 0.003f, selectedPositions[4].transform.localScale.z);
+                    if (selectedPositions[5].GetComponent<MapLocation>().towerLevel == 1 && InfoBox.GetComponent<TowerInfo>().selectedTower != selectedPositions[5]) selectedPositions[5].transform.localScale = new Vector3(selectedPositions[5].transform.localScale.x - 0.003f, selectedPositions[5].transform.localScale.y - 0.003f, selectedPositions[5].transform.localScale.z);
                 }
                 if (selectedPositions[1].GetComponent<MapLocation>().towerLevel == 2 && selectedPositions[4].GetComponent<MapLocation>().towerLevel == 2 && selectedPositions[5].GetComponent<MapLocation>().towerLevel == 2)
                 {
                     step += 1;
-                    selectedPositions[0].transform.localScale = new Vector3(1, 1, 1);
+                    selectedPositions[1].transform.localScale = new Vector3(1, 1, 1);
+                    selectedPositions[4].transform.localScale = new Vector3(1, 1, 1);
+                    selectedPositions[5].transform.localScale = new Vector3(1, 1, 1);
                     stepHint = 0;
                     TextField.text = "Let's see who's next.";
                     WaveManager.GetComponent<Waves>().TheWaves.Add(new Waves.serializableClass());
@@ -584,13 +646,13 @@ public class Tutorial : MonoBehaviour
                     UpgradeButton.GetComponent<CanvasGroup>().interactable = false;
                 }
                 break;
-            case 22:
+            case 24:
                 if (Map.Enemies.Count == 1)
                 {
                     step += 1;
                 }
                 break;
-            case 23:
+            case 25:
                 if (Map.Enemies.Count == 0)
                 {
                     step += 1;
@@ -603,14 +665,14 @@ public class Tutorial : MonoBehaviour
                     EnemySpawner.GetComponent<SpawnEnemies>().stopSpawning = false;
                 }
                 break;
-            case 24:
+            case 26:
                 if (Map.Enemies.Count == 1)
                 {
                     step += 1;
                     TextField.text = "Eek! It's Yoshi! He moves a lot faster. Be careful!";
                 }
                 break;
-            case 25:
+            case 27:
                 if (Map.Enemies.Count == 0)
                 {
                     step += 1;
@@ -620,16 +682,14 @@ public class Tutorial : MonoBehaviour
                     towerOptions[4].GetComponent<TowerOption>().validPosition = Assets.ValidPosition.TutorialPosition;
                     draggingTower.GetComponent<draggingTower>().towerType = "BulletBlaster";
                     draggingTower.GetComponent<Image>().sprite = towerOptions[4].GetComponent<Image>().sprite;
-                    draggingTower.transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 1;
-                    draggingTower.transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 1;
                 }
                 break;
-            case 26:
+            case 28:
                 if (Assets.CoinCounter.GetCoinCount() == 0)
                 {
                     step += 1;
                     stepHint = 0;
-                    TextField.text = "Let's also get a Magikoopa in here; they won't attak, but will enhance our towers near them.";
+                    TextField.text = "Let's also get a Magikoopa in here; they won't attack, but will enhance our towers near them.";
                     draggingTower.GetComponent<draggingTower>().towerType = "MagikoopaTower";
                     draggingTower.GetComponent<Image>().sprite = towerOptions[6].GetComponent<Image>().sprite;
                     draggingTower.transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 0;
@@ -641,6 +701,8 @@ public class Tutorial : MonoBehaviour
                 }
                 else if (!draggingTower.GetComponent<draggingTower>().dragging)
                 {
+                    draggingTower.transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 0f;
+                    draggingTower.transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 0f;
                     if (draggingTower.GetComponent<CanvasGroup>().alpha == 0f)
                     {
                         draggingTower.transform.position = towerOptions[4].transform.position;
@@ -658,7 +720,7 @@ public class Tutorial : MonoBehaviour
                     }
                 }
                 break;
-            case 27:
+            case 29:
                 if (Assets.CoinCounter.GetCoinCount() == 0)
                 {
                     step += 1;
@@ -692,13 +754,13 @@ public class Tutorial : MonoBehaviour
                     }
                 }
                 break;
-            case 28:
+            case 30:
                 if (Map.Enemies.Count == 1)
                 {
                     step += 1;
                 }
                 break;
-            case 29:
+            case 31:
                 if (Map.Enemies.Count == 0)
                 {
                     step += 1;
@@ -711,14 +773,14 @@ public class Tutorial : MonoBehaviour
                     EnemySpawner.GetComponent<SpawnEnemies>().stopSpawning = false;
                 }
                 break;
-            case 30:
+            case 32:
                 if (Map.Enemies.Count == 1)
                 {
                     step += 1;
                     TextField.text = "Oh no! It's Luigi! He's a scaredy cat though, so when he'll see the bullet blaster, he'll go running home... wait.. what!? He's evading it! Oh no! Get him Koopas!";
                 }
                 break;
-            case 31:
+            case 33:
                 if (Map.Enemies.Count == 0)
                 {
                     step += 1;
@@ -730,7 +792,7 @@ public class Tutorial : MonoBehaviour
                     EnemySpawner.GetComponent<SpawnEnemies>().stopSpawning = false;
                 }
                 break;
-            case 32:
+            case 34:
                 if (Map.Enemies.Count == 1)
                 {
                     step += 1;
@@ -740,7 +802,7 @@ public class Tutorial : MonoBehaviour
                     Map.gameSpeed = 1;
                 }
                 break;
-            case 33:
+            case 35:
                 if (stepHint <= 60)
                 {
                     stepHint += 1;
@@ -764,7 +826,7 @@ public class Tutorial : MonoBehaviour
                     TextField.text = "Looks like he'll destroy Goomba towers when he gets close to them. He can also completely obliterate our castle, no matter how much health he has. Well... I'm out! I'll take the fall for this, go protect the other castles.";
                 }
                 break;
-            case 34:
+            case 36:
                 if (stepHint <= 60)
                 {
                     stepHint += 1;

@@ -70,6 +70,11 @@ public class draggingTower : MonoBehaviour
                 {
                     if (spot == Tutorial.TutorialPosition) spot.GetComponent<Image>().color = valid;
                 }
+                if (towerType == "BulletBlaster")
+                {
+                    transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 1f;
+                    transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 1f;
+                }
             }
             wasDragging = true;
         }

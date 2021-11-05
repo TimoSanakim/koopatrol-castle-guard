@@ -37,7 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (enemyType == "Captain Toad") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: None.";
         if (enemyType == "Yoshi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=3| Special behavior: Fast movement.";
         if (enemyType == "Luigi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Scared of bullet blasters.";
-        if (enemyType == "Mario") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Destroys goomba towers, removes all castle health reached.";
+        if (enemyType == "Mario") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Destroys goomba towers, removes all castle health when reached.";
         return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Unknown.";
     }
 

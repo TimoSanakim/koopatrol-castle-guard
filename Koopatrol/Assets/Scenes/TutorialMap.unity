@@ -1940,6 +1940,10 @@ PrefabInstance:
       propertyPath: validPosition
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4016383722209613212, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: disabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
 --- !u!224 &143847329 stripped
@@ -17366,7 +17370,6 @@ MonoBehaviour:
   - {fileID: 1539747011}
   - {fileID: 1479404220}
   - {fileID: 1243251738}
-  stepHint: 0
 --- !u!114 &1893041702
 MonoBehaviour:
   m_ObjectHideFlags: 0
