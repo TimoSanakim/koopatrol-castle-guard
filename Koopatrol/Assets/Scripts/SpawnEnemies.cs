@@ -15,24 +15,13 @@ public class SpawnEnemies : MonoBehaviour
     public float spawnDelay;
     public int spawnAmount;
     float timer;
-    List<Transform> Paths = new List<Transform>();
 
     private void Start()
     {
         waves = GameObject.FindGameObjectWithTag("Wavemanager");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
         enemydubes = GameObject.FindGameObjectWithTag("EnemyList");
-        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
-        GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
-        Paths.Add(GameObject.FindGameObjectWithTag("Castle").transform);
-        foreach (GameObject path in paths)
-        {
-            Paths.Add(path.transform);
-        }
-        foreach (GameObject path in obstructedPaths)
-        {
-            Paths.Add(path.transform);
-        }
+        
     }
 
 
@@ -43,9 +32,9 @@ public class SpawnEnemies : MonoBehaviour
             timer+=Time.deltaTime;
             if (timer >= spawnTime)
             {
-                //enemyOriginal = waves.GetComponent<Waves>().enemiesWave[waves.GetComponent<Waves>().enemiesWaveIndex];
                 GameObject enemy = Instantiate(waves.GetComponent<Waves>().TheWaves[waves.GetComponent<Waves>().waveIndex].wave[waves.GetComponent<Waves>().enemiesWaveIndex]);
-                enemy.transform.position = enemy.GetComponent<EnemyBehaviour>().startingPosition.transform.position;
+                enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Map.PossiblePaths[Map.randomizer.Next(0, Map.PossiblePaths.Count)]);
+                enemy.transform.position = enemy.GetComponent<EnemyBehaviour>().Paths[0].position;
                 enemy.transform.SetParent(enemydubes.transform, true);
                 enemy.GetComponent<EnemyBehaviour>().isClone = true;
                 enemy.GetComponent<CanvasGroup>().alpha = 1f;
@@ -53,10 +42,9 @@ public class SpawnEnemies : MonoBehaviour
                 enemy.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 enemy.tag = "Enemy";
                 spawnTime += spawnDelay;
-                spawnAmount++;
                 waves.GetComponent<Waves>().enemiesWaveIndex++;
+                spawnAmount++;
                 enemy.GetComponent<EnemyHealth>().towerInfo = towerInfo;
-                enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Paths);
                 Map.Enemies.Add(enemy);
             }
         }

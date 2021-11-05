@@ -92,7 +92,7 @@ public class TowerInfo : MonoBehaviour
     {
         mapRange = null;
         if (hidden) slide = 1;
-        else slide = 3;
+        else SetInfo();
         if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
         selectedTower = selectedObject;
         if (selectedTower.GetComponent<Image>() != null) replacedColor = selectedTower.GetComponent<Image>().color;
@@ -114,7 +114,7 @@ public class TowerInfo : MonoBehaviour
         if (selectedTower.GetComponent<MapLocation>() != null)
         {
             selectedTower.GetComponent<MapLocation>().TargetPriority += 1;
-            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4) selectedTower.GetComponent<MapLocation>().TargetPriority = 0;
+            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 5) selectedTower.GetComponent<MapLocation>().TargetPriority = 0;
             SetInfo();
         }
     }
@@ -270,12 +270,17 @@ public class TowerInfo : MonoBehaviour
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 2)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLowest Health";
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLeast Health";
                 targetButton.GetComponentInChildren<Text>().fontSize = 13;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 3)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLowest Health%";
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Health";
+                targetButton.GetComponentInChildren<Text>().fontSize = 11;
+            }
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4)
+            {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Damage";
                 targetButton.GetComponentInChildren<Text>().fontSize = 11;
             }
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";

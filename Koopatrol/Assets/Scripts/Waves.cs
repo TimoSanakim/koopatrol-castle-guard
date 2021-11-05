@@ -26,6 +26,7 @@ public class Waves : MonoBehaviour
     public GameObject EndlessYoshi;
     public GameObject EndlessLuigi;
     public GameObject EndlessMario;
+    public List<GameObject> StartingPositions;
     byte endlessMarioCount = 0;
     int lastMusicChange = 0;
     int round = 1;
@@ -36,6 +37,7 @@ public class Waves : MonoBehaviour
     public GameObject SpawnEnemies;
     GameObject RoundCounter;
     GameObject Music;
+    List<GameObject> AllPaths = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +45,99 @@ public class Waves : MonoBehaviour
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
         Music = GameObject.FindGameObjectWithTag("Music");
         RoundCounter.GetComponent<Text>().text = "Round: " + round;
+        GameObject[] Castles = GameObject.FindGameObjectsWithTag("Castle");
+        GameObject[] Paths = GameObject.FindGameObjectsWithTag("Path");
+        GameObject[] PathTowers = GameObject.FindGameObjectsWithTag("PathTower");
+        foreach (GameObject p in Castles)
+        {
+            AllPaths.Add(p);
+        }
+        foreach (GameObject p in Paths)
+        {
+            AllPaths.Add(p);
+        }
+        foreach (GameObject p in PathTowers)
+        {
+            AllPaths.Add(p);
+        }
+        Map.PossiblePaths = new List<List<Transform>>();
+        foreach (GameObject position in StartingPositions)
+        {
+            List<Transform> positions = new List<Transform>();
+            positions.Add(position.transform);
+            GetNextPath(positions);
+        }
+        if (Map.PossiblePaths.Count == 0)
+        {
+            Debug.Log("No valid paths to castle detected!");
+            SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
+        }
     }
-
+    void GetNextPath(List<Transform> pastPositiones)
+    {
+        List<Transform> PastPaths = new List<Transform>();
+        PastPaths.AddRange(pastPositiones);
+        float x = PastPaths[PastPaths.Count - 1].position.x;
+        float y = PastPaths[PastPaths.Count - 1].position.y;
+        foreach (GameObject t in AllPaths)
+        {
+            if (!PastPaths.Contains(t.transform))
+            {
+                if (t.transform.position.x >= x - 10 && t.transform.position.x <= x + 10 && t.transform.position.y >= y + 40 && t.transform.position.y <= y + 60)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+                if (t.transform.position.x >= x - 10 && t.transform.position.x <= x + 10 && t.transform.position.y >= y - 60 && t.transform.position.y <= y - 40)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+                if (t.transform.position.y >= y - 10 && t.transform.position.y <= y + 10 && t.transform.position.x >= x + 40 && t.transform.position.x <= x + 60)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+                if (t.transform.position.y >= y - 10 && t.transform.position.y <= y + 10 && t.transform.position.x >= x - 60 && t.transform.position.x <= x - 40)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {

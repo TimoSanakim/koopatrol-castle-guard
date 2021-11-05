@@ -676,7 +676,7 @@ public class Tutorial : MonoBehaviour
                 if (Map.Enemies.Count == 0)
                 {
                     step += 1;
-                    TextField.text = "Whew... that was close! King bower would've been angry if he made it. Let's place a bullet blaster just to make sure he won't pass in the future. Bullet blasters can only be placed next to a path, that is not an inner corner. They will fire onto the path next to them.";
+                    TextField.text = "Whew... that was close! King bowser would've been angry if he made it. Let's place a bullet blaster just to make sure he won't pass in the future. Bullet blasters can only be placed next to a path, that is not an inner corner. They will fire onto the path next to them.";
                     Assets.CoinCounter.ChangeCoinCounter(8, false);
                     TutorialPosition = selectedPositions[6];
                     towerOptions[4].GetComponent<TowerOption>().validPosition = Assets.ValidPosition.TutorialPosition;
@@ -844,6 +844,16 @@ public class Tutorial : MonoBehaviour
                 }
                 if (InfoBox.GetComponent<TowerInfo>().slide == 2)
                 {
+                    Map.Enemies.Clear();
+                    Map.Tiles.Clear();
+                    Map.bowserPlaced = false;
+                    Map.paused = true;
+                    Map.gameSpeed = 1;
+                    Time.timeScale = 0;
+                    CastleHealth.castleDead = false;
+                    Map.Victory = false;
+                    Assets.CoinCounter.CoinCount = 0;
+                    Map.PossiblePaths = null;
                     SceneManager.LoadScene("Levelselect");
                     Map.LoadedLevel = "Levelselect";
                 }

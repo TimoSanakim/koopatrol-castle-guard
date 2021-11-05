@@ -1651,6 +1651,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
+      propertyPath: StartingPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[8].music
       value: Yoshi
       objectReference: {fileID: 0}
@@ -1666,6 +1670,10 @@ PrefabInstance:
       propertyPath: Amountspawntimes.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
+      propertyPath: StartingPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1214899461}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[0].wave.Array.size
       value: 15

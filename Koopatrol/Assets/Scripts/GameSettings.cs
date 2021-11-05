@@ -18,13 +18,13 @@ public class GameSettings : MonoBehaviour
         Map.Tiles.Clear();
         Map.bowserPlaced = false;
         Map.paused = true;
+        Time.timeScale = 0;
         Map.gameSpeed = 1;
         CastleHealth.castleDead = false;
         Map.Victory = false;
         Assets.CoinCounter.CoinCount = 0;
+        Map.PossiblePaths = null;
         SceneManager.LoadScene(Map.LoadedLevel);
-
-
     }
     public static void backToMenu()
     {
@@ -33,13 +33,13 @@ public class GameSettings : MonoBehaviour
         Map.bowserPlaced = false;
         Map.paused = true;
         Map.gameSpeed = 1;
+        Time.timeScale = 0;
         CastleHealth.castleDead = false;
         Map.Victory = false;
         Assets.CoinCounter.CoinCount = 0;
         Map.LoadedLevel = "MainMenu";
+        Map.PossiblePaths = null;
         SceneManager.LoadScene(Map.LoadedLevel);
-
-
     }
 
     public void pauseGame()

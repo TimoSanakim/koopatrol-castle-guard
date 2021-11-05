@@ -14,6 +14,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     GameObject towerInfo;
     GameObject magicEffect;
     GameObject myMagic;
+    GameObject map;
     public string towerType = "none";
     public List<Sprite> towerSprites;
     //1 = path left or right, and not above or below
@@ -89,12 +90,14 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 PlaceTower();
                 gameObject.tag = "Tower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost, false);
+                towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
             }
             else if ((gameObject.tag == "Path") && draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.Path)
             {
                 PlaceTower();
                 gameObject.tag = "PathTower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost, false);
+                towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
             }
             else if ((gameObject == Tutorial.TutorialPosition) && draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.TutorialPosition)
             {
@@ -102,6 +105,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 if (gameObject.tag == "Path") gameObject.tag = "PathTower";
                 else gameObject.tag = "Tower";
                 Assets.CoinCounter.ChangeCoinCounter(-draggingTower.GetComponent<draggingTower>().towerCost, false);
+                towerInfo.GetComponent<TowerInfo>().ShowInfo(gameObject);
             }
         }
         draggingTower.GetComponent<draggingTower>().towerType = "none";
@@ -162,13 +166,17 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         originalImage = gameObject.GetComponent<Image>().sprite;
         originalColor = gameObject.GetComponent<Image>().color;
         originalPosition = gameObject.transform.position;
+        map = GameObject.FindGameObjectWithTag("Map");
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
             GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
             GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
-            GameObject castle = GameObject.FindGameObjectWithTag("Castle");
+            GameObject[] castles = GameObject.FindGameObjectsWithTag("Castle");
             List<GameObject> field = new List<GameObject>();
-            field.Add(castle);
+            foreach (GameObject castle in castles)
+            {
+                field.Add(castle);
+            }
             foreach (GameObject path in paths)
             {
                 field.Add(path);
@@ -308,7 +316,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     public void RemoveRangeIndication()
     {
-        GetComponent<Image>().color = originalColor;
+        if (tag=="PathTower" || tag == "Tower" || tag == "Castle") GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        else GetComponent<Image>().color = originalColor;
         rangeIndicating = false;
     }
     void LookAt(Vector3 targetPosition)
@@ -393,13 +402,24 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                             target = enemy;
                             enemyDistance = second;
                         }
-                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage())
+                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().Health < enemy.GetComponent<EnemyHealth>().Health)
                         {
                             target = enemy;
                             if (whileLoop == 0) enemyDistance = first;
                             else enemyDistance = second;
                         }
-                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 3 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage())
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 3 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 4 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage())
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 4 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage())
                         {
                             target = enemy;
                             enemyDistance = second;
@@ -464,11 +484,19 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 3)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().Health < enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 3)
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 3)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 3)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 4)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 4)
             {
                 target = enemy;
             }
@@ -666,7 +694,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     public void OnDrag(PointerEventData eventData)
     {
-        //wasDragging = true;
-        //map.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
+        wasDragging = true;
+        map.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
     }
 }

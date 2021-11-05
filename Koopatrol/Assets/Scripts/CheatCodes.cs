@@ -28,7 +28,7 @@ public class CheatCodes : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            LastResortAttack.GetComponent<LastResortAttack>().Reset();
+            LastResortAttack.GetComponent<LastResortAttack>().used = false;
             foreach (GameObject enemy in Map.Enemies)
             {
                 enemy.GetComponent<EnemyHealth>().HitByLava = false;

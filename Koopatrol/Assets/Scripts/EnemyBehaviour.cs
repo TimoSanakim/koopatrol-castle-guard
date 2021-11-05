@@ -12,6 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool finalEnemy = false;
     GameObject CastleHealth;
     Vector3 previousPosition;
+    bool wasPushedBack = false;
 
     int moveDirection = 0;
     int lastDirection = 0;
@@ -23,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     public List<Transform> Paths = new List<Transform>();
     public List<Transform> PastPaths = new List<Transform>();
     public Transform NextPath = null;
-    public GameObject startingPosition;
+    Transform StartingPosition;
     float specialBehavior = 0f;
 
     public float moveSpeed = 0f;
@@ -48,17 +49,10 @@ public class EnemyBehaviour : MonoBehaviour
         {
             gameObject.GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
             CastleHealth = GameObject.FindGameObjectWithTag("CastleHealth");
-            // Set position of Enemy as position of the first waypoint
-            NextPath = startingPosition.transform;
-            foreach (Transform path in Paths)
-            {
-                if (path.transform.position == NextPath.transform.position)
-                {
-                    PastPaths.Add(path);
-                    Paths.Remove(path);
-                    break;
-                }
-            }
+            NextPath = Paths[0];
+            StartingPosition = Paths[0];
+            PastPaths.Add(Paths[0]);
+            Paths.RemoveAt(0);
             if (spawnSound != null){
                 GetComponent<AudioSource>().clip = spawnSound;
                 GetComponent<AudioSource>().Play();
@@ -423,7 +417,6 @@ public class EnemyBehaviour : MonoBehaviour
                 PastPaths.Add(NextPath);
                 Paths.Remove(NextPath);
                 if (enemyType == "Mario") transform.position = NextPath.transform.position;
-                NextPath = null;
                 List<Transform> possiblePaths = new List<Transform>();
                 float x = transform.position.x;
                 float y = transform.position.y;
@@ -431,56 +424,50 @@ public class EnemyBehaviour : MonoBehaviour
                 else if (offsetDirection == 1) y -= 25;
                 else if (offsetDirection == 2) x += 25;
                 else if (offsetDirection == 3) x -= 25;
-                foreach (Transform path in Paths)
+                if (Paths.Count != 0) NextPath = Paths[0];
+                float diffx = NextPath.position.x - x;
+                float diffy = NextPath.position.y - y;
+                lastDirection = moveDirection;
+                if (diffy > 0)
                 {
-                    if ((path.position.x - x >= -10 && path.position.x - x <= 10 && path.position.y - y >= -70 && path.position.y - y <= 70) || (path.position.y - y >= -10 && path.position.y - y <= 10 && path.position.x - x >= -70 && path.position.x - x <= 70)) possiblePaths.Add(path);
+                    moveDirection = 0;
                 }
-                if (possiblePaths.Count != 0)
+                else if (diffy < 0)
                 {
-                    if (possiblePaths.Count == 1) NextPath = possiblePaths[0];
-                    else NextPath = possiblePaths[Map.randomizer.Next(0, possiblePaths.Count)];
-                    float diffx = NextPath.position.x - x;
-                    float diffy = NextPath.position.y - y;
-                    lastDirection = moveDirection;
-                    if (diffy > 0)
+                    moveDirection = 1;
+                }
+                else if (diffx > 0)
+                {
+                    moveDirection = 2;
+                }
+                else if (diffx < 0)
+                {
+                    moveDirection = 3;
+                }
+                if (moveDirection != lastDirection && enemyType == "Luigi" && transform.position != StartingPosition.transform.position && !wasPushedBack)
+                {
+                    offsetDirection = -1;
+                    if (LookForTower("BulletBlaster", x, y))
                     {
-                        moveDirection = 0;
-                    }
-                    else if (diffy < 0)
-                    {
-                        moveDirection = 1;
-                    }
-                    else if (diffx > 0)
-                    {
-                        moveDirection = 2;
-                    }
-                    else if (diffx < 0)
-                    {
-                        moveDirection = 3;
-                    }
-                    if (moveDirection != lastDirection && enemyType == "Luigi" && transform.position != startingPosition.transform.position)
-                    {
-                        offsetDirection = -1;
-                        if (LookForTower("BulletBlaster", x, y))
-                        {
-                            previousPosition = transform.position;
-                            specialBehavior = 1.5f;
-                            GetComponent<AudioSource>().clip = specialSound;
-                            GetComponent<AudioSource>().Play();
-                        }
-                    }
-                    else if (enemyType == "Mario")
-                    {
-                        offsetDirection = -1;
-                        offsetDirection = TargetTower("GoombaTower", x, y);
-                        if (offsetDirection != -1)
-                        {
-                            previousPosition = transform.position;
-                            specialBehavior = 2f;
-                        }
+                        previousPosition = transform.position;
+                        specialBehavior = 1.5f;
+                        GetComponent<AudioSource>().clip = specialSound;
+                        GetComponent<AudioSource>().Play();
                     }
                 }
+                else if (enemyType == "Mario")
+                {
+                    offsetDirection = -1;
+                    offsetDirection = TargetTower("GoombaTower", x, y);
+                    if (offsetDirection != -1)
+                    {
+                        previousPosition = transform.position;
+                        specialBehavior = 2f;
+                    }
+                }
+                wasPushedBack = false;
             }
+            
             if (NextPath != null)
             {
                 switch (moveDirection)
@@ -503,21 +490,22 @@ public class EnemyBehaviour : MonoBehaviour
                         break;
                 }
             }
-            else
+        }
+        else
+        {
+            CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().Health;
+            if (enemyType == "Mario") CastleHealth.GetComponent<CastleHealth>().HealthCastle = 0;
+            Map.Enemies.Remove(gameObject);
+            if (GetComponent<EnemyHealth>().towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
             {
-                CastleHealth.GetComponent<CastleHealth>().HealthCastle -= gameObject.GetComponent<EnemyHealth>().Health;
-                if (enemyType == "Mario") CastleHealth.GetComponent<CastleHealth>().HealthCastle = 0;
-                Map.Enemies.Remove(gameObject);
-                if (GetComponent<EnemyHealth>().towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
-                {
-                    GetComponent<EnemyHealth>().towerInfo.GetComponent<TowerInfo>().HideInfo();
-                }
-                Destroy(gameObject);
+                GetComponent<EnemyHealth>().towerInfo.GetComponent<TowerInfo>().HideInfo();
             }
+            Destroy(gameObject);
         }
     }
     private void PushedByTornado()
     {
+        wasPushedBack = true;
         if (PastPaths.Count >= 1)
         {
             bool atPath = false;
@@ -528,7 +516,7 @@ public class EnemyBehaviour : MonoBehaviour
             if (transform.position.x <= NextPath.transform.position.x && moveDirection == 3) atPath = true;
             if (atPath)
             {
-                Paths.Add(NextPath);
+                Paths.Insert(0, NextPath);
                 PastPaths.Remove(NextPath);
                 NextPath = null;
                 float x = transform.position.x;
@@ -586,7 +574,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            NextPath = startingPosition.transform;
+            NextPath = StartingPosition.transform;
             foreach (Transform path in Paths)
             {
                 if (path.transform.position == NextPath.transform.position)
