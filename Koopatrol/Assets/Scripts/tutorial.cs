@@ -21,7 +21,7 @@ public class Tutorial : MonoBehaviour
     public static GameObject TutorialPosition;
 
     TextMeshProUGUI TextField;
-    public int stepHint = 0;
+    int stepHint = 0;
     int step = 0;
     // Start is called before the first frame update
     void Start()
