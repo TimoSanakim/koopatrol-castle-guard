@@ -97,6 +97,7 @@ public class Tornado : MonoBehaviour
                         if (damage != 0) enemy.GetComponent<EnemyHealth>().Hurt(damage);
                         else enemy.GetComponent<EnemyHealth>().Hurt(Convert.ToInt32(Math.Ceiling(Convert.ToDouble(enemy.GetComponent<EnemyHealth>().MaxHealth) / 100 * damageperc)));
                         if (freezetime != 0) enemy.GetComponent<EnemyBehaviour>().Freeze(freezetime, true);
+                        enemy.GetComponent<EnemyBehaviour>().HitByTornado();
                     }
                 }
             }

@@ -66,6 +66,10 @@ public class Tutorial : MonoBehaviour
                     towerOptions[0].transform.localScale = new Vector3(0.5f, 0.5f, 1f);
                     stepHint = 0;
                     TextField.text = "Each sprite has a meaning: <sprite=0>= how much damage it deals to enemies. <sprite=1>= how fast the attack moves. <sprite=2>= how long it takes before it can attack again. <sprite=3>= how far the tower can see. Press hide to hide the infobox.";
+                    foreach (GameObject spot in Map.Tiles)
+                    {
+                        spot.GetComponent<MapLocation>().TargetPriority = 0;
+                    }
                 }
                 break;
             case 1:

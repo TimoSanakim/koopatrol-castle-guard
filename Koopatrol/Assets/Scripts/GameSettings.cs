@@ -79,4 +79,31 @@ public class GameSettings : MonoBehaviour
         if (Map.ShowCooldowns == 0) gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Show cooldowns all";
         else gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Show cooldowns " + Map.ShowCooldowns + "+";
     }
+    public void changeDefaultTargetPriority()
+    {
+        Map.DefaultTargetPriority += 1;
+        if (Map.DefaultTargetPriority == 6) Map.DefaultTargetPriority = 0;
+        switch (Map.DefaultTargetPriority)
+        {
+            case 0:
+                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Default Focus: Nearest";
+                break;
+            case 1:
+                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Default Focus: Shortest Path";
+                break;
+            case 2:
+                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Default Focus: Longest Path";
+                break;
+            case 3:
+                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Default Focus: Least Health";
+                break;
+            case 4:
+                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Default Focus: Most Health";
+                break;
+            case 5:
+                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Default Focus: Most Damage";
+                break;
+        }
+
+    }
 }

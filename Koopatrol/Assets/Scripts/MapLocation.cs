@@ -56,14 +56,14 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         if (towerType == "Bowser") Map.bowserPlaced = false;
         if (tag != "PathTower" && tag != "Path") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        transform.position = originalPosition;
+        transform.localPosition = originalPosition;
         gameObject.GetComponent<Image>().sprite = null;
         gameObject.GetComponent<Image>().color = originalColor;
         towerType = "none";
         cooldown = 0;
         towerLevel = 0;
         towerSprites = new List<Sprite>();
-        TargetPriority = 0;
+        TargetPriority = Map.DefaultTargetPriority;
         GetComponent<AudioSource>().clip = null;
         if (gameObject.tag == "PathTower")
         {
@@ -154,6 +154,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     // Start is called before the first frame update
     void Start()
     {
+        TargetPriority = Map.DefaultTargetPriority;
         Map.Tiles.Add(gameObject);
         gameObject.GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
@@ -165,7 +166,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         lavaFieldSource = GameObject.FindGameObjectWithTag("LavaAttack");
         originalImage = gameObject.GetComponent<Image>().sprite;
         originalColor = gameObject.GetComponent<Image>().color;
-        originalPosition = gameObject.transform.position;
+        originalPosition = gameObject.transform.localPosition;
         map = GameObject.FindGameObjectWithTag("Map");
         if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
         {
@@ -391,18 +392,18 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                             target = enemy;
                             enemyDistance = second;
                         }
-                        else if (TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health)
+                        else if (TargetPriority == 2 && target.GetComponent<EnemyBehaviour>().Paths.Count < enemy.GetComponent<EnemyBehaviour>().Paths.Count)
                         {
                             target = enemy;
                             if (whileLoop == 0) enemyDistance = first;
                             else enemyDistance = second;
                         }
-                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 2 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health)
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 2 && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count)
                         {
                             target = enemy;
                             enemyDistance = second;
                         }
-                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().Health < enemy.GetComponent<EnemyHealth>().Health)
+                        else if (TargetPriority == 3 && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health)
                         {
                             target = enemy;
                             if (whileLoop == 0) enemyDistance = first;
@@ -413,13 +414,24 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                             target = enemy;
                             enemyDistance = second;
                         }
-                        else if (TargetPriority == 4 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage())
+                        else if (TargetPriority == 4 && target.GetComponent<EnemyHealth>().Health < enemy.GetComponent<EnemyHealth>().Health)
                         {
                             target = enemy;
                             if (whileLoop == 0) enemyDistance = first;
                             else enemyDistance = second;
                         }
-                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 4 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage())
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 4 && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health)
+                        {
+                            target = enemy;
+                            enemyDistance = second;
+                        }
+                        else if (TargetPriority == 5 && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage())
+                        {
+                            target = enemy;
+                            if (whileLoop == 0) enemyDistance = first;
+                            else enemyDistance = second;
+                        }
+                        else if (whileLoop == 1 && enemyDistance > second && TargetPriority == 5 && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage())
                         {
                             target = enemy;
                             enemyDistance = second;
@@ -476,15 +488,15 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 2)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyBehaviour>().Paths.Count < enemy.GetComponent<EnemyBehaviour>().Paths.Count && TargetPriority == 2)
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 2)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyBehaviour>().Paths.Count == enemy.GetComponent<EnemyBehaviour>().Paths.Count && TargetPriority == 2)
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().Health < enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 3)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().Health > enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 3)
             {
                 target = enemy;
             }
@@ -492,11 +504,19 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 4)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().Health < enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 4)
             {
                 target = enemy;
             }
-            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 4)
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().Health == enemy.GetComponent<EnemyHealth>().Health && TargetPriority == 4)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target.GetComponent<EnemyHealth>().GetDamage() < enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 5)
+            {
+                target = enemy;
+            }
+            else if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance && target.GetComponent<EnemyHealth>().GetDamage() == enemy.GetComponent<EnemyHealth>().GetDamage() && TargetPriority == 5)
             {
                 target = enemy;
             }
@@ -600,7 +620,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < Assets.Thwomp.GetRange(towerLevel))
                 {
-                    gameObject.transform.position = originalPosition;
+                    gameObject.transform.localPosition = originalPosition;
                     if (cooldown == 0) GetComponent<AudioSource>().Play();
                     cooldown = Assets.Thwomp.GetCooldown(towerLevel);
                     enemy.GetComponent<EnemyBehaviour>().Stagger(Assets.Thwomp.GetStaggerTime(towerLevel), true);

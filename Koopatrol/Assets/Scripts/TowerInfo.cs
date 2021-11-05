@@ -91,12 +91,12 @@ public class TowerInfo : MonoBehaviour
     public void ShowInfo(GameObject selectedObject)
     {
         mapRange = null;
-        if (hidden) slide = 1;
-        else SetInfo();
         if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
         selectedTower = selectedObject;
         if (selectedTower.GetComponent<Image>() != null) replacedColor = selectedTower.GetComponent<Image>().color;
         if (selectedTower.GetComponent<MapLocation>() != null) selectedTower.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
+        if (hidden) slide = 1;
+        else SetInfo();
 
     }
     public void SellTower()
@@ -114,7 +114,7 @@ public class TowerInfo : MonoBehaviour
         if (selectedTower.GetComponent<MapLocation>() != null)
         {
             selectedTower.GetComponent<MapLocation>().TargetPriority += 1;
-            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 5) selectedTower.GetComponent<MapLocation>().TargetPriority = 0;
+            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 6) selectedTower.GetComponent<MapLocation>().TargetPriority = 0;
             SetInfo();
         }
     }
@@ -265,20 +265,25 @@ public class TowerInfo : MonoBehaviour
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 1)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nProtect Castle";
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nShortest Path";
                 targetButton.GetComponentInChildren<Text>().fontSize = 13;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 2)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLeast Health";
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLongest Path";
                 targetButton.GetComponentInChildren<Text>().fontSize = 13;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 3)
             {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLeast Health";
+                targetButton.GetComponentInChildren<Text>().fontSize = 13;
+            }
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4)
+            {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Health";
                 targetButton.GetComponentInChildren<Text>().fontSize = 11;
             }
-            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4)
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 5)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Damage";
                 targetButton.GetComponentInChildren<Text>().fontSize = 11;
