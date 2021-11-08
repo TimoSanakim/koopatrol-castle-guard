@@ -66,7 +66,8 @@ public class Cooldown : MonoBehaviour
     {
         GameObject cooldown = Instantiate(gameObject);
         cooldown.transform.SetParent(parent.transform, true);
-        cooldown.transform.localPosition = parent.transform.localPosition;
+        cooldown.transform.localPosition = new Vector3 (0,0,0);
+        cooldown.transform.localScale = new Vector3 (1,1,1);
         cooldown.GetComponent<CanvasGroup>().alpha = 1f;
         cooldown.GetComponent<Cooldown>().isClone = true;
         cooldown.tag = "CooldownCounter";
