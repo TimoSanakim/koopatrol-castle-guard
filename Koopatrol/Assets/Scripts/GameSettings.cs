@@ -10,7 +10,9 @@ public class GameSettings : MonoBehaviour
 {
     void Start()
     {
+        Map.paused = true;
         Time.timeScale = 0;
+        Map.gameSpeed = 1;
     }
     public static void restartGame()
     {
@@ -67,11 +69,13 @@ public class GameSettings : MonoBehaviour
     {
         Map.MusicVolume = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
         gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Music volume " + Map.MusicVolume + "%";
+        //TODO: When a scene is loaded, update Music's volume to this value
     }
     public void changeSoundVolume()
     {
         Map.SoundVolume = Convert.ToInt32(gameObject.GetComponentInChildren<Slider>().value);
         gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Sound volume " + Map.SoundVolume + "%";
+        //TODO: When a scene is loaded, update all sound sources, except Music's volume to this value
     }
     public void changeShownCooldowns()
     {
@@ -104,6 +108,6 @@ public class GameSettings : MonoBehaviour
                 gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Default Focus: Most Damage";
                 break;
         }
-
+        //TODO: When a scene is loaded, change all MapLocations without any towers to this value
     }
 }

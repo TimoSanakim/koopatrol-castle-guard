@@ -30,6 +30,7 @@ public class TowerInfo : MonoBehaviour
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
         NewtowerDescription = GameObject.FindGameObjectWithTag("NewTowerDescription");
         rangeCircle = GameObject.FindGameObjectWithTag("RangeCircle");
+        selectedTower = GameObject.FindGameObjectWithTag("TowerOption");
         fallbackTower = selectedTower;
     }
 
