@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    public Sprite[] PathSprites;
     static GameObject bulletOriginal;
     static GameObject bulletList;
     public int towerLevel = 0;
@@ -34,7 +35,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     GameObject lavaFieldSource;
     GameObject lavaField = null;
     public bool rangeIndicating = false;
-    Color originalColor;
+    public Color originalColor;
     Vector3 originalPosition;
 
     public void OnPointerClick(PointerEventData eventData)
@@ -50,7 +51,53 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 towerInfo.GetComponent<TowerInfo>().HideInfo();
                 if (gameObject.transform.parent.transform.parent.GetComponent<levelCreator>() != null)
                 {
-                    //Change tile to selected tile
+                    if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject) towerInfo.GetComponent<TowerInfo>().HideInfo();
+                    GameObject selectedOption = gameObject.transform.parent.transform.parent.GetComponent<levelCreator>().SelectedOption;
+                    GameObject backgroundTile = gameObject.transform.parent.transform.parent.GetComponent<levelCreator>().BackgroundTile;
+                    if (selectedOption.name == "PlaceGround")
+                    {
+                        DestroyTower();
+                        gameObject.transform.parent.transform.parent.GetChild(0).GetChild(gameObject.transform.GetSiblingIndex()).gameObject.GetComponent<Image>().sprite = selectedOption.GetComponent<Image>().sprite;
+                        gameObject.GetComponent<Image>().sprite = null;
+                        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                        gameObject.tag = "Ground";
+                        RecalculateNeighbors();
+                        Recalculate();
+                    }
+                    else if (selectedOption.name == "PlaceObstruction")
+                    {
+                        DestroyTower();
+                        gameObject.transform.parent.transform.parent.GetChild(0).GetChild(gameObject.transform.GetSiblingIndex()).gameObject.GetComponent<Image>().sprite = selectedOption.GetComponent<Image>().sprite;
+                        gameObject.GetComponent<Image>().sprite = null;
+                        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                        gameObject.tag = "BlockedGround";
+                        RecalculateNeighbors();
+                        Recalculate();
+                    }
+                    else if (selectedOption.name == "PlacePath")
+                    {
+                        DestroyTower();
+                        gameObject.transform.parent.transform.parent.GetChild(0).GetChild(gameObject.transform.GetSiblingIndex()).gameObject.GetComponent<Image>().sprite = backgroundTile.GetComponent<Image>().sprite;
+                        gameObject.GetComponent<Image>().sprite = selectedOption.GetComponent<Image>().sprite;
+                        gameObject.GetComponent<Image>().color = selectedOption.GetComponent<Image>().color;
+                        gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                        gameObject.tag = "Path";
+                        RecalculateNeighbors();
+                        Recalculate();
+                    }
+                    else if (selectedOption.name == "PlaceCastle")
+                    {
+                        DestroyTower();
+                        gameObject.transform.parent.transform.parent.GetChild(0).GetChild(gameObject.transform.GetSiblingIndex()).gameObject.GetComponent<Image>().sprite = backgroundTile.GetComponent<Image>().sprite;
+                        gameObject.GetComponent<Image>().sprite = selectedOption.GetComponent<Image>().sprite;
+                        gameObject.GetComponent<Image>().color = selectedOption.GetComponent<Image>().color;
+                        gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                        gameObject.tag = "Castle";
+                        RecalculateNeighbors();
+                        Recalculate();
+                    }
                 }
             }
             wasDragging = false;
@@ -59,17 +106,59 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             if (gameObject.transform.parent.transform.parent.GetComponent<levelCreator>() != null)
             {
-                Destroy(gameObject.transform.parent.transform.parent.GetChild(0).GetChild(gameObject.transform.GetSiblingIndex()));
-                Destroy(gameObject);
+                if (gameObject.transform.parent.transform.childCount != 2)
+                {
+                    Map.Tiles.Remove(gameObject);
+                    gameObject.tag = "Finish";
+                    if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
+                    {
+                        towerInfo.GetComponent<TowerInfo>().HideInfo();
+                        towerInfo.GetComponent<TowerInfo>().selectedTower = null;
+                    }
+                    Destroy(gameObject.transform.parent.transform.parent.GetChild(0).GetChild(gameObject.transform.GetSiblingIndex()).gameObject);
+                    RecalculateNeighbors();
+                    if (Map.Tiles.Contains(gameObject)) Map.Tiles.Remove(gameObject);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Debug.Log("You may not delete only tile in the map.");
+                }
             }
         }
+    }
+    public void RecalculateNeighbors()
+    {
+        List<GameObject> tiles = new List<GameObject>();
+        tiles.AddRange(Map.Tiles);
+        foreach (GameObject t in tiles)
+        {
+            if (t != gameObject)
+            {
+                if (t.transform.localPosition.x - transform.localPosition.x > -60 && t.transform.localPosition.x - transform.localPosition.x < 60 && t.transform.localPosition.y - transform.localPosition.y > -10 && t.transform.localPosition.y - transform.localPosition.y < 10)
+                {
+                    Map.Tiles.Remove(t);
+                    t.GetComponent<MapLocation>().Start();
+                }
+                else if (t.transform.localPosition.x - transform.localPosition.x > -10 && t.transform.localPosition.x - transform.localPosition.x < 10 && t.transform.localPosition.y - transform.localPosition.y > -60 && t.transform.localPosition.y - transform.localPosition.y < 60)
+                {
+                    Map.Tiles.Remove(t);
+                    t.GetComponent<MapLocation>().Start();
+                }
+            }
+        }
+    }
+    public void Recalculate()
+    {
+        if (Map.Tiles.Contains(gameObject)) Map.Tiles.Remove(gameObject);
+        Start();
     }
     public void DestroyTower()
     {
         if (towerType == "Bowser") Map.bowserPlaced = false;
         if (tag != "PathTower" && tag != "Path") transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         transform.localPosition = originalPosition;
-        gameObject.GetComponent<Image>().sprite = null;
+        gameObject.GetComponent<Image>().sprite = originalImage;
         gameObject.GetComponent<Image>().color = originalColor;
         towerType = "none";
         cooldown = 0;
@@ -85,7 +174,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             gameObject.tag = "Ground";
         }
-        gameObject.GetComponent<Image>().sprite = originalImage;
         Destroy(MyCooldown);
         MyCooldown = null;
     }
@@ -176,61 +264,113 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         magicEffect = GameObject.FindGameObjectWithTag("MagicEffect");
         CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
         lavaFieldSource = GameObject.FindGameObjectWithTag("LavaAttack");
-        originalImage = gameObject.GetComponent<Image>().sprite;
-        originalColor = gameObject.GetComponent<Image>().color;
+        if (tag != "Tower" && tag != "PathTower") originalImage = gameObject.GetComponent<Image>().sprite;
+        if (tag != "Tower" && tag != "PathTower") originalColor = gameObject.GetComponent<Image>().color;
         originalPosition = gameObject.transform.localPosition;
         map = GameObject.FindGameObjectWithTag("Map");
-        if (gameObject.tag == "Ground" || gameObject.tag == "Tower")
+        isNextToPath = 0;
+        GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
+        GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
+        GameObject[] castles = GameObject.FindGameObjectsWithTag("Castle");
+        List<GameObject> field = new List<GameObject>();
+        foreach (GameObject castle in castles)
         {
-            GameObject[] paths = GameObject.FindGameObjectsWithTag("Path");
-            GameObject[] obstructedPaths = GameObject.FindGameObjectsWithTag("PathTower");
-            GameObject[] castles = GameObject.FindGameObjectsWithTag("Castle");
-            List<GameObject> field = new List<GameObject>();
-            foreach (GameObject castle in castles)
+            field.Add(castle);
+        }
+        foreach (GameObject path in paths)
+        {
+            field.Add(path);
+        }
+        foreach (GameObject path in obstructedPaths)
+        {
+            field.Add(path);
+        }
+        bool xPath = false;
+        bool xppath = false;
+        bool xnpath = false;
+        bool yPath = false;
+        bool yppath = false;
+        bool ynpath = false;
+        byte connectedpaths = 0;
+        foreach (GameObject path in field)
+        {
+            if (gameObject.transform.localPosition.x - path.transform.localPosition.x >= 30 && gameObject.transform.localPosition.x - path.transform.localPosition.x <= 70 && gameObject.transform.localPosition.y == path.transform.localPosition.y)
             {
-                field.Add(castle);
+                xPath = true;
+                xppath = true;
+                connectedpaths += 1;
             }
-            foreach (GameObject path in paths)
+            else if (gameObject.transform.localPosition.x - path.transform.localPosition.x >= -70 && gameObject.transform.localPosition.x - path.transform.localPosition.x <= -30 && gameObject.transform.localPosition.y == path.transform.localPosition.y)
             {
-                field.Add(path);
+                xPath = true;
+                xnpath = true;
+                connectedpaths += 1;
             }
-            foreach (GameObject path in obstructedPaths)
+            else if (gameObject.transform.localPosition.y - path.transform.localPosition.y >= 30 && gameObject.transform.localPosition.y - path.transform.localPosition.y <= 70 && gameObject.transform.localPosition.x == path.transform.localPosition.x)
             {
-                field.Add(path);
+                yPath = true;
+                yppath = true;
+                connectedpaths += 1;
             }
-            bool xPath = false;
-            bool yPath = false;
-            foreach (GameObject path in field)
+            else if (gameObject.transform.localPosition.y - path.transform.localPosition.y >= -70 && gameObject.transform.localPosition.y - path.transform.localPosition.y <= -30 && gameObject.transform.localPosition.x == path.transform.localPosition.x)
             {
-                if (gameObject.transform.localPosition.x - path.transform.localPosition.x >= 30 && gameObject.transform.localPosition.x - path.transform.localPosition.x <= 70 && gameObject.transform.localPosition.y == path.transform.localPosition.y)
-                {
-                    xPath = true;
-                }
-                else if (gameObject.transform.localPosition.x - path.transform.localPosition.x >= -70 && gameObject.transform.localPosition.x - path.transform.localPosition.x <= -30 && gameObject.transform.localPosition.y == path.transform.localPosition.y)
-                {
-                    xPath = true;
-                }
-                else if (gameObject.transform.localPosition.y - path.transform.localPosition.y >= 30 && gameObject.transform.localPosition.y - path.transform.localPosition.y <= 70 && gameObject.transform.localPosition.x == path.transform.localPosition.x)
-                {
-                    yPath = true;
-                }
-                else if (gameObject.transform.localPosition.y - path.transform.localPosition.y >= -70 && gameObject.transform.localPosition.y - path.transform.localPosition.y <= -30 && gameObject.transform.localPosition.x == path.transform.localPosition.x)
-                {
-                    yPath = true;
-                }
-            }
-            if (xPath || yPath)
-            {
-                if (xPath && !yPath)
-                {
-                    isNextToPath = 1;
-                }
-                else if (yPath && !xPath)
-                {
-                    isNextToPath = 2;
-                }
+                yPath = true;
+                ynpath = true;
+                connectedpaths += 1;
             }
         }
+        if ((tag=="Ground" || tag =="Tower") && (xPath || yPath))
+        {
+            if (xPath && !yPath)
+            {
+                isNextToPath = 1;
+            }
+            else if (yPath && !xPath)
+            {
+                isNextToPath = 2;
+            }
+        }
+        if (tag == "Path" || tag == "PathTower") 
+        {
+            if (connectedpaths <= 1)
+            {
+                originalImage = PathSprites[0];
+                if (yppath || ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+                else transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            }
+            if (connectedpaths == 2)
+            {
+                if ((xppath && xnpath) || (yppath && ynpath))
+                {
+                    originalImage = PathSprites[0];
+                    if (xppath || xnpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                    else transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+                }
+                else
+                {
+                    originalImage = PathSprites[1];
+                    if (xppath && yppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+                    else if (xnpath && yppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
+                    else if (xnpath && ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90.0f);
+                    else if (xppath && ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                }
+            }
+            if (connectedpaths == 3)
+            {
+                originalImage = PathSprites[2];
+                if (!xppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90.0f);
+                else if (!xnpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+                else if (!yppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                else if (!ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
+            }
+            if (connectedpaths == 4)
+            {
+                originalImage = PathSprites[3];
+                transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            }
+            if (tag == "Path") gameObject.GetComponent<Image>().sprite = originalImage;
+        }
+
     }
 
     // Update is called once per frame
@@ -674,6 +814,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         else
         {
             Debug.Log("Bullet blaster placed on non-valid location; destroying.");
+            if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
+            {
+                towerInfo.GetComponent<TowerInfo>().HideInfo();
+                towerInfo.GetComponent<TowerInfo>().selectedTower = null;
+            }
             DestroyTower();
         }
     }

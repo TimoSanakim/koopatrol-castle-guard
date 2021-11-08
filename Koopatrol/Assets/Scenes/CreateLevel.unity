@@ -984,6 +984,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PathSprites:
+  - {fileID: 21300000, guid: 9765fa8294f0ba242bfe66d907fbc0e7, type: 3}
+  - {fileID: 21300000, guid: db3702cff21d9aa4f9f8275bd344c6a1, type: 3}
+  - {fileID: 21300000, guid: 6afd63b2234795a4da777ff9e5d749b2, type: 3}
+  - {fileID: 21300000, guid: 70394637ace24b048a3b6ee40a085316, type: 3}
   towerLevel: 0
   towerType: 
   towerSprites: []
@@ -994,6 +999,7 @@ MonoBehaviour:
   towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &993267685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4362,6 +4368,25 @@ MonoBehaviour:
   SelectedOptionHighlight: {fileID: 932087769}
   BackgroundTile: {fileID: 1644263639}
   Tile: {fileID: 2125093519}
+  backgroundTiles:
+  - {fileID: 21300000, guid: 24cdd872b44590740b28a7dd401e85db, type: 3}
+  - {fileID: 21300000, guid: 09a5c55ee5b46e8469811352f7aee27a, type: 3}
+  - {fileID: 21300000, guid: 1fbcd434c523f1c4dac3b59402eabae0, type: 3}
+  blockedTiles:
+  - {fileID: 21300000, guid: e44a53601117ad444aa30b50551ee3a0, type: 3}
+  - {fileID: 21300000, guid: da995e392a2f8934094b34105d52147a, type: 3}
+  - {fileID: 21300000, guid: 5e904ed9de4fc494599ea733abfe509c, type: 3}
+  PathColors:
+  - {r: 0.7529412, g: 0.7529412, b: 0.7529412, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.9019608, b: 0.42745098, a: 1}
+  backgrounds:
+  - {fileID: 21300000, guid: d668aeb60458ea74bb21f8194262d1d7, type: 3}
+  - {fileID: 21300000, guid: 9235681068063d04d9426bf64edb3c38, type: 3}
+  - {fileID: 21300000, guid: a1725b2a212314941ae9675d9fd9e2a0, type: 3}
+  foregrounds:
+  - {fileID: 21300000, guid: 003fa9a941a105e4ea22acbe40a9b932, type: 3}
+  - {fileID: 21300000, guid: e7011358d40d9e14c8dae51fe20db195, type: 3}
 --- !u!114 &2029452956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4528,6 +4553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca38bb40632b47418f12158681a2257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PathSprites:
+  - {fileID: 21300000, guid: 9765fa8294f0ba242bfe66d907fbc0e7, type: 3}
+  - {fileID: 21300000, guid: db3702cff21d9aa4f9f8275bd344c6a1, type: 3}
+  - {fileID: 21300000, guid: 6afd63b2234795a4da777ff9e5d749b2, type: 3}
+  - {fileID: 21300000, guid: 70394637ace24b048a3b6ee40a085316, type: 3}
   towerLevel: 0
   towerType: 
   towerSprites: []
@@ -4538,6 +4568,7 @@ MonoBehaviour:
   towerWasBuffed: 0
   TargetPriority: 0
   rangeIndicating: 0
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2125093522
 MonoBehaviour:
   m_ObjectHideFlags: 0
