@@ -56,10 +56,10 @@ public class TowerInfo : MonoBehaviour
                 hidden = false;
             }
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
-            temp.y = temp.y + 6;
-            if (temp.y >= 150)
+            temp.y = temp.y + 30;
+            if (temp.y >= 350)
             {
-                temp.y = 150;
+                temp.y = 350;
                 slide = 0;
             }
             gameObject.GetComponent<RectTransform>().transform.localPosition = temp;
@@ -67,7 +67,7 @@ public class TowerInfo : MonoBehaviour
         else if (slide == 2 || slide == 3)
         {
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
-            temp.y = temp.y - 6;
+            temp.y = temp.y - 30;
             if (temp.y <= 0)
             {
                 temp.y = 0;
