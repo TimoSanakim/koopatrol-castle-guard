@@ -90,8 +90,9 @@ float GetRangeDraggedTower()
     public GameObject CreateRangeCircle(GameObject parent)
     {
         GameObject RangeCircle = Instantiate(gameObject);
-        RangeCircle.transform.position = parent.transform.position;
         RangeCircle.transform.SetParent(map.transform, true);
+        RangeCircle.transform.localPosition = parent.transform.localPosition;
+        RangeCircle.transform.localScale = new Vector3(1, 1, 1);
         RangeCircle.GetComponent<RangeCircle>().isClone = true;
         RangeCircle.GetComponent<CanvasGroup>().alpha = 1f;
         RangeCircle.tag = "RangeCircle";

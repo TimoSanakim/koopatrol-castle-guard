@@ -152,14 +152,14 @@ public class Tutorial : MonoBehaviour
                         if (stepHint == 120)
                         {
                             stepHint = 0;
-                            Map.Enemies[0].transform.localScale = new Vector3(0.5f, 0.5f, 1);
+                            Map.Enemies[0].transform.localScale = new Vector3(1, 1, 1);
                         }
                         Map.Enemies[0].transform.localScale = new Vector3(Map.Enemies[0].transform.localScale.x - 0.003f, Map.Enemies[0].transform.localScale.y - 0.003f, Map.Enemies[0].transform.localScale.z);
                     }
                     if (InfoBox.GetComponent<TowerInfo>().selectedTower == Map.Enemies[0])
                     {
                         step += 1;
-                        Map.Enemies[0].transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+                        Map.Enemies[0].transform.localScale = new Vector3(1, 1, 1f);
                         stepHint = 0;
                         TextField.text = "<sprite=6>= how much health and max health the enemy has. <sprite=1>= how fast the enemy moves. Some enemies have special behaviors, we get to those later. Each enemy deal damage equal to their health to your castle if they reach it. Press the hide button to continue.";
                     }
@@ -818,14 +818,14 @@ public class Tutorial : MonoBehaviour
                     if (stepHint == 120)
                     {
                         stepHint = 0;
-                        Map.Enemies[0].transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                        Map.Enemies[0].transform.localScale = new Vector3(1, 1, 1);
                     }
                     Map.Enemies[0].transform.localScale = new Vector3(Map.Enemies[0].transform.localScale.x - 0.003f, Map.Enemies[0].transform.localScale.y - 0.003f, Map.Enemies[0].transform.localScale.z);
                 }
                 if (InfoBox.GetComponent<TowerInfo>().selectedTower == Map.Enemies[0])
                 {
                     step += 1;
-                    Map.Enemies[0].transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+                    Map.Enemies[0].transform.localScale = new Vector3(1, 1, 1f);
                     stepHint = 0;
                     TextField.text = "Looks like he'll destroy Goomba towers when he gets close to them. He can also completely obliterate our castle, no matter how much health he has. Well... I'm out! I'll take the fall for this, go protect the other castles.";
                 }

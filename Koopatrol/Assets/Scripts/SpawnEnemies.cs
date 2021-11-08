@@ -36,6 +36,7 @@ public class SpawnEnemies : MonoBehaviour
                 enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Map.PossiblePaths[Map.randomizer.Next(0, Map.PossiblePaths.Count)]);
                 enemy.transform.SetParent(enemydubes.transform, true);
                 enemy.transform.localPosition = enemy.GetComponent<EnemyBehaviour>().Paths[0].localPosition;
+                enemy.transform.localScale = new Vector3(1, 1, 1);
                 enemy.GetComponent<EnemyBehaviour>().isClone = true;
                 enemy.GetComponent<CanvasGroup>().alpha = 1f;
                 enemy.GetComponent<CanvasGroup>().interactable = true;

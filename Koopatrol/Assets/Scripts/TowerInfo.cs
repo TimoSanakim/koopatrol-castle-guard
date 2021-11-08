@@ -262,32 +262,26 @@ public class TowerInfo : MonoBehaviour
             if (selectedTower.GetComponent<MapLocation>().TargetPriority == 0)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nNearest Enemy";
-                targetButton.GetComponentInChildren<Text>().fontSize = 17;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 1)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nShortest Path";
-                targetButton.GetComponentInChildren<Text>().fontSize = 13;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 2)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nLongest Path";
-                targetButton.GetComponentInChildren<Text>().fontSize = 13;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 3)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nLeast Health";
-                targetButton.GetComponentInChildren<Text>().fontSize = 13;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Health";
-                targetButton.GetComponentInChildren<Text>().fontSize = 11;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 5)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Damage";
-                targetButton.GetComponentInChildren<Text>().fontSize = 11;
             }
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
             NewtowerDescription.GetComponent<TextMeshProUGUI>().text = GetDesciptionMap();

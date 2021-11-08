@@ -25,10 +25,10 @@ public class BossBar : MonoBehaviour
         {
             hidden = false;
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
-            temp.y = temp.y - 4;
-            if (temp.y <= -40)
+            temp.y = temp.y - 15;
+            if (temp.y <= -150)
             {
-                temp.y = -40;
+                temp.y = -150;
                 slide = 0;
             }
             gameObject.GetComponent<RectTransform>().transform.localPosition = temp;
@@ -36,7 +36,7 @@ public class BossBar : MonoBehaviour
         else if (slide == 2)
         {
             Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
-            temp.y = temp.y + 4;
+            temp.y = temp.y + 15;
             if (temp.y >= 0)
             {
                 temp.y = 0;

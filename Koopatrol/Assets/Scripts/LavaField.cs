@@ -60,6 +60,7 @@ public class LavaField : MonoBehaviour
         GameObject lavaField = Instantiate(gameObject);
         lavaField.transform.SetParent(parent.transform.parent, true);
         lavaField.transform.localPosition = parent.transform.localPosition;
+        lavaField.transform.localScale = new Vector3(1, 1, 1);
         lavaField.GetComponent<CanvasGroup>().alpha = 1f;
         lavaField.GetComponent<LavaField>().isClone = true;
         lavaField.tag = "LavaAttack";
