@@ -77,13 +77,13 @@ public class Waves : MonoBehaviour
     {
         List<Transform> PastPaths = new List<Transform>();
         PastPaths.AddRange(pastPositiones);
-        float x = PastPaths[PastPaths.Count - 1].position.x;
-        float y = PastPaths[PastPaths.Count - 1].position.y;
+        float x = PastPaths[PastPaths.Count - 1].localPosition.x;
+        float y = PastPaths[PastPaths.Count - 1].localPosition.y;
         foreach (GameObject t in AllPaths)
         {
             if (!PastPaths.Contains(t.transform))
             {
-                if (t.transform.position.x >= x - 10 && t.transform.position.x <= x + 10 && t.transform.position.y >= y + 40 && t.transform.position.y <= y + 60)
+                if (t.transform.localPosition.x >= x - 10 && t.transform.localPosition.x <= x + 10 && t.transform.localPosition.y >= y + 40 && t.transform.localPosition.y <= y + 60)
                 {
                     List<Transform> newPaths = new List<Transform>();
                     newPaths.AddRange(PastPaths);
@@ -96,7 +96,7 @@ public class Waves : MonoBehaviour
                     }
                     else GetNextPath(newPaths);
                 }
-                if (t.transform.position.x >= x - 10 && t.transform.position.x <= x + 10 && t.transform.position.y >= y - 60 && t.transform.position.y <= y - 40)
+                if (t.transform.localPosition.x >= x - 10 && t.transform.localPosition.x <= x + 10 && t.transform.localPosition.y >= y - 60 && t.transform.localPosition.y <= y - 40)
                 {
                     List<Transform> newPaths = new List<Transform>();
                     newPaths.AddRange(PastPaths);
@@ -109,7 +109,7 @@ public class Waves : MonoBehaviour
                     }
                     else GetNextPath(newPaths);
                 }
-                if (t.transform.position.y >= y - 10 && t.transform.position.y <= y + 10 && t.transform.position.x >= x + 40 && t.transform.position.x <= x + 60)
+                if (t.transform.localPosition.y >= y - 10 && t.transform.localPosition.y <= y + 10 && t.transform.localPosition.x >= x + 40 && t.transform.localPosition.x <= x + 60)
                 {
                     List<Transform> newPaths = new List<Transform>();
                     newPaths.AddRange(PastPaths);
@@ -122,7 +122,7 @@ public class Waves : MonoBehaviour
                     }
                     else GetNextPath(newPaths);
                 }
-                if (t.transform.position.y >= y - 10 && t.transform.position.y <= y + 10 && t.transform.position.x >= x - 60 && t.transform.position.x <= x - 40)
+                if (t.transform.localPosition.y >= y - 10 && t.transform.localPosition.y <= y + 10 && t.transform.localPosition.x >= x - 60 && t.transform.localPosition.x <= x - 40)
                 {
                     List<Transform> newPaths = new List<Transform>();
                     newPaths.AddRange(PastPaths);

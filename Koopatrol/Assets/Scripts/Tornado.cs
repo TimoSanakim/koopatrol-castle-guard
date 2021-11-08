@@ -36,19 +36,19 @@ public class Tornado : MonoBehaviour
         {
             bool atPath = false;
             if (moveDirection == -1) atPath = true;
-            if (gameObject.transform.position.y >= NextPath.transform.position.y && moveDirection == 0) atPath = true;
-            if (gameObject.transform.position.y <= NextPath.transform.position.y && moveDirection == 1) atPath = true;
-            if (gameObject.transform.position.x >= NextPath.transform.position.x && moveDirection == 2) atPath = true;
-            if (gameObject.transform.position.x <= NextPath.transform.position.x && moveDirection == 3) atPath = true;
+            if (gameObject.transform.localPosition.y >= NextPath.transform.localPosition.y && moveDirection == 0) atPath = true;
+            if (gameObject.transform.localPosition.y <= NextPath.transform.localPosition.y && moveDirection == 1) atPath = true;
+            if (gameObject.transform.localPosition.x >= NextPath.transform.localPosition.x && moveDirection == 2) atPath = true;
+            if (gameObject.transform.localPosition.x <= NextPath.transform.localPosition.x && moveDirection == 3) atPath = true;
             if (atPath)
             {
                 PastPaths.Add(NextPath);
                 Paths.Remove(NextPath);
-                float x = gameObject.transform.position.x;
-                float y = gameObject.transform.position.y;
+                float x = gameObject.transform.localPosition.x;
+                float y = gameObject.transform.localPosition.y;
                 if (Paths.Count != 0) NextPath = Paths[Paths.Count - 1];
-                float diffx = NextPath.position.x - x;
-                float diffy = NextPath.position.y - y;
+                float diffx = NextPath.localPosition.x - x;
+                float diffy = NextPath.localPosition.y - y;
                 if (diffy > 0)
                 {
                     moveDirection = 0;
@@ -71,27 +71,27 @@ public class Tornado : MonoBehaviour
                 switch (moveDirection)
                 {
                     case 0:
-                        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (30 * Time.deltaTime), gameObject.transform.position.z);
-                        if (gameObject.transform.position.y >= NextPath.transform.position.y) gameObject.transform.position = new Vector3(gameObject.transform.position.x, NextPath.transform.position.y, gameObject.transform.position.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + (30 * Time.deltaTime), gameObject.transform.localPosition.z);
+                        if (gameObject.transform.localPosition.y >= NextPath.transform.localPosition.y) gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, NextPath.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                     case 1:
-                        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (30 * Time.deltaTime), gameObject.transform.position.z);
-                        if (gameObject.transform.position.y <= NextPath.transform.position.y) gameObject.transform.position = new Vector3(gameObject.transform.position.x, NextPath.transform.position.y, gameObject.transform.position.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - (30 * Time.deltaTime), gameObject.transform.localPosition.z);
+                        if (gameObject.transform.localPosition.y <= NextPath.transform.localPosition.y) gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, NextPath.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                     case 2:
-                        gameObject.transform.position = new Vector3(gameObject.transform.position.x + (30 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
-                        if (gameObject.transform.position.x >= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x + (30 * Time.deltaTime), gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+                        if (gameObject.transform.localPosition.x >= NextPath.transform.localPosition.x) gameObject.transform.localPosition = new Vector3(NextPath.transform.localPosition.x, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                     case 3:
-                        gameObject.transform.position = new Vector3(gameObject.transform.position.x - (30 * Time.deltaTime), gameObject.transform.position.y, gameObject.transform.position.z);
-                        if (gameObject.transform.position.x <= NextPath.transform.position.x) gameObject.transform.position = new Vector3(NextPath.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x - (30 * Time.deltaTime), gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+                        if (gameObject.transform.localPosition.x <= NextPath.transform.localPosition.x) gameObject.transform.localPosition = new Vector3(NextPath.transform.localPosition.x, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                 }
                 List<GameObject> enemies = new List<GameObject>();
                 enemies.AddRange(Map.Enemies);
                 foreach (GameObject enemy in enemies)
                 {
-                    if (enemy.GetComponent<EnemyBehaviour>().isClone && !enemy.GetComponent<EnemyHealth>().HitByLava && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < 50)
+                    if (enemy.GetComponent<EnemyBehaviour>().isClone && !enemy.GetComponent<EnemyHealth>().HitByLava && Vector3.Distance(enemy.transform.localPosition, gameObject.transform.localPosition) < 50)
                     {
                         enemy.GetComponent<EnemyHealth>().HitByLava = true;
                         if (damage != 0) enemy.GetComponent<EnemyHealth>().Hurt(damage);
@@ -117,8 +117,8 @@ public class Tornado : MonoBehaviour
         tornado.GetComponent<Tornado>().freezetime = freezetime;
         tornado.GetComponent<Tornado>().Paths.AddRange(Map.PossiblePaths[index]);
         tornado.GetComponent<Tornado>().NextPath = tornado.GetComponent<Tornado>().Paths[tornado.GetComponent<Tornado>().Paths.Count - 1];
-        tornado.transform.position = tornado.GetComponent<Tornado>().NextPath.position;
         tornado.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform, true);
+        tornado.transform.localPosition = tornado.GetComponent<Tornado>().NextPath.localPosition;
         tornado.GetComponent<Tornado>().isClone = true;
         tornado.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         tornado.transform.localScale = new Vector3(1, 1, 1);

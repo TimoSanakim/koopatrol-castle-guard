@@ -58,8 +58,8 @@ public class LavaField : MonoBehaviour
     public GameObject CreateLavaField(GameObject parent)
     {
         GameObject lavaField = Instantiate(gameObject);
-        lavaField.transform.position = parent.transform.position;
         lavaField.transform.SetParent(parent.transform.parent, true);
+        lavaField.transform.localPosition = parent.transform.localPosition;
         lavaField.GetComponent<CanvasGroup>().alpha = 1f;
         lavaField.GetComponent<LavaField>().isClone = true;
         lavaField.tag = "LavaAttack";

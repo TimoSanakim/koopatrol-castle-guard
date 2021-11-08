@@ -54,18 +54,18 @@ public class TowerInfo : MonoBehaviour
                 SetInfo();
                 hidden = false;
             }
-            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
+            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
             temp.y = temp.y + 6;
             if (temp.y >= 150)
             {
                 temp.y = 150;
                 slide = 0;
             }
-            gameObject.GetComponent<RectTransform>().transform.position = temp;
+            gameObject.GetComponent<RectTransform>().transform.localPosition = temp;
         }
         else if (slide == 2 || slide == 3)
         {
-            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
+            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
             temp.y = temp.y - 6;
             if (temp.y <= 0)
             {
@@ -78,7 +78,7 @@ public class TowerInfo : MonoBehaviour
                     if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
                 }
             }
-            gameObject.GetComponent<RectTransform>().transform.position = temp;
+            gameObject.GetComponent<RectTransform>().transform.localPosition = temp;
         }
     }
 

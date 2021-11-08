@@ -34,8 +34,8 @@ public class SpawnEnemies : MonoBehaviour
             {
                 GameObject enemy = Instantiate(waves.GetComponent<Waves>().TheWaves[waves.GetComponent<Waves>().waveIndex].wave[waves.GetComponent<Waves>().enemiesWaveIndex]);
                 enemy.GetComponent<EnemyBehaviour>().Paths.AddRange(Map.PossiblePaths[Map.randomizer.Next(0, Map.PossiblePaths.Count)]);
-                enemy.transform.position = enemy.GetComponent<EnemyBehaviour>().Paths[0].position;
                 enemy.transform.SetParent(enemydubes.transform, true);
+                enemy.transform.localPosition = enemy.GetComponent<EnemyBehaviour>().Paths[0].localPosition;
                 enemy.GetComponent<EnemyBehaviour>().isClone = true;
                 enemy.GetComponent<CanvasGroup>().alpha = 1f;
                 enemy.GetComponent<CanvasGroup>().interactable = true;

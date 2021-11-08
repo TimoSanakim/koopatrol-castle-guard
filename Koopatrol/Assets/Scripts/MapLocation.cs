@@ -190,19 +190,19 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             bool yPath = false;
             foreach (GameObject path in field)
             {
-                if (gameObject.transform.position.x - path.transform.position.x >= 30 && gameObject.transform.position.x - path.transform.position.x <= 70 && gameObject.transform.position.y == path.transform.position.y)
+                if (gameObject.transform.localPosition.x - path.transform.localPosition.x >= 30 && gameObject.transform.localPosition.x - path.transform.localPosition.x <= 70 && gameObject.transform.localPosition.y == path.transform.localPosition.y)
                 {
                     xPath = true;
                 }
-                else if (gameObject.transform.position.x - path.transform.position.x >= -70 && gameObject.transform.position.x - path.transform.position.x <= -30 && gameObject.transform.position.y == path.transform.position.y)
+                else if (gameObject.transform.localPosition.x - path.transform.localPosition.x >= -70 && gameObject.transform.localPosition.x - path.transform.localPosition.x <= -30 && gameObject.transform.localPosition.y == path.transform.localPosition.y)
                 {
                     xPath = true;
                 }
-                else if (gameObject.transform.position.y - path.transform.position.y >= 30 && gameObject.transform.position.y - path.transform.position.y <= 70 && gameObject.transform.position.x == path.transform.position.x)
+                else if (gameObject.transform.localPosition.y - path.transform.localPosition.y >= 30 && gameObject.transform.localPosition.y - path.transform.localPosition.y <= 70 && gameObject.transform.localPosition.x == path.transform.localPosition.x)
                 {
                     yPath = true;
                 }
-                else if (gameObject.transform.position.y - path.transform.position.y >= -70 && gameObject.transform.position.y - path.transform.position.y <= -30 && gameObject.transform.position.x == path.transform.position.x)
+                else if (gameObject.transform.localPosition.y - path.transform.localPosition.y >= -70 && gameObject.transform.localPosition.y - path.transform.localPosition.y <= -30 && gameObject.transform.localPosition.x == path.transform.localPosition.x)
                 {
                     yPath = true;
                 }
@@ -281,15 +281,15 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     public void bulletBlasterRangeVisualization()
     {
-        float x = gameObject.transform.position.x;
-        float y = gameObject.transform.position.y;
+        float x = gameObject.transform.localPosition.x;
+        float y = gameObject.transform.localPosition.y;
         int whileLoop = 0;
         bool hasPath = true;
         while (whileLoop != 2)
         {
             foreach (GameObject spot in Map.Tiles)
             {
-                if ((spot.tag == "Path" || spot.tag == "PathTower") && y - spot.transform.position.y >= -45 && y - spot.transform.position.y <= 45 && x - spot.transform.position.x >= -45 && x - spot.transform.position.x <= 45)
+                if ((spot.tag == "Path" || spot.tag == "PathTower") && y - spot.transform.localPosition.y >= -45 && y - spot.transform.localPosition.y <= 45 && x - spot.transform.localPosition.x >= -45 && x - spot.transform.localPosition.x <= 45)
                 {
                     hasPath = true;
                     spot.GetComponent<Image>().color = new Color(1f, 0.3f, 0.3f);
@@ -298,8 +298,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             if (!hasPath)
             {
-                x = gameObject.transform.position.x;
-                y = gameObject.transform.position.y;
+                x = gameObject.transform.localPosition.x;
+                y = gameObject.transform.localPosition.y;
                 whileLoop += 1;
             }
             if (isNextToPath == 1)
@@ -323,7 +323,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void LookAt(Vector3 targetPosition)
     {
-        Vector3 difference = targetPosition - gameObject.transform.position;
+        Vector3 difference = targetPosition - gameObject.transform.localPosition;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
     }
@@ -335,7 +335,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         float distance;
         foreach (GameObject enemy in Map.Enemies)
         {
-            distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
+            distance = Vector3.Distance(enemy.transform.localPosition, gameObject.transform.localPosition);
             if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < lowestDistance)
             {
                 target = enemy;
@@ -347,8 +347,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     //Get based on isNextToPath
     GameObject GetEnemy(int TargetPriority)
     {
-        float x = gameObject.transform.position.x;
-        float y = gameObject.transform.position.y;
+        float x = gameObject.transform.localPosition.x;
+        float y = gameObject.transform.localPosition.y;
         int first = 0;
         int second = 0;
         int whileLoop = 0;
@@ -359,7 +359,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             foreach (GameObject spot in Map.Tiles)
             {
-                if ((spot.tag == "Path" || spot.tag == "PathTower") && y - spot.transform.position.y >= -45 && y - spot.transform.position.y <= 45 && x - spot.transform.position.x >= -45 && x - spot.transform.position.x <= 45)
+                if ((spot.tag == "Path" || spot.tag == "PathTower") && y - spot.transform.localPosition.y >= -45 && y - spot.transform.localPosition.y <= 45 && x - spot.transform.localPosition.x >= -45 && x - spot.transform.localPosition.x <= 45)
                 {
                     hasPath = true;
                 }
@@ -368,7 +368,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 foreach (GameObject enemy in Map.Enemies)
                 {
-                    if (enemy.GetComponent<EnemyBehaviour>().isClone && y - enemy.transform.position.y >= -5 && y - enemy.transform.position.y <= 5 && x - enemy.transform.position.x >= -5 && x - enemy.transform.position.x <= 5)
+                    if (enemy.GetComponent<EnemyBehaviour>().isClone && y - enemy.transform.localPosition.y >= -5 && y - enemy.transform.localPosition.y <= 5 && x - enemy.transform.localPosition.x >= -5 && x - enemy.transform.localPosition.x <= 5)
                     {
                         if (target == null)
                         {
@@ -441,8 +441,8 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             else
             {
-                x = gameObject.transform.position.x;
-                y = gameObject.transform.position.y;
+                x = gameObject.transform.localPosition.x;
+                y = gameObject.transform.localPosition.y;
                 whileLoop += 1;
             }
             if (isNextToPath == 1)
@@ -469,7 +469,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         float lowestDistance = range;
         foreach (GameObject enemy in Map.Enemies)
         {
-            distance = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
+            distance = Vector3.Distance(enemy.transform.localPosition, gameObject.transform.localPosition);
             if (enemy.GetComponent<EnemyBehaviour>().isClone && distance < range && target == null)
             {
                 target = enemy;
@@ -526,20 +526,21 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     void CreateBullet(int image, int power, float speed, GameObject homingTarget)
     {
         GameObject bullet = Instantiate(bulletOriginal);
-        bullet.transform.position = gameObject.transform.position;
+        bullet.transform.SetParent(bulletList.transform, true);
+        bullet.transform.localPosition = gameObject.transform.localPosition;
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().homingTarget = homingTarget;
         bullet.GetComponent<Assets.Bullet>().power = power;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
-        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.position);
-        bullet.transform.SetParent(bulletList.transform, true);
+        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.localPosition);
     }
     void CreateBullet(int image, int power, float speed, Vector3 targetPosition)
     {
         GameObject bullet = Instantiate(bulletOriginal);
-        bullet.transform.position = gameObject.transform.position;
+        bullet.transform.SetParent(bulletList.transform, true);
+        bullet.transform.localPosition = gameObject.transform.localPosition;
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().targetPosition = targetPosition;
@@ -547,25 +548,25 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
         bullet.GetComponent<Assets.Bullet>().LookAt(targetPosition);
-        bullet.transform.SetParent(bulletList.transform, true);
     }
     void CreateBullet(int image, float freezeTime, float speed, GameObject homingTarget)
     {
         GameObject bullet = Instantiate(bulletOriginal);
-        bullet.transform.position = gameObject.transform.position;
+        bullet.transform.SetParent(bulletList.transform, true);
+        bullet.transform.localPosition = gameObject.transform.localPosition;
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().homingTarget = homingTarget;
         bullet.GetComponent<Assets.Bullet>().freezeAmount = freezeTime;
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
-        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.position);
-        bullet.transform.SetParent(bulletList.transform, true);
+        bullet.GetComponent<Assets.Bullet>().LookAt(homingTarget.transform.localPosition);
     }
     void CreateBullet(int image, float freezeTime, float speed, Vector3 targetPosition)
     {
         GameObject bullet = Instantiate(bulletOriginal);
-        bullet.transform.position = gameObject.transform.position;
+        bullet.transform.SetParent(bulletList.transform, true);
+        bullet.transform.localPosition = gameObject.transform.localPosition;
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().targetPosition = targetPosition;
@@ -573,7 +574,6 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         bullet.GetComponent<Assets.Bullet>().speed = speed;
         bullet.GetComponent<Assets.Bullet>().isClone = true;
         bullet.GetComponent<Assets.Bullet>().LookAt(targetPosition);
-        bullet.transform.SetParent(bulletList.transform, true);
     }
     void GoombaTower()
     {
@@ -613,12 +613,12 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     void Thwomp()
     {
-        if (cooldown > 0 && cooldown <= 1) gameObject.transform.position = new Vector3(gameObject.transform.position.x, Convert.ToSingle(gameObject.transform.position.y + (10*Time.deltaTime)), gameObject.transform.position.z);
+        if (cooldown > 0 && cooldown <= 1) gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, Convert.ToSingle(gameObject.transform.localPosition.y + (10*Time.deltaTime)), gameObject.transform.localPosition.z);
         if (cooldown == 0)
         {
             foreach (GameObject enemy in Map.Enemies)
             {
-                if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.position, gameObject.transform.position) < Assets.Thwomp.GetRange(towerLevel))
+                if (enemy.GetComponent<EnemyBehaviour>().isClone && Vector3.Distance(enemy.transform.localPosition, gameObject.transform.localPosition) < Assets.Thwomp.GetRange(towerLevel))
                 {
                     gameObject.transform.localPosition = originalPosition;
                     if (cooldown == 0) GetComponent<AudioSource>().Play();
@@ -639,7 +639,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 if (enemy != null)
                 {
                     cooldown = Assets.BulletBlaster.GetCooldown(towerLevel);
-                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.GetDamage(towerLevel), Assets.BulletBlaster.GetSpeed(towerLevel), new Vector3(enemy.transform.position.x, transform.position.y, enemy.transform.position.z));
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.GetDamage(towerLevel), Assets.BulletBlaster.GetSpeed(towerLevel), new Vector3(enemy.transform.localPosition.x, transform.localPosition.y, enemy.transform.localPosition.z));
                 }
             }
         }
@@ -651,7 +651,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 if (enemy != null)
                 {
                     cooldown = Assets.BulletBlaster.GetCooldown(towerLevel);
-                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.GetDamage(towerLevel), Assets.BulletBlaster.GetSpeed(towerLevel), new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z));
+                    CreateBullet(Assets.BulletBlaster.bulletImage, Assets.BulletBlaster.GetDamage(towerLevel), Assets.BulletBlaster.GetSpeed(towerLevel), new Vector3(transform.localPosition.x, enemy.transform.localPosition.y, enemy.transform.localPosition.z));
                 }
             }
         }
@@ -680,7 +680,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     {
         foreach (GameObject tower in Map.Tiles)
         {
-            if ((tower.tag == "Tower" || tower.tag == "PathTower") && Vector3.Distance(tower.transform.position, gameObject.transform.position) <= Assets.MagikoopaTower.GetRange(towerLevel))
+            if ((tower.tag == "Tower" || tower.tag == "PathTower") && Vector3.Distance(tower.transform.localPosition, gameObject.transform.localPosition) <= Assets.MagikoopaTower.GetRange(towerLevel))
             {
                 tower.GetComponent<MapLocation>().towerBuffed = true;
             }
@@ -689,7 +689,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     void Bowser()
     {
         GameObject enemy = GetEnemy(Assets.Bowser.GetRange(towerLevel), TargetPriority);
-        if (enemy != null) LookAt(enemy.transform.position);
+        if (enemy != null) LookAt(enemy.transform.localPosition);
         if (cooldown == 0)
         {
             if (enemy != null)

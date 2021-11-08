@@ -53,8 +53,8 @@ public class LavaAttack : MonoBehaviour
         LavaAttack.GetComponent<LavaAttack>().damage = damage;
         LavaAttack.GetComponent<LavaAttack>().damageperc = damageperc;
         LavaAttack.GetComponent<LavaAttack>().freezetime = freezetime;
-        LavaAttack.transform.position = Castle.transform.position;
         LavaAttack.transform.SetParent(GameObject.FindGameObjectWithTag("Map").transform, true);
+        LavaAttack.transform.localPosition = Castle.transform.localPosition;
         LavaAttack.GetComponent<LavaAttack>().isClone = true;
         LavaAttack.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         LavaAttack.transform.localScale = new Vector3(0, 0, 1);
