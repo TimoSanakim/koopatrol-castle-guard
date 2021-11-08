@@ -12,7 +12,8 @@ namespace Assets
         public int power = 0;
         public float timeFlying = 0;
         public bool isClone = false;
-        public float speed = 50f;
+        public float initSpeed = 0.05208333333333333333333333333333f;
+        public float speed;
         public float freezeAmount = 0;
         public Sprite[] bulletSprites;
         // Use this for initialization
@@ -21,6 +22,10 @@ namespace Assets
             Vector3 difference = targetPosition - gameObject.transform.localPosition;
             float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+        }
+        void Start()
+        {
+            speed = initSpeed * Screen.width;
         }
         // Update is called once per frame
         void Update()
