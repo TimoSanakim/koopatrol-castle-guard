@@ -36,7 +36,7 @@ public class CheatCodes : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Map.Enemies[0].GetComponent<EnemyHealth>().Hurt(100000);
+            if (Map.Enemies[0] != null) Map.Enemies[0].GetComponent<EnemyHealth>().Hurt(100000);
         }
     }
 }
