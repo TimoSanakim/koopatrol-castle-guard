@@ -48,8 +48,20 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             else if (!wasDragging)
             {
                 towerInfo.GetComponent<TowerInfo>().HideInfo();
+                if (gameObject.transform.parent.transform.parent.GetComponent<levelCreator>() != null)
+                {
+                    //Change tile to selected tile
+                }
             }
             wasDragging = false;
+        }
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (gameObject.transform.parent.transform.parent.GetComponent<levelCreator>() != null)
+            {
+                Destroy(gameObject.transform.parent.transform.parent.GetChild(0).GetChild(gameObject.transform.GetSiblingIndex()));
+                Destroy(gameObject);
+            }
         }
     }
     public void DestroyTower()

@@ -34,6 +34,7 @@ TagManager:
   - Startbutton
   - LastResortAttack
   - NewTowerDescription
+  - BlockedGround
   layers:
   - Default
   - TransparentFX

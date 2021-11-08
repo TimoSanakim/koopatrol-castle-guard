@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TutorialMap.unity
     guid: ff2b319e3d7c1f94498f828db12bb41c
   - enabled: 1
-    path: Assets/Scenes/BowsersCastle.unity
+    path: Assets/Scenes/CreateLevel.unity
     guid: 5012f96c2173a244b8f5c3775172bba9
   - enabled: 1
     path: Assets/Scenes/DesertCastle.unity
