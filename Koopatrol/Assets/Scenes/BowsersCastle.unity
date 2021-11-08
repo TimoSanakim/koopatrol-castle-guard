@@ -38358,10 +38358,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4676170067635653694, guid: 3f01b84eda47eb04393f5e3ec4737678, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -60
-      objectReference: {fileID: 0}
     - target: {fileID: 5740306732316190319, guid: 3f01b84eda47eb04393f5e3ec4737678, type: 3}
       propertyPath: m_Name
       value: SpeedSlider

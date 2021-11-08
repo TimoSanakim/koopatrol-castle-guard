@@ -528,6 +528,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         GameObject bullet = Instantiate(bulletOriginal);
         bullet.transform.SetParent(bulletList.transform, true);
         bullet.transform.localPosition = gameObject.transform.localPosition;
+        bullet.transform.localScale = new Vector3(1,1,1);
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().homingTarget = homingTarget;
@@ -541,6 +542,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         GameObject bullet = Instantiate(bulletOriginal);
         bullet.transform.SetParent(bulletList.transform, true);
         bullet.transform.localPosition = gameObject.transform.localPosition;
+        bullet.transform.localScale = new Vector3(1,1,1);
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().targetPosition = targetPosition;
@@ -554,6 +556,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         GameObject bullet = Instantiate(bulletOriginal);
         bullet.transform.SetParent(bulletList.transform, true);
         bullet.transform.localPosition = gameObject.transform.localPosition;
+        bullet.transform.localScale = new Vector3(1,1,1);
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().homingTarget = homingTarget;
@@ -567,6 +570,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         GameObject bullet = Instantiate(bulletOriginal);
         bullet.transform.SetParent(bulletList.transform, true);
         bullet.transform.localPosition = gameObject.transform.localPosition;
+        bullet.transform.localScale = new Vector3(1,1,1);
         bullet.GetComponent<Image>().sprite = bullet.GetComponent<Assets.Bullet>().bulletSprites[image];
         bullet.GetComponent<Image>().color = Color.white;
         bullet.GetComponent<Assets.Bullet>().targetPosition = targetPosition;
