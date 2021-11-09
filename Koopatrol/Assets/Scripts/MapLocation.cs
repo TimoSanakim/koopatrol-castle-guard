@@ -122,7 +122,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 }
                 else
                 {
-                    Map.WriteToLog("You may not delete only tile in the map.");
+                    Map.WriteToLog("You may not delete the only tile in the map.");
                 }
             }
         }
@@ -265,7 +265,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
         lavaFieldSource = GameObject.FindGameObjectWithTag("LavaAttack");
         if (tag != "Tower" && tag != "PathTower") originalImage = gameObject.GetComponent<Image>().sprite;
-        if (tag != "Tower" && tag != "PathTower") originalColor = gameObject.GetComponent<Image>().color;
+        if (tag != "Tower" && tag != "PathTower" && !rangeIndicating) originalColor = gameObject.GetComponent<Image>().color;
         originalPosition = gameObject.transform.localPosition;
         map = GameObject.FindGameObjectWithTag("Map");
         isNextToPath = 0;
@@ -336,11 +336,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 if (map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Contains(gameObject)) map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Remove(gameObject);
             }
-            if (connectedpaths <= 1)
+            if (connectedpaths == 1)
             {
                 originalImage = PathSprites[0];
-                if (yppath || ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
-                else transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                if (xppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
+                else if (xnpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                else if (yppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90.0f);
+                else if (ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
                 if (map.GetComponent<levelCreator>() != null)
                 {
                     map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Add(gameObject);
@@ -350,13 +352,13 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 if ((xppath && xnpath) || (yppath && ynpath))
                 {
-                    originalImage = PathSprites[0];
+                    originalImage = PathSprites[1];
                     if (xppath || xnpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                     else transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
                 }
                 else
                 {
-                    originalImage = PathSprites[1];
+                    originalImage = PathSprites[2];
                     if (xppath && yppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
                     else if (xnpath && yppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -180.0f);
                     else if (xnpath && ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90.0f);
@@ -365,7 +367,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             if (connectedpaths == 3)
             {
-                originalImage = PathSprites[2];
+                originalImage = PathSprites[3];
                 if (!xppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90.0f);
                 else if (!xnpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
                 else if (!yppath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
@@ -373,7 +375,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             }
             if (connectedpaths == 4)
             {
-                originalImage = PathSprites[3];
+                originalImage = PathSprites[4];
                 transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             }
             if (tag == "Path") gameObject.GetComponent<Image>().sprite = originalImage;

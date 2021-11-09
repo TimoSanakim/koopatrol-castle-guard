@@ -69,7 +69,8 @@ public class Waves : MonoBehaviour
         }
         if (Map.PossiblePaths.Count == 0)
         {
-            Map.WriteToLog("No valid paths to castle detected!");
+            if (AllPaths.Count != 0) Map.WriteToLog("No valid paths to castle detected!");
+            else Map.WriteToLog("Left click to place a tile, right click to remove it. You can set towers and upgrade them as normal.");
             SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
         }
     }
