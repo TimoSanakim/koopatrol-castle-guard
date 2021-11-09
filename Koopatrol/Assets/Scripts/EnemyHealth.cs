@@ -56,7 +56,8 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
             }
             else if (deathTime >= 240)
             {
-                GameSettings.restartGame();
+                GameObject.FindGameObjectWithTag("recordname").GetComponent<Records>().endgame = true;
+                //GameSettings.restartGame();
             }
             deathTime += 1;
         }
