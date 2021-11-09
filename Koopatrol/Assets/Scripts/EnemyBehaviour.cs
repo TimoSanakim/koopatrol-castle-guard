@@ -38,6 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (enemyType == "Captain Toad") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: None.";
         if (enemyType == "Yoshi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=3| Special behavior: Fast movement.";
         if (enemyType == "Luigi") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Scared of bullet blasters.";
+        if (enemyType == "Bob-Omb Buddy") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Explodes on death, destroying nearby towers.";
         if (enemyType == "Mario") return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Destroys goomba towers, removes all castle health when reached.";
         return "<sprite=6>=" + GetComponent<EnemyHealth>().Health + "/" + GetComponent<EnemyHealth>().MaxHealth + "<sprite=1>=2| Special behavior: Unknown.";
     }
@@ -297,6 +298,29 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
         return -1;
+    }
+
+    public void DestroyTowers(float x, float y)
+    {
+        foreach (GameObject spot in Map.Tiles)
+        {
+            if (x - spot.transform.localPosition.x >= -25 && x - spot.transform.localPosition.x <= 25 && y - spot.transform.localPosition.y >= 40 && y - spot.transform.localPosition.y <= 60)
+            {
+                if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
+            }
+            if (x - spot.transform.localPosition.x >= -25 && x - spot.transform.localPosition.x <= 25 && y - spot.transform.localPosition.y >= -60 && y - spot.transform.localPosition.y <= -40)
+            {
+                if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
+            }
+            if (x - spot.transform.localPosition.x >= 40 && x - spot.transform.localPosition.x <= 60 && y - spot.transform.localPosition.y >= -25 && y - spot.transform.localPosition.y <= 25)
+            {
+                if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
+            }
+            if (x - spot.transform.localPosition.x >= -60 && x - spot.transform.localPosition.x <= -40 && y - spot.transform.localPosition.y >= -25 && y - spot.transform.localPosition.y <= 25)
+            {
+                if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
+            }
+        }
     }
     void Luigi()
     {

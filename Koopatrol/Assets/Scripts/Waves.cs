@@ -26,6 +26,7 @@ public class Waves : MonoBehaviour
     public GameObject EndlessYoshi;
     public GameObject EndlessLuigi;
     public GameObject EndlessMario;
+    public GameObject EndlessBobOmbBuddy;
     public List<GameObject> StartingPositions;
     byte endlessMarioCount = 0;
     int lastMusicChange = 0;
@@ -247,6 +248,11 @@ public class Waves : MonoBehaviour
         else if (!hasSpawnedLuigi && round == 20 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
+            totalweight += 20;
+        }
+        else if (hasSpawnedLuigi && variable >= 7700 && Map.randomizer.Next(0, 2) == 1 && round >= 40 && totalweight + 20 < maxweight)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
             totalweight += 20;
         }
         else if (hasSpawnedLuigi && variable >= 7700 && round >= 20 && totalweight + 20 < maxweight)

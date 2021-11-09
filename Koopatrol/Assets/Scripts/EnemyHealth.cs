@@ -78,10 +78,13 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     {
         return -(Health - MaxHealth);
     }
-    IEnumerator blinking(){ 
-        gameObject.GetComponent<CanvasGroup>().alpha = 1;
-        yield return new WaitForSeconds(blinktime);
-        gameObject.GetComponent<CanvasGroup>().alpha = 0;
+    IEnumerator blinking(){
+        if (!dying)
+        {
+            gameObject.GetComponent<CanvasGroup>().alpha = 1;
+            yield return new WaitForSeconds(blinktime);
+            gameObject.GetComponent<CanvasGroup>().alpha = 0;
+        }
     }
     void startblinking()
     {
@@ -135,6 +138,12 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameObject.GetComponent<EnemyBehaviour>().moveSpeed = 0f;
         dying = true;
+        if (GetComponent<EnemyBehaviour>().enemyType == "Bob-Omb Buddy")
+        {
+            gameObject.transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 1f;
+            GetComponent<EnemyBehaviour>().DestroyTowers(transform.localPosition.x, transform.localPosition.y);
+        }
+        gameObject.transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0f;
         if (GetComponent<EnemyBehaviour>().finalEnemy)
         {
             Music.GetComponent<Music>().PlayNew("Victory");
@@ -151,7 +160,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            gameObject.GetComponent<CanvasGroup>().alpha = 0f;
+            if (GetComponent<EnemyBehaviour>().enemyType != "Bob-Omb Buddy") gameObject.GetComponent<CanvasGroup>().alpha = 0f;
         }
     }
 
