@@ -37,7 +37,8 @@ public class CastleHealth : MonoBehaviour
         }
         if (!Music.GetComponent<AudioSource>().isPlaying && castleDead)
         {
-            GameSettings.restartGame();
+            GameObject.FindGameObjectWithTag("recordname").GetComponent<Records>().endgame = true;
+            //GameSettings.restartGame();
         }
         gameObject.GetComponent<Text>().text = Convert.ToString(HealthCastle);
 

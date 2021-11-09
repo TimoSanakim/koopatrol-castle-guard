@@ -34,6 +34,10 @@ TagManager:
   - Startbutton
   - LastResortAttack
   - NewTowerDescription
+  - Record
+  - recordname
+  - BlockedGround
+  - Log
   layers:
   - Default
   - TransparentFX

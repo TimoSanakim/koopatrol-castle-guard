@@ -17,4 +17,12 @@ public static class Map
     public static List<GameObject> Tiles = new List<GameObject>();
     public static List<GameObject> Enemies = new List<GameObject>();
     public static string LoadedLevel = "MainMenu";
+    public static int LoadedCustomMap = 0;
+
+    public static void WriteToLog(string message)
+    {
+        GameObject log = GameObject.FindGameObjectWithTag("Log");
+        if (log != null) log.GetComponent<levelCreatorLog>().Log(message);
+        else Debug.Log(message);
+    }
 }

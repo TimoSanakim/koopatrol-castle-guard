@@ -38,14 +38,19 @@ public class Waves : MonoBehaviour
     public GameObject SpawnEnemies;
     GameObject RoundCounter;
     GameObject Music;
-    List<GameObject> AllPaths = new List<GameObject>();
+    List<GameObject> AllPaths;
     // Start is called before the first frame update
     void Start()
     {
         currentWaveDelay = waveDelay;
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
         Music = GameObject.FindGameObjectWithTag("Music");
-        RoundCounter.GetComponent<Text>().text = "Round: " + round;
+        if (RoundCounter != null) RoundCounter.GetComponent<Text>().text = "Round: " + round;
+        SearchForPaths();
+    }
+    public void SearchForPaths()
+    {
+        AllPaths = new List<GameObject>();
         GameObject[] Castles = GameObject.FindGameObjectsWithTag("Castle");
         GameObject[] Paths = GameObject.FindGameObjectsWithTag("Path");
         GameObject[] PathTowers = GameObject.FindGameObjectsWithTag("PathTower");
@@ -70,7 +75,8 @@ public class Waves : MonoBehaviour
         }
         if (Map.PossiblePaths.Count == 0)
         {
-            Debug.Log("No valid paths to castle detected!");
+            if (AllPaths.Count != 0) Map.WriteToLog("No valid paths to castle detected!");
+            else Map.WriteToLog("Left click to place a tile, right click to remove it. You can set towers and upgrade them as normal.");
             SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
         }
     }
