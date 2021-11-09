@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class GameSettings : MonoBehaviour
 {
@@ -109,5 +110,24 @@ public class GameSettings : MonoBehaviour
                 break;
         }
         //TODO: When a scene is loaded, change all MapLocations without any towers to this value
+    }
+    public void savesettings(){
+        SaveObject saveObject = new SaveObject{
+        musicvolume = Map.MusicVolume,
+        soundvolume = Map.SoundVolume,
+        defaultfocus = Map.DefaultTargetPriority,
+
+    };
+    string json = JsonUtility.ToJson(saveObject);
+    Debug.Log("json"+json);
+
+    SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(json);
+
+    File.WriteAllText(Application.dataPath + "/savedata",json);
+    }
+    private class SaveObject {
+        public int musicvolume;
+        public int soundvolume;
+        public int defaultfocus;
     }
 }
