@@ -35,6 +35,7 @@ TagManager:
   - LastResortAttack
   - NewTowerDescription
   - BlockedGround
+  - Log
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ namespace Assets
             CoinCount += increaseAmount;
             if (CoinCount < 0)
             {
-                Debug.Log("Action resulted in negative coin counter; action should be cancled.");
+                Map.WriteToLog("Action resulted in negative coin counter; action should be cancled.");
                 CoinCount -= increaseAmount;
                 return false;
             }

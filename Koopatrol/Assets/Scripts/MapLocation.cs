@@ -122,7 +122,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 }
                 else
                 {
-                    Debug.Log("You may not delete only tile in the map.");
+                    Map.WriteToLog("You may not delete only tile in the map.");
                 }
             }
         }
@@ -183,7 +183,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         {
             if (draggingTower.GetComponent<draggingTower>().towerCost > Assets.CoinCounter.GetCoinCount())
             {
-                Debug.Log("Not enough money to place tower");
+                Map.WriteToLog("Not enough money to place tower");
             }
             else if ((gameObject.tag == "Ground") && (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.AnyGround || (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath != 0)))
             {
@@ -332,11 +332,19 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         }
         if (tag == "Path" || tag == "PathTower") 
         {
+            if (map.GetComponent<levelCreator>() != null)
+            {
+                if (map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Contains(gameObject)) map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Remove(gameObject);
+            }
             if (connectedpaths <= 1)
             {
                 originalImage = PathSprites[0];
                 if (yppath || ynpath) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
                 else transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                if (map.GetComponent<levelCreator>() != null)
+                {
+                    map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Add(gameObject);
+                }
             }
             if (connectedpaths == 2)
             {
@@ -813,7 +821,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         }
         else
         {
-            Debug.Log("Bullet blaster placed on non-valid location; destroying.");
+            Map.WriteToLog("Bullet blaster placed on non-valid location; destroying.");
             if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
             {
                 towerInfo.GetComponent<TowerInfo>().HideInfo();

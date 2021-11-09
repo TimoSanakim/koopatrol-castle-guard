@@ -44,7 +44,7 @@ public class Waves : MonoBehaviour
         currentWaveDelay = waveDelay;
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
         Music = GameObject.FindGameObjectWithTag("Music");
-        RoundCounter.GetComponent<Text>().text = "Round: " + round;
+        if (RoundCounter != null) RoundCounter.GetComponent<Text>().text = "Round: " + round;
         GameObject[] Castles = GameObject.FindGameObjectsWithTag("Castle");
         GameObject[] Paths = GameObject.FindGameObjectsWithTag("Path");
         GameObject[] PathTowers = GameObject.FindGameObjectsWithTag("PathTower");
@@ -69,7 +69,7 @@ public class Waves : MonoBehaviour
         }
         if (Map.PossiblePaths.Count == 0)
         {
-            Debug.Log("No valid paths to castle detected!");
+            Map.WriteToLog("No valid paths to castle detected!");
             SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
         }
     }
