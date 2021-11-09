@@ -11,6 +11,15 @@ public class GameSettings : MonoBehaviour
 {
     void Start()
     {
+        if(File.Exists(Application.dataPath + "/savedata")){
+            string saveString = File.ReadAllText(Application.dataPath + "/savedata");
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+            Map.MusicVolume = saveObject.musicvolume;
+            Map.SoundVolume = saveObject.soundvolume;
+            Map.DefaultTargetPriority = saveObject.defaultfocus;
+            
+        }
         Map.paused = true;
         Time.timeScale = 0;
         Map.gameSpeed = 1;
