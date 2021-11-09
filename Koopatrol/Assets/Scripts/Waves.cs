@@ -37,7 +37,7 @@ public class Waves : MonoBehaviour
     public GameObject SpawnEnemies;
     GameObject RoundCounter;
     GameObject Music;
-    List<GameObject> AllPaths = new List<GameObject>();
+    List<GameObject> AllPaths;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +45,11 @@ public class Waves : MonoBehaviour
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
         Music = GameObject.FindGameObjectWithTag("Music");
         if (RoundCounter != null) RoundCounter.GetComponent<Text>().text = "Round: " + round;
+        SearchForPaths();
+    }
+    public void SearchForPaths()
+    {
+        AllPaths = new List<GameObject>();
         GameObject[] Castles = GameObject.FindGameObjectsWithTag("Castle");
         GameObject[] Paths = GameObject.FindGameObjectsWithTag("Path");
         GameObject[] PathTowers = GameObject.FindGameObjectsWithTag("PathTower");

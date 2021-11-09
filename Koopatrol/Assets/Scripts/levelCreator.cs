@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,23 +23,49 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
     public GameObject GroundOption;
     public GameObject PathOption;
     public GameObject BlockedOption;
+    public GameObject CastleOption;
     public GameObject Waves;
     public GameObject SelectedWave;
+    public GameObject CoinCounter;
     public GameObject WaveSelector;
     public GameObject AddWaveButton;
     public GameObject GamemodeText;
     public GameObject GamemodePanel;
+    public GameObject LoadLevelPanel;
+    public GameObject SaveLevelPanel;
+    public GameObject LoadLevelOptions;
+    public GameObject SaveLevelName;
+    public GameObject TowerInfo;
+    public GameObject[] Towers;
     int selectedWave = 0;
     int style = 0;
     int gamemode = 0;
     int coinCount = 30;
     int yoshiInWave = -1;
+    int ID = 0;
+    bool previouslySaved = false;
     // Start is called before the first frame update
     void Start()
     {
         GamemodePanel.GetComponent<CanvasGroup>().alpha = 0;
         GamemodePanel.GetComponent<CanvasGroup>().interactable = false;
         GamemodePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        LoadLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+        LoadLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+        LoadLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        SaveLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+        SaveLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+        SaveLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Clear();
+        while (File.Exists(Application.dataPath + "/customlevel" + ID))
+        {
+            string saveString = File.ReadAllText(Application.dataPath + "/customlevel" + ID);
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+            ID++;
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
+            option.text = saveObject.name;
+            LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Add(option);
+        }
     }
 
     public void ChangeSelectedOption(GameObject option)
@@ -225,8 +252,8 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 Waves.GetComponent<Waves>().hasSpawnedYoshi = true;
                 break;
             case 3:
-                if (yoshiInWave < selectedWave && yoshiInWave != -1) 
-                { 
+                if (yoshiInWave < selectedWave && yoshiInWave != -1)
+                {
                     Waves.GetComponent<Waves>().TheWaves[selectedWave].wave.Add(Waves.GetComponent<Waves>().EndlessLuigi);
                     if (!Waves.GetComponent<Waves>().hasSpawnedLuigi) Waves.GetComponent<Waves>().TheWaves[selectedWave].music = "Luigi";
                     Waves.GetComponent<Waves>().hasSpawnedLuigi = true;
@@ -289,7 +316,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         {
             Waves.GetComponent<Waves>().TheWaves[selectedWave].music = "";
             yoshiInWave = -1;
-            for (int waveIndex = selectedWave; waveIndex < Waves.GetComponent<Waves>().TheWaves.Count; waveIndex ++)
+            for (int waveIndex = selectedWave; waveIndex < Waves.GetComponent<Waves>().TheWaves.Count; waveIndex++)
             {
                 if (Waves.GetComponent<Waves>().TheWaves[waveIndex].wave.Contains(Waves.GetComponent<Waves>().EndlessYoshi))
                 {
@@ -350,5 +377,264 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
             SelectWave();
         }
     }
-    //Only allow saving if there's a valid path to the castle, if gamemode is not endless, add a wave at the end containing only mario
+    [Serializable]
+    private class SaveTile
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+        public string type;
+        public string towerType;
+        public int towerLevel;
+        public int towerFocus;
+    }
+    [Serializable]
+    private class Wave
+    {
+        public string music;
+        public List<string> enemies;
+    }
+    [Serializable]
+    private class SaveObject
+    {
+        public List<SaveTile> tiles;
+        public List<Wave> waves;
+        public string name;
+        public int gamemode;
+        public int style;
+        public int coinCount;
+    }
+
+    public void SaveScreen()
+    {
+        if (!previouslySaved)
+        {
+            if (SaveLevelPanel.GetComponent<CanvasGroup>().alpha == 1)
+            {
+                SaveLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+                SaveLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+                SaveLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+            else
+            {
+                LoadLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+                LoadLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+                LoadLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                SaveLevelPanel.GetComponent<CanvasGroup>().alpha = 1;
+                SaveLevelPanel.GetComponent<CanvasGroup>().interactable = true;
+                SaveLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
+        }
+        else SaveLevel();
+    }
+
+    public void SaveLevel()
+    {
+        Waves.GetComponent<Waves>().SearchForPaths();
+        if (Map.PossiblePaths.Count != 0 && SaveLevelName.GetComponent<TMP_InputField>().text != "")
+        {
+            LoadLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+            LoadLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+            LoadLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            SaveLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+            SaveLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+            SaveLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            SaveLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+            SaveLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+            SaveLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            SaveObject saveObject = new SaveObject();
+            saveObject.name = SaveLevelName.GetComponent<TMP_InputField>().text;
+            saveObject.gamemode = gamemode;
+            saveObject.style = style;
+            saveObject.coinCount = coinCount;
+            saveObject.tiles = new List<SaveTile>();
+            foreach (GameObject t in Map.Tiles)
+            {
+                if (t.name != "Image")
+                {
+                    SaveTile tile = new SaveTile();
+                    tile.position = t.transform.localPosition;
+                    tile.rotation = t.transform.rotation;
+                    tile.type = t.tag;
+                    tile.towerType = t.GetComponent<MapLocation>().towerType;
+                    tile.towerLevel = t.GetComponent<MapLocation>().towerLevel;
+                    tile.towerFocus = t.GetComponent<MapLocation>().TargetPriority;
+                    saveObject.tiles.Add(tile);
+                }
+            }
+            saveObject.waves = new List<Wave>();
+            foreach (Waves.serializableClass wave in Waves.GetComponent<Waves>().TheWaves)
+            {
+                Wave savewave = new Wave();
+                savewave.music = wave.music;
+                savewave.enemies = new List<string>();
+                foreach (GameObject enemy in wave.wave)
+                {
+                    savewave.enemies.Add(enemy.GetComponent<EnemyBehaviour>().enemyType);
+                }
+                saveObject.waves.Add(savewave);
+            }
+            if (gamemode != 2)
+            {
+                Wave savewave = new Wave();
+                savewave.music = "Mario";
+                savewave.enemies = new List<string>();
+                savewave.enemies.Add("Mario");
+                saveObject.waves.Add(savewave);
+            }
+            string json = JsonUtility.ToJson(saveObject);
+
+            File.WriteAllText(Application.dataPath + "/customlevel" + ID, json);
+            if (!previouslySaved)
+            {
+                TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
+                option.text = saveObject.name;
+                LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Add(option);
+            }
+            previouslySaved = true;
+        }
+        else if (Map.PossiblePaths.Count != 0 && SaveLevelName.GetComponent<TMP_InputField>().text == "")
+        {
+            Map.WriteToLog("You have to enter a name!");
+        }
+        else
+        {
+            Map.WriteToLog("You can only save if there's a valid path to a castle!");
+        }
+    }
+
+    public void LoadScreen()
+    {
+        if (LoadLevelPanel.GetComponent<CanvasGroup>().alpha == 1)
+        {
+            LoadLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+            LoadLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+            LoadLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+        else
+        {
+            SaveLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+            SaveLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+            SaveLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            LoadLevelPanel.GetComponent<CanvasGroup>().alpha = 1;
+            LoadLevelPanel.GetComponent<CanvasGroup>().interactable = true;
+            LoadLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+    }
+
+    public void LoadLevel()
+    {
+        int index = LoadLevelOptions.GetComponent<TMP_Dropdown>().value;
+        SaveLevelName.GetComponent<TMP_InputField>().text = Convert.ToString(LoadLevelOptions.GetComponent<TMP_Dropdown>().itemText);
+        TowerInfo.GetComponent<TowerInfo>().HideInfo();
+        TowerInfo.GetComponent<TowerInfo>().selectedTower = null;
+        ID = index;
+        List<GameObject> oldTiles = new List<GameObject>();
+        oldTiles.AddRange(Map.Tiles);
+        foreach (GameObject t in oldTiles)
+        {
+            if (t.name != "Image")
+            {
+                t.tag = "Finish";
+                if (Waves.GetComponent<Waves>().StartingPositions.Contains(t)) Waves.GetComponent<Waves>().StartingPositions.Remove(t);
+                Map.Tiles.Remove(t);
+                Destroy(t.transform.parent.transform.parent.GetChild(0).GetChild(t.transform.GetSiblingIndex()).gameObject);
+                Destroy(t);
+            }
+        }
+        previouslySaved = true;
+        string saveString = File.ReadAllText(Application.dataPath + "/customlevel" + index);
+        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+        if (style != saveObject.style) ChangeStyle();
+        if (style != saveObject.style) ChangeStyle();
+        if (gamemode != saveObject.gamemode) ChangeGamemode();
+        if (gamemode != saveObject.gamemode) ChangeGamemode();
+        coinCount = saveObject.coinCount;
+        CoinCounter.GetComponent<TMP_InputField>().text = Convert.ToString(coinCount);
+        foreach (SaveTile t in saveObject.tiles)
+        {
+            GameObject background = Instantiate(BackgroundTile);
+            background.transform.SetParent(gameObject.transform.GetChild(0), true);
+            background.transform.localPosition = new Vector3(t.position.x, t.position.y, t.position.z);
+            background.transform.localScale = new Vector3(1, 1, 1);
+            if (t.type == "BlockedGround") background.GetComponent<Image>().sprite = BlockedOption.GetComponent<Image>().sprite;
+
+            GameObject tile = Instantiate(Tile);
+            tile.transform.SetParent(gameObject.transform.GetChild(1), true);
+            tile.transform.localPosition = new Vector3(t.position.x, t.position.y, t.position.z);
+            tile.transform.localScale = new Vector3(1, 1, 1);
+            if (t.type != "BlockedGround" && t.type != "Ground")
+            {
+                tile.GetComponent<Image>().color = new Color(1, 1, 1);
+                if (t.type == "Path")
+                {
+                    tile.GetComponent<Image>().color = PathOption.GetComponent<Image>().color;
+                    tile.GetComponent<Image>().sprite = PathOption.GetComponent<Image>().sprite;
+                }
+                if (t.type == "PathTower") tile.GetComponent<MapLocation>().originalColor = PathOption.GetComponent<Image>().color;
+                if (t.type == "Castle")
+                {
+                    tile.GetComponent<Image>().sprite = CastleOption.GetComponent<Image>().sprite;
+                }
+            }
+            tile.transform.rotation = t.rotation;
+            tile.tag = t.type;
+            switch (t.towerType)
+            {
+                case "GoombaTower":
+                    tile.GetComponent<Image>().sprite = Towers[0].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+                case "KoopaTower":
+                    tile.GetComponent<Image>().sprite = Towers[1].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+                case "FreezieTower":
+                    tile.GetComponent<Image>().sprite = Towers[2].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+                case "Thwomp":
+                    tile.GetComponent<Image>().sprite = Towers[3].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+                case "BulletBlaster":
+                    tile.GetComponent<Image>().sprite = Towers[4].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+                case "PiranhaPlant":
+                    tile.GetComponent<Image>().sprite = Towers[5].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+                case "Magikoopa":
+                    tile.GetComponent<Image>().sprite = Towers[6].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+                case "Bowser":
+                    tile.GetComponent<Image>().sprite = Towers[7].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    break;
+            }
+            tile.GetComponent<MapLocation>().towerType = t.towerType;
+            tile.GetComponent<MapLocation>().towerLevel = t.towerLevel;
+            tile.GetComponent<MapLocation>().TargetPriority = t.towerFocus;
+        }
+        Waves.GetComponent<Waves>().TheWaves.Clear();
+        if (gamemode != 2) saveObject.waves.RemoveAt(saveObject.waves.Count - 1);
+        foreach (Wave wave in saveObject.waves)
+        {
+            Waves.serializableClass newwave = new Waves.serializableClass();
+            newwave.music = wave.music;
+            newwave.wave = new List<GameObject>();
+            foreach (string enemy in wave.enemies)
+            {
+                switch (enemy)
+                {
+                    case "Toad":
+                        newwave.wave.Add(Waves.GetComponent<Waves>().EndlessToad);
+                        break;
+                    case "Captain Toad":
+                        newwave.wave.Add(Waves.GetComponent<Waves>().EndlessCaptainToad);
+                        break;
+                    case "Yoshi":
+                        newwave.wave.Add(Waves.GetComponent<Waves>().EndlessYoshi);
+                        break;
+                    case "Luigi":
+                        newwave.wave.Add(Waves.GetComponent<Waves>().EndlessLuigi);
+                        break;
+                }
+            }
+            Waves.GetComponent<Waves>().TheWaves.Add(newwave);
+        }
+    }
 }

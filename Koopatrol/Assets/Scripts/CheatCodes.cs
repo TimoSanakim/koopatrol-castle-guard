@@ -18,6 +18,7 @@ public class CheatCodes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.M))
         {
             Assets.CoinCounter.ChangeCoinCounter(50, true);
@@ -37,6 +38,6 @@ public class CheatCodes : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             if (Map.Enemies[0] != null) Map.Enemies[0].GetComponent<EnemyHealth>().Hurt(100000);
-        }
+        }*/
     }
 }

@@ -38,29 +38,31 @@ public class Records : MonoBehaviour
             GameSettings.restartGame();
         }
     }
-    public void record(){
-    recordCoin = Assets.CoinCounter.GetCoinCount();
-    recordHealth = CastleHealth.GetComponent<CastleHealth>().HealthCastle;
-    recordWave = Waves.GetComponent<Waves>().waveIndex;
+    public void record()
+    {
+        recordCoin = Assets.CoinCounter.GetCoinCount();
+        recordHealth = CastleHealth.GetComponent<CastleHealth>().HealthCastle;
+        recordWave = Waves.GetComponent<Waves>().waveIndex;
 
-    //calculate score
-    if(recordHealth<1){
-    score = recordCoin*recordWave;
-    }
-    else
-    score = recordCoin*recordHealth*recordWave;
-    Debug.Log("recordscore" + score);
+        //calculate score
+        if (recordHealth < 1)
+        {
+            score = recordCoin * recordWave;
+        }
+        else
+            score = recordCoin * recordHealth * recordWave;
+        Debug.Log("recordscore" + score);
 
-    SaveObject saveObject = new SaveObject{
-        recordname = recordName,
-        recordscore = score,
-    };
-    string json = JsonUtility.ToJson(saveObject);
-    Debug.Log("json"+json);
+        SaveObject saveObject = new SaveObject
+        {
+            recordname = recordName,
+            recordscore = score,
+        };
+        string json = JsonUtility.ToJson(saveObject);
 
-    SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(json);
-    Debug.Log(loadedSaveObject.recordscore);
-    File.WriteAllText(Application.dataPath + "/savedata",json);
+        SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(json);
+        Debug.Log(loadedSaveObject.recordscore);
+        File.WriteAllText(Application.dataPath + "/savedata", json);
     }
     public void setName(){
         recordName = setRecord.text;

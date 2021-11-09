@@ -110,6 +110,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 {
                     Map.Tiles.Remove(gameObject);
                     gameObject.tag = "Finish";
+                    if (map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Contains(gameObject)) map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Remove(gameObject);
                     if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
                     {
                         towerInfo.GetComponent<TowerInfo>().HideInfo();
@@ -255,7 +256,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     void Start()
     {
         TargetPriority = Map.DefaultTargetPriority;
-        Map.Tiles.Add(gameObject);
+        if (!Map.Tiles.Contains(gameObject)) Map.Tiles.Add(gameObject);
         gameObject.GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
         draggingTower = GameObject.FindGameObjectWithTag("DraggingTower");
         towerInfo = GameObject.FindGameObjectWithTag("TowerInfo");
