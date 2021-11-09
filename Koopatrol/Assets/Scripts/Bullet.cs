@@ -25,7 +25,7 @@ namespace Assets
         }
         void Start()
         {
-            speed = initSpeed * Screen.width;
+            speed = (speed/50) * initSpeed * Screen.width;
         }
         // Update is called once per frame
         void Update()
