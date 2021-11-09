@@ -12908,6 +12908,8 @@ MonoBehaviour:
       m_Image: {fileID: 21300000, guid: 8eb2ddb57478aa040b64acea9d3e862e, type: 3}
     - m_Text: Luigi
       m_Image: {fileID: 21300000, guid: 0fa3b6fc04f1cc145846017576889db9, type: 3}
+    - m_Text: Bob-Omb Buddy
+      m_Image: {fileID: 21300000, guid: d57c719a763f1a046964b46ebd2fadcf, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

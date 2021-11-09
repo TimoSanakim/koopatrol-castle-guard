@@ -447,7 +447,7 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 Bowser();
                 break;
         }
-        if (towerBuffed) towerLevel -= 1;
+        if (towerBuffed && towerType != "MagikoopaTower") towerLevel -= 1;
         towerBuffed = false;
     }
     public void bulletBlasterRangeVisualization()

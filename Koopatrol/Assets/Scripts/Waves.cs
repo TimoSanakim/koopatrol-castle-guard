@@ -79,6 +79,7 @@ public class Waves : MonoBehaviour
             else Map.WriteToLog("Left click to place a tile, right click to remove it. You can set towers and upgrade them as normal.");
             SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
         }
+        if (gameObject.transform.parent.transform.parent.GetComponent<levelCreator>() == null && TheWaves[0].music != null && TheWaves[0].music != "") Music.GetComponent<Music>().PlayNew(TheWaves[0].music);
     }
     void GetNextPath(List<Transform> pastPositiones)
     {

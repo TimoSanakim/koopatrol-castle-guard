@@ -44,6 +44,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
     int gamemode = 0;
     int coinCount = 30;
     int yoshiInWave = -1;
+    int luigiInWave = -1;
     int ID = 0;
     bool previouslySaved = false;
     // Start is called before the first frame update
@@ -192,6 +193,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 Waves.GetComponent<Waves>().EndlessCaptainToad.GetComponent<EnemyHealth>().enemyCoin = 10;
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 50;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 300;
+                Waves.GetComponent<Waves>().EndlessBobOmbBuddy.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = true;
                 Waves.GetComponent<Waves>().endlessMode = false;
@@ -202,6 +204,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 Waves.GetComponent<Waves>().EndlessCaptainToad.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 0;
+                Waves.GetComponent<Waves>().EndlessBobOmbBuddy.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = true;
                 Waves.GetComponent<Waves>().endlessMode = false;
@@ -212,6 +215,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 Waves.GetComponent<Waves>().EndlessCaptainToad.GetComponent<EnemyHealth>().enemyCoin = 10;
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 50;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 300;
+                Waves.GetComponent<Waves>().EndlessBobOmbBuddy.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 700;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = false;
                 Waves.GetComponent<Waves>().endlessMode = true;
@@ -270,11 +274,22 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 {
                     Waves.GetComponent<Waves>().TheWaves[selectedWave].wave.Add(Waves.GetComponent<Waves>().EndlessLuigi);
                     if (!Waves.GetComponent<Waves>().hasSpawnedLuigi) Waves.GetComponent<Waves>().TheWaves[selectedWave].music = "Luigi";
+                    if (!Waves.GetComponent<Waves>().hasSpawnedLuigi) luigiInWave = selectedWave;
                     Waves.GetComponent<Waves>().hasSpawnedLuigi = true;
                 }
                 else
                 {
-                    Map.WriteToLog("You may only add a Luigi if a previous round had a yoshi.");
+                    Map.WriteToLog("You may only add a Luigi if a previous round had a Yoshi.");
+                }
+                break;
+            case 4:
+                if (luigiInWave < selectedWave && luigiInWave != -1)
+                {
+                    Waves.GetComponent<Waves>().TheWaves[selectedWave].wave.Add(Waves.GetComponent<Waves>().EndlessBobOmbBuddy);
+                }
+                else
+                {
+                    Map.WriteToLog("You may only add a Bob-Omb Buddy if a previous round had a Luigi.");
                 }
                 break;
         }
@@ -361,6 +376,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 foreach (Waves.serializableClass wave in Waves.GetComponent<Waves>().TheWaves)
                 {
                     wave.wave.RemoveAll(item => item == Waves.GetComponent<Waves>().EndlessLuigi);
+                    wave.wave.RemoveAll(item => item == Waves.GetComponent<Waves>().EndlessBobOmbBuddy);
                     wave.music = "";
                 }
             }
@@ -368,17 +384,24 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         else if (selectedEnemy.GetComponent<TextMeshProUGUI>().text == "Luigi" && Waves.GetComponent<Waves>().TheWaves[selectedWave].music == "Luigi" && !Waves.GetComponent<Waves>().TheWaves[selectedWave].wave.Contains(Waves.GetComponent<Waves>().EndlessLuigi))
         {
             Waves.GetComponent<Waves>().TheWaves[selectedWave].music = "";
-            bool exists = false;
+            luigiInWave = -1;
             for (int waveIndex = selectedWave; waveIndex < Waves.GetComponent<Waves>().TheWaves.Count; waveIndex++)
             {
                 if (Waves.GetComponent<Waves>().TheWaves[waveIndex].wave.Contains(Waves.GetComponent<Waves>().EndlessLuigi))
                 {
                     Waves.GetComponent<Waves>().TheWaves[waveIndex].music = "Luigi";
-                    exists = true;
+                    luigiInWave = waveIndex;
                     break;
                 }
             }
-            if (!exists) Waves.GetComponent<Waves>().hasSpawnedLuigi = false;
+            if (luigiInWave == -1)
+            {
+                Waves.GetComponent<Waves>().hasSpawnedLuigi = false;
+                foreach (Waves.serializableClass wave in Waves.GetComponent<Waves>().TheWaves)
+                {
+                    wave.wave.RemoveAll(item => item == Waves.GetComponent<Waves>().EndlessBobOmbBuddy);
+                }
+            }
         }
         SelectWave();
     }
@@ -621,27 +644,36 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
             {
                 case "GoombaTower":
                     tile.GetComponent<Image>().sprite = Towers[0].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[0].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "KoopaTower":
                     tile.GetComponent<Image>().sprite = Towers[1].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[1].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "FreezieTower":
                     tile.GetComponent<Image>().sprite = Towers[2].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[2].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "Thwomp":
                     tile.GetComponent<Image>().sprite = Towers[3].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[3].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "BulletBlaster":
                     tile.GetComponent<Image>().sprite = Towers[4].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[4].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "PiranhaPlant":
                     tile.GetComponent<Image>().sprite = Towers[5].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[5].GetComponent<TowerOption>().towerSprites);
                     break;
-                case "Magikoopa":
+                case "MagikoopaTower":
                     tile.GetComponent<Image>().sprite = Towers[6].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[6].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "Bowser":
                     tile.GetComponent<Image>().sprite = Towers[7].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[7].GetComponent<TowerOption>().towerSprites);
+                    Map.bowserPlaced = true;
                     break;
             }
             tile.GetComponent<MapLocation>().towerType = t.towerType;
@@ -676,6 +708,9 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                         break;
                     case "Luigi":
                         newwave.wave.Add(Waves.GetComponent<Waves>().EndlessLuigi);
+                        break;
+                    case "Bob-Omb Buddy":
+                        newwave.wave.Add(Waves.GetComponent<Waves>().EndlessBobOmbBuddy);
                         break;
                 }
             }

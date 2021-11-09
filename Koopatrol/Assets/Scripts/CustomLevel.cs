@@ -50,6 +50,7 @@ public class CustomLevel : MonoBehaviour
         GroundOption.GetComponent<Image>().sprite = backgroundTiles[style];
         PathOption.GetComponent<Image>().color = PathColors[style];
         BlockedOption.GetComponent<Image>().sprite = blockedTiles[style];
+        BackgroundTile.GetComponent<Image>().sprite = backgroundTiles[style];
         foreach (GameObject tile in Map.Tiles)
         {
             if (tile.tag == "Path") tile.GetComponent<Image>().color = PathColors[style];
@@ -120,6 +121,7 @@ public class CustomLevel : MonoBehaviour
                 Waves.GetComponent<Waves>().EndlessCaptainToad.GetComponent<EnemyHealth>().enemyCoin = 10;
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 50;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 300;
+                Waves.GetComponent<Waves>().EndlessBobOmbBuddy.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = true;
                 Waves.GetComponent<Waves>().endlessMode = false;
@@ -129,6 +131,7 @@ public class CustomLevel : MonoBehaviour
                 Waves.GetComponent<Waves>().EndlessCaptainToad.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 0;
+                Waves.GetComponent<Waves>().EndlessBobOmbBuddy.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = true;
                 Waves.GetComponent<Waves>().endlessMode = false;
@@ -138,6 +141,7 @@ public class CustomLevel : MonoBehaviour
                 Waves.GetComponent<Waves>().EndlessCaptainToad.GetComponent<EnemyHealth>().enemyCoin = 10;
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 50;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 300;
+                Waves.GetComponent<Waves>().EndlessBobOmbBuddy.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 700;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = false;
                 Waves.GetComponent<Waves>().endlessMode = true;
@@ -186,27 +190,36 @@ public class CustomLevel : MonoBehaviour
             {
                 case "GoombaTower":
                     tile.GetComponent<Image>().sprite = Towers[0].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[0].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "KoopaTower":
                     tile.GetComponent<Image>().sprite = Towers[1].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[1].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "FreezieTower":
                     tile.GetComponent<Image>().sprite = Towers[2].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[2].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "Thwomp":
                     tile.GetComponent<Image>().sprite = Towers[3].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[3].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "BulletBlaster":
                     tile.GetComponent<Image>().sprite = Towers[4].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[4].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "PiranhaPlant":
                     tile.GetComponent<Image>().sprite = Towers[5].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[5].GetComponent<TowerOption>().towerSprites);
                     break;
-                case "Magikoopa":
+                case "MagikoopaTower":
                     tile.GetComponent<Image>().sprite = Towers[6].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[6].GetComponent<TowerOption>().towerSprites);
                     break;
                 case "Bowser":
                     tile.GetComponent<Image>().sprite = Towers[7].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
+                    tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[7].GetComponent<TowerOption>().towerSprites);
+                    Map.bowserPlaced = true;
                     break;
             }
             tile.GetComponent<MapLocation>().towerType = t.towerType;
@@ -214,7 +227,6 @@ public class CustomLevel : MonoBehaviour
             tile.GetComponent<MapLocation>().TargetPriority = t.towerFocus;
         }
         Waves.GetComponent<Waves>().TheWaves.Clear();
-        if (gamemode != 2) saveObject.waves.RemoveAt(saveObject.waves.Count - 1);
         foreach (levelCreator.Wave wave in saveObject.waves)
         {
             Waves.serializableClass newwave = new Waves.serializableClass();
@@ -235,6 +247,12 @@ public class CustomLevel : MonoBehaviour
                         break;
                     case "Luigi":
                         newwave.wave.Add(Waves.GetComponent<Waves>().EndlessLuigi);
+                        break;
+                    case "Bob-Omb Buddy":
+                        newwave.wave.Add(Waves.GetComponent<Waves>().EndlessBobOmbBuddy);
+                        break;
+                    case "Mario":
+                        newwave.wave.Add(Waves.GetComponent<Waves>().EndlessMario);
                         break;
                 }
             }
