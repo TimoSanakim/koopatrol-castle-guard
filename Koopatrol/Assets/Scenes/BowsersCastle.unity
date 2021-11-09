@@ -4170,10 +4170,6 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7210227819126598245, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
-      propertyPath: finalEnemy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210227819126598245, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: startingPosition
       value: 
       objectReference: {fileID: 1229915055}

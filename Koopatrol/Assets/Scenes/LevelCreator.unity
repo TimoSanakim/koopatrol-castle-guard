@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 90646795}
   - component: {fileID: 90646794}
   - component: {fileID: 90646793}
+  - component: {fileID: 90646797}
   m_Layer: 5
   m_Name: LoadLevel
   m_TagString: Untagged
@@ -359,6 +360,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 90646791}
   m_CullTransparentMesh: 1
+--- !u!225 &90646797
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90646791}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &101791047
 GameObject:
   m_ObjectHideFlags: 0
@@ -9837,10 +9850,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2029452955}
         m_TargetAssemblyTypeName: levelCreator, Assembly-CSharp
         m_MethodName: ChangeCoinCount
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1789887318}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12432,10 +12445,6 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7210227819126598245, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
-      propertyPath: finalEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210227819126598245, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: startingPosition
       value: 
       objectReference: {fileID: 1644263639}
@@ -13666,6 +13675,7 @@ MonoBehaviour:
   SelectedWave: {fileID: 1382495503}
   CoinCounter: {fileID: 1789887318}
   WaveSelector: {fileID: 1261929255}
+  AddEnemyButton: {fileID: 2137043485}
   AddWaveButton: {fileID: 1228527248}
   GamemodeText: {fileID: 1273231799}
   GamemodePanel: {fileID: 1393754481}
@@ -13673,6 +13683,7 @@ MonoBehaviour:
   SaveLevelPanel: {fileID: 945050205}
   LoadLevelOptions: {fileID: 383424326}
   SaveLevelName: {fileID: 1298541016}
+  LoadButton: {fileID: 90646791}
   TowerInfo: {fileID: 949556838}
   Towers:
   - {fileID: 2651898267933454894}
@@ -14297,6 +14308,7 @@ GameObject:
   - component: {fileID: 2137043489}
   - component: {fileID: 2137043488}
   - component: {fileID: 2137043487}
+  - component: {fileID: 2137043490}
   m_Layer: 5
   m_Name: AddToWave
   m_TagString: Untagged
@@ -14418,6 +14430,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137043485}
   m_CullTransparentMesh: 1
+--- !u!225 &2137043490
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137043485}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2146930516
 GameObject:
   m_ObjectHideFlags: 0

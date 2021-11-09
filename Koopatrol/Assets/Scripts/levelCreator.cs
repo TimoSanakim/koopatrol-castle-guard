@@ -28,6 +28,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
     public GameObject SelectedWave;
     public GameObject CoinCounter;
     public GameObject WaveSelector;
+    public GameObject AddEnemyButton;
     public GameObject AddWaveButton;
     public GameObject GamemodeText;
     public GameObject GamemodePanel;
@@ -35,6 +36,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
     public GameObject SaveLevelPanel;
     public GameObject LoadLevelOptions;
     public GameObject SaveLevelName;
+    public GameObject LoadButton;
     public GameObject TowerInfo;
     public GameObject[] Towers;
     int selectedWave = 0;
@@ -56,6 +58,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         SaveLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
         SaveLevelPanel.GetComponent<CanvasGroup>().interactable = false;
         SaveLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        LoadLevelOptions.GetComponent<TMP_Dropdown>().value = 0;
         LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Clear();
         while (File.Exists(Application.dataPath + "/customlevel" + ID))
         {
@@ -65,6 +68,13 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
             option.text = saveObject.name;
             LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Add(option);
+        }
+        LoadLevelOptions.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = LoadLevelOptions.GetComponent<TMP_Dropdown>().options[0].text;
+        if (LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Count == 0)
+        {
+            LoadButton.GetComponent<CanvasGroup>().alpha = 0.5f;
+            LoadButton.GetComponent<CanvasGroup>().interactable = false;
+            LoadButton.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
     }
 
@@ -183,6 +193,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 50;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 300;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 0;
+                Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = true;
                 Waves.GetComponent<Waves>().endlessMode = false;
                 break;
             case 1:
@@ -192,6 +203,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 0;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 0;
+                Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = true;
                 Waves.GetComponent<Waves>().endlessMode = false;
                 break;
             case 2:
@@ -201,13 +213,15 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 Waves.GetComponent<Waves>().EndlessYoshi.GetComponent<EnemyHealth>().enemyCoin = 50;
                 Waves.GetComponent<Waves>().EndlessLuigi.GetComponent<EnemyHealth>().enemyCoin = 300;
                 Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyHealth>().enemyCoin = 700;
+                Waves.GetComponent<Waves>().EndlessMario.GetComponent<EnemyBehaviour>().finalEnemy = false;
                 Waves.GetComponent<Waves>().endlessMode = true;
                 break;
         }
     }
     public void ChangeCoinCount(GameObject value)
     {
-        coinCount = Convert.ToInt32(value.GetComponent<TextMeshProUGUI>().text);
+        if (value.GetComponent<TMP_InputField>().text == "" || value.GetComponent<TMP_InputField>().text == null) value.GetComponent<TMP_InputField>().text = "0";
+        coinCount = Convert.ToInt32(value.GetComponent<TMP_InputField>().text);
     }
     public void AddWave()
     {
@@ -277,6 +291,9 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         }
         if (Waves.GetComponent<Waves>().TheWaves[selectedWave].wave.Count == 0)
         {
+            AddEnemyButton.GetComponent<CanvasGroup>().alpha = 1f;
+            AddEnemyButton.GetComponent<CanvasGroup>().interactable = true;
+            AddEnemyButton.GetComponent<CanvasGroup>().blocksRaycasts = true;
             SelectedWave.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<CanvasGroup>().alpha = 1f;
             SelectedWave.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
             SelectedWave.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<CanvasGroup>().interactable = true;
@@ -301,6 +318,18 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 enemynumber += 1;
             }
             SelectedWave.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(SelectedWave.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta.x, 50 * enemynumber);
+            if (enemynumber == 60)
+            {
+                AddEnemyButton.GetComponent<CanvasGroup>().alpha = 0.5f;
+                AddEnemyButton.GetComponent<CanvasGroup>().interactable = false;
+                AddEnemyButton.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+            else
+            {
+                AddEnemyButton.GetComponent<CanvasGroup>().alpha = 1f;
+                AddEnemyButton.GetComponent<CanvasGroup>().interactable = true;
+                AddEnemyButton.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
         }
     }
 
@@ -378,7 +407,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         }
     }
     [Serializable]
-    private class SaveTile
+    public class SaveTile
     {
         public Vector3 position;
         public Quaternion rotation;
@@ -388,13 +417,13 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         public int towerFocus;
     }
     [Serializable]
-    private class Wave
+    public class Wave
     {
         public string music;
         public List<string> enemies;
     }
     [Serializable]
-    private class SaveObject
+    public class SaveObject
     {
         public List<SaveTile> tiles;
         public List<Wave> waves;
@@ -489,8 +518,12 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
                 TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
                 option.text = saveObject.name;
                 LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Add(option);
+                LoadButton.GetComponent<CanvasGroup>().alpha = 1;
+                LoadButton.GetComponent<CanvasGroup>().interactable = true;
+                LoadButton.GetComponent<CanvasGroup>().blocksRaycasts = true;
             }
             previouslySaved = true;
+            Map.WriteToLog("Saved map as \"" + saveObject.name + "\".");
         }
         else if (Map.PossiblePaths.Count != 0 && SaveLevelName.GetComponent<TMP_InputField>().text == "")
         {
@@ -524,9 +557,14 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
     public void LoadLevel()
     {
         int index = LoadLevelOptions.GetComponent<TMP_Dropdown>().value;
-        SaveLevelName.GetComponent<TMP_InputField>().text = Convert.ToString(LoadLevelOptions.GetComponent<TMP_Dropdown>().itemText);
         TowerInfo.GetComponent<TowerInfo>().HideInfo();
         TowerInfo.GetComponent<TowerInfo>().selectedTower = null;
+        GamemodePanel.GetComponent<CanvasGroup>().alpha = 0;
+        GamemodePanel.GetComponent<CanvasGroup>().interactable = false;
+        GamemodePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        LoadLevelPanel.GetComponent<CanvasGroup>().alpha = 0;
+        LoadLevelPanel.GetComponent<CanvasGroup>().interactable = false;
+        LoadLevelPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
         ID = index;
         List<GameObject> oldTiles = new List<GameObject>();
         oldTiles.AddRange(Map.Tiles);
@@ -544,6 +582,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         previouslySaved = true;
         string saveString = File.ReadAllText(Application.dataPath + "/customlevel" + index);
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+        SaveLevelName.GetComponent<TMP_InputField>().text = saveObject.name;
         if (style != saveObject.style) ChangeStyle();
         if (style != saveObject.style) ChangeStyle();
         if (gamemode != saveObject.gamemode) ChangeGamemode();
@@ -611,8 +650,14 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
         }
         Waves.GetComponent<Waves>().TheWaves.Clear();
         if (gamemode != 2) saveObject.waves.RemoveAt(saveObject.waves.Count - 1);
+        int round = 0;
+        WaveSelector.GetComponent<TMP_Dropdown>().options.Clear();
         foreach (Wave wave in saveObject.waves)
         {
+            round += 1;
+            TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData();
+            option.text = "Round " + Convert.ToString(round);
+            WaveSelector.GetComponent<TMP_Dropdown>().options.Add(option);
             Waves.serializableClass newwave = new Waves.serializableClass();
             newwave.music = wave.music;
             newwave.wave = new List<GameObject>();
@@ -636,5 +681,15 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
             }
             Waves.GetComponent<Waves>().TheWaves.Add(newwave);
         }
+        WaveSelector.GetComponent<TMP_Dropdown>().value = 0;
+        selectedWave = 0;
+        SelectWave();
+        if (Waves.GetComponent<Waves>().TheWaves.Count == 99)
+        {
+            AddWaveButton.GetComponent<CanvasGroup>().alpha = 0.5f;
+            AddWaveButton.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            AddWaveButton.GetComponent<CanvasGroup>().interactable = false;
+        }
+        Map.WriteToLog("Loaded map \"" + saveObject.name + "\".");
     }
 }

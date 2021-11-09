@@ -16,6 +16,9 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
     public float freezetime;
     public string description;
     public bool disabled = false;
+    public bool isTornado = false;
+    public Sprite[] sprites;
+    public Sprite[] attackSprites;
 
 
     // Start is called before the first frame update
@@ -48,13 +51,13 @@ public class LastResortAttack : MonoBehaviour, IPointerClickHandler, IPointerEnt
             {
                 used = true;
                 Assets.CoinCounter.ChangeCoinCounter(-costs, false);
-                if (Attack.GetComponent<Tornado>() != null)
+                if (isTornado)
                 {
                     for (int i = 0; i < Map.PossiblePaths.Count; i++) {
                         Tornado.CreateTornado(i, Attack, damage, damageperc, freezetime);
                     }
                 }
-                else if (Attack.GetComponent<LavaAttack>() != null)
+                else
                 {
                     foreach (GameObject castle in GameObject.FindGameObjectsWithTag("Castle"))
                     {

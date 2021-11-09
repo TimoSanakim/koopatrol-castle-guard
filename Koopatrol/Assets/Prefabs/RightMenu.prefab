@@ -1257,7 +1257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 75
   towerType: Thwomp
-  towerSprites: []
+  towerSprites:
+  - {fileID: 21300000, guid: 92d98f7ba4fba29418696ad0359b8b65, type: 3}
   validPosition: 0
   towerSound: {fileID: 8300000, guid: 7c14e55d815e52c43b4c1dbfbcde58d0, type: 3}
 --- !u!225 &3658054563783749376
@@ -1443,7 +1444,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 150
   towerType: MagikoopaTower
-  towerSprites: []
+  towerSprites:
+  - {fileID: 21300000, guid: 5095b993f0ac96f4c8dfa6cd636b2adf, type: 3}
   validPosition: 0
   towerSound: {fileID: 0}
 --- !u!225 &3658054564356591525
@@ -2263,7 +2265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCost: 120
   towerType: PiranhaPlant
-  towerSprites: []
+  towerSprites:
+  - {fileID: 21300000, guid: d5ac32a67c3e2814494e4719b9ce341a, type: 3}
   validPosition: 1
   towerSound: {fileID: 8300000, guid: ae2dbd0995851514995bc47997ebb4d0, type: 3}
 --- !u!225 &3658054565288420918
@@ -4607,7 +4610,7 @@ GameObject:
   - component: {fileID: 6722899862510570028}
   - component: {fileID: 6722899862510570029}
   m_Layer: 5
-  m_Name: LavaAttack
+  m_Name: LastResortAttack
   m_TagString: TowerOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4703,6 +4706,15 @@ MonoBehaviour:
   description: Deals damage equal to 30% of max health to all enemies on the map.
     Can only be used once!
   disabled: 0
+  isTornado: 0
+  sprites:
+  - {fileID: 21300000, guid: c1409286e8836054b9779b8ba32ce00b, type: 3}
+  - {fileID: 21300000, guid: 8e07146aaeb07e242bc0d84bf84f3344, type: 3}
+  - {fileID: 21300000, guid: 55d223baa38f91b40aaf9d0dea8b06ad, type: 3}
+  attackSprites:
+  - {fileID: 21300000, guid: 76a3f6227b15d5145b0d46720a97f566, type: 3}
+  - {fileID: 21300000, guid: 15d05bdc6c58e8244ab803ac477ab384, type: 3}
+  - {fileID: 21300000, guid: 55d223baa38f91b40aaf9d0dea8b06ad, type: 3}
 --- !u!82 &6722899862510570029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4812,6 +4824,7 @@ GameObject:
   - component: {fileID: 1242307380459824827}
   - component: {fileID: 5177370228089753484}
   - component: {fileID: 6793132890854893970}
+  - component: {fileID: 4130377725657131913}
   m_Layer: 5
   m_Name: LastResortAttack
   m_TagString: LastResortAttack
@@ -4898,5 +4911,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16fca8285f645304e8fbdd66eb9a5f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4130377725657131913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510913337577439338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302b7341a7e7ee344bdc834acf5efce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

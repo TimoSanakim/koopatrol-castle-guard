@@ -49,7 +49,7 @@ public class GameSettings : MonoBehaviour
         CastleHealth.castleDead = false;
         Map.Victory = false;
         Assets.CoinCounter.CoinCount = 0;
-        Map.LoadedLevel = "MainMenu";
+        Map.LoadedLevel = "Levelselect";
         Map.PossiblePaths = null;
         SceneManager.LoadScene(Map.LoadedLevel);
     }

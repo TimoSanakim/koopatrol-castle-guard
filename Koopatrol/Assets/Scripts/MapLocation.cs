@@ -337,6 +337,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
             {
                 if (map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Contains(gameObject)) map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Remove(gameObject);
             }
+            else if (map.GetComponent<CustomLevel>() != null)
+            {
+                if (map.GetComponent<CustomLevel>().Waves.GetComponent<Waves>().StartingPositions.Contains(gameObject)) map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Remove(gameObject);
+            }
             if (connectedpaths == 1)
             {
                 originalImage = PathSprites[0];
@@ -347,6 +351,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
                 if (map.GetComponent<levelCreator>() != null)
                 {
                     map.GetComponent<levelCreator>().Waves.GetComponent<Waves>().StartingPositions.Add(gameObject);
+                }
+                else if (map.GetComponent<CustomLevel>() != null)
+                {
+                    map.GetComponent<CustomLevel>().Waves.GetComponent<Waves>().StartingPositions.Add(gameObject);
                 }
             }
             if (connectedpaths == 2)

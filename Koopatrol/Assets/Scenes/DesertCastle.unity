@@ -38950,6 +38950,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2137302707}
     m_Modifications:
+    - target: {fileID: 2378887628643359556, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3a06053c0502004faa0512158ffd05f, type: 3}
     - target: {fileID: 3658054563470750445, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -14.023926
@@ -39099,6 +39103,23 @@ PrefabInstance:
       propertyPath: description
       value: Tornado that follows the path deals 5 damage and pushes enemies back.
         Can only be used once!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: isTornado
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: damageperc
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: description
+      value: Deals 5 damage to all enemies on the map and pushes them back. Can only
+        be used once!
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8499450327590669460, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
