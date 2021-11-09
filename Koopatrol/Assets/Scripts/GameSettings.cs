@@ -11,12 +11,13 @@ public class GameSettings : MonoBehaviour
 {
     void Start()
     {
-        if(File.Exists(Application.dataPath + "/savedata")){
-            string saveString = File.ReadAllText(Application.dataPath + "/savedata");
+        if(File.Exists(Application.dataPath + "/settings")){
+            string saveString = File.ReadAllText(Application.dataPath + "/settings");
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
 
             Map.MusicVolume = saveObject.musicvolume;
             Map.SoundVolume = saveObject.soundvolume;
+            Map.ShowCooldowns = saveObject.showcooldowns;
             Map.DefaultTargetPriority = saveObject.defaultfocus;
             
         }
@@ -121,22 +122,25 @@ public class GameSettings : MonoBehaviour
         //TODO: When a scene is loaded, change all MapLocations without any towers to this value
     }
     public void savesettings(){
-        SaveObject saveObject = new SaveObject{
-        musicvolume = Map.MusicVolume,
-        soundvolume = Map.SoundVolume,
-        defaultfocus = Map.DefaultTargetPriority,
+        SaveObject saveObject = new SaveObject
+        {
+            musicvolume = Map.MusicVolume,
+            soundvolume = Map.SoundVolume,
+            defaultfocus = Map.DefaultTargetPriority,
+            showcooldowns = Map.ShowCooldowns,
 
-    };
+        };
     string json = JsonUtility.ToJson(saveObject);
     Debug.Log("json"+json);
 
     SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(json);
 
-    File.WriteAllText(Application.dataPath + "/savedata",json);
+    File.WriteAllText(Application.dataPath + "/settings", json);
     }
     private class SaveObject {
         public int musicvolume;
         public int soundvolume;
         public int defaultfocus;
+        public int showcooldowns;
     }
 }

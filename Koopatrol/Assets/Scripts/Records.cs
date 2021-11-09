@@ -66,11 +66,15 @@ public class Records : MonoBehaviour
     }
     public void setName(){
         recordName = setRecord.text;
+        recordcontainer.GetComponent<CanvasGroup>().alpha = 0;
+        recordcontainer.GetComponent<CanvasGroup>().interactable = false;
+        recordcontainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
     
     public void hideRecord(){
     recordcontainer.GetComponent<CanvasGroup>().alpha = 0;
     recordcontainer.GetComponent<CanvasGroup>().interactable = false;
+        recordcontainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     private class SaveObject {
