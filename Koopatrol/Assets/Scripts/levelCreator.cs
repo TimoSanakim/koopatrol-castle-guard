@@ -47,9 +47,11 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
     int luigiInWave = -1;
     int ID = 0;
     bool previouslySaved = false;
+    public static bool started = false;
     // Start is called before the first frame update
     void Start()
     {
+        started = true;
         GamemodePanel.GetComponent<CanvasGroup>().alpha = 0;
         GamemodePanel.GetComponent<CanvasGroup>().interactable = false;
         GamemodePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -91,7 +93,7 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-        Assets.CoinCounter.CoinCount = 300;
+        if (started) Assets.CoinCounter.CoinCount = 300;
     }
     public void OnPointerClick(PointerEventData eventData)
     {
