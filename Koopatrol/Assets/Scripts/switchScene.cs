@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class switchScene : MonoBehaviour
 {
     public string loadingScene;
+    public int CustomMap;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,13 @@ public class switchScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void sceneSwitch()
     {
         SceneManager.LoadScene(loadingScene);
         Map.LoadedLevel = loadingScene;
+        Map.LoadedCustomMap = CustomMap;
     }
     public void quitgame()
     {

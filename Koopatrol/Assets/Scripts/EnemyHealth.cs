@@ -16,7 +16,10 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     public bool dying = false;
     bool playedDeathSound = false;
     public bool HitByLava = false;
-    int deathTime = 0;
+    float deathTime = 0;
+    float healthPercent;
+    float blinktime = 0.2f;
+    bool blink = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,21 +56,27 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
             }
             else if (deathTime >= 240)
             {
-                GameSettings.restartGame();
+                GameObject.FindGameObjectWithTag("recordname").GetComponent<Records>().endgame = true;
+                //GameSettings.restartGame();
             }
             deathTime += 1;
         }
         else if (dying && !GetComponent<EnemyBehaviour>().finalEnemy)
         {
+            deathTime += Time.deltaTime;
             if (GetComponent<EnemyBehaviour>().deathSound != null && !playedDeathSound)
             {
                 GetComponent<AudioSource>().clip = GetComponent<EnemyBehaviour>().deathSound;
                 GetComponent<AudioSource>().Play();
                 playedDeathSound = true;
             }
-            if (!GetComponent<AudioSource>().isPlaying)
+            if (deathTime >= 1)
             {
-                Destroy(gameObject);
+                gameObject.GetComponent<CanvasGroup>().alpha = 0;
+                if (!GetComponent<AudioSource>().isPlaying)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
@@ -75,10 +84,29 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
     {
         return -(Health - MaxHealth);
     }
+    IEnumerator blinking(){
+        if (!dying)
+        {
+            gameObject.GetComponent<CanvasGroup>().alpha = 1;
+            yield return new WaitForSeconds(blinktime);
+            if (!dying) gameObject.GetComponent<CanvasGroup>().alpha = 0;
+        }
+    }
+    void startblinking()
+    {
+        StartCoroutine(blinking());
+    }
 
     public void Hurt(int damage)
-    {
+    {   
         Health -= damage;
+        healthPercent = (float)Health / (float)MaxHealth;
+        if (healthPercent < 0.15f && !blink)
+        {
+            blink =true;
+            InvokeRepeating("startblinking", 0.01f, blinktime * 2);
+        }
+
         gameObject.GetComponent<EnemyBehaviour>().Stagger(0.1f, false);
         if (Health <= 0)
         {
@@ -86,8 +114,11 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         }
         else
         {
+            
             Color newcolor = new Color(1f, Convert.ToSingle(Health-1) / Convert.ToSingle(MaxHealth), Convert.ToSingle(Health-1) / Convert.ToSingle(MaxHealth), 1f);
             gameObject.GetComponent<Image>().color = newcolor;
+
+            
             if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
             {
                 towerInfo.GetComponent<TowerInfo>().SetInfo();
@@ -97,10 +128,23 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         {
             BossBar.GetComponent<BossBar>().UpdateValue(Health, MaxHealth);
         }
+        
+    }
+
+    void Explode()
+    {
+        GetComponent<EnemyBehaviour>().DestroyTowers(transform.localPosition.x, transform.localPosition.y);
+        List<GameObject> enemies = new List<GameObject>();
+        enemies.AddRange(Map.Enemies);
+        foreach (GameObject enemy in enemies)
+        {
+            if (Vector3.Distance(gameObject.transform.localPosition, enemy.transform.localPosition) <= 60) enemy.GetComponent<EnemyHealth>().Hurt(15);
+        }
     }
 
     void death()
     {
+        CancelInvoke();
         Assets.CoinCounter.ChangeCoinCounter(enemyCoin, false);
         Map.Enemies.Remove(gameObject);
         if (towerInfo.GetComponent<TowerInfo>().selectedTower == gameObject)
@@ -111,6 +155,13 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
         gameObject.GetComponent<EnemyBehaviour>().moveSpeed = 0f;
         dying = true;
+        gameObject.transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0f;
+        if (GetComponent<EnemyBehaviour>().enemyType == "Bob-Omb Buddy")
+        {
+            gameObject.GetComponent<CanvasGroup>().alpha = 1f;
+            gameObject.transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 1f;
+            Explode();
+        }
         if (GetComponent<EnemyBehaviour>().finalEnemy)
         {
             Music.GetComponent<Music>().PlayNew("Victory");
@@ -127,7 +178,7 @@ public class EnemyHealth : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            gameObject.GetComponent<CanvasGroup>().alpha = 0f;
+            if (GetComponent<EnemyBehaviour>().enemyType != "Bob-Omb Buddy") gameObject.GetComponent<CanvasGroup>().alpha = 0f;
         }
     }
 

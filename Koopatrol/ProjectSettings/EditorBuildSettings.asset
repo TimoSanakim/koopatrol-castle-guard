@@ -12,12 +12,30 @@ EditorBuildSettings:
     path: Assets/Scenes/Levelselect.unity
     guid: 6674675e863d829468240d772b1f8333
   - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 58e7d10ebfe965945a9e1f569e3d8423
+  - enabled: 1
+    path: Assets/Scenes/TutorialMap.unity
+    guid: ff2b319e3d7c1f94498f828db12bb41c
+  - enabled: 1
     path: Assets/Scenes/BowsersCastle.unity
-    guid: 5012f96c2173a244b8f5c3775172bba9
+    guid: 9cef556e13f4247428b565b9ff59a75c
   - enabled: 1
     path: Assets/Scenes/DesertCastle.unity
     guid: 7fe25670fa7b20a4f98fd0df1d0e0fbe
   - enabled: 1
     path: Assets/Scenes/FrozenCastle.unity
     guid: c0e0ca8544cc0c745b07e2ed8998d681
+  - enabled: 1
+    path: Assets/Scenes/LevelCreator.unity
+    guid: 51249dec61c630946ba18725b7d24af4
+  - enabled: 1
+    path: Assets/Scenes/CustomLevel.unity
+    guid: 5012f96c2173a244b8f5c3775172bba9
+  - enabled: 1
+    path: Assets/Scenes/Highscoresselect.unity
+    guid: 506babd5c56870f4a836bbd77f3740a2
+  - enabled: 1
+    path: Assets/Scenes/Highscores.unity
+    guid: c7928471c98c7a2408383c9d469eab50
   m_configObjects: {}

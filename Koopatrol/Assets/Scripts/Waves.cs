@@ -26,9 +26,11 @@ public class Waves : MonoBehaviour
     public GameObject EndlessYoshi;
     public GameObject EndlessLuigi;
     public GameObject EndlessMario;
+    public GameObject EndlessBobOmbBuddy;
+    public List<GameObject> StartingPositions;
     byte endlessMarioCount = 0;
     int lastMusicChange = 0;
-    int round = 1;
+    public int round = 1;
 
     public float waveDelay;
     public float currentWaveDelay;
@@ -36,15 +38,114 @@ public class Waves : MonoBehaviour
     public GameObject SpawnEnemies;
     GameObject RoundCounter;
     GameObject Music;
+    List<GameObject> AllPaths;
     // Start is called before the first frame update
     void Start()
     {
         currentWaveDelay = waveDelay;
         RoundCounter = GameObject.FindGameObjectWithTag("RoundCounter");
         Music = GameObject.FindGameObjectWithTag("Music");
-        RoundCounter.GetComponent<Text>().text = "Round: " + round;
+        if (RoundCounter != null) RoundCounter.GetComponent<Text>().text = "Round: " + round;
+        SearchForPaths();
     }
-
+    public void SearchForPaths()
+    {
+        AllPaths = new List<GameObject>();
+        GameObject[] Castles = GameObject.FindGameObjectsWithTag("Castle");
+        GameObject[] Paths = GameObject.FindGameObjectsWithTag("Path");
+        GameObject[] PathTowers = GameObject.FindGameObjectsWithTag("PathTower");
+        foreach (GameObject p in Castles)
+        {
+            AllPaths.Add(p);
+        }
+        foreach (GameObject p in Paths)
+        {
+            AllPaths.Add(p);
+        }
+        foreach (GameObject p in PathTowers)
+        {
+            AllPaths.Add(p);
+        }
+        Map.PossiblePaths = new List<List<Transform>>();
+        foreach (GameObject position in StartingPositions)
+        {
+            List<Transform> positions = new List<Transform>();
+            positions.Add(position.transform);
+            GetNextPath(positions);
+        }
+        if (Map.PossiblePaths.Count == 0)
+        {
+            if (AllPaths.Count != 0) Map.WriteToLog("No valid paths to castle detected!");
+            else Map.WriteToLog("Left click to place a tile, right click to remove it. You can set towers and upgrade them as normal.");
+            SpawnEnemies.GetComponent<SpawnEnemies>().stopSpawning = true;
+        }
+        if (gameObject.transform.parent.transform.parent.GetComponent<levelCreator>() == null && TheWaves[0].music != null && TheWaves[0].music != "") Music.GetComponent<Music>().PlayNew(TheWaves[0].music);
+    }
+    void GetNextPath(List<Transform> pastPositiones)
+    {
+        List<Transform> PastPaths = new List<Transform>();
+        PastPaths.AddRange(pastPositiones);
+        float x = PastPaths[PastPaths.Count - 1].localPosition.x;
+        float y = PastPaths[PastPaths.Count - 1].localPosition.y;
+        foreach (GameObject t in AllPaths)
+        {
+            if (!PastPaths.Contains(t.transform))
+            {
+                if (t.transform.localPosition.x >= x - 10 && t.transform.localPosition.x <= x + 10 && t.transform.localPosition.y >= y + 40 && t.transform.localPosition.y <= y + 60)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+                if (t.transform.localPosition.x >= x - 10 && t.transform.localPosition.x <= x + 10 && t.transform.localPosition.y >= y - 60 && t.transform.localPosition.y <= y - 40)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+                if (t.transform.localPosition.y >= y - 10 && t.transform.localPosition.y <= y + 10 && t.transform.localPosition.x >= x + 40 && t.transform.localPosition.x <= x + 60)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+                if (t.transform.localPosition.y >= y - 10 && t.transform.localPosition.y <= y + 10 && t.transform.localPosition.x >= x - 60 && t.transform.localPosition.x <= x - 40)
+                {
+                    List<Transform> newPaths = new List<Transform>();
+                    newPaths.AddRange(PastPaths);
+                    newPaths.Add(t.transform);
+                    if (t.tag == "Castle")
+                    {
+                        List<Transform> MapValue = new List<Transform>();
+                        MapValue.AddRange(newPaths);
+                        Map.PossiblePaths.Add(MapValue);
+                    }
+                    else GetNextPath(newPaths);
+                }
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -136,7 +237,7 @@ public class Waves : MonoBehaviour
         int totalweight = weight;
         bool stop = false;
         int variable = Map.randomizer.Next(0, 8000);
-        if (!hasSpawnedMario && round == 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !MarioExists())
+        if (!hasSpawnedMario && round >= 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !MarioExists())
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             totalweight += 25;
@@ -151,7 +252,7 @@ public class Waves : MonoBehaviour
             if (endlessMarioCount >= 1) TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             if (endlessMarioCount >= 2) TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
         }
-        else if (!hasSpawnedLuigi && round == 20 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        else if (!hasSpawnedLuigi && round >= 20 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
             totalweight += 20;
@@ -161,12 +262,27 @@ public class Waves : MonoBehaviour
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
             totalweight += 20;
         }
-        else if (!hasSpawnedYoshi && round == 10 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        else if (hasSpawnedLuigi && variable >= 7300 && round >= 50 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            stop = true;
+        }
+        else if (hasSpawnedLuigi && variable >= 7300 && round >= 50 && totalweight + 10 < maxweight)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            totalweight += 10;
+        }
+        else if (!hasSpawnedYoshi && round >= 10 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
             totalweight += 15;
         }
-        else if (hasSpawnedYoshi && variable >= 7500 && round >= 10 && totalweight + 15 < maxweight)
+        else if (hasSpawnedYoshi && variable >= 7000 && round >= 10 && totalweight + 15 < maxweight)
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
             totalweight += 15;

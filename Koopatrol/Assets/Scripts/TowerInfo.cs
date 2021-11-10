@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TowerInfo : MonoBehaviour
 {
-    bool hidden = true;
+    public bool hidden = true;
     public byte slide = 0;
     public GameObject selectedTower;
     GameObject sellButton;
     GameObject targetButton;
     GameObject upgradeButton;
-    GameObject towerDescription;
+    GameObject NewtowerDescription;
     GameObject rangeCircle;
     GameObject mapRange;
     GameObject fallbackTower;
@@ -23,11 +24,13 @@ public class TowerInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponent<AudioSource>().volume = Convert.ToSingle(Map.SoundVolume) / 100;
         sellButton = GameObject.FindGameObjectWithTag("SellButton");
         targetButton = GameObject.FindGameObjectWithTag("TargetButton");
         upgradeButton = GameObject.FindGameObjectWithTag("UpgradeButton");
-        towerDescription = GameObject.FindGameObjectWithTag("TowerDescription");
+        NewtowerDescription = GameObject.FindGameObjectWithTag("NewTowerDescription");
         rangeCircle = GameObject.FindGameObjectWithTag("RangeCircle");
+        selectedTower = GameObject.FindGameObjectWithTag("TowerOption");
         fallbackTower = selectedTower;
     }
 
@@ -52,31 +55,27 @@ public class TowerInfo : MonoBehaviour
                 SetInfo();
                 hidden = false;
             }
-            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
-            temp.y = temp.y + 6;
-            if (temp.y >= 150)
+            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
+            temp.y = temp.y + 30;
+            if (temp.y >= 350)
             {
-                temp.y = 150;
+                temp.y = 350;
                 slide = 0;
             }
-            gameObject.GetComponent<RectTransform>().transform.position = temp;
+            gameObject.GetComponent<RectTransform>().transform.localPosition = temp;
         }
         else if (slide == 2 || slide == 3)
         {
-            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.position;
-            temp.y = temp.y - 6;
+            Vector3 temp = gameObject.GetComponent<RectTransform>().transform.localPosition;
+            temp.y = temp.y - 30;
             if (temp.y <= 0)
             {
                 temp.y = 0;
                 if (slide == 2) slide = 0;
                 else slide = 1;
                 hidden = true;
-                foreach (GameObject spot in Map.Tiles) 
-                {
-                    if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
-                }
             }
-            gameObject.GetComponent<RectTransform>().transform.position = temp;
+            gameObject.GetComponent<RectTransform>().transform.localPosition = temp;
         }
     }
 
@@ -84,17 +83,25 @@ public class TowerInfo : MonoBehaviour
     {
         if (slide == 0 || slide == 1) slide = 2;
         if (selectedTower != null && selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
+        foreach (GameObject spot in Map.Tiles)
+        {
+            if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
+        }
     }
 
     public void ShowInfo(GameObject selectedObject)
     {
+        foreach (GameObject spot in Map.Tiles)
+        {
+            if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
+        }
         mapRange = null;
-        if (hidden) slide = 1;
-        else slide = 3;
         if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
         selectedTower = selectedObject;
         if (selectedTower.GetComponent<Image>() != null) replacedColor = selectedTower.GetComponent<Image>().color;
         if (selectedTower.GetComponent<MapLocation>() != null) selectedTower.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
+        if (hidden) slide = 1;
+        else SetInfo();
 
     }
     public void SellTower()
@@ -112,7 +119,7 @@ public class TowerInfo : MonoBehaviour
         if (selectedTower.GetComponent<MapLocation>() != null)
         {
             selectedTower.GetComponent<MapLocation>().TargetPriority += 1;
-            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4) selectedTower.GetComponent<MapLocation>().TargetPriority = 0;
+            if (selectedTower.GetComponent<MapLocation>().TargetPriority == 6) selectedTower.GetComponent<MapLocation>().TargetPriority = 0;
             SetInfo();
         }
     }
@@ -141,7 +148,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+                return Assets.GoombaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "KoopaTower":
                 return Assets.KoopaTower.GetSellCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
@@ -164,7 +171,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
+                return Assets.GoombaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "KoopaTower":
                 return Assets.KoopaTower.GetUpgradeCost(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
@@ -187,7 +194,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
+                return Assets.GoombaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "KoopaTower":
                 return Assets.KoopaTower.GetDescription(selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
@@ -223,7 +230,7 @@ public class TowerInfo : MonoBehaviour
         switch (selectedTower.GetComponent<TowerOption>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetDescription(1);
+                return Assets.GoombaTower.GetDescription(1);
             case "KoopaTower":
                 return Assets.KoopaTower.GetDescription(1);
             case "FreezieTower":
@@ -246,7 +253,7 @@ public class TowerInfo : MonoBehaviour
         if (selectedTower.GetComponent<TowerOption>() != null)
         {
             //Tower Menu
-            towerDescription.GetComponent<Text>().text = GetDesciptionOption();
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = GetDesciptionOption();
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
@@ -259,25 +266,29 @@ public class TowerInfo : MonoBehaviour
             if (selectedTower.GetComponent<MapLocation>().TargetPriority == 0)
             {
                 targetButton.GetComponentInChildren<Text>().text = "Focus:\nNearest Enemy";
-                targetButton.GetComponentInChildren<Text>().fontSize = 17;
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 1)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nProtect Castle";
-                targetButton.GetComponentInChildren<Text>().fontSize = 13;
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nShortest Path";
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 2)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLowest Health";
-                targetButton.GetComponentInChildren<Text>().fontSize = 13;
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLongest Path";
             }
             else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 3)
             {
-                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLowest Health%";
-                targetButton.GetComponentInChildren<Text>().fontSize = 11;
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nLeast Health";
+            }
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 4)
+            {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Health";
+            }
+            else if (selectedTower.GetComponent<MapLocation>().TargetPriority == 5)
+            {
+                targetButton.GetComponentInChildren<Text>().text = "Focus:\nMost Damage";
             }
             sellButton.GetComponentInChildren<Text>().text = "Sell\n" + Convert.ToString(GetSellCost()) + " coins";
-            towerDescription.GetComponent<Text>().text = GetDesciptionMap();
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = GetDesciptionMap();
             int UpgradeCost = GetUpgradeCost();
             if (UpgradeCost != 0)
             {
@@ -292,7 +303,7 @@ public class TowerInfo : MonoBehaviour
         else if (selectedTower.GetComponent<LastResortAttack>() != null)
         {
             //Lava attack
-            towerDescription.GetComponent<Text>().text = selectedTower.GetComponent<LastResortAttack>().description;
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = selectedTower.GetComponent<LastResortAttack>().description;
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);
@@ -300,7 +311,7 @@ public class TowerInfo : MonoBehaviour
         else if (selectedTower.GetComponent<EnemyHealth>() != null)
         {
             //Enemy
-            towerDescription.GetComponent<Text>().text = "Health: " + selectedTower.GetComponent<EnemyHealth>().Health + "/" + selectedTower.GetComponent<EnemyHealth>().MaxHealth + ". " + selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
+            NewtowerDescription.GetComponent<TextMeshProUGUI>().text = selectedTower.GetComponent<EnemyBehaviour>().GetDescription();
             sellButton.SetActive(false);
             targetButton.SetActive(false);
             upgradeButton.SetActive(false);

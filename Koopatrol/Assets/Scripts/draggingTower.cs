@@ -12,15 +12,12 @@ public class draggingTower : MonoBehaviour
     public Assets.ValidPosition validPosition;
     public bool dragging = false;
     Color valid = new Color(0.3f, 1f, 0.3f, 0.5f);
-    Color notvalid;
-    Color notvalidpath;
-    bool wasDragging;
+    public bool wasDragging;
 
     // Start is called before the first frame update
     void Start()
     {
-        notvalidpath = GameObject.FindGameObjectWithTag("Path").GetComponent<Image>().color;
-        notvalid = GameObject.FindGameObjectWithTag("Ground").GetComponent<Image>().color;
+
     }
 
     // Update is called once per frame
@@ -30,8 +27,8 @@ public class draggingTower : MonoBehaviour
         {
             foreach (GameObject spot in Map.Tiles)
             {
-                if (spot.tag == "Ground") spot.GetComponent<Image>().color = notvalid;
-                else if (spot.tag == "Path") spot.GetComponent<Image>().color = notvalidpath;
+                if (spot.tag == "Ground") spot.GetComponent<Image>().color = spot.GetComponent<MapLocation>().originalColor;
+                else if (spot.tag == "Path") spot.GetComponent<Image>().color = spot.GetComponent<MapLocation>().originalColor;
             }
             wasDragging = false;
         }
@@ -43,6 +40,8 @@ public class draggingTower : MonoBehaviour
                 {
                     if (spot.tag == "Ground") spot.GetComponent<Image>().color = valid;
                 }
+                transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 0f;
+                transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 0f;
             }
             else if (validPosition == Assets.ValidPosition.Path)
             {
@@ -50,12 +49,28 @@ public class draggingTower : MonoBehaviour
                 {
                     if (spot.tag == "Path") spot.GetComponent<Image>().color = valid;
                 }
+                transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 0f;
+                transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 0f;
             }
             else if (validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis)
             {
                 foreach (GameObject spot in Map.Tiles)
                 {
                     if (spot.tag == "Ground" && spot.GetComponent<MapLocation>().isNextToPath != 0) spot.GetComponent<Image>().color = valid;
+                }
+                transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 1f;
+                transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 1f;
+            }
+            else if (validPosition == Assets.ValidPosition.TutorialPosition)
+            {
+                foreach (GameObject spot in Map.Tiles)
+                {
+                    if (spot == Tutorial.TutorialPosition) spot.GetComponent<Image>().color = valid;
+                }
+                if (towerType == "BulletBlaster")
+                {
+                    transform.GetChild(1).GetComponent<CanvasGroup>().alpha = 1f;
+                    transform.GetChild(2).GetComponent<CanvasGroup>().alpha = 1f;
                 }
             }
             wasDragging = true;

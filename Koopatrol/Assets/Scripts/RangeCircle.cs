@@ -28,7 +28,7 @@ public class RangeCircle : MonoBehaviour
                 gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(2*GetRangeTower(), 2*GetRangeTower());
             }
         }
-        else gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(2*GetRangeDraggedTower(), 2*GetRangeDraggedTower());
+        else if (transform.parent.GetComponent<draggingTower>().wasDragging) gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(2*GetRangeDraggedTower(), 2*GetRangeDraggedTower());
     }
 float GetRangeTower()
     {
@@ -37,7 +37,7 @@ float GetRangeTower()
             switch (towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerType)
             {
                 case "GoombaTower":
-                    return Assets.GoomaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
+                    return Assets.GoombaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
                 case "KoopaTower":
                     return Assets.KoopaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel + 1);
                 case "FreezieTower":
@@ -53,7 +53,7 @@ float GetRangeTower()
         switch (towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel);
+                return Assets.GoombaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel);
             case "KoopaTower":
                 return Assets.KoopaTower.GetRange(towerInfo.GetComponent<TowerInfo>().selectedTower.GetComponent<MapLocation>().towerLevel);
             case "FreezieTower":
@@ -72,7 +72,7 @@ float GetRangeDraggedTower()
         switch (gameObject.GetComponentInParent<draggingTower>().towerType)
         {
             case "GoombaTower":
-                return Assets.GoomaTower.GetRange(1);
+                return Assets.GoombaTower.GetRange(1);
             case "KoopaTower":
                 return Assets.KoopaTower.GetRange(1);
             case "FreezieTower":
@@ -90,8 +90,9 @@ float GetRangeDraggedTower()
     public GameObject CreateRangeCircle(GameObject parent)
     {
         GameObject RangeCircle = Instantiate(gameObject);
-        RangeCircle.transform.position = parent.transform.position;
         RangeCircle.transform.SetParent(map.transform, true);
+        RangeCircle.transform.localPosition = parent.transform.localPosition;
+        RangeCircle.transform.localScale = new Vector3(1, 1, 1);
         RangeCircle.GetComponent<RangeCircle>().isClone = true;
         RangeCircle.GetComponent<CanvasGroup>().alpha = 1f;
         RangeCircle.tag = "RangeCircle";

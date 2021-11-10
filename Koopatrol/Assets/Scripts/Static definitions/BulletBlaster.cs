@@ -15,9 +15,9 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            if (towerLevel == 1) return "Bullet blaster. Can only be placed next to a path on 1 axis. Deals 2 damage. Can be upgraded to increase Bullet Bill's movement speed and once again to increase damage further.";
-            if (towerLevel == 2) return "Bullet blaster+1. Can only be placed next to a path on 1 axis. Deals 2 damage. Can be upgraded once again to increase damage further.";
-            return "Bullet blaster+2. Can only be placed next to a path on 1 axis. Deals 3 damage. When enhanced by magic, increases fire rate.";
+            if (towerLevel == 1) return "<sprite=0>=2 <sprite=1>=1 <sprite=2>=1 <sprite=3>=path| Bullet blaster. Upgrade <sprite=1>+1.";
+            if (towerLevel == 2) return "<sprite=0>=2 <sprite=1>=2 <sprite=2>=1 <sprite=3>=path| Bullet blaster+1. Upgrade <sprite=0>+1.";
+            return "<sprite=0>=3 <sprite=1>=2 <sprite=2>=1 <sprite=3>=path| Bullet blaster+2. Magic <sprite=2>-0.3.";
         }
         public static float GetCooldown(int towerLevel)
         {

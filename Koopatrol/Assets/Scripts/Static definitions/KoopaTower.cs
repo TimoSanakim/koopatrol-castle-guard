@@ -15,9 +15,9 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            if (towerLevel == 1) return "Koopa tower. A tower which launches Koopas at the enemies, faster than the Goomba tower. Can be upgraded to increase the fire rate, and once more to increase the detection range.";
-            if (towerLevel == 2) return "Koopa tower+1. A tower which launches Koopas at the enemies, faster than the Goomba tower. Can be upgraded once more to increase the detection range.";
-            return "Koopa tower+2. A tower which launches Koopas at the enemies, faster than the Goomba tower. When enhanced with magic, increases damage by 1.";
+            if (towerLevel == 1) return "<sprite=0>=1 <sprite=1>=2 <sprite=2>=2 <sprite=3>=4| Koopa tower. Upgrade <sprite=2>-1";
+            if (towerLevel == 2) return "<sprite=0>=1 <sprite=1>=2 <sprite=2>=1 <sprite=3>=4| Koopa tower+1. Upgrade <sprite=3>+2";
+            return "<sprite=0>=1 <sprite=1>=2 <sprite=2>=1 <sprite=3>=6| Koopa tower+2. Magic <sprite=0>+1";
         }
         public static float GetRange(int towerLevel)
         {

@@ -26,8 +26,9 @@ public class MagicEffect : MonoBehaviour
     public GameObject CreateMagicEffect(GameObject parent)
     {
         GameObject magicEffect = Instantiate(gameObject);
-        magicEffect.transform.position = parent.transform.position;
         magicEffect.transform.SetParent(parent.transform, true);
+        magicEffect.transform.localPosition = new Vector3(0, 0, 0);
+        magicEffect.transform.localScale = new Vector3(1, 1, 1);
         magicEffect.GetComponent<MagicEffect>().isClone = true;
         magicEffect.GetComponent<CanvasGroup>().alpha = 1f;
         magicEffect.tag = "MagicEffect";

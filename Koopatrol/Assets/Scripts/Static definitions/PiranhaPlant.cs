@@ -11,7 +11,7 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            return "Piranha plant. A pipe which can be placed on paths, when an enemy walks on top, a Piranha Plant will grab and hold that enemy. When grabbed, breaks ice. Can be enhanced with magic to increase hold time.";
+            return "<sprite=0>=2 <sprite=5>=4 <sprite=2>=8| Piranha plant. Hit breaks ice. Magic <sprite=5>+2.";
         }
         public static float GetCooldown(int towerLevel)
         {

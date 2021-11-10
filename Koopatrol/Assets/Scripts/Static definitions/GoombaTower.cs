@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets
 {
-    public static class GoomaTower
+    public static class GoombaTower
     {
         public static int bulletImage = 0;
         public static int GetSellCost(int towerLevel)
@@ -14,8 +14,8 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            if (towerLevel == 1) return "Goomba tower. Slow shooting tower, can be upgraded to have the Goombas move a little faster";
-            return "Goomba tower+1. Slow shooting tower. When enhanced by magic, increases fire rate.";
+            if (towerLevel == 1) return "<sprite=0>=1 <sprite=1>=1 <sprite=2>=2 <sprite=3>=4| Goomba tower. Upgrade <sprite=1>+1";
+            return "<sprite=0>=1 <sprite=1>=2 <sprite=2>=2| Goomba tower+1. Magic <sprite=2>-1";
         }
         public static float GetRange(int towerLevel)
         {

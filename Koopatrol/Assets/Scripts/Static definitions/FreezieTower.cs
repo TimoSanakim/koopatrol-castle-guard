@@ -15,9 +15,9 @@ namespace Assets
         }
         public static string GetDescription(int towerLevel)
         {
-            if (towerLevel == 1) return "Freezie tower. A slow shooting, non-damaging tower. Instead it freezes the enemy hit in place for a little while. Can be upgraded to increase the Freezies movement speed and once more to increase the freeze time.";
-            if (towerLevel == 2) return "Freezie tower+1. A slow shooting, non-damaging tower. Instead it freezes the enemy hit in place for a little while. Can be upgraded once more to increase the freeze time.";
-            return "Freezie tower+2. A slow shooting, non-damaging tower. Instead it freezes the enemy hit in place for a little while. When enhanced by magic, increases range.";
+            if (towerLevel == 1) return "<sprite=4>=4 <sprite=1>=0.5 <sprite=2>=7 <sprite=3>=2| Freezie tower. Upgrade <sprite=1>+0.5";
+            if (towerLevel == 2) return "<sprite=4>=4 <sprite=1>=1 <sprite=2>=7 <sprite=3>=2| Freezie tower+1. Upgrade <sprite=4>+2";
+            return "<sprite=4>=6 <sprite=1>=1 <sprite=2>=7 <sprite=3>=2| Freezie tower+1. Magic <sprite=3>+1";
         }
         public static float GetRange(int towerLevel)
         {

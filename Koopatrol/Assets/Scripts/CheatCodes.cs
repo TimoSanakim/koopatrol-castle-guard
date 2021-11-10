@@ -18,7 +18,8 @@ public class CheatCodes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        
+        /*if (Input.GetKeyDown(KeyCode.M))
         {
             Assets.CoinCounter.ChangeCoinCounter(50, true);
         }
@@ -28,7 +29,7 @@ public class CheatCodes : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            LastResortAttack.GetComponent<LastResortAttack>().Reset();
+            LastResortAttack.GetComponent<LastResortAttack>().used = false;
             foreach (GameObject enemy in Map.Enemies)
             {
                 enemy.GetComponent<EnemyHealth>().HitByLava = false;
@@ -36,7 +37,7 @@ public class CheatCodes : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Map.Enemies[0].GetComponent<EnemyHealth>().Hurt(100000);
-        }
+            if (Map.Enemies.Count != 0) Map.Enemies[0].GetComponent<EnemyHealth>().Hurt(100000);
+        }*/
     }
 }
