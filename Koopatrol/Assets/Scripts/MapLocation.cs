@@ -222,6 +222,11 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
         cooldown = 1;
         if (draggingTower.GetComponent<draggingTower>().validPosition == Assets.ValidPosition.GroundNextToPathOnOneAxis && isNextToPath == 2) transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
         if (towerType == "Bowser") Map.bowserPlaced = true;
+        if (map.GetComponent<levelCreator>() == null) CreateCooldown();
+    }
+    public void CreateCooldown()
+    {
+        if (CooldownCounter == null) CooldownCounter = GameObject.FindGameObjectWithTag("CooldownCounter");
         if (hasCooldownCounter()) MyCooldown = CooldownCounter.GetComponent<Cooldown>().CreateCooldownCounter(gameObject);
     }
     bool hasCooldownCounter()

@@ -191,34 +191,52 @@ public class CustomLevel : MonoBehaviour
                 case "GoombaTower":
                     tile.GetComponent<Image>().sprite = Towers[0].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[0].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     break;
                 case "KoopaTower":
                     tile.GetComponent<Image>().sprite = Towers[1].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[1].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     break;
                 case "FreezieTower":
                     tile.GetComponent<Image>().sprite = Towers[2].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[2].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     break;
                 case "Thwomp":
                     tile.GetComponent<Image>().sprite = Towers[3].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[3].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<AudioSource>().clip = Towers[3].GetComponent<TowerOption>().towerSound;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     break;
                 case "BulletBlaster":
                     tile.GetComponent<Image>().sprite = Towers[4].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[4].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     break;
                 case "PiranhaPlant":
                     tile.GetComponent<Image>().sprite = Towers[5].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[5].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<AudioSource>().clip = Towers[5].GetComponent<TowerOption>().towerSound;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     break;
                 case "MagikoopaTower":
                     tile.GetComponent<Image>().sprite = Towers[6].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[6].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     break;
                 case "Bowser":
                     tile.GetComponent<Image>().sprite = Towers[7].GetComponent<TowerOption>().towerSprites[t.towerLevel - 1];
                     tile.GetComponent<MapLocation>().towerSprites.AddRange(Towers[7].GetComponent<TowerOption>().towerSprites);
+                    tile.GetComponent<MapLocation>().cooldown = 1;
+                    tile.GetComponent<MapLocation>().CreateCooldown();
                     Map.bowserPlaced = true;
                     break;
             }

@@ -74,10 +74,6 @@ public class TowerInfo : MonoBehaviour
                 if (slide == 2) slide = 0;
                 else slide = 1;
                 hidden = true;
-                foreach (GameObject spot in Map.Tiles) 
-                {
-                    if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
-                }
             }
             gameObject.GetComponent<RectTransform>().transform.localPosition = temp;
         }
@@ -87,10 +83,18 @@ public class TowerInfo : MonoBehaviour
     {
         if (slide == 0 || slide == 1) slide = 2;
         if (selectedTower != null && selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
+        foreach (GameObject spot in Map.Tiles)
+        {
+            if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
+        }
     }
 
     public void ShowInfo(GameObject selectedObject)
     {
+        foreach (GameObject spot in Map.Tiles)
+        {
+            if (spot.GetComponent<MapLocation>().rangeIndicating) spot.GetComponent<MapLocation>().RemoveRangeIndication();
+        }
         mapRange = null;
         if (selectedTower.GetComponent<Image>() != null) selectedTower.GetComponent<Image>().color = replacedColor;
         selectedTower = selectedObject;

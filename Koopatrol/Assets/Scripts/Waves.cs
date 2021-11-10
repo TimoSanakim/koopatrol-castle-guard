@@ -237,7 +237,7 @@ public class Waves : MonoBehaviour
         int totalweight = weight;
         bool stop = false;
         int variable = Map.randomizer.Next(0, 8000);
-        if (!hasSpawnedMario && round == 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !MarioExists())
+        if (!hasSpawnedMario && round >= 40 && TheWaves[TheWaves.Count - 1].wave.Count == 0 && !MarioExists())
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             totalweight += 25;
@@ -252,14 +252,9 @@ public class Waves : MonoBehaviour
             if (endlessMarioCount >= 1) TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
             if (endlessMarioCount >= 2) TheWaves[TheWaves.Count - 1].wave.Add(EndlessMario.gameObject);
         }
-        else if (!hasSpawnedLuigi && round == 20 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        else if (!hasSpawnedLuigi && round >= 20 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
-            totalweight += 20;
-        }
-        else if (hasSpawnedLuigi && variable >= 7700 && Map.randomizer.Next(0, 2) == 1 && round >= 40 && totalweight + 20 < maxweight)
-        {
-            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
             totalweight += 20;
         }
         else if (hasSpawnedLuigi && variable >= 7700 && round >= 20 && totalweight + 20 < maxweight)
@@ -267,12 +262,27 @@ public class Waves : MonoBehaviour
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessLuigi.gameObject);
             totalweight += 20;
         }
-        else if (!hasSpawnedYoshi && round == 10 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        else if (hasSpawnedLuigi && variable >= 7300 && round >= 50 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            stop = true;
+        }
+        else if (hasSpawnedLuigi && variable >= 7300 && round >= 50 && totalweight + 10 < maxweight)
+        {
+            TheWaves[TheWaves.Count - 1].wave.Add(EndlessBobOmbBuddy.gameObject);
+            totalweight += 10;
+        }
+        else if (!hasSpawnedYoshi && round >= 10 && TheWaves[TheWaves.Count - 1].wave.Count == 0)
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
             totalweight += 15;
         }
-        else if (hasSpawnedYoshi && variable >= 7500 && round >= 10 && totalweight + 15 < maxweight)
+        else if (hasSpawnedYoshi && variable >= 7000 && round >= 10 && totalweight + 15 < maxweight)
         {
             TheWaves[TheWaves.Count - 1].wave.Add(EndlessYoshi.gameObject);
             totalweight += 15;

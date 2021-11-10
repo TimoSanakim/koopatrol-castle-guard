@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: highscores
+  m_text: Highscores
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Highscores
+  CustomMap: 0
 --- !u!114 &402306200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Settings
+  CustomMap: 0
 --- !u!114 &877748684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,6 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Levelselect
+  CustomMap: 0
 --- !u!114 &1544526325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,6 +1533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: 
+  CustomMap: 0
 --- !u!114 &2070074018
 MonoBehaviour:
   m_ObjectHideFlags: 0

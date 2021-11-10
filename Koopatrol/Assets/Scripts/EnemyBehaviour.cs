@@ -65,7 +65,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (isClone)
+        if (isClone && !GetComponent<EnemyHealth>().dying)
         {
             if (frozenTime <= 2 && enemyType == "Luigi" && specialBehavior != 0) Luigi();
             else if (frozenTime <= 2 && enemyType == "Mario" && specialBehavior != 0) Mario();
@@ -304,19 +304,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         foreach (GameObject spot in Map.Tiles)
         {
-            if (x - spot.transform.localPosition.x >= -25 && x - spot.transform.localPosition.x <= 25 && y - spot.transform.localPosition.y >= 40 && y - spot.transform.localPosition.y <= 60)
+            if (x - spot.transform.localPosition.x >= -35 && x - spot.transform.localPosition.x <= 35 && y - spot.transform.localPosition.y >= -60 && y - spot.transform.localPosition.y <= 60)
             {
                 if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
             }
-            if (x - spot.transform.localPosition.x >= -25 && x - spot.transform.localPosition.x <= 25 && y - spot.transform.localPosition.y >= -60 && y - spot.transform.localPosition.y <= -40)
-            {
-                if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
-            }
-            if (x - spot.transform.localPosition.x >= 40 && x - spot.transform.localPosition.x <= 60 && y - spot.transform.localPosition.y >= -25 && y - spot.transform.localPosition.y <= 25)
-            {
-                if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
-            }
-            if (x - spot.transform.localPosition.x >= -60 && x - spot.transform.localPosition.x <= -40 && y - spot.transform.localPosition.y >= -25 && y - spot.transform.localPosition.y <= 25)
+            if (x - spot.transform.localPosition.x >= -60 && x - spot.transform.localPosition.x <= 60 && y - spot.transform.localPosition.y >= -35 && y - spot.transform.localPosition.y <= 35)
             {
                 if (spot.GetComponent<MapLocation>().towerLevel >= 1) spot.GetComponent<MapLocation>().DestroyTower();
             }

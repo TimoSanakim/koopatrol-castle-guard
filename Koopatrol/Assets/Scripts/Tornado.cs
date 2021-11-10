@@ -71,19 +71,19 @@ public class Tornado : MonoBehaviour
                 switch (moveDirection)
                 {
                     case 0:
-                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + (30 * Time.deltaTime), gameObject.transform.localPosition.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y + (90 * Time.deltaTime), gameObject.transform.localPosition.z);
                         if (gameObject.transform.localPosition.y >= NextPath.transform.localPosition.y) gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, NextPath.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                     case 1:
-                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - (30 * Time.deltaTime), gameObject.transform.localPosition.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - (90 * Time.deltaTime), gameObject.transform.localPosition.z);
                         if (gameObject.transform.localPosition.y <= NextPath.transform.localPosition.y) gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, NextPath.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                     case 2:
-                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x + (30 * Time.deltaTime), gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x + (90 * Time.deltaTime), gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
                         if (gameObject.transform.localPosition.x >= NextPath.transform.localPosition.x) gameObject.transform.localPosition = new Vector3(NextPath.transform.localPosition.x, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                     case 3:
-                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x - (30 * Time.deltaTime), gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+                        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x - (90 * Time.deltaTime), gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
                         if (gameObject.transform.localPosition.x <= NextPath.transform.localPosition.x) gameObject.transform.localPosition = new Vector3(NextPath.transform.localPosition.x, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
                         break;
                 }
