@@ -22,11 +22,6 @@ public class switchScene : MonoBehaviour
     {
         SceneManager.LoadScene(loadingScene);
         Map.LoadedLevel = loadingScene;
-    }
-    public void loadCustomMap()
-    {
-        SceneManager.LoadScene(loadingScene);
-        Map.LoadedLevel = loadingScene;
         Map.LoadedCustomMap = CustomMap;
     }
     public void quitgame()

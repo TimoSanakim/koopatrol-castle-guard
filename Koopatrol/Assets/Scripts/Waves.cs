@@ -30,7 +30,7 @@ public class Waves : MonoBehaviour
     public List<GameObject> StartingPositions;
     byte endlessMarioCount = 0;
     int lastMusicChange = 0;
-    int round = 1;
+    public int round = 1;
 
     public float waveDelay;
     public float currentWaveDelay;

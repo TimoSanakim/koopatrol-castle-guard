@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class levelSelectLoadCustomOptions : MonoBehaviour
 {
     public GameObject CustomOption;
+    public bool isHighScoreMenu = false;
     int ID = 0;
     // Start is called before the first frame update
     void Start()
@@ -21,19 +22,18 @@ public class levelSelectLoadCustomOptions : MonoBehaviour
             GameObject newOption = Instantiate(CustomOption);
             newOption.transform.SetParent(gameObject.transform.GetChild(0).GetChild(0));
             newOption.transform.localScale = new Vector3(1, 1, 1);
-            newOption.transform.localPosition = new Vector3(CustomOption.transform.localPosition.x, CustomOption.transform.localPosition.y - 200 - (50 * ID), CustomOption.transform.localPosition.z);
+            if (isHighScoreMenu) newOption.transform.localPosition = new Vector3(CustomOption.transform.localPosition.x, CustomOption.transform.localPosition.y - 150 - (50 * ID), CustomOption.transform.localPosition.z);
+            else newOption.transform.localPosition = new Vector3(CustomOption.transform.localPosition.x, CustomOption.transform.localPosition.y - 200 - (50 * ID), CustomOption.transform.localPosition.z);
             newOption.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = saveObject.name;
             newOption.GetComponent<switchScene>().CustomMap = ID;
             newOption.GetComponent<CanvasGroup>().alpha = 1;
             newOption.GetComponent<CanvasGroup>().interactable = true;
             newOption.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            if (saveObject.gamemode == 0) newOption.GetComponent<LevelSelectionOption>().Description = "A custom map using the normal gamemode.";
-            else if (saveObject.gamemode == 1) newOption.GetComponent<LevelSelectionOption>().Description = "A custom map using the limited-coin gamemode.";
-            else if (saveObject.gamemode == 2) newOption.GetComponent<LevelSelectionOption>().Description = "A custom map using the endless gamemode.";
             ID++;
             
         }
-        gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta.x, 200 + 50 * ID);
+        if (isHighScoreMenu) gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta.x, 150 + 50 * ID);
+        else gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<RectTransform>().sizeDelta.x, 200 + 50 * ID);
     }
 
     // Update is called once per frame

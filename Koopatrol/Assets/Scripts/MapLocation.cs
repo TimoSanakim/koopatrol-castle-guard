@@ -899,7 +899,10 @@ public class MapLocation : MonoBehaviour, IDropHandler, IPointerClickHandler, IB
     }
     public void OnDrag(PointerEventData eventData)
     {
-        wasDragging = true;
-        map.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
+        if (map.GetComponent<levelCreator>() != null || map.GetComponent<CustomLevel>() != null)
+        {
+            wasDragging = true;
+            map.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using System;
 
 public class Records : MonoBehaviour
 {
@@ -17,8 +18,6 @@ public class Records : MonoBehaviour
     public string recordName;
     int score;
     public bool endgame = false;
-    int index;
-    int i;
 
     
 
@@ -42,7 +41,7 @@ public class Records : MonoBehaviour
     {
         recordCoin = Assets.CoinCounter.GetCoinCount();
         recordHealth = CastleHealth.GetComponent<CastleHealth>().HealthCastle;
-        recordWave = Waves.GetComponent<Waves>().waveIndex;
+        recordWave = Waves.GetComponent<Waves>().round;
 
         //calculate score
         if (recordHealth < 1)
@@ -52,28 +51,52 @@ public class Records : MonoBehaviour
         else
             score = recordCoin * recordHealth * recordWave;
 
-        SaveObject saveObject = new SaveObject
+        SaveObject saveObject;
+        if (File.Exists(Application.dataPath + "/recorddata" + Map.LoadedCustomMap))
         {
-            recordname = recordName,
-            recordscore = score,
-        };
-        string json = JsonUtility.ToJson(saveObject);
-
-        SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(json);
-        while (i < 3)
-        {
-            if (File.Exists(Application.dataPath + "/recorddata" + i))
-            {
-                string saveString = File.ReadAllText(Application.dataPath + "/recorddata" + i);
-                SaveObject jsonsaveObject = JsonUtility.FromJson<SaveObject>(saveString);
-                if (jsonsaveObject.recordscore < score)
-                {
-                    File.WriteAllText(Application.dataPath + "/recorddata" + i, json);
-                    break;
-                }
-            }
-            i++;
+            string saveString = File.ReadAllText(Application.dataPath + "/recorddata" + Map.LoadedCustomMap);
+            saveObject = JsonUtility.FromJson<SaveObject>(saveString);
         }
+        else
+        {
+            saveObject = new SaveObject();
+            saveObject.records = new List<RecordObject>();
+            RecordObject record = new RecordObject();
+            record.score = 0;
+            record.name = "";
+            saveObject.records.Add(record);
+            RecordObject record2 = new RecordObject();
+            record2.score = 0;
+            record2.name = "";
+            saveObject.records.Add(record2);
+            RecordObject record3 = new RecordObject();
+            record3.score = 0;
+            record3.name = "";
+            saveObject.records.Add(record3);
+        }
+        if (saveObject.records[0].score < score)
+        {
+            saveObject.records[2].score = saveObject.records[1].score;
+            saveObject.records[2].name = saveObject.records[1].name;
+            saveObject.records[1].score = saveObject.records[0].score;
+            saveObject.records[1].name = saveObject.records[0].name;
+            saveObject.records[0].score = score;
+            saveObject.records[0].name = recordName;
+        }
+        else if (saveObject.records[1].score < score)
+        {
+            saveObject.records[2].score = saveObject.records[1].score;
+            saveObject.records[2].name = saveObject.records[1].name;
+            saveObject.records[1].score = score;
+            saveObject.records[1].name = recordName;
+        }
+        else if (saveObject.records[2].score < score)
+        {
+            saveObject.records[2].score = score;
+            saveObject.records[2].name = recordName;
+        }
+        string json = JsonUtility.ToJson(saveObject);
+        File.WriteAllText(Application.dataPath + "/recorddata" + Map.LoadedCustomMap, json);
 
     }
     public void setName(){
@@ -88,10 +111,16 @@ public class Records : MonoBehaviour
     recordcontainer.GetComponent<CanvasGroup>().interactable = false;
         recordcontainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
-
-    private class SaveObject {
-        public string recordname;
-        public int recordscore;
+    [Serializable]
+    private class RecordObject
+    {
+        public string name;
+        public int score;
+    }
+    [Serializable]
+    private class SaveObject
+    {
+        public List<RecordObject> records;
     }
 }
 
