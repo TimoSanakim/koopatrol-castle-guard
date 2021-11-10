@@ -810,6 +810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Highscores
+  CustomMap: 0
 --- !u!114 &845630349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,9 +876,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 970161624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04012da84b35f5a47ae423030d0c6f81, type: 3}
+  m_Script: {fileID: 11500000, guid: f965e7235296c2447b23ae8404cfc030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScene: MainMenu
+  CustomMap: 0
 --- !u!114 &970161627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,8 +926,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 970161626}
-        m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: backToMenu
+        m_TargetAssemblyTypeName: switchScene, Assembly-CSharp
+        m_MethodName: sceneSwitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1026,6 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Highscores
+  CustomMap: 0
 --- !u!114 &1105592975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,6 +1541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Highscores
+  CustomMap: 0
 --- !u!114 &1764274518
 MonoBehaviour:
   m_ObjectHideFlags: 0

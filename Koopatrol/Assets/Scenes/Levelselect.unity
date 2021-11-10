@@ -1902,8 +1902,8 @@ GameObject:
   - component: {fileID: 970161629}
   - component: {fileID: 970161628}
   - component: {fileID: 970161627}
-  - component: {fileID: 970161626}
   - component: {fileID: 970161630}
+  - component: {fileID: 970161626}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1928,7 +1928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.35331246, y: 0.079}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0050049, y: 0.00000047684}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970161626
@@ -1940,9 +1940,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 970161624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04012da84b35f5a47ae423030d0c6f81, type: 3}
+  m_Script: {fileID: 11500000, guid: f965e7235296c2447b23ae8404cfc030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScene: MainMenu
+  CustomMap: 0
 --- !u!114 &970161627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1988,8 +1990,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 970161626}
-        m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: backToMenu
+        m_TargetAssemblyTypeName: switchScene, Assembly-CSharp
+        m_MethodName: sceneSwitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

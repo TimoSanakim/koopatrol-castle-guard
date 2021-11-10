@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 635028401}
   - component: {fileID: 635028400}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,9 +458,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 635028398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04012da84b35f5a47ae423030d0c6f81, type: 3}
+  m_Script: {fileID: 11500000, guid: f965e7235296c2447b23ae8404cfc030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScene: Highscoreselect
+  CustomMap: 0
 --- !u!114 &635028401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,8 +508,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 635028400}
-        m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: backToMenu
+        m_TargetAssemblyTypeName: switchScene, Assembly-CSharp
+        m_MethodName: sceneSwitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
