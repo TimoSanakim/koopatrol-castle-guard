@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f965e7235296c2447b23ae8404cfc030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScene: Highscores
+  loadingScene: Highscoresselect
   CustomMap: 0
 --- !u!114 &402306200
 MonoBehaviour:
