@@ -40,7 +40,7 @@ public class GameSettings : MonoBehaviour
         SceneManager.LoadScene(Map.LoadedLevel);
     }
     public static void backToMenu()
-    {
+    {   
         Map.Enemies.Clear();
         Map.Tiles.Clear();
         Map.bowserPlaced = false;
@@ -53,6 +53,7 @@ public class GameSettings : MonoBehaviour
         Map.LoadedLevel = "Levelselect";
         Map.PossiblePaths = null;
         SceneManager.LoadScene(Map.LoadedLevel);
+        levelCreator.started = false;
     }
 
     public void pauseGame()

@@ -32,7 +32,7 @@ public class LavaAttack : MonoBehaviour
                 enemies.AddRange(Map.Enemies);
                 foreach (GameObject enemy in enemies)
                 {
-                    if (enemy.GetComponent<EnemyBehaviour>().isClone && !enemy.GetComponent<EnemyHealth>().HitByLava && Vector3.Distance(enemy.transform.position, transform.position) <= 50 * transform.localScale.x && Vector3.Distance(enemy.transform.position, transform.position) >= 50 * (transform.localScale.x - (10 * Time.deltaTime)) - 10)
+                    if (enemy.GetComponent<EnemyBehaviour>().isClone && !enemy.GetComponent<EnemyHealth>().HitByLava && Vector3.Distance(enemy.transform.localPosition, transform.localPosition) <= 50 * transform.localScale.x && Vector3.Distance(enemy.transform.localPosition, transform.localPosition) >= 50 * (transform.localScale.x - (10 * Time.deltaTime)) - 10)
                     {
                         enemy.GetComponent<EnemyHealth>().HitByLava = true;
                         if (damage != 0) enemy.GetComponent<EnemyHealth>().Hurt(damage);
