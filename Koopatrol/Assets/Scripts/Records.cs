@@ -17,17 +17,17 @@ public class Records : MonoBehaviour
     public string recordName;
     int score;
     public bool endgame = false;
+    int index;
+    int i;
 
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
         recordcontainer = GameObject.FindGameObjectWithTag("Record");
         CastleHealth = GameObject.FindGameObjectWithTag("CastleHealth");
         Waves = GameObject.FindGameObjectWithTag("Wavemanager");
-        
     }
 
     // Update is called once per frame
@@ -60,7 +60,18 @@ public class Records : MonoBehaviour
 
     SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(json);
     Debug.Log(loadedSaveObject.recordscore);
-    File.WriteAllText(Application.dataPath + "/savedata",json);
+    while(i<3){
+    if(File.Exists(Application.dataPath + "/recorddata"+i)){
+        string saveString = File.ReadAllText(Application.dataPath + "/recorddata"+i);
+        SaveObject jsonsaveObject = JsonUtility.FromJson<SaveObject>(saveString);
+        if(jsonsaveObject.recordscore < score){
+            File.WriteAllText(Application.dataPath + "/recorddata"+i ,json);
+            break;
+        }
+        }
+        i++;
+    }
+    
     }
     public void setName(){
         recordName = setRecord.text;
