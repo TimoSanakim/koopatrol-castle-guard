@@ -70,13 +70,16 @@ public class levelCreator : MonoBehaviour, IPointerClickHandler
             option.text = saveObject.name;
             LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Add(option);
         }
-        LoadLevelOptions.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = LoadLevelOptions.GetComponent<TMP_Dropdown>().options[0].text;
-        if (LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Count == 0)
-        {
-            LoadButton.GetComponent<CanvasGroup>().alpha = 0.5f;
-            LoadButton.GetComponent<CanvasGroup>().interactable = false;
-            LoadButton.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if (File.Exists(Application.dataPath + "/customlevel" + ID)){
+                LoadLevelOptions.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = LoadLevelOptions.GetComponent<TMP_Dropdown>().options[0].text;
+            if (LoadLevelOptions.GetComponent<TMP_Dropdown>().options.Count == 0)
+            {
+                LoadButton.GetComponent<CanvasGroup>().alpha = 0.5f;
+                LoadButton.GetComponent<CanvasGroup>().interactable = false;
+                LoadButton.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
         }
+        
     }
 
     public void ChangeSelectedOption(GameObject option)
