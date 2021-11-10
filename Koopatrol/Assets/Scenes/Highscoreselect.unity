@@ -675,6 +675,7 @@ GameObject:
   - component: {fileID: 845630346}
   - component: {fileID: 845630345}
   - component: {fileID: 845630348}
+  - component: {fileID: 845630349}
   m_Layer: 5
   m_Name: BowsersCastle
   m_TagString: Untagged
@@ -809,7 +810,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Highscores
-  CustomMap: 0
+--- !u!114 &845630349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845630343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6d5f6e7a112bb43b32685e7706929c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Description: A starting map for those who want to play the game.
+  TextField: {fileID: 0}
+  Image: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 6e1d7ec5d164bfb46b443879066acdc0, type: 3}
 --- !u!1 &970161624
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +985,7 @@ GameObject:
   - component: {fileID: 1105592976}
   - component: {fileID: 1105592975}
   - component: {fileID: 1105592974}
+  - component: {fileID: 1105592978}
   m_Layer: 5
   m_Name: FrozenCastle
   m_TagString: Untagged
@@ -1009,7 +1026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Highscores
-  CustomMap: 0
 --- !u!114 &1105592975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,6 +1120,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105592972}
   m_CullTransparentMesh: 1
+--- !u!114 &1105592978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105592972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6d5f6e7a112bb43b32685e7706929c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Description: Limited coin mode! Use the resources you have to set up a good defense
+    to defeat Mario. No coins will be dropped by enemies.
+  TextField: {fileID: 0}
+  Image: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: fce720227d7dbc54e8b9bc815f7343dc, type: 3}
 --- !u!1 &1226126524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1496,7 @@ GameObject:
   - component: {fileID: 1764274519}
   - component: {fileID: 1764274518}
   - component: {fileID: 1764274517}
+  - component: {fileID: 1764274521}
   m_Layer: 5
   m_Name: DesertCastle
   m_TagString: Untagged
@@ -1503,7 +1537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScene: Highscores
-  CustomMap: 0
 --- !u!114 &1764274518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,6 +1631,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764274515}
   m_CullTransparentMesh: 1
+--- !u!114 &1764274521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764274515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6d5f6e7a112bb43b32685e7706929c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Description: Endless mode! Play for as long as you can survive! You cannot place
+    towers at the pokeys.
+  TextField: {fileID: 0}
+  Image: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 16e408d3a0485ad48b8896a12e719a71, type: 3}
 --- !u!224 &2054376014 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5317035874194002030, guid: 90aeb97ebac2fcd4fb32a4b5aa792f0d, type: 3}

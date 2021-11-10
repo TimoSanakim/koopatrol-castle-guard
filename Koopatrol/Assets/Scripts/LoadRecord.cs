@@ -13,12 +13,16 @@ public class LoadRecord : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(File.Exists(Application.dataPath + "/savedata")){
-            string saveString = File.ReadAllText(Application.dataPath + "/savedata");
-            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
-            recordnames[0].GetComponent<TextMeshProUGUI>().text = saveObject.recordname + ":    " + saveObject.recordscore;
+        while (i < 3)
+        {
 
-            
+            if (File.Exists(Application.dataPath + "/recorddata" + i))
+            {
+                string saveString = File.ReadAllText(Application.dataPath + "/recorddata" + i);
+                SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+                recordnames[i].GetComponent<TextMeshProUGUI>().text = saveObject.recordname + ":    " + saveObject.recordscore;
+            }
+            i++;
         }
     }
 
