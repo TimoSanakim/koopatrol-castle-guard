@@ -39668,10 +39668,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2137302707}
     m_Modifications:
+    - target: {fileID: 1242307380459824827, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cbcbb87e4293ab945b856aa517206940, type: 3}
     - target: {fileID: 2378887628643359556, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8e07146aaeb07e242bc0d84bf84f3344, type: 3}
+      objectReference: {fileID: 21300000, guid: 15d05bdc6c58e8244ab803ac477ab384, type: 3}
     - target: {fileID: 3658054563470750445, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -14.023926
@@ -39843,5 +39847,13 @@ PrefabInstance:
       value: Deals 5 damage to all enemies on the map and freezes them for 20 seconds.
         Can only be used once!
       objectReference: {fileID: 0}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 15d05bdc6c58e8244ab803ac477ab384, type: 3}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: attackSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: cbcbb87e4293ab945b856aa517206940, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}

@@ -1812,7 +1812,7 @@ PrefabInstance:
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[0].wave.Array.data[0]
       value: 
-      objectReference: {fileID: 693067372}
+      objectReference: {fileID: 277584194}
     - target: {fileID: 1019613949225477508, guid: 82502ff7de285b6459df3efd938b8605, type: 3}
       propertyPath: TheWaves.Array.data[0].wave.Array.data[1]
       value: 
@@ -27563,6 +27563,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.0021972656
       objectReference: {fileID: 0}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 15d05bdc6c58e8244ab803ac477ab384, type: 3}
+    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
+      propertyPath: attackSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: cbcbb87e4293ab945b856aa517206940, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
 --- !u!1 &1444646325
