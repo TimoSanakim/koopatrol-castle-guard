@@ -29,6 +29,9 @@ public class levelSelectLoadCustomOptions : MonoBehaviour
             newOption.GetComponent<CanvasGroup>().alpha = 1;
             newOption.GetComponent<CanvasGroup>().interactable = true;
             newOption.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            if (saveObject.gamemode == 0) newOption.GetComponent<LevelSelectionOption>().Description = "A custom map with normal mode!";
+            if (saveObject.gamemode == 1) newOption.GetComponent<LevelSelectionOption>().Description = "A custom map with limited-coin mode!";
+            if (saveObject.gamemode == 2) newOption.GetComponent<LevelSelectionOption>().Description = "A custom map with endless mode!";
             ID++;
             
         }

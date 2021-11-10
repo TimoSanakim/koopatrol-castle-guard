@@ -39228,10 +39228,6 @@ PrefabInstance:
       value: Deals 5 damage to all enemies on the map and pushes them back. Can only
         be used once!
       objectReference: {fileID: 0}
-    - target: {fileID: 6722899862510570028, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
-      propertyPath: sprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 15d05bdc6c58e8244ab803ac477ab384, type: 3}
     m_RemovedComponents:
     - {fileID: 8499450327590669460, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 86fa1cc9bf060844bb40aa1380f87cfa, type: 3}

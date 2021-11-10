@@ -319,6 +319,7 @@ public class Tutorial : MonoBehaviour
             case 11:
                 if (Map.Enemies.Count == 0)
                 {
+                    if (Assets.CoinCounter.GetCoinCount() == 18) Assets.CoinCounter.ChangeCoinCounter(-2, false);
                     step += 1;
                     TextField.text = "Only one got through, that's fine, after all, we need a toad to tell Mario the princess is in another castle. This was only the beginning though. Let's place something more exiting! Let's take a look at the third tower.";
                 }
